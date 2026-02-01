@@ -1,11 +1,8 @@
-[gd_scene load_steps=624 format=4 uid="uid://b56xfex8vjqku"]
+[gd_scene load_steps=621 format=4 uid="uid://b56xfex8vjqku"]
 
 [ext_resource type="Script" uid="uid://bold5lwxqw4a2" path="res://3D Menu/MainMenu/MainMenuController.cs" id="1_8oofd"]
-[ext_resource type="Script" uid="uid://cwu5cf7a0awcd" path="res://addons/func_godot/src/map/func_godot_map.gd" id="2_mt8kt"]
 [ext_resource type="Script" uid="uid://ca0pr2up27plw" path="res://Assets/Shaders/pixelization_shader.gd" id="3_ef0mh"]
-[ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="3_m2pmq"]
 [ext_resource type="Script" uid="uid://dqlwg2rtn14oa" path="res://Assets/Shaders/quantization_shader.gd" id="3_ym0o4"]
-[ext_resource type="Texture2D" uid="uid://cyg2snr1w5xw5" path="res://addons/func_godot/textures/default_texture.png" id="4_3bfbn"]
 [ext_resource type="Material" uid="uid://0lm3laa88mre" path="res://Assets/textures/images/road.tres" id="5_nn02q"]
 [ext_resource type="Material" uid="uid://bur1epdus2js6" path="res://Assets/textures/test/Petha_1m x 1m Pink.tres" id="5_w5o0e"]
 [ext_resource type="Material" uid="uid://ceffab1ldthvp" path="res://Assets/textures/test/Petha_1m x 1m Green.tres" id="7_srp1p"]
@@ -140,7 +137,6 @@ metadata/_custom_type_script = "uid://dqlwg2rtn14oa"
 compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_fxvwu"), SubResource("CompositorEffect_ef0mh")])
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xspun"]
-albedo_texture = ExtResource("4_3bfbn")
 metallic_specular = 0.0
 texture_filter = 2
 
@@ -2566,11 +2562,6 @@ light_data = ExtResource("46_u6m4i")
 [node name="EnvironmentDetails" type="Node3D" parent="."]
 
 [node name="FuncGodotMap" type="Node3D" parent="EnvironmentDetails"]
-script = ExtResource("2_mt8kt")
-local_map_file = "uid://brxdyipdqn21t"
-map_settings = ExtResource("3_m2pmq")
-build_flags = 1
-metadata/_custom_type_script = "uid://cwu5cf7a0awcd"
 
 [node name="entity_0_worldspawn" type="StaticBody3D" parent="EnvironmentDetails/FuncGodotMap"]
 collision_mask = 0
@@ -4459,7 +4450,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 149.
 script = ExtResource("34_pkg1t")
 animatedCamera = NodePath("CameraFocusPoints/MainPoint/MainMenuCam")
 mainMenuUi = NodePath("../../../MainUI")
-focusPoints = []
+focusPoints = [NodePath("CameraFocusPoints/MainPoint"), NodePath("CameraFocusPoints/SettingsPoint"), NodePath("CameraFocusPoints/QuitPoint"), NodePath("CameraFocusPoints/SinglePoint"), NodePath("CameraFocusPoints/CreditsPoint"), NodePath("CameraFocusPoints/MultiPoint")]
 
 [node name="CameraFocusPoints" type="Node3D" parent="MovingElements/Cameras/CameraController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.26405, 2.6648974, -30.045973)
