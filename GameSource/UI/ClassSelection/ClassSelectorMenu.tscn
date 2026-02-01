@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0d5pio88bn4h"]
+[gd_scene load_steps=14 format=3 uid="uid://d0d5pio88bn4h"]
 
 [ext_resource type="Script" uid="uid://btql7gacqikrq" path="res://UI/ClassSelection/ClassSelectorMenu.cs" id="1_tojxp"]
 [ext_resource type="Theme" uid="uid://x4oo73yj6crh" path="res://UI/ClassSelection/ClassInfo.tres" id="2_f1ptg"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cjhhg47ettgey" path="res://UI/ClassSelection/thief.png" id="7_xa18c"]
 [ext_resource type="Texture2D" uid="uid://th4u2inc60sp" path="res://UI/ClassSelection/wizard.png" id="8_n7uxt"]
 [ext_resource type="Texture2D" uid="uid://bfu4slhr8sv54" path="res://UI/ClassSelection/merchant.png" id="9_pdh68"]
+[ext_resource type="Theme" uid="uid://dswpri3ya7fel" path="res://UI/ClassSelection/ClassSelectorMenu.tres" id="10_68j4x"]
 [ext_resource type="Texture2D" uid="uid://dhtw0jmaae0oe" path="res://UI/ClassSelection/politician.png" id="10_pdh68"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu6f0"]
@@ -44,6 +45,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_pdh68")
 script = ExtResource("1_tojxp")
 class1Description = NodePath("CenterContainer/HBoxContainer/Class1/Description")
 class2Description = NodePath("CenterContainer/HBoxContainer/Class2/Description")
@@ -70,7 +72,6 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 9
-theme_override_fonts/font = ExtResource("4_f1ptg")
 theme_override_font_sizes/font_size = 50
 text = "SELECT YOUR CLASS"
 horizontal_alignment = 1
@@ -119,7 +120,6 @@ offset_right = 114.0
 offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("4_f1ptg")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[u][font_size=35][color=red][wave]Passive[/wave][/color][/font_size][/u]
@@ -190,7 +190,6 @@ offset_top = -110.0
 offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("4_f1ptg")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[u][font_size=35][color=red][wave]Passive[/wave][/color][/font_size][/u]
@@ -263,7 +262,6 @@ offset_right = -4.0
 offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("4_f1ptg")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[u][font_size=35][color=red][wave]Passive[/wave][/color][/font_size][/u]
@@ -334,7 +332,6 @@ offset_top = -109.0
 offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("4_f1ptg")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[u][font_size=35][color=red][wave]Passive[/wave][/color][/font_size][/u]
@@ -375,7 +372,6 @@ grow_vertical = 2
 texture = ExtResource("10_pdh68")
 
 [node name="Next" type="Button" parent="."]
-visible = false
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 1
 anchors_preset = 7
@@ -388,6 +384,7 @@ offset_top = -8.0
 offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("10_68j4x")
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_f1ptg")
