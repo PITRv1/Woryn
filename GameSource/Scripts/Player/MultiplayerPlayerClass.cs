@@ -178,6 +178,16 @@ public partial class MultiplayerPlayerClass : Node
 				test.modifierCard = card;
 				test.playerClass = playerClass;
 				break;
+			case MODIFIER_TYPES.CHANGE_DECK:
+				test.text.Text = "[wave freq=1][rainbow freq=0.1]Change[/rainbow][/wave]";
+				test.modifierCard = card;
+				test.playerClass = playerClass;
+				break;
+			case MODIFIER_TYPES.GIVE_DECK_AROUND:
+				test.text.Text = "[wave freq=1][rainbow freq=0.1]Around[/rainbow][/wave]";
+				test.modifierCard = card;
+				test.playerClass = playerClass;
+				break;
 		}
 
 		modifCards.AddChild(test);

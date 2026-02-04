@@ -3,10 +3,10 @@ using System;
 
 public partial class ModifierCardChangeDeck : ModifierCard
 {
-	public MODIFIER_TYPES ModifierType => MODIFIER_TYPES.REVERSE;
+	public MODIFIER_TYPES ModifierType => MODIFIER_TYPES.CHANGE_DECK;
 	public int Amount { get; set; } = 2;
 
-    public string CardName { get; } = "Reverse";
+    public string CardName { get; } = "ChangeDeck";
 
     public bool IsCardModifier { get; } = false;
 
