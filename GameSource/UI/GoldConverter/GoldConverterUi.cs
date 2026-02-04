@@ -18,6 +18,8 @@ public partial class GoldConverterUi : Control
 
     public override void _PhysicsProcess(double delta)
     {
+		// USE PLAYERCLASS CONVERT VALUE
+		// USE PLAYER WITH TURNMANAGER
         // spinBox.MaxValue = Global.multiplayerPlayerClass.playerClass.Points;
         timerLabel.Text = $"{(int)timerObject.TimeLeft}";
 		goldConversionLabel.Text = $"{(int)Math.Round(spinBox.Value * 0.8f)}";
