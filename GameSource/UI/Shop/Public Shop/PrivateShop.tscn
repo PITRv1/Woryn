@@ -1,99 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://rno5ugwb072s"]
+[gd_scene load_steps=4 format=3 uid="uid://rno5ugwb072s"]
 
-[ext_resource type="Theme" uid="uid://dkls2o1iqxlc" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsYellow.tres" id="1_13x6x"]
 [ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_v4e1g"]
-[ext_resource type="Theme" uid="uid://ck3ti5q1w1p77" path="res://Assets/UI/Themes/Main/UIThemeYellow.tres" id="2_uq3wd"]
-[ext_resource type="Texture2D" uid="uid://dry7q0avshvta" path="res://Assets/UI/NineRect/background_yellow.png" id="3_yg3hr"]
+[ext_resource type="Script" uid="uid://3g6drc0jafvh" path="res://UI/Shop/Public Shop/PrivateShop.cs" id="2_uq3wd"]
+[ext_resource type="Texture2D" uid="uid://cdofbdbwlfext" path="res://Assets/UI/NineRect/backround_blue.png" id="2_v4e1g"]
 
-[sub_resource type="Theme" id="Theme_x8t4j"]
-
-[sub_resource type="Animation" id="Animation_gubnd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Title:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -85)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("NEXT:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(526, 657)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(174, -586)]
-}
-
-[sub_resource type="Animation" id="Animation_f6bil"]
-resource_name = "shopLoad"
-length = 4.0
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Title:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.70000005, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -85), Vector2(0, 18), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("NEXT:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(3.1428573, 3.4285715, 3.7142856),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(526, 657), Vector2(526, 585), Vector2(526, 591)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1, 2.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(174, -586), Vector2(174, -586), Vector2(174, 73.99994)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_p2nfc"]
-_data = {
-&"RESET": SubResource("Animation_gubnd"),
-&"shopLoad": SubResource("Animation_f6bil")
-}
-
-[node name="PrivateShop" type="Control"]
+[node name="PrivateShop" type="Control" node_paths=PackedStringArray("shopTimer", "shopTimerLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,236 +12,78 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_v4e1g")
+script = ExtResource("2_uq3wd")
+shopTimer = NodePath("MarginContainer/TimerContainer/HBoxContainer/ShopTimer")
+shopTimerLabel = NodePath("MarginContainer/TimerContainer/HBoxContainer/ShopTimerLabel")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-z_index = 2
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -466.0
-offset_top = -946.0
-offset_right = 338.0
-offset_bottom = -446.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="CommonShopSection" type="CenterContainer" parent="CenterContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/CommonShopSection"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Row1" type="HBoxContainer" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 70
-
-[node name="Item1" type="VBoxContainer" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer/Row1"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer/Row1/Item1"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-theme = SubResource("Theme_x8t4j")
-
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer/Row1/Item1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 1"
-horizontal_alignment = 1
-
-[node name="Item2" type="VBoxContainer" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer/Row1"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer/Row1/Item2"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer/Row1/Item2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 2"
-horizontal_alignment = 1
-
-[node name="Row2" type="HBoxContainer" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 70
-
-[node name="Item1" type="VBoxContainer" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer/Row2"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer/Row2/Item1"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-theme = SubResource("Theme_x8t4j")
-
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer/Row2/Item1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 1"
-horizontal_alignment = 1
-
-[node name="Item2" type="VBoxContainer" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer/Row2"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer/Row2/Item2"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/CommonShopSection/VBoxContainer/Row2/Item2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 2"
-horizontal_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/HBoxContainer/CommonShopSection"]
-z_index = -1
-custom_minimum_size = Vector2(400, 500)
-layout_mode = 2
-color = Color(0.30030516, 0.43275312, 0.7169011, 0.68235296)
-
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/CommonShopSection"]
-custom_minimum_size = Vector2(400, 480)
-layout_mode = 2
-text = "Common shop"
-horizontal_alignment = 1
-
-[node name="EpicShopSection" type="CenterContainer" parent="CenterContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/EpicShopSection"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Row1" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 70
-
-[node name="Item1" type="VBoxContainer" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer/Row1"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer/Row1/Item1"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-theme = SubResource("Theme_x8t4j")
-
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer/Row1/Item1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 1"
-horizontal_alignment = 1
-
-[node name="Item2" type="VBoxContainer" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer/Row1"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer/Row1/Item2"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer/Row1/Item2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 2"
-horizontal_alignment = 1
-
-[node name="Row2" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 70
-
-[node name="Item1" type="VBoxContainer" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer/Row2"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer/Row2/Item1"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-theme = SubResource("Theme_x8t4j")
-
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer/Row2/Item1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 1"
-horizontal_alignment = 1
-
-[node name="Item2" type="VBoxContainer" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer/Row2"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer/Row2/Item2"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/EpicShopSection/VBoxContainer/Row2/Item2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 2"
-horizontal_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/HBoxContainer/EpicShopSection"]
-z_index = -1
-custom_minimum_size = Vector2(400, 500)
-layout_mode = 2
-color = Color(0.510835, 0.28014365, 0.85462207, 0.68235296)
-
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/EpicShopSection"]
-custom_minimum_size = Vector2(400, 480)
-layout_mode = 2
-text = "Epic shop"
-horizontal_alignment = 1
-
-[node name="Title" type="Label" parent="."]
-z_index = 1
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = -85.0
-offset_bottom = -2.0
-grow_horizontal = 2
-theme = ExtResource("2_uq3wd")
-theme_override_font_sizes/font_size = 45
-text = "PRIVATE SHOP"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Title"]
-show_behind_parent = true
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_yg3hr")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="BackgroundContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/BackgroundContainer"]
+modulate = Color(1, 0.7490196, 1, 1)
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+texture = ExtResource("2_v4e1g")
 patch_margin_left = 17
 patch_margin_top = 17
 patch_margin_right = 17
 patch_margin_bottom = 17
 
-[node name="NEXT" type="Button" parent="."]
-custom_minimum_size = Vector2(100, 40)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -114.0
-offset_top = -63.0
-offset_right = -14.0
-offset_bottom = -11.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_13x6x")
-theme_override_font_sizes/font_size = 25
-text = "Next"
+[node name="SpellContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_p2nfc")
-}
-autoplay = "shopLoad"
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/SpellContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 19
+columns = 4
+
+[node name="Button" type="Button" parent="MarginContainer/SpellContainer/GridContainer"]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+text = "Modif1"
+
+[node name="Button2" type="Button" parent="MarginContainer/SpellContainer/GridContainer"]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+text = "Modif2"
+
+[node name="Button3" type="Button" parent="MarginContainer/SpellContainer/GridContainer"]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+text = "Modif3"
+
+[node name="Button4" type="Button" parent="MarginContainer/SpellContainer/GridContainer"]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+text = "Modif4
+"
+
+[node name="TimerContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TimerContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ShopTimerLabel" type="Label" parent="MarginContainer/TimerContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "00"
+
+[node name="ShopTimer" type="Timer" parent="MarginContainer/TimerContainer/HBoxContainer"]
+wait_time = 12.0
+one_shot = true

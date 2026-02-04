@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://drc2lcg4d2nmc"]
+
+[ext_resource type="Script" uid="uid://uy1tx5y61pek" path="res://UI/CombinedShop/CombinedShopUi.cs" id="1_3jov5"]
+[ext_resource type="PackedScene" uid="uid://b7u8guxg4td0b" path="res://UI/Shop/Public Shop/PublicShop.tscn" id="2_lob0u"]
+[ext_resource type="PackedScene" uid="uid://djjxljhg1kjth" path="res://UI/GoldConverter/GoldConverterUI.tscn" id="3_u4tl4"]
+[ext_resource type="PackedScene" uid="uid://rno5ugwb072s" path="res://UI/Shop/Public Shop/PrivateShop.tscn" id="4_bwvk2"]
+
+[node name="CombinedShop" type="Control" node_paths=PackedStringArray("goldConverterUi", "publicShop", "privateShop")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3jov5")
+goldConverterUi = NodePath("GoldConverterUI")
+publicShop = NodePath("PublicShop")
+privateShop = NodePath("PrivateShop")
+
+[node name="GoldConverterUI" parent="." instance=ExtResource("3_u4tl4")]
+layout_mode = 1
+
+[node name="PublicShop" parent="." instance=ExtResource("2_lob0u")]
+visible = false
+layout_mode = 1
+
+[node name="PrivateShop" parent="." instance=ExtResource("4_bwvk2")]
+visible = false
+layout_mode = 1

@@ -11,6 +11,7 @@ public class PlayerClass
     public ModifierCardDeck modifierCardDeck { get; }
     public MultiplayerPlayerClass parent;
     public int Points { get; set; } = 0;
+    public int Gold { get; set; } = 0;
     public float pointsToGoldRatio = 0.5f;
 
     public PointCard chosenPointCard ;

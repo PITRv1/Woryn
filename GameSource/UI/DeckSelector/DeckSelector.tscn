@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dfk57ro64kv7p" path="res://UI/DeckSelector/DeckSelector.cs" id="1_57dk6"]
 [ext_resource type="Theme" uid="uid://bl2inu1shpipu" path="res://UI/DeckSelector/DeckSelector.tres" id="2_0242j"]
-[ext_resource type="FontFile" path="res://DigitalDisco.ttf" id="2_y7bf3"]
+[ext_resource type="FontFile" uid="uid://bgx48beeh6rf7" path="res://Assets/UI/Fonts/DigitalDisco.ttf" id="2_y7bf3"]
 [ext_resource type="Theme" uid="uid://dt0m58ab3i48o" path="res://UI/ClassSelection/ClassName.tres" id="4_nupf5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nupf5"]

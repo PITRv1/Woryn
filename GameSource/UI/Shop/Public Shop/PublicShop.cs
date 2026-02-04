@@ -3,20 +3,31 @@ using System;
 
 public partial class PublicShop : Control
 {
-    [Export] Timer publicShopTimer;
-    [Export] Label publicShopTimerLabel;
-    public override void _Process(double delta)
+    [Export] Label shopTimerLabel;
+	[Export] Timer shopTimerObject;
+    [Export] CursorBlocker cursorBlocker;
+
+    [Signal] public delegate void PublicShopTimerTimeoutEventHandler();
+
+    public void StartPublicShop()
     {
-        publicShopTimerLabel.Text = Math.Round(publicShopTimer.TimeLeft).ToString();
-    }
-    public void OnTimerTimeout()
-    {
-        GD.Print("Public shop timer ended");
+        Visible = true;
+
+        cursorBlocker.StartCursorBlocker();
     }
 
-
-    public void OnNextButtonPressed()
+    public override void _PhysicsProcess(double delta)
     {
-        GD.Print("Go to the private shop!");
+        shopTimerLabel.Text = $"{(int)shopTimerObject.TimeLeft}";
+    }
+
+    public void HandleShopTimerTimeout()
+    {
+        EmitSignal(SignalName.PublicShopTimerTimeout);
+    }
+
+    public void StartShopTimer()
+    {
+        shopTimerObject.Start();
     }
 }

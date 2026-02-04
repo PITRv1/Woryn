@@ -9,4 +9,5 @@ public partial class Global : Node
     public static TurnManager turnManagerInstance;
     public static LobbyManager lobbyManagerInstance;
     public static ShopManager shopManager;
+    public static MultiplayerPlayerClass multiplayerPlayerClass;
 }

@@ -26,6 +26,7 @@ public partial class MultiplayerPlayerClass : Node
 		Global.multiplayerClientGlobals.HandleDeckSwap += playerClass.HandleDeckSwap;
 
 		Global.multiplayerClientGlobals.ShopScene += GoToShop;
+		Global.multiplayerPlayerClass = this;
 	}
 
 	public void ClientReady()

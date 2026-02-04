@@ -1,293 +1,97 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7u8guxg4td0b"]
+[gd_scene load_steps=8 format=3 uid="uid://b7u8guxg4td0b"]
 
 [ext_resource type="Script" uid="uid://dthm2lri1j1c" path="res://UI/Shop/Public Shop/PublicShop.cs" id="1_f6bil"]
 [ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_gubnd"]
 [ext_resource type="Texture2D" uid="uid://cxn8hk2mjf50x" path="res://Assets/UI/NineRect/background_simple.png" id="3_p2nfc"]
-[ext_resource type="Theme" uid="uid://ck3ti5q1w1p77" path="res://Assets/UI/Themes/Main/UIThemeYellow.tres" id="4_ema2q"]
-[ext_resource type="Texture2D" uid="uid://dry7q0avshvta" path="res://Assets/UI/NineRect/background_yellow.png" id="5_ema2q"]
-[ext_resource type="Theme" uid="uid://dkls2o1iqxlc" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsYellow.tres" id="6_4ol5o"]
+[ext_resource type="Script" uid="uid://dmmh02xu4jmse" path="res://UI/Shop/Public Shop/CursorBlocker.cs" id="4_fk1l3"]
 
-[sub_resource type="Theme" id="Theme_x8t4j"]
+[sub_resource type="Animation" id="Animation_p2nfc"]
+resource_name = "Shake"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelContainer/Control/TimerLabel:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelContainer/Control/TimerLabel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.2176376, 1),
+"update": 0,
+"values": [0.0, 0.26005405]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LabelContainer/Control/TimerLabel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.30778614, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.52, 1.52)]
+}
 
-[sub_resource type="Animation" id="Animation_gubnd"]
+[sub_resource type="Animation" id="Animation_fk1l3"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Title:position")
+tracks/0/path = NodePath("LabelContainer/Control/TimerLabel:theme_override_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -85)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CenterContainer:position")
+tracks/1/path = NodePath("LabelContainer/Control/TimerLabel:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -585)]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row1/Item1:visible")
+tracks/2/path = NodePath("LabelContainer/Control/TimerLabel:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row1/Item2:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row1/Item3:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row1/Item4:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row2/Item1:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row2/Item2:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row2/Item3:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row2/Item4:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("NEXT:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(526, 657)]
+"values": [Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_f6bil"]
-resource_name = "shopLoad"
-length = 6.0
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Title:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.70000005, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -85), Vector2(0, 18), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CenterContainer:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(176, -585), Vector2(176, 74)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row1/Item1:visible")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.5, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row1/Item2:visible")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.5, 2.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row1/Item3:visible")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1.5, 2.4285715),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row1/Item4:visible")
-tracks/5/interp = 2
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1.5, 2.7142856),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row2/Item1:visible")
-tracks/6/interp = 2
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(1.5, 3.4285715),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row2/Item2:visible")
-tracks/7/interp = 2
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(1.5, 3.7142856),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row2/Item3:visible")
-tracks/8/interp = 2
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(1.5, 3.857143),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("CenterContainer/CenterContainer/VBoxContainer/Row2/Item4:visible")
-tracks/9/interp = 2
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(1.5, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("NEXT:position")
-tracks/10/interp = 2
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(4.714286, 5, 5.285714),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(526, 657), Vector2(526, 585), Vector2(526, 591)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_p2nfc"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fk1l3"]
 _data = {
-&"RESET": SubResource("Animation_gubnd"),
-&"shopLoad": SubResource("Animation_f6bil")
+&"RESET": SubResource("Animation_fk1l3"),
+&"Shake": SubResource("Animation_p2nfc")
 }
 
-[node name="PublicShop" type="Control" node_paths=PackedStringArray("publicShopTimer", "publicShopTimerLabel")]
+[node name="PublicShop" type="Control" node_paths=PackedStringArray("shopTimerLabel", "shopTimerObject", "cursorBlocker")]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -296,24 +100,27 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_gubnd")
 script = ExtResource("1_f6bil")
-publicShopTimer = NodePath("Timer")
-publicShopTimerLabel = NodePath("Title/Timer")
+shopTimerLabel = NodePath("Margin/TimerContainer/HBoxContainer/ShopTimerLabel")
+shopTimerObject = NodePath("Margin/TimerContainer/HBoxContainer/ShopTimer")
+cursorBlocker = NodePath("Margin/CursorBlocker")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -945.0
-offset_right = 160.0
-offset_bottom = -444.99994
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="ColorRect" type="NinePatchRect" parent="CenterContainer"]
+[node name="BackgroundContainer" type="CenterContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Margin/BackgroundContainer"]
 custom_minimum_size = Vector2(800, 500)
 layout_mode = 2
 texture = ExtResource("3_p2nfc")
@@ -322,211 +129,103 @@ patch_margin_top = 17
 patch_margin_right = 17
 patch_margin_bottom = 17
 
-[node name="Panel" type="Panel" parent="CenterContainer"]
+[node name="SpellContainer" type="CenterContainer" parent="Margin"]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="CenterContainer"]
+[node name="GridContainer" type="GridContainer" parent="Margin/SpellContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 19
+columns = 4
+
+[node name="Button" type="Button" parent="Margin/SpellContainer/GridContainer"]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+text = "Spell1"
+
+[node name="Button2" type="Button" parent="Margin/SpellContainer/GridContainer"]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+text = "Spell2"
+
+[node name="Button3" type="Button" parent="Margin/SpellContainer/GridContainer"]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+text = "Spell3"
+
+[node name="Button4" type="Button" parent="Margin/SpellContainer/GridContainer"]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+text = "Spell4"
+
+[node name="CursorBlocker" type="CenterContainer" parent="Margin" node_paths=PackedStringArray("timerLabel", "timerObject", "animationPlayer")]
+layout_mode = 2
+script = ExtResource("4_fk1l3")
+timerLabel = NodePath("Panel/LabelContainer/Control/TimerLabel")
+timerObject = NodePath("Panel/LabelContainer/BlockTimer")
+animationPlayer = NodePath("Panel/LabelContainer/AnimationPlayer")
+
+[node name="Panel" type="Panel" parent="Margin/CursorBlocker"]
+custom_minimum_size = Vector2(800, 500)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Row1" type="HBoxContainer" parent="CenterContainer/CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 70
-
-[node name="Item1" type="VBoxContainer" parent="CenterContainer/CenterContainer/VBoxContainer/Row1"]
-visible = false
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/CenterContainer/VBoxContainer/Row1/Item1"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-theme = SubResource("Theme_x8t4j")
-
-[node name="Label" type="Label" parent="CenterContainer/CenterContainer/VBoxContainer/Row1/Item1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 1"
-horizontal_alignment = 1
-
-[node name="Item2" type="VBoxContainer" parent="CenterContainer/CenterContainer/VBoxContainer/Row1"]
-visible = false
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/CenterContainer/VBoxContainer/Row1/Item2"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/CenterContainer/VBoxContainer/Row1/Item2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 2"
-horizontal_alignment = 1
-
-[node name="Item3" type="VBoxContainer" parent="CenterContainer/CenterContainer/VBoxContainer/Row1"]
-visible = false
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/CenterContainer/VBoxContainer/Row1/Item3"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/CenterContainer/VBoxContainer/Row1/Item3"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 3"
-horizontal_alignment = 1
-
-[node name="Item4" type="VBoxContainer" parent="CenterContainer/CenterContainer/VBoxContainer/Row1"]
-visible = false
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/CenterContainer/VBoxContainer/Row1/Item4"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/CenterContainer/VBoxContainer/Row1/Item4"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 4"
-horizontal_alignment = 1
-
-[node name="Row2" type="HBoxContainer" parent="CenterContainer/CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 70
-
-[node name="Item1" type="VBoxContainer" parent="CenterContainer/CenterContainer/VBoxContainer/Row2"]
-visible = false
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/CenterContainer/VBoxContainer/Row2/Item1"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-theme = SubResource("Theme_x8t4j")
-
-[node name="Label" type="Label" parent="CenterContainer/CenterContainer/VBoxContainer/Row2/Item1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 1"
-horizontal_alignment = 1
-
-[node name="Item2" type="VBoxContainer" parent="CenterContainer/CenterContainer/VBoxContainer/Row2"]
-visible = false
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/CenterContainer/VBoxContainer/Row2/Item2"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/CenterContainer/VBoxContainer/Row2/Item2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 2"
-horizontal_alignment = 1
-
-[node name="Item3" type="VBoxContainer" parent="CenterContainer/CenterContainer/VBoxContainer/Row2"]
-visible = false
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/CenterContainer/VBoxContainer/Row2/Item3"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/CenterContainer/VBoxContainer/Row2/Item3"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 3"
-horizontal_alignment = 1
-
-[node name="Item4" type="VBoxContainer" parent="CenterContainer/CenterContainer/VBoxContainer/Row2"]
-visible = false
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CenterContainer/CenterContainer/VBoxContainer/Row2/Item4"]
-custom_minimum_size = Vector2(100, 150)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/CenterContainer/VBoxContainer/Row2/Item4"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Price 4"
-horizontal_alignment = 1
-
-[node name="Title" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = -85.0
-offset_bottom = -2.0
-grow_horizontal = 2
-theme = ExtResource("4_ema2q")
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 6
-theme_override_constants/outline_size = 20
-theme_override_constants/shadow_outline_size = 31
-theme_override_font_sizes/font_size = 45
-text = "PUBLIC SHOP"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Timer" type="Label" parent="Title"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -136.0
-offset_bottom = 83.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0.5267932, 1.2153015e-06, 3.85046e-07, 1)
-theme_override_font_sizes/font_size = 40
-text = "-----"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Title"]
-show_behind_parent = true
+[node name="LabelContainer" type="CenterContainer" parent="Margin/CursorBlocker/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_ema2q")
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 17
 
-[node name="NEXT" type="Button" parent="."]
-custom_minimum_size = Vector2(100, 40)
+[node name="Control" type="Control" parent="Margin/CursorBlocker/Panel/LabelContainer"]
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="Margin/CursorBlocker/Panel/LabelContainer/Control"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -114.0
-offset_top = -63.0
-offset_right = 16.0
-offset_bottom = -11.0
+anchor_bottom = 0.5
+offset_left = -25.5
+offset_top = -45.5
+offset_right = 25.5
+offset_bottom = 45.5
 grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("6_4ol5o")
-theme_override_font_sizes/font_size = 25
-text = "Next"
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 90
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+[node name="BlockTimer" type="Timer" parent="Margin/CursorBlocker/Panel/LabelContainer"]
+wait_time = 6.0
 one_shot = true
-autostart = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Margin/CursorBlocker/Panel/LabelContainer"]
+root_node = NodePath("../..")
 libraries = {
-&"": SubResource("AnimationLibrary_p2nfc")
+&"": SubResource("AnimationLibrary_fk1l3")
 }
-autoplay = "shopLoad"
 
-[connection signal="pressed" from="NEXT" to="." method="OnNextButtonPressed"]
-[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]
+[node name="TimerContainer" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/TimerContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ShopTimerLabel" type="Label" parent="Margin/TimerContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "00"
+
+[node name="ShopTimer" type="Timer" parent="Margin/TimerContainer/HBoxContainer"]
+wait_time = 8.0
+one_shot = true
+
+[connection signal="timeout" from="Margin/CursorBlocker/Panel/LabelContainer/BlockTimer" to="." method="StartShopTimer"]
+[connection signal="timeout" from="Margin/CursorBlocker/Panel/LabelContainer/BlockTimer" to="Margin/CursorBlocker" method="HandleTimeout"]
+[connection signal="timeout" from="Margin/TimerContainer/HBoxContainer/ShopTimer" to="." method="HandleShopTimerTimeout"]

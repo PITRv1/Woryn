@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dcvukxwbsb0xg" path="res://Testing/MultiTesting/player_fein.tscn" id="1_1kjv5"]
 [ext_resource type="Script" uid="uid://iy4wp1ypdx84" path="res://Testing/MultiTesting/LobbyPlayer.cs" id="1_qu10a"]
-[ext_resource type="PackedScene" uid="uid://1tvmqvajxg62" path="res://Testing/MultiTesting/test.tscn" id="3_gy7nt"]
+[ext_resource type="PackedScene" uid="uid://1tvmqvajxg62" path="res://Testing/MultiTesting/MultiplayerRoom.tscn" id="3_gy7nt"]
 
 [node name="TestLobby" type="Node"]
 

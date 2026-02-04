@@ -1,30 +1,29 @@
-[gd_scene load_steps=32 format=4 uid="uid://1tvmqvajxg62"]
+[gd_scene load_steps=31 format=4 uid="uid://pelmk5an55xh"]
 
-[ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_c8k3l"]
-[ext_resource type="PackedScene" uid="uid://bxs0hn6508qbt" path="res://Testing/MultiTesting/multiplayer_player.tscn" id="1_jwek8"]
-[ext_resource type="PackedScene" uid="uid://ca8e052nny7l5" path="res://Testing/MultiTesting/TestPointCardUI.tscn" id="2_m1nd3"]
-[ext_resource type="PackedScene" uid="uid://dv8riud1qttrs" path="res://Testing/MultiTesting/TestModifierCardUI.tscn" id="3_murls"]
-[ext_resource type="PackedScene" uid="uid://b7u8guxg4td0b" path="res://UI/Shop/Public Shop/PublicShop.tscn" id="5_12dsr"]
-[ext_resource type="Theme" uid="uid://bdetdcpnnocd8" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsBlue.tres" id="5_vvaa5"]
-[ext_resource type="PackedScene" uid="uid://smtqx0lfpxl7" path="res://UI/DeckSelector/DeckSelector.tscn" id="6_2b2c1"]
-[ext_resource type="Theme" uid="uid://dwothogalvoiq" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsGreen.tres" id="6_7h4jh"]
-[ext_resource type="PackedScene" uid="uid://d0d5pio88bn4h" path="res://UI/ClassSelection/ClassSelectorMenu.tscn" id="7_k7yxf"]
-[ext_resource type="Texture2D" uid="uid://cxn8hk2mjf50x" path="res://Assets/UI/NineRect/background_simple.png" id="8_38utj"]
-[ext_resource type="Texture2D" uid="uid://c7ifawlapypu5" path="res://Assets/rogland_clear_night_1k.hdr" id="11_gv0l0"]
-[ext_resource type="Script" uid="uid://ca0pr2up27plw" path="res://Assets/Shaders/pixelization_shader.gd" id="12_12dsr"]
-[ext_resource type="Script" uid="uid://dqlwg2rtn14oa" path="res://Assets/Shaders/quantization_shader.gd" id="13_kcwk8"]
-[ext_resource type="PackedScene" uid="uid://ccf0q8umdew7p" path="res://Assets/models/aztal.glb" id="15_kcwk8"]
-[ext_resource type="Script" uid="uid://cwu5cf7a0awcd" path="res://addons/func_godot/src/map/func_godot_map.gd" id="16_eh8se"]
-[ext_resource type="PackedScene" uid="uid://813a71lqqufe" path="res://Assets/models/Chair.glb" id="16_sdsio"]
-[ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="17_261r0"]
-[ext_resource type="Material" uid="uid://bnk7qip1drgrb" path="res://Assets/textures/world/goldTile.tres" id="18_vmjp8"]
-[ext_resource type="Material" uid="uid://bix1vsif6u6fg" path="res://Assets/textures/world/wallOrnateType2.tres" id="19_c2ynb"]
-[ext_resource type="PackedScene" uid="uid://dnj0pnuhiccu3" path="res://Assets/models/Potion.glb" id="20_261r0"]
-[ext_resource type="PackedScene" uid="uid://c53mgemcft6cu" path="res://Assets/models/MainMenuNewCollection/chairAdvanced.glb" id="21_c2ynb"]
-[ext_resource type="PackedScene" uid="uid://njq1xlx2s0s7" path="res://Assets/models/MainMenuNewCollection/tableAdvanced.glb" id="22_m4rhn"]
+[ext_resource type="PackedScene" uid="uid://bxs0hn6508qbt" path="res://Testing/MultiTesting/multiplayer_player.tscn" id="1_cvj3d"]
+[ext_resource type="PackedScene" uid="uid://ca8e052nny7l5" path="res://Testing/MultiTesting/TestPointCardUI.tscn" id="2_0wj4v"]
+[ext_resource type="PackedScene" uid="uid://dv8riud1qttrs" path="res://Testing/MultiTesting/TestModifierCardUI.tscn" id="3_o3834"]
+[ext_resource type="PackedScene" uid="uid://drc2lcg4d2nmc" path="res://UI/CombinedShop/CombinedShopUI.tscn" id="4_dipxj"]
+[ext_resource type="Texture2D" uid="uid://cxn8hk2mjf50x" path="res://Assets/UI/NineRect/background_simple.png" id="5_cgkl1"]
+[ext_resource type="Theme" uid="uid://bdetdcpnnocd8" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsBlue.tres" id="6_i6mel"]
+[ext_resource type="Theme" uid="uid://dwothogalvoiq" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsGreen.tres" id="7_j5qp7"]
+[ext_resource type="PackedScene" uid="uid://smtqx0lfpxl7" path="res://UI/DeckSelector/DeckSelector.tscn" id="8_ihayo"]
+[ext_resource type="PackedScene" uid="uid://d0d5pio88bn4h" path="res://UI/ClassSelection/ClassSelectorMenu.tscn" id="9_0847e"]
+[ext_resource type="Texture2D" uid="uid://c7ifawlapypu5" path="res://Assets/rogland_clear_night_1k.hdr" id="10_apilx"]
+[ext_resource type="Script" uid="uid://ca0pr2up27plw" path="res://Assets/Shaders/pixelization_shader.gd" id="11_m8t1y"]
+[ext_resource type="Script" uid="uid://dqlwg2rtn14oa" path="res://Assets/Shaders/quantization_shader.gd" id="12_k3pyj"]
+[ext_resource type="PackedScene" uid="uid://ccf0q8umdew7p" path="res://Assets/models/aztal.glb" id="13_nm1sy"]
+[ext_resource type="PackedScene" uid="uid://813a71lqqufe" path="res://Assets/models/Chair.glb" id="14_yk0rv"]
+[ext_resource type="Script" uid="uid://cwu5cf7a0awcd" path="res://addons/func_godot/src/map/func_godot_map.gd" id="15_ymqdg"]
+[ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="16_4hy1n"]
+[ext_resource type="Material" uid="uid://bnk7qip1drgrb" path="res://Assets/textures/world/goldTile.tres" id="17_0qkrv"]
+[ext_resource type="Material" uid="uid://bix1vsif6u6fg" path="res://Assets/textures/world/wallOrnateType2.tres" id="18_8gbhg"]
+[ext_resource type="PackedScene" uid="uid://dnj0pnuhiccu3" path="res://Assets/models/Potion.glb" id="19_l75mi"]
+[ext_resource type="PackedScene" uid="uid://c53mgemcft6cu" path="res://Assets/models/MainMenuNewCollection/chairAdvanced.glb" id="20_mswd3"]
+[ext_resource type="PackedScene" uid="uid://njq1xlx2s0s7" path="res://Assets/models/MainMenuNewCollection/tableAdvanced.glb" id="21_qcegn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5toyo"]
-panorama = ExtResource("11_gv0l0")
+panorama = ExtResource("10_apilx")
 energy_multiplier = 0.1
 
 [sub_resource type="Sky" id="Sky_7gnwx"]
@@ -67,7 +66,7 @@ enabled = true
 effect_callback_type = 4
 needs_motion_vectors = false
 needs_normal_roughness = false
-script = ExtResource("12_12dsr")
+script = ExtResource("11_m8t1y")
 down_scaling = 2.0
 metadata/_custom_type_script = "uid://ca0pr2up27plw"
 
@@ -78,7 +77,7 @@ enabled = true
 effect_callback_type = 4
 needs_motion_vectors = false
 needs_normal_roughness = false
-script = ExtResource("13_kcwk8")
+script = ExtResource("12_k3pyj")
 color_depth = 128.0
 metadata/_custom_type_script = "uid://dqlwg2rtn14oa"
 
@@ -92,7 +91,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcA"),
-"material": ExtResource("18_vmjp8"),
+"material": ExtResource("17_0qkrv"),
 "name": "world/goldTile",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -104,7 +103,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcA"),
-"material": ExtResource("19_c2ynb"),
+"material": ExtResource("18_8gbhg"),
 "name": "world/wallOrnateType2",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -118,29 +117,21 @@ points = PackedVector3Array(6, 0, 8.5, 6, -0.5, 8.5, -8.5, 0, 8.5, -8.5, -0.5, 8
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uu1ol"]
 points = PackedVector3Array(6, 6, 8, 6, 0, 8, 5.5, 6, 8, 5.5, 0, 8, 6, 6, -6.5, 6, 0, -6.5, 5.5, 6, -6.5, 5.5, 0, -6.5)
 
-[node name="Test" type="Control"]
-texture_filter = 1
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_c8k3l")
+[node name="Test" type="Node3D"]
 
-[node name="MultiplayerPlayer" parent="." node_paths=PackedStringArray("pointCards", "modifCards", "maxPoints", "points", "throwDeckValue") instance=ExtResource("1_jwek8")]
+[node name="MultiplayerPlayer" parent="." node_paths=PackedStringArray("pointCards", "modifCards", "maxPoints", "points", "throwDeckValue") instance=ExtResource("1_cvj3d")]
 pointCards = NodePath("../Control/HandHolder/CardContainers/HBox/PointCards")
 modifCards = NodePath("../Control/HandHolder/CardContainers/HBox/ModifCards")
-pointCardUI = ExtResource("2_m1nd3")
-modifierCardUI = ExtResource("3_murls")
+pointCardUI = ExtResource("2_0wj4v")
+modifierCardUI = ExtResource("3_o3834")
 maxPoints = NodePath("../Control/HBoxContainer/MarginContainer/VBoxContainer/MaxValue")
 points = NodePath("../Control/HBoxContainer/MarginContainer/VBoxContainer/Points")
 throwDeckValue = NodePath("../Control/HBoxContainer/MarginContainer/VBoxContainer/ThrowDeckValue")
-shopScene = ExtResource("5_12dsr")
+shopScene = ExtResource("4_dipxj")
 
 [node name="Control" type="Control" parent="."]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -163,7 +154,7 @@ alignment = 1
 [node name="NinePatchRect" type="NinePatchRect" parent="Control/HBoxContainer2/VBoxContainer2"]
 custom_minimum_size = Vector2(100, 170)
 layout_mode = 2
-texture = ExtResource("8_38utj")
+texture = ExtResource("5_cgkl1")
 patch_margin_left = 17
 patch_margin_top = 17
 patch_margin_right = 17
@@ -262,7 +253,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("5_vvaa5")
+theme = ExtResource("6_i6mel")
 text = "Fold"
 
 [node name="PlayCardsButtonContainer" type="HBoxContainer" parent="Control/HandHolder/Buttons"]
@@ -272,33 +263,33 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("6_7h4jh")
+theme = ExtResource("7_j5qp7")
 text = "Play selected
 "
 
 [node name="Deck" type="Control" parent="."]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DeckSelector" parent="Deck" node_paths=PackedStringArray("playerScene", "deckselectScene") instance=ExtResource("6_2b2c1")]
+[node name="DeckSelector" parent="Deck" node_paths=PackedStringArray("playerScene", "deckselectScene") instance=ExtResource("8_ihayo")]
 layout_mode = 1
 playerScene = NodePath("../../Control")
 deckselectScene = NodePath("..")
 
 [node name="Class" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ClassSelectorMenu" parent="Class" node_paths=PackedStringArray("deckselectNode", "classselectNode") instance=ExtResource("7_k7yxf")]
+[node name="ClassSelectorMenu" parent="Class" node_paths=PackedStringArray("deckselectNode", "classselectNode") instance=ExtResource("9_0847e")]
 layout_mode = 1
 deckselectNode = NodePath("../../Deck")
 classselectNode = NodePath("..")
@@ -311,6 +302,7 @@ compositor = SubResource("Compositor_261r0")
 
 [node name="Camera3D" type="Camera3D" parent="3DBGIG"]
 transform = Transform3D(-0.7295931, 0.5133647, -0.45183036, 0, 0.6606851, 0.75066316, 0.6838815, 0.54767865, -0.48203132, -4.922394, 9.164613, -3.4046144)
+current = true
 fov = 47.9
 
 [node name="SpotLight3D" type="SpotLight3D" parent="3DBGIG"]
@@ -323,27 +315,27 @@ spot_attenuation = 0.79
 spot_angle = 77.7928
 spot_angle_attenuation = 1.071774
 
-[node name="aztal" parent="3DBGIG" instance=ExtResource("15_kcwk8")]
+[node name="aztal" parent="3DBGIG" instance=ExtResource("13_nm1sy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3328419, 3.085462, 0.782444)
 
-[node name="Chair" parent="3DBGIG/aztal" instance=ExtResource("16_sdsio")]
+[node name="Chair" parent="3DBGIG/aztal" instance=ExtResource("14_yk0rv")]
 transform = Transform3D(0.26000002, 0, 0, 0, 0.26000002, 0, 0, 0, 0.26000002, 0, 0, 0.64450073)
 
-[node name="Chair2" parent="3DBGIG/aztal" instance=ExtResource("16_sdsio")]
+[node name="Chair2" parent="3DBGIG/aztal" instance=ExtResource("14_yk0rv")]
 transform = Transform3D(-0.035254594, 0, 0.2575988, 0, 0.26000008, 0, -0.2575988, 0, -0.035254594, 0.04942894, 0, -0.8916054)
 
-[node name="Chair3" parent="3DBGIG/aztal" instance=ExtResource("16_sdsio")]
+[node name="Chair3" parent="3DBGIG/aztal" instance=ExtResource("14_yk0rv")]
 transform = Transform3D(-0.25806314, 0, -0.03167705, 0, 0.26000014, 0, 0.03167705, 0, -0.25806314, 0.055036545, 0, -0.10362625)
 
-[node name="Chair4" parent="3DBGIG/aztal" instance=ExtResource("16_sdsio")]
+[node name="Chair4" parent="3DBGIG/aztal" instance=ExtResource("14_yk0rv")]
 transform = Transform3D(0.0064431145, 0, -0.25992018, 0, 0.26000023, 0, 0.25992018, 0, 0.0064431145, -0.66691875, 0, -0.10362625)
 
 [node name="EnvironmentDetails" type="Node3D" parent="3DBGIG"]
 
 [node name="FuncGodotMap" type="Node3D" parent="3DBGIG/EnvironmentDetails"]
-script = ExtResource("16_eh8se")
+script = ExtResource("15_ymqdg")
 local_map_file = "uid://bp0jq6bkqwima"
-map_settings = ExtResource("17_261r0")
+map_settings = ExtResource("16_4hy1n")
 metadata/_custom_type_script = "uid://cwu5cf7a0awcd"
 
 [node name="entity_0_worldspawn" type="StaticBody3D" parent="3DBGIG/EnvironmentDetails/FuncGodotMap"]
@@ -358,13 +350,13 @@ shape = SubResource("ConvexPolygonShape3D_cntm0")
 [node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="3DBGIG/EnvironmentDetails/FuncGodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_uu1ol")
 
-[node name="Potion" parent="3DBGIG" instance=ExtResource("20_261r0")]
+[node name="Potion" parent="3DBGIG" instance=ExtResource("19_l75mi")]
 transform = Transform3D(0.25983894, 0, 0, 0, 0.25983894, 0, 0, 0, 0.25983894, -1.1971331, 3.378264, 0.84677696)
 
-[node name="chairAdvanced" parent="3DBGIG" instance=ExtResource("21_c2ynb")]
+[node name="chairAdvanced" parent="3DBGIG" instance=ExtResource("20_mswd3")]
 transform = Transform3D(0.43797895, 0, 0.8989852, 0, 1, 0, -0.8989852, 0, 0.43797895, 0.5093672, 0.050683275, 7.097053)
 
-[node name="tableAdvanced" parent="." instance=ExtResource("22_m4rhn")]
+[node name="tableAdvanced" parent="." instance=ExtResource("21_qcegn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7452865, 0.06546539, 6.744095)
 
 [connection signal="pressed" from="Control/HandHolder/Buttons/GetCardsButtonContainer/Fold" to="MultiplayerPlayer" method="SendFoldRequest"]
