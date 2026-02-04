@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://1tvmqvajxg62"]
+[gd_scene load_steps=32 format=4 uid="uid://1tvmqvajxg62"]
 
 [ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_c8k3l"]
 [ext_resource type="PackedScene" uid="uid://bxs0hn6508qbt" path="res://Testing/MultiTesting/multiplayer_player.tscn" id="1_jwek8"]
@@ -14,7 +14,14 @@
 [ext_resource type="Script" uid="uid://ca0pr2up27plw" path="res://Assets/Shaders/pixelization_shader.gd" id="12_12dsr"]
 [ext_resource type="Script" uid="uid://dqlwg2rtn14oa" path="res://Assets/Shaders/quantization_shader.gd" id="13_kcwk8"]
 [ext_resource type="PackedScene" uid="uid://ccf0q8umdew7p" path="res://Assets/models/aztal.glb" id="15_kcwk8"]
+[ext_resource type="Script" uid="uid://cwu5cf7a0awcd" path="res://addons/func_godot/src/map/func_godot_map.gd" id="16_eh8se"]
 [ext_resource type="PackedScene" uid="uid://813a71lqqufe" path="res://Assets/models/Chair.glb" id="16_sdsio"]
+[ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="17_261r0"]
+[ext_resource type="Material" uid="uid://bnk7qip1drgrb" path="res://Assets/textures/world/goldTile.tres" id="18_vmjp8"]
+[ext_resource type="Material" uid="uid://bix1vsif6u6fg" path="res://Assets/textures/world/wallOrnateType2.tres" id="19_c2ynb"]
+[ext_resource type="PackedScene" uid="uid://dnj0pnuhiccu3" path="res://Assets/models/Potion.glb" id="20_261r0"]
+[ext_resource type="PackedScene" uid="uid://c53mgemcft6cu" path="res://Assets/models/MainMenuNewCollection/chairAdvanced.glb" id="21_c2ynb"]
+[ext_resource type="PackedScene" uid="uid://njq1xlx2s0s7" path="res://Assets/models/MainMenuNewCollection/tableAdvanced.glb" id="22_m4rhn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5toyo"]
 panorama = ExtResource("11_gv0l0")
@@ -78,18 +85,38 @@ metadata/_custom_type_script = "uid://dqlwg2rtn14oa"
 [sub_resource type="Compositor" id="Compositor_261r0"]
 compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_fxvwu"), SubResource("CompositorEffect_ef0mh")])
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5toyo"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_m4rhn"]
+_surfaces = [{
+"aabb": AABB(-8.5, -0.5, -6.5, 14.5, 0.5, 15),
+"attribute_data": PackedByteArray("AAAAwAAAQD8AANA/AABAPwAA0D8AAGA/AAAAwAAAYD8AABBAAABgPwAAwL8AAGA/AADAvwAAQD8AABBAAABAPwAAEMAAANA/AAAQwAAAAMAAAMA/AAAAwAAAwD8AANA/AAAQQAAA0D8AAMC/AADQPwAAwL8AAADAAAAQQAAAAMAAABDAAABAPwAAwD8AAEA/AADAPwAAYD8AABDAAABgPwAAAEAAAGA/AADQvwAAYD8AANC/AABAPwAAAEAAAEA/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcA"),
+"material": ExtResource("18_vmjp8"),
+"name": "world/goldTile",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AADAQAAAAAAAANDAAAAIwQAAAAAAANDAAAAIwQAAAL8AANDAAADAQAAAAL8AANDAAAAIwQAAAL8AAAhBAAAIwQAAAL8AANDAAAAIwQAAAAAAANDAAAAIwQAAAAAAAAhBAAAIwQAAAL8AAAhBAADAQAAAAL8AAAhBAADAQAAAAL8AANDAAAAIwQAAAL8AANDAAAAIwQAAAAAAAAhBAAAIwQAAAAAAANDAAADAQAAAAAAAANDAAADAQAAAAAAAAAhBAADAQAAAAAAAAAhBAADAQAAAAAAAANDAAADAQAAAAL8AANDAAADAQAAAAL8AAAhBAADAQAAAAL8AAAhBAAAIwQAAAL8AAAhBAAAIwQAAAAAAAAhBAADAQAAAAAAAAAhB/////wAA/7//////AAD/v/////8AAP+//////wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD//////38AAP//////fwAA//////9/AAD//////3////9//7//f////3//v/9/////f/+//3////9//7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/")
+}, {
+"aabb": AABB(5.5, 0, -6.5, 0.5, 6, 14.5),
+"attribute_data": PackedByteArray("AADAvwAAwL8AALC/AADAvwAAsL8AAAAAAADAvwAAAAAAAABAAAAAAAAA0L8AAAAAAADQvwAAwL8AAABAAADAvwAAAMAAALC/AAAAwAAAwL8AANA/AADAvwAA0D8AALC/AAAAQAAAsL8AANC/AACwvwAA0L8AAMC/AAAAQAAAwL8AAADAAADAvwAA0D8AAMC/AADQPwAAAAAAAADAAAAAAAAAwD8AAAAAAACwPwAAAAAAALA/AADAvwAAwD8AAMC/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcA"),
+"material": ExtResource("19_c2ynb"),
+"name": "world/wallOrnateType2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AADAQAAAwEAAANDAAACwQAAAwEAAANDAAACwQAAAAAAAANDAAADAQAAAAAAAANDAAACwQAAAAAAAAABBAACwQAAAAAAAANDAAACwQAAAwEAAANDAAACwQAAAwEAAAABBAACwQAAAAAAAAABBAADAQAAAAAAAAABBAADAQAAAAAAAANDAAACwQAAAAAAAANDAAACwQAAAwEAAAABBAACwQAAAwEAAANDAAADAQAAAwEAAANDAAADAQAAAwEAAAABBAADAQAAAwEAAAABBAADAQAAAwEAAANDAAADAQAAAAAAAANDAAADAQAAAAAAAAABBAADAQAAAAAAAAABBAACwQAAAAAAAAABBAACwQAAAwEAAAABBAADAQAAAwEAAAABB/////wAA/7//////AAD/v/////8AAP+//////wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD//////38AAP//////fwAA//////9/AAD//////3////9//7//f////3//v/9/////f/+//3////9//7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/")
+}]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eh8se"]
-noise = SubResource("FastNoiseLite_5toyo")
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cntm0"]
+points = PackedVector3Array(6, 0, 8.5, 6, -0.5, 8.5, -8.5, 0, 8.5, -8.5, -0.5, 8.5, 6, 0, -6.5, 6, -0.5, -6.5, -8.5, 0, -6.5, -8.5, -0.5, -6.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_261r0"]
-albedo_color = Color(0.3573256, 0.1814397, 0.13825849, 1)
-albedo_texture = SubResource("NoiseTexture2D_eh8se")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_vmjp8"]
-material = SubResource("StandardMaterial3D_261r0")
-size = Vector2(100, 100)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uu1ol"]
+points = PackedVector3Array(6, 6, 8, 6, 0, 8, 5.5, 6, 8, 5.5, 0, 8, 6, 6, -6.5, 6, 0, -6.5, 5.5, 6, -6.5, 5.5, 0, -6.5)
 
 [node name="Test" type="Control"]
 texture_filter = 1
@@ -283,20 +310,21 @@ environment = SubResource("Environment_eh8se")
 compositor = SubResource("Compositor_261r0")
 
 [node name="Camera3D" type="Camera3D" parent="3DBGIG"]
-transform = Transform3D(0.32195166, -0.86433256, 0.3863631, -1.2731212e-08, 0.40809146, 0.91294104, -0.9467561, -0.29392287, 0.1313857, 29.597992, 34.3471, 95.71052)
+transform = Transform3D(-0.7295931, 0.5133647, -0.45183036, 0, 0.6606851, 0.75066316, 0.6838815, 0.54767865, -0.48203132, -4.922394, 9.164613, -3.4046144)
 fov = 47.9
 
 [node name="SpotLight3D" type="SpotLight3D" parent="3DBGIG"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 23.08894, 29.938562, 91.559166)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.088891, 8.115276, 0.63595724)
 light_color = Color(1, 0.82, 0.82, 1)
-light_energy = 1.737
+light_energy = 3.865
 shadow_enabled = true
 spot_range = 40.31407
-spot_angle = 73.2
+spot_attenuation = 0.79
+spot_angle = 77.7928
 spot_angle_attenuation = 1.071774
 
 [node name="aztal" parent="3DBGIG" instance=ExtResource("15_kcwk8")]
-transform = Transform3D(2.0393784, 0, 0, 0, 2.0393784, 0, 0, 0, 2.0393784, 22.984943, 20.14936, 92.22332)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3328419, 3.085462, 0.782444)
 
 [node name="Chair" parent="3DBGIG/aztal" instance=ExtResource("16_sdsio")]
 transform = Transform3D(0.26000002, 0, 0, 0, 0.26000002, 0, 0, 0, 0.26000002, 0, 0, 0.64450073)
@@ -310,9 +338,34 @@ transform = Transform3D(-0.25806314, 0, -0.03167705, 0, 0.26000014, 0, 0.0316770
 [node name="Chair4" parent="3DBGIG/aztal" instance=ExtResource("16_sdsio")]
 transform = Transform3D(0.0064431145, 0, -0.25992018, 0, 0.26000023, 0, 0.25992018, 0, 0.0064431145, -0.66691875, 0, -0.10362625)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="3DBGIG"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 10.873889, 90)
-mesh = SubResource("PlaneMesh_vmjp8")
+[node name="EnvironmentDetails" type="Node3D" parent="3DBGIG"]
+
+[node name="FuncGodotMap" type="Node3D" parent="3DBGIG/EnvironmentDetails"]
+script = ExtResource("16_eh8se")
+local_map_file = "uid://bp0jq6bkqwima"
+map_settings = ExtResource("17_261r0")
+metadata/_custom_type_script = "uid://cwu5cf7a0awcd"
+
+[node name="entity_0_worldspawn" type="StaticBody3D" parent="3DBGIG/EnvironmentDetails/FuncGodotMap"]
+collision_mask = 0
+
+[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="3DBGIG/EnvironmentDetails/FuncGodotMap/entity_0_worldspawn"]
+mesh = SubResource("ArrayMesh_m4rhn")
+
+[node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="3DBGIG/EnvironmentDetails/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_cntm0")
+
+[node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="3DBGIG/EnvironmentDetails/FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_uu1ol")
+
+[node name="Potion" parent="3DBGIG" instance=ExtResource("20_261r0")]
+transform = Transform3D(0.25983894, 0, 0, 0, 0.25983894, 0, 0, 0, 0.25983894, -1.1971331, 3.378264, 0.84677696)
+
+[node name="chairAdvanced" parent="3DBGIG" instance=ExtResource("21_c2ynb")]
+transform = Transform3D(0.43797895, 0, 0.8989852, 0, 1, 0, -0.8989852, 0, 0.43797895, 0.5093672, 0.050683275, 7.097053)
+
+[node name="tableAdvanced" parent="." instance=ExtResource("22_m4rhn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7452865, 0.06546539, 6.744095)
 
 [connection signal="pressed" from="Control/HandHolder/Buttons/GetCardsButtonContainer/Fold" to="MultiplayerPlayer" method="SendFoldRequest"]
 [connection signal="pressed" from="Control/HandHolder/Buttons/PlayCardsButtonContainer/DeckDown" to="MultiplayerPlayer" method="PlayCard"]

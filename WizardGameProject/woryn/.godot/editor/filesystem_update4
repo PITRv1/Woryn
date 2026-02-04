@@ -1,0 +1,44 @@
+res://3D Menu/MainMenu/MainMenu.tscn
+res://Assets/UI/Themes/Main/UIThemeYellow.tres
+res://Assets/UI/Themes/ButtonChips/ButtonChipsYellow.tres
+res://Assets/UI/Themes/ButtonChips/ButtonChipsBlue.tres
+res://3D Menu/DeckSelector/DeckSelector.tres
+res://Assets/UI/Themes/ButtonChips/ButtonChipsGreen.tres
+res://3D Menu/ClassSelection/ClassInfo.tres
+res://Assets/UI/Themes/CardButton/CardButtonRed.tres
+res://Assets/UI/Themes/CardButton/CardButtonGreen.tres
+res://Assets/UI/Themes/CardButton/CardButtonBlue.tres
+res://Assets/UI/Themes/Main/UIThemeRed.tres
+res://Assets/UI/Themes/ButtonChips/ButtonChipsRed.tres
+res://Assets/UI/Themes/Main/UIThemeBlue.tres
+res://Assets/UI/Themes/Main/UIThemeGreen.tres
+res://3D Menu/MainMenu/MainMenuController.cs
+res://Testing/MultiTesting/LobbyPlayer.cs
+res://IpTest.cs
+res://Testing/ShopTestScene/ShopPlayer.cs
+res://Scripts/Player/MultiplayerPlayerClass.cs
+res://Systems/AudioManager/AudioManager.cs
+res://UI/Shop/Public Shop/PublicShop.cs
+res://UI/Multiplayer/Multiplayer.cs
+res://UI/Singleplayer/Singleplayer.cs
+res://Testing/MultiTesting/TestPointCardUi.cs
+res://Scripts/Managers/TimerHost.cs
+res://Systems/NetworkHandler/NetworkHandler.cs
+res://Singletons/Global.cs
+res://UI/Settings/Settings.cs
+res://3D Menu/ClassSelection/ClassSelectorMenu.cs
+res://UI/CombinedUI/CombinedUI.cs
+res://UI/Credits/Credits.cs
+res://3D Menu/MainMenu/CameraController.cs
+res://Scripts/Managers/TurnManager.cs
+res://Systems/NetworkHandler/MultiplayerServerGlobals.cs
+res://UI/MainMenu/MainMenu.cs
+res://Scripts/Piles/PlayPile.cs
+res://Testing/MultiTesting/PlayerFein.cs
+res://Scripts/Cards/PointCard.cs
+res://Scripts/Deck/PullDeck.cs
+res://Testing/MultiTesting/TestModifierCardUi.cs
+res://3D Menu/DeckSelector/DeckSelector.cs
+res://UI/Shop/Public Shop/PublicShopEnd.cs
+res://Testing/MultiTesting/TestUIMultiPlayer.cs
+res://Systems/NetworkHandler/MultiplayerClientGlobals.cs

@@ -1,0 +1,14 @@
+MeshInstance3D
+Node3D
+OmniLight3D
+Marker3D
+Node
+Camera3D
+SoftBody3D
+FogVolume
+SubViewport
+CSGBox3D
+Sprite3D
+LightmapGI
+RichTextLabel
+AnimationTree

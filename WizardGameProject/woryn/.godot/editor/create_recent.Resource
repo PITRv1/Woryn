@@ -1,0 +1,2 @@
+FuncGodotFGDFile
+TrenchBroomGameConfig
