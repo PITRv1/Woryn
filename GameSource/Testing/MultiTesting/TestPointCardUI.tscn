@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cxn8hk2mjf50x" path="res://Assets/UI/NineRect/background_simple.png" id="2_6ye8m"]
 
 [node name="Panel" type="Control" node_paths=PackedStringArray("text")]
+texture_filter = 1
 custom_minimum_size = Vector2(100, 130)
 layout_mode = 3
 anchors_preset = 0

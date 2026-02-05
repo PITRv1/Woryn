@@ -156,40 +156,9 @@ public partial class MultiplayerPlayerClass : Node
 	public void AddModifierToContainer(ModifierCard card)
 	{
 		TestModifierCardUi test = modifierCardUI.Instantiate() as TestModifierCardUi;
+		test.modifierCard = card;
+		test.playerClass = playerClass;
 
-		switch (card.ModifierType)
-		{
-			case MODIFIER_TYPES.MULTIPLIER:
-				test.text.Text = $"[wave freq=1][rainbow freq=0.1]*{(card as ModifierCardMultiplier).Amount}[/rainbow][/wave]";
-				test.modifierCard = card;
-				test.playerClass = playerClass;
-				break;
-			case MODIFIER_TYPES.ADDITION:
-				test.text.Text = $"[wave freq=1][rainbow freq=0.1]+{(card as ModifierCardAddition).Amount}[/rainbow][/wave]";
-				test.modifierCard = card;
-				test.playerClass = playerClass;
-				break;
-			case MODIFIER_TYPES.SKIP:
-				test.text.Text = "[wave freq=1][rainbow freq=0.1]Skip[/rainbow][/wave]";
-				test.modifierCard = card;
-				test.playerClass = playerClass;
-				break;
-			case MODIFIER_TYPES.REVERSE:
-				test.text.Text = "[wave freq=1][rainbow freq=0.1]Reverse[/rainbow][/wave]";
-				test.modifierCard = card;
-				test.playerClass = playerClass;
-				break;
-			case MODIFIER_TYPES.CHANGE_DECK:
-				test.text.Text = "[wave freq=1][rainbow freq=0.1]Change[/rainbow][/wave]";
-				test.modifierCard = card;
-				test.playerClass = playerClass;
-				break;
-			case MODIFIER_TYPES.GIVE_DECK_AROUND:
-				test.text.Text = "[wave freq=1][rainbow freq=0.1]Around[/rainbow][/wave]";
-				test.modifierCard = card;
-				test.playerClass = playerClass;
-				break;
-		}
 
 		modifCards.AddChild(test);
 	}
