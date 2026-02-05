@@ -20,3 +20,5 @@ Increment with a new line if something notable happens
 2025.12.06 - Dani made the backend for the secound time for the műhely and he didn't sleep sh#t
 
 2026.01.16 - Day before the third workshop noone wants to work on the project anymore cause everyone has another thing they have to do. We're just trying to get it across the finishline.
+
+2026.02.05 - The visuals are starting to come together. The final workshop/presentation is 8 days away. Comperativly the game has a lot left to be desired. The team is working now but mostly due to pressure.
