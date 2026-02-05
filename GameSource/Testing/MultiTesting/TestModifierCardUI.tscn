@@ -4,7 +4,8 @@
 [ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_im4kk"]
 [ext_resource type="Texture2D" uid="uid://dry7q0avshvta" path="res://Assets/UI/NineRect/background_yellow.png" id="2_6fexu"]
 
-[node name="Panel" type="Control" node_paths=PackedStringArray("text")]
+[node name="Panel" type="Control" node_paths=PackedStringArray("text", "ninePatchRect")]
+texture_filter = 1
 custom_minimum_size = Vector2(100, 130)
 layout_mode = 3
 anchors_preset = 0
@@ -13,6 +14,7 @@ offset_bottom = 130.0
 theme = ExtResource("1_im4kk")
 script = ExtResource("1_dpjw5")
 text = NodePath("CenterContainer/Label")
+ninePatchRect = NodePath("NinePatchRect")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 show_behind_parent = true
@@ -37,12 +39,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="RichTextLabel" parent="CenterContainer"]
-custom_minimum_size = Vector2(200, 180)
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[wave freq=1][rainbow freq=0.1]modif[/rainbow][/wave]"
-fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
