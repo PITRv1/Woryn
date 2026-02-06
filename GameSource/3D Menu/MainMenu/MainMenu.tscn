@@ -1,11 +1,9 @@
-[gd_scene load_steps=767 format=4 uid="uid://b56xfex8vjqku"]
+[gd_scene load_steps=764 format=4 uid="uid://b56xfex8vjqku"]
 
 [ext_resource type="Script" uid="uid://bold5lwxqw4a2" path="res://3D Menu/MainMenu/MainMenuController.cs" id="1_8oofd"]
 [ext_resource type="Script" uid="uid://ca0pr2up27plw" path="res://Assets/Shaders/pixelization_shader.gd" id="3_ef0mh"]
 [ext_resource type="Script" uid="uid://dqlwg2rtn14oa" path="res://Assets/Shaders/quantization_shader.gd" id="3_ym0o4"]
-[ext_resource type="Script" uid="uid://cwu5cf7a0awcd" path="res://addons/func_godot/src/map/func_godot_map.gd" id="4_bv4a5"]
 [ext_resource type="Material" uid="uid://0lm3laa88mre" path="res://Assets/textures/images/road.tres" id="5_nn02q"]
-[ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="5_u4fps"]
 [ext_resource type="Material" uid="uid://bur1epdus2js6" path="res://Assets/textures/test/Petha_1m x 1m Pink.tres" id="5_w5o0e"]
 [ext_resource type="Material" uid="uid://ceffab1ldthvp" path="res://Assets/textures/test/Petha_1m x 1m Green.tres" id="7_srp1p"]
 [ext_resource type="Material" uid="uid://jubht87n3b8a" path="res://Assets/textures/world/grassFloorTile.tres" id="7_xg27o"]
@@ -43,7 +41,6 @@
 [ext_resource type="Material" uid="uid://by3f67l0odaaa" path="res://Assets/textures/paintings/painting2.tres" id="30_fgmiw"]
 [ext_resource type="Material" uid="uid://cf5pnooiusef" path="res://Assets/textures/paintings/MACI.tres" id="30_uqjnw"]
 [ext_resource type="Texture2D" uid="uid://b7tjrg22o7ic1" path="res://Assets/textures/images/HaveAnother.png" id="33_u6m4i"]
-[ext_resource type="Texture2D" uid="uid://cyg2snr1w5xw5" path="res://addons/func_godot/textures/default_texture.png" id="33_yhysv"]
 [ext_resource type="Texture2D" uid="uid://ckplquym6441h" path="res://Assets/textures/images/tree.png" id="34_pia1e"]
 [ext_resource type="Script" uid="uid://bym6fkta1he1n" path="res://3D Menu/MainMenu/CameraController.cs" id="34_pkg1t"]
 [ext_resource type="PackedScene" uid="uid://c0v5ty8ha4cpa" path="res://Assets/TEST_Assets/bookShelfHalf.glb" id="36_jn0tk"]
@@ -145,7 +142,6 @@ metadata/_custom_type_script = "uid://dqlwg2rtn14oa"
 compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_fxvwu"), SubResource("CompositorEffect_ef0mh")])
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iukcp"]
-albedo_texture = ExtResource("33_yhysv")
 metallic_specular = 0.0
 texture_filter = 2
 
@@ -2964,10 +2960,11 @@ _data = {
 &"intro": SubResource("Animation_6dmpw")
 }
 
-[node name="MainMenu" type="Node3D" node_paths=PackedStringArray("introAnimator", "_gameStartHint")]
+[node name="MainMenu" type="Node3D" node_paths=PackedStringArray("introAnimator", "_gameStartHint", "_mainMenuCamera")]
 script = ExtResource("1_8oofd")
 introAnimator = NodePath("MovingElements/Cameras/IntroAnimator")
 _gameStartHint = NodePath("GameStartHint")
+_mainMenuCamera = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenuCam")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g7crl")
@@ -3117,10 +3114,6 @@ directional_shadow_blend_splits = true
 [node name="EnvironmentDetails" type="Node3D" parent="."]
 
 [node name="FuncGodotMap" type="Node3D" parent="EnvironmentDetails"]
-script = ExtResource("4_bv4a5")
-local_map_file = "uid://brxdyipdqn21t"
-map_settings = ExtResource("5_u4fps")
-metadata/_custom_type_script = "uid://cwu5cf7a0awcd"
 
 [node name="entity_0_worldspawn" type="StaticBody3D" parent="EnvironmentDetails/FuncGodotMap"]
 collision_mask = 0

@@ -36,6 +36,7 @@ public partial class LobbyManager
 		StartGame packet = new StartGame
 		{
 			senderId = 0,
+			playerCount = players.Count
 		};
 
 		foreach (int player in players)

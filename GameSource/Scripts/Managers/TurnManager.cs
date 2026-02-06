@@ -62,6 +62,21 @@ public partial class TurnManager : Node
 		{
 			DealCards(player);
 		}
+
+		foreach (int player in players.Keys)
+		{
+
+			SetupPacket turnInfoPacket = new SetupPacket
+			{
+				PlayerCount = playerCount
+			};
+
+			Global.networkHandler._clientPeers.TryGetValue(player, out var peer);
+			if (peer != null)
+			{
+				turnInfoPacket.Send(peer);
+			}
+		}
 	}
 
 	public void AddToMultiplayerList(int id)

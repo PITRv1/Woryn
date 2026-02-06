@@ -17,16 +17,28 @@ public partial class MultiplayerPlayerClass : Node
 	[Export] Label points;
 	[Export] Label throwDeckValue;
 	[Export] PackedScene shopScene;
-	
+	[Export] Node3D playerSeats;
+	[Export] PackedScene buddy;
 	public override void _Ready()
 	{
 		ID = Global.multiplayerClientGlobals._id;
+		Global.multiplayerClientGlobals.SetupPlace += Setup;
 		Global.multiplayerClientGlobals.HandleTurnInfo += playerClass.ProccessTurnInfoPacket;
 		Global.multiplayerClientGlobals.HandlePickUpCardAnswer += playerClass.ProccessPickUpAnswer;
 		Global.multiplayerClientGlobals.HandleDeckSwap += playerClass.HandleDeckSwap;
 
 		Global.multiplayerClientGlobals.ShopScene += GoToShop;
 		Global.multiplayerPlayerClass = this;
+	}
+
+	private void Setup(byte[] data)
+	{
+		SetupPacket packet = SetupPacket.CreateFromData(data);
+		for (int i = 0; i < packet.PlayerCount - 1; i++)
+		{
+			Node3D bud = buddy.Instantiate() as Node3D;
+			playerSeats.GetChild(i).AddChild(bud);
+		}
 	}
 
 	public void ClientReady()
@@ -159,7 +171,19 @@ public partial class MultiplayerPlayerClass : Node
 		test.modifierCard = card;
 		test.playerClass = playerClass;
 
-
 		modifCards.AddChild(test);
+	}
+
+	public void ResetContainers()
+	{
+		foreach (Node child in modifCards.GetChildren())
+		{
+			modifCards.RemoveChild(child);
+		}
+
+		foreach (Node child in pointCards.GetChildren())
+		{
+			modifCards.RemoveChild(child);
+		}
 	}
 }

@@ -14,4 +14,5 @@ public enum PACKET_TYPES
     PLAY_ABLITIY = 11,
     DECK_SWAP = 12,
     FOLD = 13,
+    SETUP_PLACE = 14,
 }
