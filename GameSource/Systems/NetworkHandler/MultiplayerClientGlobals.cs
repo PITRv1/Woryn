@@ -29,8 +29,6 @@ public partial class MultiplayerClientGlobals : Node
     public delegate void ShopSceneEventHandler();
     [Signal]
     public delegate void SetupPlaceEventHandler(byte[] data);
-    [Signal]
-    public delegate void DeckSwapEventHandler(byte[] data);
 
     public int _id = -1;
     public List<int> _remoteIds = new();
@@ -68,7 +66,7 @@ public partial class MultiplayerClientGlobals : Node
                 EmitSignal("ShopScene");
                 break;
             case PACKET_TYPES.DECK_SWAP:
-                EmitSignal("DeckSwap");
+                EmitSignal("HandleDeckSwap", data);
                 break;
             case PACKET_TYPES.SETUP_PLACE:
                 EmitSignal("SetupPlace", data);

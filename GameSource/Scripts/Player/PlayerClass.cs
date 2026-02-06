@@ -41,7 +41,7 @@ public class PlayerClass
 
     public void HandleDeckSwap(byte[] data)
     {
-        GD.Print("Jello");
+        GD.Print("Jello HALLO");
         DeckSwap packet = DeckSwap.CreateFromData(data);
 
         SetPointCardDeck(packet.PointCards);
@@ -49,12 +49,12 @@ public class PlayerClass
         parent.ResetContainers();
     }
 
-    public void HandleDeckSwap(List<PointCard> pointCards, List<ModifierCard> modifierCards)
-    {
-        SetPointCardDeck(pointCards);
-        SetModifierCards(modifierCards);
-        parent.ResetContainers();
-    }
+    // public void HandleDeckSwap(List<PointCard> pointCards, List<ModifierCard> modifierCards)
+    // {
+    //     SetPointCardDeck(pointCards);
+    //     SetModifierCards(modifierCards);
+    //     parent.ResetContainers();
+    // }
 
     public void SetPointCardDeck(PointCard[] cards)
     {

@@ -7,14 +7,12 @@ public partial class LobbyManager
 	private List<byte> players;
 	public LobbyManager()
 	{
-		GD.Print("bruh");
 		players = new List<byte>();
 		Global.lobbyManagerInstance = this;
 	}
 
 	public void AddToMultiplayerList(int id)
 	{
-		GD.Print("DWAOIUHDAIUDHAWIUODHDWUIOADHIUOAWD");
 		players.Add((byte)id);
 
 		NewPlayer packet = new NewPlayer

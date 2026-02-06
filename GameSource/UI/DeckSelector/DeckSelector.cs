@@ -36,19 +36,16 @@ public partial class DeckSelector : Control
                 if(mDeck != selectedMDeck)
                 {
                     mDeck.QueueFree();
-                    GD.Print($"Deck deleted: {mDeck.Name}");
                     selected = false;
                 }
             }
             selectedMDeck.Disabled = true;
-            GD.Print($"Deck selected --> {selectedMDeck.Name}");
             startGameButton.Visible = true;
             title.Text = "DECK SELECTED";
         }
     }
     private void OnStartGamePressed()
     {
-        GD.Print("Game Started");
         deckselectScene.Visible = false;
         playerScene.Visible = true;
     }

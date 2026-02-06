@@ -39,7 +39,6 @@ public partial class TurnInfoPacket : PacketInfo
 
 		foreach (int index in DeletePointCards)
 		{
-			GD.Print("Added index: " + index);
 			data.AddRange(BitConverter.GetBytes(index));
 		}
 
@@ -77,12 +76,10 @@ public partial class TurnInfoPacket : PacketInfo
 		int size = BitConverter.ToInt32(data, index); 
 		index += 4;
 		packet.DeletePointCards = new int[size];
-		GD.Print("SIZE: " + size);
 
 		for (int i = 0; i < size; i++)
 		{
 			packet.DeletePointCards[i] = BitConverter.ToInt32(data, index);
-			GD.Print("Why: " + BitConverter.ToInt32(data, index));
 			index += 4;
 		}
 
