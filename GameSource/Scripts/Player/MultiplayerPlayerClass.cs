@@ -17,16 +17,34 @@ public partial class MultiplayerPlayerClass : Node
 	[Export] Label points;
 	[Export] Label throwDeckValue;
 	[Export] PackedScene shopScene;
-	
+	[Export] Node3D playerSeats;
+	[Export] PackedScene buddy;
 	public override void _Ready()
 	{
 		ID = Global.multiplayerClientGlobals._id;
+		Global.multiplayerClientGlobals.SetupPlace += Setup;
 		Global.multiplayerClientGlobals.HandleTurnInfo += playerClass.ProccessTurnInfoPacket;
 		Global.multiplayerClientGlobals.HandlePickUpCardAnswer += playerClass.ProccessPickUpAnswer;
 		Global.multiplayerClientGlobals.HandleDeckSwap += playerClass.HandleDeckSwap;
+		Global.multiplayerClientGlobals.HandleDeckSwap += Test;
 
 		Global.multiplayerClientGlobals.ShopScene += GoToShop;
 		Global.multiplayerPlayerClass = this;
+	}
+
+	public void Test(byte[] data)
+	{
+		GD.Print("Help");
+	}
+
+	private void Setup(byte[] data)
+	{
+		SetupPacket packet = SetupPacket.CreateFromData(data);
+		for (int i = 0; i < packet.PlayerCount - 1; i++)
+		{
+			Node3D bud = buddy.Instantiate() as Node3D;
+			playerSeats.GetChild(i).AddChild(bud);
+		}
 	}
 
 	public void ClientReady()
@@ -90,33 +108,33 @@ public partial class MultiplayerPlayerClass : Node
 
 	public void RemoveSelectedCards(int lastPlayer, int[] selectedPointCard, byte[] selectedModifiers)
 	{
-		if (lastPlayer != ID)
-			return;
+		// if (lastPlayer != ID)
+		// 	return;
 
-		foreach (int index in selectedPointCard)
-		{
-			pointCards.RemoveChild(pointCards.GetChild(index));
-			playerClass.PointCardList.RemoveAt(index);
-		}
+		// foreach (int index in selectedPointCard)
+		// {
+		// 	pointCards.RemoveChild(pointCards.GetChild(index));
+		// 	playerClass.PointCardList.RemoveAt(index);
+		// }
 
-		List<int> modifIndexes = new List<int>();
+		// List<int> modifIndexes = new List<int>();
 
-		foreach (byte card in selectedModifiers)
-		{
-			modifIndexes.Add(card);
-			playerClass.ModifCardList.RemoveAt(card);
-		}
+		// foreach (byte card in selectedModifiers)
+		// {
+		// 	modifIndexes.Add(card);
+		// 	playerClass.ModifCardList.RemoveAt(card);
+		// }
 
-		modifIndexes.Sort();
-		modifIndexes.Reverse();
+		// modifIndexes.Sort();
+		// modifIndexes.Reverse();
 
-		foreach (int index in modifIndexes)
-		{
-			modifCards.RemoveChild(modifCards.GetChild(index));
-		}
+		// foreach (int index in modifIndexes)
+		// {
+		// 	modifCards.RemoveChild(modifCards.GetChild(index));
+		// }
 
-		playerClass.chosenModifierCards.Clear();
-		playerClass.chosenPointCard = null;
+		// playerClass.chosenModifierCards.Clear();
+		// playerClass.chosenPointCard = null;
 	}
 
 	public void PickUpCards()
@@ -159,7 +177,19 @@ public partial class MultiplayerPlayerClass : Node
 		test.modifierCard = card;
 		test.playerClass = playerClass;
 
-
 		modifCards.AddChild(test);
+	}
+
+	public void ResetContainers()
+	{
+		for (int i = 0; i < modifCards.GetChildCount(); i++)
+		{
+			modifCards.RemoveChild(modifCards.GetChild(1));
+		}
+
+		for (int i = 0; i < pointCards.GetChildCount(); i++)
+		{
+			pointCards.RemoveChild(pointCards.GetChild(1));
+		}
 	}
 }

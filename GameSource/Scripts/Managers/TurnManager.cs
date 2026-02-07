@@ -36,7 +36,6 @@ public partial class TurnManager : Node
     }
 	public void Setup(List<int> playerIds)
 	{
-		GD.Print("GUH");
 		foreach (int id in playerIds)
 		{
 			AddToMultiplayerList(id);
@@ -61,6 +60,21 @@ public partial class TurnManager : Node
 		foreach (int player in players.Keys)
 		{
 			DealCards(player);
+		}
+
+		foreach (int player in players.Keys)
+		{
+
+			SetupPacket turnInfoPacket = new SetupPacket
+			{
+				PlayerCount = playerCount
+			};
+
+			Global.networkHandler._clientPeers.TryGetValue(player, out var peer);
+			if (peer != null)
+			{
+				turnInfoPacket.Send(peer);
+			}
 		}
 	}
 
@@ -146,8 +160,6 @@ public partial class TurnManager : Node
 
 	public void FoldTurn()
 	{
-		GD.Print("FOLDING");
-
 		players[lastPlayer].playerClass.Points += ThrowDeckValue;
 		ThrowDeckValue = 0;
 		currentMaxValue = 0;
@@ -311,8 +323,6 @@ public partial class TurnManager : Node
 			ThrowDeckValue += value;
 			currentMaxValue = value;
 		}
-
-		GD.Print("Point Card Index: " + pointCardIndex);
 
 		foreach (int player in players.Keys)
 		{

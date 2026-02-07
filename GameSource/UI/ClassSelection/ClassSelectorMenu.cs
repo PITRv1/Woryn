@@ -54,7 +54,6 @@ public partial class ClassSelectorMenu : Control
         if (selected)
         {
             ClassSelected(selectedClass);
-            GD.Print($"Class selected --> {selectedClass.Name}");
             selected = false;
         }
 
@@ -66,7 +65,6 @@ public partial class ClassSelectorMenu : Control
             if (selectedClass != _class)
             {
                 _class.QueueFree();
-                GD.Print($"Class deleted: {_class.Name}");
                 nextButton.Visible = true;
             }
         }

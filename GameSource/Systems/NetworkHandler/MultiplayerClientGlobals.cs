@@ -27,6 +27,8 @@ public partial class MultiplayerClientGlobals : Node
     public delegate void CursonUpdateEventHandler(byte[] data);
     [Signal]
     public delegate void ShopSceneEventHandler();
+    [Signal]
+    public delegate void SetupPlaceEventHandler(byte[] data);
 
     public int _id = -1;
     public List<int> _remoteIds = new();
@@ -64,7 +66,10 @@ public partial class MultiplayerClientGlobals : Node
                 EmitSignal("ShopScene");
                 break;
             case PACKET_TYPES.DECK_SWAP:
-                EmitSignal("DeckSwap");
+                EmitSignal("HandleDeckSwap", data);
+                break;
+            case PACKET_TYPES.SETUP_PLACE:
+                EmitSignal("SetupPlace", data);
                 break;
             default:
                 GD.PushError($"Packet type with index {(int)packetType} unhandled!");
