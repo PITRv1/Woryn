@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://738aakqtt7x8" path="res://Assets/UI/NineRect/Background_green.png" id="5_fobpq"]
 [ext_resource type="Script" uid="uid://iy4wp1ypdx84" path="res://Testing/MultiTesting/LobbyPlayer.cs" id="6_akir0"]
 [ext_resource type="PackedScene" uid="uid://dcvukxwbsb0xg" path="res://Testing/MultiTesting/player_fein.tscn" id="7_amu5d"]
-[ext_resource type="PackedScene" uid="uid://1tvmqvajxg62" path="res://Testing/MultiTesting/MultiplayerRoom.tscn" id="8_61xkh"]
+[ext_resource type="PackedScene" uid="uid://pelmk5an55xh" path="res://Testing/MultiTesting/MultiplayerRoom.tscn" id="8_61xkh"]
 
 [node name="Multiplayer" type="Control" node_paths=PackedStringArray("multiTypeMenu", "multiHostMenu", "multiJoinMenu", "playerListMenu", "gameNameText", "numberOfPlayersValue", "ipAddressInputServer", "ipAddressInputClient")]
 texture_filter = 1
