@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://otbcnctij7hd"]
+
+[ext_resource type="PackedScene" uid="uid://bpnx6pgxf74lh" path="res://Assets/models/MainMenuNewCollection/mugModel.glb" id="1_ffm6l"]
+[ext_resource type="Material" uid="uid://cm8k4xqvydxap" path="res://Assets/Shaders/materials/glassMaterial.tres" id="2_7dm3b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffm6l"]
+albedo_color = Color(0.66, 0.60192, 0.3432, 0.74509805)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7dm3b"]
+material = SubResource("StandardMaterial3D_ffm6l")
+top_radius = 0.08
+bottom_radius = 0.08
+height = 0.18
+radial_segments = 8
+rings = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8iqd"]
+albedo_color = Color(1, 1, 1, 0.74509805)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6no8l"]
+material = SubResource("StandardMaterial3D_u8iqd")
+top_radius = 0.08
+bottom_radius = 0.08
+height = 0.03
+radial_segments = 8
+rings = 2
+
+[node name="MugOfBeer" type="Node3D"]
+
+[node name="mugModel" parent="." instance=ExtResource("1_ffm6l")]
+
+[node name="Cylinder" parent="mugModel" index="0"]
+material_override = ExtResource("2_7dm3b")
+
+[node name="Cylinder_001" parent="mugModel" index="1"]
+material_override = ExtResource("2_7dm3b")
+
+[node name="Beeer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.121883035, 0)
+mesh = SubResource("CylinderMesh_7dm3b")
+
+[node name="Beeer2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22642851, 0)
+mesh = SubResource("CylinderMesh_6no8l")
+
+[editable path="mugModel"]
