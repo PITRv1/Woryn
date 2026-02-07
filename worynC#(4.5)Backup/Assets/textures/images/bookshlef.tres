@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bfura055dud30"]
+
+[ext_resource type="Texture2D" uid="uid://b6m32pw06nqq0" path="res://Assets/Textures/images/bookshlef.png" id="1_yjh78"]
+
+[resource]
+albedo_texture = ExtResource("1_yjh78")
+metallic_specular = 0.0
+texture_filter = 2

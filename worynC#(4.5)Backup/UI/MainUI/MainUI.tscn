@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsm13aj54ggim"]
+
+[ext_resource type="Script" uid="uid://enf42rox6fa5" path="res://UI/MainUI/MainUI.cs" id="1_sm0ek"]
+
+[node name="MainUI" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sm0ek")

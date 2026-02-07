@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cm8k4xqvydxap"]
+
+[ext_resource type="Shader" uid="uid://bbmvc0tybgr8u" path="res://Assets/Shaders/spatialGlass.gdshader" id="1_uj1q8"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uj1q8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j4ccn"]
+noise = SubResource("FastNoiseLite_uj1q8")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kj6ja"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y4c2h"]
+noise = SubResource("FastNoiseLite_kj6ja")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_uj1q8")
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/backlight_color = Color(0.85776335, 0.62193, 0.28916305, 1)
+shader_parameter/noise_strenght = 0.005
+shader_parameter/roughness = 0.0390000018525
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_y4c2h")
+shader_parameter/Normal = SubResource("NoiseTexture2D_j4ccn")
+shader_parameter/normal_strenght = 0.1030000523925001

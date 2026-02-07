@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dovfimrngf8o4"]
+
+[ext_resource type="PackedScene" uid="uid://c16woc7kty6ss" path="res://Assets/Models/MainMenuNewCollection/basicHangingLamp.glb" id="1_1gbfu"]
+
+[node name="HangingLampAsset" type="Node3D"]
+
+[node name="basicHangingLamp" parent="." instance=ExtResource("1_1gbfu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.031721383, 0)
+light_color = Color(1, 0.7733333, 0.6, 1)
+light_energy = 3.903
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 14.581
+omni_attenuation = 1.971

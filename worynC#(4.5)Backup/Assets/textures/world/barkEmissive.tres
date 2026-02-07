@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cl5whx545lklw"]
+
+[ext_resource type="Texture2D" uid="uid://cft3io5hg37vv" path="res://Assets/Textures/world/barkEmissive.png" id="1_bpwnb"]
+[ext_resource type="Texture2D" uid="uid://bkf6vshq15eiy" path="res://Assets/Textures/world/barkEmission.png" id="2_1503i"]
+
+[resource]
+albedo_texture = ExtResource("1_bpwnb")
+metallic_specular = 0.0
+emission_enabled = true
+emission_energy_multiplier = 0.06
+emission_texture = ExtResource("2_1503i")
+texture_filter = 2

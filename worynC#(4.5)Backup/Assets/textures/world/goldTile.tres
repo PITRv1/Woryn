@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bnk7qip1drgrb"]
+
+[ext_resource type="Texture2D" uid="uid://dxy46ktw74bkk" path="res://Assets/Textures/world/goldTile.png" id="1_bq5be"]
+
+[resource]
+albedo_texture = ExtResource("1_bq5be")
+metallic = 0.65
+metallic_specular = 0.36
+roughness = 0.45
+texture_filter = 2

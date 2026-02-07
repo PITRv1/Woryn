@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dsu8dmh3ivncb"]
+
+[ext_resource type="Texture2D" uid="uid://b7d0uru6nhtu0" path="res://Assets/Textures/images/faced.png" id="1_lsgvi"]
+
+[resource]
+albedo_texture = ExtResource("1_lsgvi")
+metallic_specular = 0.0
+texture_filter = 2

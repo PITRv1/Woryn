@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dt0m58ab3i48o"]
+
+[ext_resource type="FontFile" uid="uid://bgx48beeh6rf7" path="res://Assets/UI/Fonts/DigitalDisco.ttf" id="1_mhjpx"]
+
+[resource]
+default_font = ExtResource("1_mhjpx")
+default_font_size = 35
+Label/fonts/font = ExtResource("1_mhjpx")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_outline_color = Color(0.67481464, 0.67481464, 0.6748146, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.096204735, 0.09620475, 0.096204735, 0.7372549)
+RichTextLabel/constants/outline_size = 12
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 3
+RichTextLabel/constants/shadow_outline_size = 9

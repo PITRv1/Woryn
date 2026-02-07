@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://chajtffw0icr6"
+path="res://.godot/imported/quantization_compute.glsl-062f85a8323ce6487435d9b42635c530.res"
+
+[deps]
+
+source_file="res://Assets/Shaders/quantization_compute.glsl"
+dest_files=["res://.godot/imported/quantization_compute.glsl-062f85a8323ce6487435d9b42635c530.res"]
+
+[params]
+

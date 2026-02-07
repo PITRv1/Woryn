@@ -1,0 +1,182 @@
+[gd_scene load_steps=11 format=3 uid="uid://cegma4u4cusqc"]
+
+[ext_resource type="Script" uid="uid://cq2t244ktorto" path="res://UI/MainMenu/MainMenu.cs" id="1_jhcbk"]
+[ext_resource type="Theme" uid="uid://bt07x5jrqiv30" path="res://Assets/UI/Themes/CardButton/CardButtonRed.tres" id="2_xnnuh"]
+[ext_resource type="Texture2D" uid="uid://d28lkhbn4fuv5" path="res://Assets/UI/Icons/Quit.png" id="3_8x0bb"]
+[ext_resource type="Texture2D" uid="uid://5abyhfdohxmw" path="res://Assets/UI/Icons/SinglePlayer.png" id="3_a712v"]
+[ext_resource type="Texture2D" uid="uid://dw16x8qpwq13f" path="res://Assets/UI/Icons/Multiplayer.png" id="4_1dhmk"]
+[ext_resource type="Theme" uid="uid://dvdmwt6fgnxqg" path="res://Assets/UI/Themes/CardButton/CardButtonGreen.tres" id="4_bhcae"]
+[ext_resource type="Theme" uid="uid://dmklwetq8ngsw" path="res://Assets/UI/Themes/CardButton/CardButtonBlue.tres" id="4_djmc4"]
+[ext_resource type="Texture2D" uid="uid://b8tf2366a3h44" path="res://Assets/UI/Icons/Settings.png" id="5_jhcbk"]
+[ext_resource type="Texture2D" uid="uid://b2k7b065cbe3p" path="res://Assets/UI/Icons/Credits.png" id="6_32jca"]
+[ext_resource type="Theme" uid="uid://i7vf1nfeexfk" path="res://Assets/UI/Themes/Main/UIThemeRed.tres" id="10_eoxer"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("quitPopUp")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jhcbk")
+quitPopUp = NodePath("")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_eoxer")
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0.20392157, 0.34901962, 1)
+theme_override_colors/font_outline_color = Color(0.69803923, 0.5529412, 0.7882353, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 201
+bbcode_enabled = true
+text = "[wave freq=2.0]
+Woryn
+[/wave]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(1000, 300)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 0
+offset_left = 28.000004
+offset_top = 101.99999
+offset_right = 228.00003
+offset_bottom = 402.0
+rotation = -0.34906584
+theme = ExtResource("2_xnnuh")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Quit/CenterContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("3_8x0bb")
+
+[node name="Singleplayer" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 0
+offset_left = 212.0
+offset_top = 32.0
+offset_right = 412.0
+offset_bottom = 332.0
+rotation = -0.17453292
+theme = ExtResource("4_bhcae")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Singleplayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Singleplayer/CenterContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("3_a712v")
+
+[node name="Credits" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 0
+offset_left = 772.99994
+offset_top = 28.999996
+offset_right = 972.99994
+offset_bottom = 329.0
+rotation = 0.34906584
+theme = ExtResource("4_djmc4")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Credits/CenterContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("6_32jca")
+
+[node name="Settings" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 0
+offset_left = 589.0
+offset_top = -3.9999905
+offset_right = 789.0
+offset_bottom = 296.0
+rotation = 0.17453292
+theme = ExtResource("4_djmc4")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Settings/CenterContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("5_jhcbk")
+
+[node name="Multiplayer" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 0
+offset_left = 400.0
+offset_right = 600.0
+offset_bottom = 300.0
+theme = ExtResource("4_bhcae")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Multiplayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Multiplayer/CenterContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("4_1dhmk")
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/Control/Quit" to="." method="MenuSelected" binds= ["quit"]]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/Control/Singleplayer" to="." method="MenuSelected" binds= ["single"]]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/Control/Credits" to="." method="MenuSelected" binds= ["credits"]]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/Control/Settings" to="." method="MenuSelected" binds= ["settings"]]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/Control/Multiplayer" to="." method="MenuSelected" binds= ["multi"]]

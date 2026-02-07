@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwxvw3uq5xem6"]
+
+[ext_resource type="Script" uid="uid://dgjwkvea38b55" path="res://Scripts/Deck/PullDeck.cs" id="1_5qko8"]
+[ext_resource type="PackedScene" uid="uid://bbw1vql4v1iy8" path="res://Scenes/TurnManager.tscn" id="2_85nht"]
+
+[node name="RoundTestScene" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 971.0
+offset_top = 514.0
+offset_right = 1085.0
+offset_bottom = 586.0
+script = ExtResource("1_5qko8")
+
+[node name="TurnManager" parent="." instance=ExtResource("2_85nht")]

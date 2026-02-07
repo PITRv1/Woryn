@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://jubht87n3b8a"]
+
+[ext_resource type="Texture2D" uid="uid://c3m4f4ow7o5go" path="res://Assets/Textures/world/grassFloorTile.png" id="1_q2hgv"]
+
+[resource]
+albedo_texture = ExtResource("1_q2hgv")
+metallic_specular = 0.0
+texture_filter = 2

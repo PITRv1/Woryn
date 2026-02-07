@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdeg6vwo3wgd4"]
+
+[ext_resource type="Theme" uid="uid://bv775inajfj5p" path="res://Assets/UI/Themes/Main/UIThemeBlue.tres" id="1_cnn6j"]
+[ext_resource type="Texture2D" uid="uid://cdofbdbwlfext" path="res://Assets/UI/NineRect/backround_blue.png" id="2_51u3q"]
+[ext_resource type="Script" uid="uid://bv7p7rep40vmq" path="res://UI/Credits/Credits.cs" id="2_acay3"]
+[ext_resource type="Texture2D" uid="uid://dpou8vcjhecqa" path="res://Assets/UI/Team/undefined.png" id="2_f65ie"]
+[ext_resource type="Theme" uid="uid://bdetdcpnnocd8" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsBlue.tres" id="4_7m04g"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cnn6j")
+script = ExtResource("2_acay3")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 80
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer2"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+texture = ExtResource("2_51u3q")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+texture = ExtResource("2_f65ie")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "Developers:"
+horizontal_alignment = 1
+
+[node name="Line" type="ColorRect" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Line"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.7137255, 0.96862745, 1)
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Tóth Péter Sándor
+Kovács Dániel Benedek
+Wágner Ábel
+Borók Máté
+Medve Donát"
+horizontal_alignment = 1
+
+[node name="Line2" type="ColorRect" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Line2"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.7137255, 0.96862745, 1)
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Made with Godot C# 4.5.1 "
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_7m04g")
+text = "Main Menu"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button" to="." method="Back"]

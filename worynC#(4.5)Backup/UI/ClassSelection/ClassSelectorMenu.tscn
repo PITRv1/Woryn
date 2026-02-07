@@ -1,0 +1,408 @@
+[gd_scene load_steps=14 format=3 uid="uid://d0d5pio88bn4h"]
+
+[ext_resource type="Script" uid="uid://btql7gacqikrq" path="res://UI/ClassSelection/ClassSelectorMenu.cs" id="1_tojxp"]
+[ext_resource type="Theme" uid="uid://x4oo73yj6crh" path="res://UI/ClassSelection/ClassInfo.tres" id="2_f1ptg"]
+[ext_resource type="Theme" uid="uid://dt0m58ab3i48o" path="res://UI/ClassSelection/ClassName.tres" id="3_oo0qj"]
+[ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="3_pdh68"]
+[ext_resource type="FontFile" uid="uid://bgx48beeh6rf7" path="res://Assets/UI/Fonts/DigitalDisco.ttf" id="4_f1ptg"]
+[ext_resource type="Texture2D" uid="uid://dolie1qcf2sow" path="res://UI/ClassSelection/script.png" id="4_oo0qj"]
+[ext_resource type="Texture2D" uid="uid://cjhhg47ettgey" path="res://UI/ClassSelection/thief.png" id="7_xa18c"]
+[ext_resource type="Texture2D" uid="uid://th4u2inc60sp" path="res://UI/ClassSelection/wizard.png" id="8_n7uxt"]
+[ext_resource type="Texture2D" uid="uid://bfu4slhr8sv54" path="res://UI/ClassSelection/merchant.png" id="9_pdh68"]
+[ext_resource type="Theme" uid="uid://dswpri3ya7fel" path="res://UI/ClassSelection/ClassSelectorMenu.tres" id="10_68j4x"]
+[ext_resource type="Texture2D" uid="uid://dhtw0jmaae0oe" path="res://UI/ClassSelection/politician.png" id="10_pdh68"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu6f0"]
+bg_color = Color(0.3882353, 0.3882353, 0.3882353, 0.27450982)
+border_color = Color(1, 1, 1, 0)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xa18c"]
+bg_color = Color(0.86898494, 0.86898494, 0.8689847, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[node name="ClassSelectorMenu" type="Control" node_paths=PackedStringArray("class1Description", "class2Description", "class3Description", "class4Description", "class1Icon", "class2Icon", "class3Icon", "class4Icon", "class1", "class2", "class3", "class4", "container", "title", "nextButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_pdh68")
+script = ExtResource("1_tojxp")
+class1Description = NodePath("CenterContainer/HBoxContainer/Class1/Description")
+class2Description = NodePath("CenterContainer/HBoxContainer/Class2/Description")
+class3Description = NodePath("CenterContainer/HBoxContainer/Class3/Description")
+class4Description = NodePath("CenterContainer/HBoxContainer/Class4/Description")
+class1Icon = NodePath("CenterContainer/HBoxContainer/Class1/Icon")
+class2Icon = NodePath("CenterContainer/HBoxContainer/Class2/Icon")
+class3Icon = NodePath("CenterContainer/HBoxContainer/Class3/Icon")
+class4Icon = NodePath("CenterContainer/HBoxContainer/Class4/Icon")
+class1 = NodePath("CenterContainer/HBoxContainer/Class1")
+class2 = NodePath("CenterContainer/HBoxContainer/Class2")
+class3 = NodePath("CenterContainer/HBoxContainer/Class3")
+class4 = NodePath("CenterContainer/HBoxContainer/Class4")
+container = NodePath("CenterContainer/HBoxContainer")
+title = NodePath("Title")
+nextButton = NodePath("Next")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 50
+text = "SELECT YOUR CLASS"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_pdh68")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Class1" type="Button" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(230, 350)
+layout_mode = 2
+theme = ExtResource("2_f1ptg")
+
+[node name="Name" type="RichTextLabel" parent="CenterContainer/HBoxContainer/Class1"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("3_oo0qj")
+bbcode_enabled = true
+text = "[wave][shake]Thief[/shake][/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="CenterContainer/HBoxContainer/Class1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -110.0
+offset_right = 114.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[u][font_size=35][color=red][wave]Passive[/wave][/color][/font_size][/u]
+Can see the next 2 cards and choose between them (modifier and point also).
+[u][font_size=35][color=red][wave]Active[/wave][/color][/font_size][/u]
+Can steal points or cards."
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="Button" parent="CenterContainer/HBoxContainer/Class1"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -59.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+disabled = true
+icon = ExtResource("4_oo0qj")
+icon_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/HBoxContainer/Class1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_xa18c")
+
+[node name="Class2" type="Button" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(230, 350)
+layout_mode = 2
+theme = ExtResource("2_f1ptg")
+
+[node name="Name" type="RichTextLabel" parent="CenterContainer/HBoxContainer/Class2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("3_oo0qj")
+bbcode_enabled = true
+text = "[wave][shake]Alchemist[/shake][/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="CenterContainer/HBoxContainer/Class2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -110.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[u][font_size=35][color=red][wave]Passive[/wave][/color][/font_size][/u]
+Can convert points to gold 1:1.
+[u][font_size=35][color=red][wave]Active[/wave][/color][/font_size][/u]
+Promote any card to legendary."
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="Button" parent="CenterContainer/HBoxContainer/Class2"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -59.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+disabled = true
+icon = ExtResource("4_oo0qj")
+icon_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/HBoxContainer/Class2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_n7uxt")
+
+[node name="Class3" type="Button" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(230, 350)
+layout_mode = 2
+theme = ExtResource("2_f1ptg")
+
+[node name="Name" type="RichTextLabel" parent="CenterContainer/HBoxContainer/Class3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("3_oo0qj")
+bbcode_enabled = true
+text = "[wave][shake]Merchant[/shake][/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="CenterContainer/HBoxContainer/Class3"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -109.0
+offset_right = -4.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[u][font_size=35][color=red][wave]Passive[/wave][/color][/font_size][/u]
+Points to gold ratio 1:2.
+[u][font_size=35][color=red][wave]Active[/wave][/color][/font_size][/u]
+Once game can choose earlier in public shop."
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="Button" parent="CenterContainer/HBoxContainer/Class3"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -59.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+disabled = true
+icon = ExtResource("4_oo0qj")
+icon_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/HBoxContainer/Class3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_pdh68")
+
+[node name="Class4" type="Button" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(230, 350)
+layout_mode = 2
+theme = ExtResource("2_f1ptg")
+
+[node name="Name" type="RichTextLabel" parent="CenterContainer/HBoxContainer/Class4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("3_oo0qj")
+bbcode_enabled = true
+text = "[wave][shake]Noble[/shake][/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="CenterContainer/HBoxContainer/Class4"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -109.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[u][font_size=35][color=red][wave]Passive[/wave][/color][/font_size][/u]
+Takes 10%(?) of every point collected.
+[u][font_size=35][color=red][wave]Active[/wave][/color][/font_size][/u]
+Takes a player to prison for 3 of his turns."
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="Button" parent="CenterContainer/HBoxContainer/Class4"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -59.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+disabled = true
+icon = ExtResource("4_oo0qj")
+icon_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/HBoxContainer/Class4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_pdh68")
+
+[node name="Next" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("10_68j4x")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_f1ptg")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_yu6f0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xa18c")
+text = "NEXT"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Class1" to="." method="OnClass1Pressed"]
+[connection signal="mouse_entered" from="CenterContainer/HBoxContainer/Class1/Image" to="." method="Class1MouseEntered"]
+[connection signal="mouse_exited" from="CenterContainer/HBoxContainer/Class1/Image" to="." method="Class1MouseExited"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Class2" to="." method="OnClass2Pressed"]
+[connection signal="mouse_entered" from="CenterContainer/HBoxContainer/Class2/Image" to="." method="Class2MouseEntered"]
+[connection signal="mouse_exited" from="CenterContainer/HBoxContainer/Class2/Image" to="." method="Class2MouseExited"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Class3" to="." method="OnClass3Pressed"]
+[connection signal="mouse_entered" from="CenterContainer/HBoxContainer/Class3/Image" to="." method="Class3MouseEntered"]
+[connection signal="mouse_exited" from="CenterContainer/HBoxContainer/Class3/Image" to="." method="Class3MouseExited"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Class4" to="." method="OnClass4Pressed"]
+[connection signal="mouse_entered" from="CenterContainer/HBoxContainer/Class4/Image" to="." method="Class4MouseEntered"]
+[connection signal="mouse_exited" from="CenterContainer/HBoxContainer/Class4/Image" to="." method="Class4MouseExited"]
+[connection signal="pressed" from="Next" to="." method="OnNextButtonPressed"]

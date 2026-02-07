@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cwc3jy3hk8q1f"]
+
+[ext_resource type="Texture2D" uid="uid://dxhhlpjjrij2x" path="res://Assets/Textures/world/barTile.png" id="1_gvpj8"]
+
+[resource]
+albedo_texture = ExtResource("1_gvpj8")
+metallic_specular = 0.0
+texture_filter = 2

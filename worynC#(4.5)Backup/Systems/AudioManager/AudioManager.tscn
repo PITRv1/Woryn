@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cndyx6xaji0k1"]
+
+[ext_resource type="AudioStream" uid="uid://7dusb1q2pbae" path="res://Assets/Sounds/Music/Chill jazz.mp3" id="1_boadu"]
+[ext_resource type="Script" uid="uid://cttc1urhjpa73" path="res://Systems/AudioManager/AudioManager.cs" id="2_yl3p4"]
+
+[node name="AudioManager" type="AudioStreamPlayer"]
+stream = ExtResource("1_boadu")
+autoplay = true
+bus = &"Music"
+script = ExtResource("2_yl3p4")

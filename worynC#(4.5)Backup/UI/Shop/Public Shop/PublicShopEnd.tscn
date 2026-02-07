@@ -1,0 +1,216 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpq8h3uh20740"]
+
+[ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_bjwqi"]
+[ext_resource type="Script" uid="uid://db52mufcfk785" path="res://UI/Shop/Public Shop/PublicShopEnd.cs" id="1_gw7n2"]
+[ext_resource type="Texture2D" uid="uid://c55vommx8j3k" path="res://icon.svg" id="1_nh3o7"]
+[ext_resource type="Texture2D" uid="uid://dry7q0avshvta" path="res://Assets/UI/NineRect/background_yellow.png" id="2_bwaq1"]
+[ext_resource type="Theme" uid="uid://ck3ti5q1w1p77" path="res://Assets/UI/Themes/Main/UIThemeYellow.tres" id="4_s67ba"]
+[ext_resource type="Texture2D" uid="uid://1lruscat13du" path="res://Assets/UI/NineRect/Background_red.png" id="4_wvt7m"]
+[ext_resource type="Theme" uid="uid://dkls2o1iqxlc" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsYellow.tres" id="7_c07uh"]
+
+[node name="PublicShopEnd" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bjwqi")
+script = ExtResource("1_gw7n2")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="NinePatchRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(600, 500)
+layout_mode = 2
+texture = ExtResource("2_bwaq1")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 350)
+layout_mode = 2
+size_flags_horizontal = 4
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="PlayerLeaderboard" type="VBoxContainer" parent="CenterContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="PlayerData" type="HBoxContainer" parent="CenterContainer/ScrollContainer/MarginContainer/PlayerLeaderboard"]
+layout_mode = 2
+alignment = 1
+
+[node name="Placement" type="Label" parent="CenterContainer/ScrollContainer/MarginContainer/PlayerLeaderboard/PlayerData"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 26
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 30
+text = "1."
+
+[node name="Name" type="Label" parent="CenterContainer/ScrollContainer/MarginContainer/PlayerLeaderboard/PlayerData"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 26
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 30
+text = "Player 1"
+horizontal_alignment = 1
+
+[node name="Reward" type="TextureRect" parent="CenterContainer/ScrollContainer/MarginContainer/PlayerLeaderboard/PlayerData"]
+layout_mode = 2
+texture = ExtResource("1_nh3o7")
+
+[node name="PlayerData2" type="HBoxContainer" parent="CenterContainer/ScrollContainer/MarginContainer/PlayerLeaderboard"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Placement" type="Label" parent="CenterContainer/ScrollContainer/MarginContainer/PlayerLeaderboard/PlayerData2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 26
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 30
+text = "2."
+
+[node name="Name" type="Label" parent="CenterContainer/ScrollContainer/MarginContainer/PlayerLeaderboard/PlayerData2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 26
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 30
+text = "Player 2"
+horizontal_alignment = 1
+
+[node name="Reward" type="TextureRect" parent="CenterContainer/ScrollContainer/MarginContainer/PlayerLeaderboard/PlayerData2"]
+layout_mode = 2
+texture = ExtResource("1_nh3o7")
+
+[node name="PlayerData3" type="HBoxContainer" parent="CenterContainer/ScrollContainer/MarginContainer/PlayerLeaderboard"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Placement" type="Label" parent="CenterContainer/ScrollContainer/MarginContainer/PlayerLeaderboard/PlayerData3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 26
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 30
+text = "3."
+
+[node name="Name" type="Label" parent="CenterContainer/ScrollContainer/MarginContainer/PlayerLeaderboard/PlayerData3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 26
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 30
+text = "Player 3"
+horizontal_alignment = 1
+
+[node name="Reward" type="TextureRect" parent="CenterContainer/ScrollContainer/MarginContainer/PlayerLeaderboard/PlayerData3"]
+layout_mode = 2
+texture = ExtResource("1_nh3o7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 102.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("4_wvt7m")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_s67ba")
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 31
+theme_override_font_sizes/font_size = 45
+text = "PUBLIC SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="End" type="Label" parent="VBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.47397572, 0.47397572, 0.47397572, 0.72156864)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/paragraph_spacing = -9
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/outline_size = 19
+theme_override_constants/shadow_outline_size = 25
+theme_override_font_sizes/font_size = 30
+text = "SHOPTIME ENDED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PrivateShop" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -54.0
+offset_right = 134.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("7_c07uh")
+theme_override_font_sizes/font_size = 25
+text = "Go to private shop"
+
+[connection signal="pressed" from="PrivateShop" to="." method="OnGoToPrivateShopPressed"]

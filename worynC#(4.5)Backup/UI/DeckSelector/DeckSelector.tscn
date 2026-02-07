@@ -1,0 +1,280 @@
+[gd_scene load_steps=7 format=3 uid="uid://smtqx0lfpxl7"]
+
+[ext_resource type="Script" uid="uid://dfk57ro64kv7p" path="res://UI/DeckSelector/DeckSelector.cs" id="1_57dk6"]
+[ext_resource type="Theme" uid="uid://bl2inu1shpipu" path="res://UI/DeckSelector/DeckSelector.tres" id="2_0242j"]
+[ext_resource type="FontFile" uid="uid://bgx48beeh6rf7" path="res://Assets/UI/Fonts/DigitalDisco.ttf" id="2_y7bf3"]
+[ext_resource type="Theme" uid="uid://dt0m58ab3i48o" path="res://UI/ClassSelection/ClassName.tres" id="4_nupf5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nupf5"]
+bg_color = Color(0.3882353, 0.3882353, 0.3882353, 0.27450982)
+border_color = Color(1, 1, 1, 0)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2k2f3"]
+bg_color = Color(0.86898494, 0.86898494, 0.8689847, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[node name="DeckSelector" type="Control" node_paths=PackedStringArray("mDeck1", "mDeck2", "mDeck3", "mDeck4", "container", "startGameButton", "title")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_57dk6")
+mDeck1 = NodePath("CenterContainer/HBoxContainer/MDeck1")
+mDeck2 = NodePath("CenterContainer/HBoxContainer/MDeck2")
+mDeck3 = NodePath("CenterContainer/HBoxContainer/MDeck3")
+mDeck4 = NodePath("CenterContainer/HBoxContainer/MDeck4")
+container = NodePath("CenterContainer/HBoxContainer")
+startGameButton = NodePath("PLAY")
+title = NodePath("Title")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("2_y7bf3")
+theme_override_font_sizes/font_size = 50
+text = "SELECT YOUR DECK"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="MDeck1" type="Button" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(260, 350)
+layout_mode = 2
+theme = ExtResource("2_0242j")
+
+[node name="Type" type="RichTextLabel" parent="CenterContainer/HBoxContainer/MDeck1"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 110.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("4_nupf5")
+bbcode_enabled = true
+text = "[wave][shake]Point modifier heavy[/shake][/wave]"
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="CenterContainer/HBoxContainer/MDeck1"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -200.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.23031503, 0.23031488, 0.23031497, 0.7254902)
+theme_override_constants/shadow_offset_x = 7
+theme_override_constants/shadow_offset_y = 7
+theme_override_constants/outline_size = 14
+theme_override_fonts/normal_font = ExtResource("2_y7bf3")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "This is the description
+of a modifier deck."
+horizontal_alignment = 1
+
+[node name="MDeck2" type="Button" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(260, 350)
+layout_mode = 2
+theme = ExtResource("2_0242j")
+
+[node name="Type" type="RichTextLabel" parent="CenterContainer/HBoxContainer/MDeck2"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 110.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("4_nupf5")
+bbcode_enabled = true
+text = "[wave][shake]Point modifier heavy[/shake][/wave]"
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="CenterContainer/HBoxContainer/MDeck2"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -200.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.23031503, 0.23031488, 0.23031497, 0.7254902)
+theme_override_constants/shadow_offset_x = 7
+theme_override_constants/shadow_offset_y = 7
+theme_override_constants/outline_size = 14
+theme_override_fonts/normal_font = ExtResource("2_y7bf3")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "This deck contains a lot of multiplier and addition modifiers"
+horizontal_alignment = 1
+
+[node name="MDeck3" type="Button" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(260, 350)
+layout_mode = 2
+theme = ExtResource("2_0242j")
+
+[node name="Type" type="RichTextLabel" parent="CenterContainer/HBoxContainer/MDeck3"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 110.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("4_nupf5")
+bbcode_enabled = true
+text = "[wave][shake]Strategy modifier heavy[/shake][/wave]"
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="CenterContainer/HBoxContainer/MDeck3"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -200.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.23031503, 0.23031488, 0.23031497, 0.7254902)
+theme_override_constants/shadow_offset_x = 7
+theme_override_constants/shadow_offset_y = 7
+theme_override_constants/outline_size = 14
+theme_override_fonts/normal_font = ExtResource("2_y7bf3")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "You can use these cards for . Like: deck swapping, card swapping, player skipper."
+horizontal_alignment = 1
+
+[node name="MDeck4" type="Button" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(260, 350)
+layout_mode = 2
+theme = ExtResource("2_0242j")
+
+[node name="Type" type="RichTextLabel" parent="CenterContainer/HBoxContainer/MDeck4"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 110.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("4_nupf5")
+bbcode_enabled = true
+text = "[wave][shake]Point modifier heavy[/shake][/wave]"
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="CenterContainer/HBoxContainer/MDeck4"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -200.0
+offset_right = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.23031503, 0.23031488, 0.23031497, 0.7254902)
+theme_override_constants/shadow_offset_x = 7
+theme_override_constants/shadow_offset_y = 7
+theme_override_constants/outline_size = 14
+theme_override_fonts/normal_font = ExtResource("2_y7bf3")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "This is the description
+of a modifier deck."
+horizontal_alignment = 1
+
+[node name="PLAY" type="Button" parent="."]
+visible = false
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y7bf3")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_nupf5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2k2f3")
+text = "START THE GAME"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/MDeck1" to="." method="OnMDeck1Pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/MDeck2" to="." method="OnMDeck2Pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/MDeck3" to="." method="OnMDeck3Pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/MDeck4" to="." method="OnMDeck4Pressed"]
+[connection signal="pressed" from="PLAY" to="." method="OnStartGamePressed"]

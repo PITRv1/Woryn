@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://k8mdb14a7ynn"]
+
+[ext_resource type="Script" uid="uid://2noh4at2078t" path="res://Testing/MultiTesting/TestUIMultiPlayer.cs" id="1_gfo2m"]
+[ext_resource type="PackedScene" uid="uid://sraea8clttmc" path="res://Testing/MultiTesting/test_lobby.tscn" id="2_exy0l"]
+
+[node name="Node" type="Node"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="Control/Center"]
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Control/Center/Container"]
+layout_mode = 2
+theme_override_constants/separation = 20
+script = ExtResource("1_gfo2m")
+scene = ExtResource("2_exy0l")
+
+[node name="Host" type="Button" parent="Control/Center/Container/Buttons"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+text = "Host"
+
+[node name="Join" type="Button" parent="Control/Center/Container/Buttons"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+text = "Join"
+
+[node name="Label" type="Label" parent="Control/Center/Container"]
+layout_mode = 2
+text = "The host cant play at the moment. Dani will update this system later on. 
+Stay tuned gamers. -Dani"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/Center/Container/Buttons/Host" to="Control/Center/Container/Buttons" method="Host"]
+[connection signal="pressed" from="Control/Center/Container/Buttons/Join" to="Control/Center/Container/Buttons" method="Join"]

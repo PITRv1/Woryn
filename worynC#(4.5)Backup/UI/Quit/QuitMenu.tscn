@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccrlb1xrwrm1f"]
+
+[ext_resource type="Theme" uid="uid://i7vf1nfeexfk" path="res://Assets/UI/Themes/Main/UIThemeRed.tres" id="1_2qbu5"]
+[ext_resource type="Texture2D" uid="uid://1lruscat13du" path="res://Assets/UI/NineRect/Background_red.png" id="2_3y4na"]
+[ext_resource type="Script" uid="uid://efm4ybff5fir" path="res://UI/Quit/QuitMenu.cs" id="2_fc2hk"]
+[ext_resource type="Theme" uid="uid://bba3xicfwj1tj" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsRed.tres" id="3_fc2hk"]
+
+[node name="QuitWindow" type="Control"]
+layout_mode = 3
+anchor_right = 0.157
+offset_right = -0.44000244
+offset_bottom = 119.0
+grow_horizontal = 2
+theme = ExtResource("1_2qbu5")
+script = ExtResource("2_fc2hk")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 300.0
+offset_bottom = 120.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer2"]
+show_behind_parent = true
+custom_minimum_size = Vector2(300, 120)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_3y4na")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 6.0
+offset_top = 13.0
+offset_right = 292.0
+offset_bottom = 118.0
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Do you really want to quit?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_fc2hk")
+alignment = 1
+
+[node name="YesButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "No"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/YesButton" to="." method="Quit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NoButton" to="." method="Back"]

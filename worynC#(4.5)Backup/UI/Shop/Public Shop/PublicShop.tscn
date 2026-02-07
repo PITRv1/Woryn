@@ -1,0 +1,231 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7u8guxg4td0b"]
+
+[ext_resource type="Script" uid="uid://dthm2lri1j1c" path="res://UI/Shop/Public Shop/PublicShop.cs" id="1_f6bil"]
+[ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_gubnd"]
+[ext_resource type="Texture2D" uid="uid://cxn8hk2mjf50x" path="res://Assets/UI/NineRect/background_simple.png" id="3_p2nfc"]
+[ext_resource type="Script" uid="uid://dmmh02xu4jmse" path="res://UI/Shop/Public Shop/CursorBlocker.cs" id="4_fk1l3"]
+
+[sub_resource type="Animation" id="Animation_p2nfc"]
+resource_name = "Shake"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelContainer/Control/TimerLabel:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelContainer/Control/TimerLabel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.2176376, 1),
+"update": 0,
+"values": [0.0, 0.26005405]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LabelContainer/Control/TimerLabel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.30778614, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.52, 1.52)]
+}
+
+[sub_resource type="Animation" id="Animation_fk1l3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelContainer/Control/TimerLabel:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelContainer/Control/TimerLabel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LabelContainer/Control/TimerLabel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fk1l3"]
+_data = {
+&"RESET": SubResource("Animation_fk1l3"),
+&"Shake": SubResource("Animation_p2nfc")
+}
+
+[node name="PublicShop" type="Control" node_paths=PackedStringArray("shopTimerLabel", "shopTimerObject", "cursorBlocker")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gubnd")
+script = ExtResource("1_f6bil")
+shopTimerLabel = NodePath("Margin/TimerContainer/HBoxContainer/ShopTimerLabel")
+shopTimerObject = NodePath("Margin/TimerContainer/HBoxContainer/ShopTimer")
+cursorBlocker = NodePath("Margin/CursorBlocker")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="BackgroundContainer" type="CenterContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Margin/BackgroundContainer"]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+texture = ExtResource("3_p2nfc")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17
+
+[node name="SpellContainer" type="CenterContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Margin/SpellContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 19
+columns = 4
+
+[node name="Button" type="Button" parent="Margin/SpellContainer/GridContainer"]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+text = "Spell1"
+
+[node name="Button2" type="Button" parent="Margin/SpellContainer/GridContainer"]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+text = "Spell2"
+
+[node name="Button3" type="Button" parent="Margin/SpellContainer/GridContainer"]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+text = "Spell3"
+
+[node name="Button4" type="Button" parent="Margin/SpellContainer/GridContainer"]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+text = "Spell4"
+
+[node name="CursorBlocker" type="CenterContainer" parent="Margin" node_paths=PackedStringArray("timerLabel", "timerObject", "animationPlayer")]
+layout_mode = 2
+script = ExtResource("4_fk1l3")
+timerLabel = NodePath("Panel/LabelContainer/Control/TimerLabel")
+timerObject = NodePath("Panel/LabelContainer/BlockTimer")
+animationPlayer = NodePath("Panel/LabelContainer/AnimationPlayer")
+
+[node name="Panel" type="Panel" parent="Margin/CursorBlocker"]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+
+[node name="LabelContainer" type="CenterContainer" parent="Margin/CursorBlocker/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Margin/CursorBlocker/Panel/LabelContainer"]
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="Margin/CursorBlocker/Panel/LabelContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.5
+offset_top = -45.5
+offset_right = 25.5
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 90
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlockTimer" type="Timer" parent="Margin/CursorBlocker/Panel/LabelContainer"]
+wait_time = 6.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Margin/CursorBlocker/Panel/LabelContainer"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_fk1l3")
+}
+
+[node name="TimerContainer" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/TimerContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ShopTimerLabel" type="Label" parent="Margin/TimerContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "00"
+
+[node name="ShopTimer" type="Timer" parent="Margin/TimerContainer/HBoxContainer"]
+wait_time = 8.0
+one_shot = true
+
+[connection signal="timeout" from="Margin/CursorBlocker/Panel/LabelContainer/BlockTimer" to="." method="StartShopTimer"]
+[connection signal="timeout" from="Margin/CursorBlocker/Panel/LabelContainer/BlockTimer" to="Margin/CursorBlocker" method="HandleTimeout"]
+[connection signal="timeout" from="Margin/TimerContainer/HBoxContainer/ShopTimer" to="." method="HandleShopTimerTimeout"]
