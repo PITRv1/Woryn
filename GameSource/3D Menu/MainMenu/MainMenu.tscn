@@ -2960,11 +2960,10 @@ _data = {
 &"intro": SubResource("Animation_6dmpw")
 }
 
-[node name="MainMenu" type="Node3D" node_paths=PackedStringArray("introAnimator", "_gameStartHint", "_mainMenuCamera")]
+[node name="MainMenu" type="Node3D" node_paths=PackedStringArray("introAnimator", "_gameStartHint")]
 script = ExtResource("1_8oofd")
 introAnimator = NodePath("MovingElements/Cameras/IntroAnimator")
 _gameStartHint = NodePath("GameStartHint")
-_mainMenuCamera = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenuCam")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g7crl")
