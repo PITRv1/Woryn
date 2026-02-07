@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://u4jov6g4a1gc"]
+
+[ext_resource type="FontFile" uid="uid://c2v6ks7c7q5ef" path="res://Assets/UI/Fonts/FantaisieArtistique.ttf" id="1_3mlda"]
+[ext_resource type="Script" uid="uid://dch8wccnu36em" path="res://Assets/UI/Cards/PointCard3D/PointCard3d.cs" id="1_5plsr"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_5plsr"]
+size = Vector2(0.2, 0.3)
+
+[sub_resource type="QuadMesh" id="QuadMesh_xbnts"]
+size = Vector2(0.21, 0.31)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5plsr"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mlda"]
+size = Vector3(0.2, 0.3, 0.01171875)
+
+[node name="PointCard3D" type="Node3D"]
+script = ExtResource("1_5plsr")
+
+[node name="Background" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_5plsr")
+
+[node name="Outline" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.001)
+mesh = SubResource("QuadMesh_xbnts")
+surface_material_override/0 = SubResource("StandardMaterial3D_5plsr")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.01)
+pixel_size = 0.0025
+text = "1"
+font = ExtResource("1_3mlda")
+font_size = 63
+
+[node name="Area3D" type="Area3D" parent="." groups=["CameraInteractable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_3mlda")

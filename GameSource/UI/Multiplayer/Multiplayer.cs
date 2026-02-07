@@ -31,12 +31,14 @@ public partial class Multiplayer : Control
 
     public override void _Ready()
     {
+		string[] ipAdresses = IP.GetLocalAddresses();
+
+		string ipAddressOnLocalNetwork = ipAdresses[ipAdresses.Length-1];
+
         CurrentMenu = multiTypeMenu;
 
-		// Global.multiplayerClientGlobals.HandleLocalIdAssignment += Local;
-        // Global.multiplayerClientGlobals.HandleRemoteIdAssignment += Remote;
-		// Global.networkHandler.OnPeerDisconnected += HandleDisconnect;
-
+		ipAddressInputClient.Text = ipAddressOnLocalNetwork;
+		ipAddressInputServer.Text = ipAddressOnLocalNetwork;
     }
 
 	public void ChangeMenu(string option)
@@ -68,44 +70,18 @@ public partial class Multiplayer : Control
 		}
 	}
 
-	// public void HandleDisconnect(int id)
-	// {
-	// 	Node label = playerList.FindChild($"Label{id}");
-	// 	if (label != null) label.QueueFree();
-	// }
-
 	public void HostGame()
 	{
 		Global.networkHandler.StartServer(ipAddressInputServer.Text);
-        // Global.networkHandler.StartClient(ipAddressInputServer.Text);
-        Global.networkHandler.StartClient("127.0.0.1");
+        Global.networkHandler.StartClient(ipAddressInputServer.Text);
 
 		ChangeMenu("player");
 	}
-
-	// public void Local(int id)
-	// {
-	// 	AddPlayer(id);
-	// }
-
-	// public void Remote(int id)
-	// {
-	// 	AddPlayer(id);
-	// }
 
 	public void JoinGame()
 	{
         Global.networkHandler.StartClient(ipAddressInputClient.Text);
 		ChangeMenu("player");
 	}
-
-	// private void AddPlayer(int id)
-	// {
-	// 	Label playerLabel = new();
-	// 	playerLabel.AddThemeFontSizeOverride("font_size", 60);
-	// 	playerLabel.Text = $"Player:{id}";
-	// 	playerLabel.Name = $"Label{id}";
-	// 	playerList.AddChild(playerLabel);
-	// }
 	
 }

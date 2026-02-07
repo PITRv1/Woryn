@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dvdmwt6fgnxqg"]
+[gd_resource type="Theme" format=3 uid="uid://dvdmwt6fgnxqg"]
 
 [ext_resource type="Texture2D" uid="uid://738aakqtt7x8" path="res://Assets/UI/NineRect/Background_green.png" id="1_hqqjm"]
 

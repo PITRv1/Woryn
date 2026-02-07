@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs7f2puxk38eq"]
+
+[ext_resource type="Script" uid="uid://cxkdctenlyi7c" path="res://Systems/CardPlacementHandler/CardPlacementHandler.cs" id="1_jra1y"]
+
+[node name="CardPlacementHandler" type="Node3D"]
+script = ExtResource("1_jra1y")

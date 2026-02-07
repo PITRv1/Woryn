@@ -9,8 +9,8 @@ public partial class MultiplayerPlayerClass : Node
 	public int ID;
 	// List<int> ids = new();
 
-	[Export] HBoxContainer pointCards;
-	[Export] HBoxContainer modifCards;
+	[Export] CardPlacementHandler pointCards;
+	[Export] CardPlacementHandler modifCards;
 	[Export] PackedScene pointCardUI;
 	[Export] PackedScene modifierCardUI;
 	[Export] Label maxPoints;
@@ -67,7 +67,7 @@ public partial class MultiplayerPlayerClass : Node
 
 	private void GoToShop()
 	{
-		GetTree().ChangeSceneToPacked(shopScene);
+		GetTree().CurrentScene.AddChild(shopScene.Instantiate());
 	}
 
 	// private void Remote(int id)
@@ -164,20 +164,18 @@ public partial class MultiplayerPlayerClass : Node
 
 	public void AddPointToContainer(PointCard pointCard)
 	{
-		TestPointCardUi test = pointCardUI.Instantiate() as TestPointCardUi;
-		test.text.Text = pointCard.PointValue.ToString();
-		test.pointCard = pointCard;
-		test.playerClass = playerClass;
-		pointCards.AddChild(test);
+		PointCard3d card = pointCardUI.Instantiate() as PointCard3d;
+		card.PointCard = pointCard;
+
+		pointCards.AddCard(card);
 	}
 
-	public void AddModifierToContainer(ModifierCard card)
+	public void AddModifierToContainer(ModifierCard modifCard)
 	{
-		TestModifierCardUi test = modifierCardUI.Instantiate() as TestModifierCardUi;
-		test.modifierCard = card;
-		test.playerClass = playerClass;
+		ModifierCard3d card = pointCardUI.Instantiate() as ModifierCard3d;
+		card.ModifierCard = modifCard;
 
-		modifCards.AddChild(test);
+		modifCards.AddCard(card);
 	}
 
 	public void ResetContainers()

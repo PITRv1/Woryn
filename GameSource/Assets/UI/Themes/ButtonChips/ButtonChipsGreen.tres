@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=25 format=3 uid="uid://dwothogalvoiq"]
+[gd_resource type="Theme" format=3 uid="uid://dwothogalvoiq"]
 
 [ext_resource type="FontFile" uid="uid://bgx48beeh6rf7" path="res://Assets/UI/Fonts/DigitalDisco.ttf" id="1_6n8ul"]
 [ext_resource type="Texture2D" uid="uid://d1aqagtbdobqe" path="res://Assets/UI/NineRect/Buttons/ButtonGreenSimple.png" id="2_wsaqx"]

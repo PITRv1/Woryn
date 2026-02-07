@@ -1,15 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://be6l3tabm2s5j"]
+[gd_scene format=3 uid="uid://be6l3tabm2s5j"]
 
 [ext_resource type="Theme" uid="uid://bjomj0kutkhks" path="res://Assets/UI/Themes/Main/UIThemeGreen.tres" id="1_f40x6"]
 [ext_resource type="Script" uid="uid://cbmpbge5cjt4m" path="res://UI/Multiplayer/Multiplayer.cs" id="2_akir0"]
 [ext_resource type="ButtonGroup" uid="uid://c8lhp1s2lwvyu" path="res://UI/Multiplayer/MultiGameTypeButtonGroup.tres" id="4_f40x6"]
 [ext_resource type="Theme" uid="uid://dwothogalvoiq" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsGreen.tres" id="4_fobpq"]
 [ext_resource type="Texture2D" uid="uid://738aakqtt7x8" path="res://Assets/UI/NineRect/Background_green.png" id="5_fobpq"]
-[ext_resource type="Script" uid="uid://iy4wp1ypdx84" path="res://Testing/MultiTesting/LobbyPlayer.cs" id="6_akir0"]
-[ext_resource type="PackedScene" uid="uid://dcvukxwbsb0xg" path="res://Testing/MultiTesting/player_fein.tscn" id="7_amu5d"]
-[ext_resource type="PackedScene" uid="uid://pelmk5an55xh" path="res://Testing/MultiTesting/MultiplayerRoom.tscn" id="8_61xkh"]
+[ext_resource type="Script" uid="uid://iy4wp1ypdx84" path="res://Scripts/LobbyPlayer/LobbyPlayer.cs" id="6_akir0"]
+[ext_resource type="PackedScene" uid="uid://dcvukxwbsb0xg" path="res://Scenes/LobbyPlayer/player_fein.tscn" id="7_amu5d"]
+[ext_resource type="PackedScene" uid="uid://pelmk5an55xh" path="res://Scenes/MultiplayerPartyRoom/MultiplayerRoom.tscn" id="8_61xkh"]
 
-[node name="Multiplayer" type="Control" node_paths=PackedStringArray("multiTypeMenu", "multiHostMenu", "multiJoinMenu", "playerListMenu", "gameNameText", "numberOfPlayersValue", "ipAddressInputServer", "ipAddressInputClient")]
+[node name="Multiplayer" type="Control" unique_id=180983133 node_paths=PackedStringArray("multiTypeMenu", "multiHostMenu", "multiJoinMenu", "playerListMenu", "gameNameText", "numberOfPlayersValue", "ipAddressInputServer", "ipAddressInputClient")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -29,7 +29,7 @@ optionGroup = ExtResource("4_f40x6")
 ipAddressInputServer = NodePath("Host/Ip/ServerIpInput")
 ipAddressInputClient = NodePath("Join/LineEdit")
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=6155999]
 visible = false
 layout_mode = 1
 anchors_preset = 10
@@ -43,7 +43,7 @@ text = "Multiplayer"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=354236103]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -52,7 +52,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer" unique_id=1064371887]
 custom_minimum_size = Vector2(339.38, 500)
 layout_mode = 2
 texture = ExtResource("5_fobpq")
@@ -61,7 +61,7 @@ patch_margin_top = 17
 patch_margin_right = 17
 patch_margin_bottom = 17
 
-[node name="MultiType" type="VBoxContainer" parent="."]
+[node name="MultiType" type="VBoxContainer" parent="." unique_id=998569758]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -78,25 +78,25 @@ theme = ExtResource("4_fobpq")
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MultiType"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MultiType" unique_id=1421888181]
 layout_mode = 2
 
-[node name="Host" type="Button" parent="MultiType/VBoxContainer"]
+[node name="Host" type="Button" parent="MultiType/VBoxContainer" unique_id=731532376]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Host"
 
-[node name="Join" type="Button" parent="MultiType/VBoxContainer"]
+[node name="Join" type="Button" parent="MultiType/VBoxContainer" unique_id=103320775]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Join"
 
-[node name="BackButton" type="Button" parent="MultiType"]
+[node name="BackButton" type="Button" parent="MultiType" unique_id=118324802]
 layout_mode = 2
 theme = ExtResource("4_fobpq")
 text = "Main Menu"
 
-[node name="Host" type="VBoxContainer" parent="."]
+[node name="Host" type="VBoxContainer" parent="." unique_id=1179103898]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -112,80 +112,80 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
 
-[node name="Ip" type="VBoxContainer" parent="Host"]
+[node name="Ip" type="VBoxContainer" parent="Host" unique_id=692076688]
 layout_mode = 2
 
-[node name="IPLabel" type="Label" parent="Host/Ip"]
+[node name="IPLabel" type="Label" parent="Host/Ip" unique_id=2096832281]
 layout_mode = 2
 text = "Server ip"
 horizontal_alignment = 1
 
-[node name="ServerIpInput" type="LineEdit" parent="Host/Ip"]
+[node name="ServerIpInput" type="LineEdit" parent="Host/Ip" unique_id=1766263423]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 text = "127.0.0.1"
 placeholder_text = "IP address"
 
-[node name="Players" type="VBoxContainer" parent="Host"]
+[node name="Players" type="VBoxContainer" parent="Host" unique_id=1984120845]
 layout_mode = 2
 
-[node name="NumberOfPlayers" type="Label" parent="Host/Players"]
+[node name="NumberOfPlayers" type="Label" parent="Host/Players" unique_id=2146990876]
 layout_mode = 2
 text = "Number of players"
 horizontal_alignment = 1
 
-[node name="Players" type="HSlider" parent="Host/Players"]
+[node name="Players" type="HSlider" parent="Host/Players" unique_id=542561704]
 layout_mode = 2
 min_value = 2.0
 max_value = 4.0
 value = 4.0
 
-[node name="GameType" type="VBoxContainer" parent="Host"]
+[node name="GameType" type="VBoxContainer" parent="Host" unique_id=1315314227]
 layout_mode = 2
 
-[node name="Types" type="HBoxContainer" parent="Host/GameType"]
+[node name="Types" type="HBoxContainer" parent="Host/GameType" unique_id=1460275416]
 layout_mode = 2
 
-[node name="Lan" type="CheckBox" parent="Host/GameType/Types"]
+[node name="Lan" type="CheckBox" parent="Host/GameType/Types" unique_id=179565212]
 custom_minimum_size = Vector2(70, 30)
 layout_mode = 2
 button_pressed = true
 button_group = ExtResource("4_f40x6")
 text = "Local"
 
-[node name="Private" type="CheckBox" parent="Host/GameType/Types"]
+[node name="Private" type="CheckBox" parent="Host/GameType/Types" unique_id=944094715]
 custom_minimum_size = Vector2(70, 30)
 layout_mode = 2
 button_group = ExtResource("4_f40x6")
 text = "Private"
 
-[node name="Public" type="CheckBox" parent="Host/GameType/Types"]
+[node name="Public" type="CheckBox" parent="Host/GameType/Types" unique_id=1376437466]
 custom_minimum_size = Vector2(70, 30)
 layout_mode = 2
 button_group = ExtResource("4_f40x6")
 text = "Public"
 
-[node name="ExtraSettings" type="VBoxContainer" parent="Host"]
+[node name="ExtraSettings" type="VBoxContainer" parent="Host" unique_id=1263231672]
 layout_mode = 2
 
-[node name="Settings" type="OptionButton" parent="Host/ExtraSettings"]
+[node name="Settings" type="OptionButton" parent="Host/ExtraSettings" unique_id=324695043]
 layout_mode = 2
 selected = 0
 item_count = 1
 popup/item_0/text = "Extra settings (not implemented)"
 popup/item_0/id = 0
 
-[node name="Create" type="Button" parent="Host"]
+[node name="Create" type="Button" parent="Host" unique_id=54862865]
 layout_mode = 2
 theme = ExtResource("4_fobpq")
 text = "Create"
 
-[node name="BackButton" type="Button" parent="Host"]
+[node name="BackButton" type="Button" parent="Host" unique_id=1888152045]
 layout_mode = 2
 theme = ExtResource("4_fobpq")
 text = "Back"
 
-[node name="Join" type="VBoxContainer" parent="."]
+[node name="Join" type="VBoxContainer" parent="." unique_id=809176912]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -200,24 +200,24 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LineEdit" type="LineEdit" parent="Join"]
+[node name="LineEdit" type="LineEdit" parent="Join" unique_id=1370562232]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_vertical = 3
 text = "127.0.0.1"
 placeholder_text = "IP address"
 
-[node name="Button" type="Button" parent="Join"]
+[node name="Button" type="Button" parent="Join" unique_id=1536006841]
 layout_mode = 2
 theme = ExtResource("4_fobpq")
 text = "Join"
 
-[node name="BackButton" type="Button" parent="Join"]
+[node name="BackButton" type="Button" parent="Join" unique_id=705925737]
 layout_mode = 2
 theme = ExtResource("4_fobpq")
 text = "Back"
 
-[node name="PlayersList" type="VBoxContainer" parent="."]
+[node name="PlayersList" type="VBoxContainer" parent="." unique_id=1298221560]
 visible = false
 custom_minimum_size = Vector2(200, 400)
 layout_mode = 1
@@ -230,22 +230,22 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="List" type="VBoxContainer" parent="PlayersList"]
+[node name="List" type="VBoxContainer" parent="PlayersList" unique_id=1878005189]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="StartButton" type="Button" parent="PlayersList"]
+[node name="StartButton" type="Button" parent="PlayersList" unique_id=20414591]
 layout_mode = 2
 theme = ExtResource("4_fobpq")
 text = "Start Game"
 
-[node name="BackButton" type="Button" parent="PlayersList"]
+[node name="BackButton" type="Button" parent="PlayersList" unique_id=238209992]
 layout_mode = 2
 theme = ExtResource("4_fobpq")
 text = "Back"
 
-[node name="LobbyPlayer" type="Node" parent="PlayersList" node_paths=PackedStringArray("lobbyBackground")]
+[node name="LobbyPlayer" type="Node" parent="PlayersList" unique_id=1012462870 node_paths=PackedStringArray("lobbyBackground")]
 script = ExtResource("6_akir0")
 lobbyPlayer = ExtResource("7_amu5d")
 scene = ExtResource("8_61xkh")
