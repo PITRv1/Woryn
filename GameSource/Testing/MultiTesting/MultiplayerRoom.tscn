@@ -28,8 +28,8 @@
 [ext_resource type="Material" uid="uid://bix1vsif6u6fg" path="res://Assets/textures/world/wallOrnateType2.tres" id="18_8gbhg"]
 [ext_resource type="Material" uid="uid://cf5pnooiusef" path="res://Assets/textures/paintings/MACI.tres" id="18_nm1sy"]
 [ext_resource type="PackedScene" uid="uid://c53mgemcft6cu" path="res://Assets/models/MainMenuNewCollection/chairAdvanced.glb" id="20_mswd3"]
+[ext_resource type="PackedScene" uid="uid://b3s7bxqueli8d" path="res://Assets/models/Plant.glb" id="21_apilx"]
 [ext_resource type="PackedScene" uid="uid://njq1xlx2s0s7" path="res://Assets/models/MainMenuNewCollection/tableAdvanced.glb" id="21_qcegn"]
-[ext_resource type="PackedScene" uid="uid://dr2b8kaijlck8" path="res://Testing/MultiTesting/Buddy.tscn" id="25_apilx"]
 
 [sub_resource type="Gradient" id="Gradient_ihayo"]
 interpolation_mode = 2
@@ -826,6 +826,9 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.01
 [node name="chairAdvanced4" parent="3DWorld/EnvironmentDetails/Models/Chairs" instance=ExtResource("20_mswd3")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.9582291, 0, 0.040602565)
 
+[node name="Plant" parent="3DWorld/EnvironmentDetails/Models" instance=ExtResource("21_apilx")]
+transform = Transform3D(1.6726108, 0, 0, 0, 1.6726108, 0, 0, 0, 1.6726108, 4.2889953, 0, -4.2182994)
+
 [node name="Lighting" type="Node3D" parent="3DWorld"]
 
 [node name="OmniLight3D14" type="OmniLight3D" parent="3DWorld/Lighting"]
@@ -848,7 +851,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.253, -2.368)
 [node name="Seat3" type="Marker3D" parent="3DWorld/PlayerSeats"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.368, 1.253, 0)
 
-[node name="MultiplayerPlayer" parent="." node_paths=PackedStringArray("pointCards", "modifCards", "maxPoints", "points", "throwDeckValue", "playerSeats") instance=ExtResource("1_cvj3d")]
+[node name="MultiplayerPlayer" parent="." node_paths=PackedStringArray("pointCards", "modifCards", "maxPoints", "points", "throwDeckValue") instance=ExtResource("1_cvj3d")]
 pointCards = NodePath("../Control/HandHolder/CardContainers/HBox/PointCards")
 modifCards = NodePath("../Control/HandHolder/CardContainers/HBox/ModifCards")
 pointCardUI = ExtResource("2_0wj4v")
@@ -857,8 +860,6 @@ maxPoints = NodePath("../Control/HBoxContainer/MarginContainer/VBoxContainer/Max
 points = NodePath("../Control/HBoxContainer/MarginContainer/VBoxContainer/Points")
 throwDeckValue = NodePath("../Control/HBoxContainer/MarginContainer/VBoxContainer/ThrowDeckValue")
 shopScene = ExtResource("4_dipxj")
-playerSeats = NodePath("../3DWorld/PlayerSeats")
-buddy = ExtResource("25_apilx")
 
 [node name="Control" type="Control" parent="."]
 visible = false
