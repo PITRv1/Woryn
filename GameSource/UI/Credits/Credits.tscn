@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdeg6vwo3wgd4"]
+[gd_scene format=3 uid="uid://bdeg6vwo3wgd4"]
 
 [ext_resource type="Theme" uid="uid://bv775inajfj5p" path="res://Assets/UI/Themes/Main/UIThemeBlue.tres" id="1_cnn6j"]
-[ext_resource type="Texture2D" uid="uid://cdofbdbwlfext" path="res://Assets/UI/NineRect/backround_blue.png" id="2_51u3q"]
+[ext_resource type="Texture2D" uid="uid://cdofbdbwlfext" path="res://Assets/UI/Images/NineRect/backround_blue.png" id="2_51u3q"]
 [ext_resource type="Script" uid="uid://bv7p7rep40vmq" path="res://UI/Credits/Credits.cs" id="2_acay3"]
-[ext_resource type="Texture2D" uid="uid://dpou8vcjhecqa" path="res://Assets/UI/Team/undefined.png" id="2_f65ie"]
+[ext_resource type="Texture2D" uid="uid://dpou8vcjhecqa" path="res://Assets/UI/Images/Team/undefined.png" id="2_f65ie"]
 [ext_resource type="Theme" uid="uid://bdetdcpnnocd8" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsBlue.tres" id="4_7m04g"]
 
 [node name="Credits" type="Control"]

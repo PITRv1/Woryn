@@ -13,13 +13,12 @@ public partial class MultiplayerPlayerClass : Node
 	[Export] CardPlacementHandler modifCards;
 	[Export] PackedScene pointCardUI;
 	[Export] PackedScene modifierCardUI;
-	[Export] Node3D playerSeats;
+	[Export] Godot.Collections.Array<Marker3D> playerSeats;
 
 	[ExportGroup("Deprecated")]
 	[Export] Label maxPoints;
 	[Export] Label points;
 	[Export] Label throwDeckValue;
-	[Export] PackedScene shopScene;
 	[Export] PackedScene buddy;
 
 	
@@ -32,7 +31,6 @@ public partial class MultiplayerPlayerClass : Node
 		Global.multiplayerClientGlobals.HandleDeckSwap += playerClass.HandleDeckSwap;
 		Global.multiplayerClientGlobals.HandleDeckSwap += Test;
 
-		Global.multiplayerClientGlobals.ShopScene += GoToShop;
 		Global.multiplayerPlayerClass = this;
 	}
 
@@ -47,7 +45,7 @@ public partial class MultiplayerPlayerClass : Node
 		for (int i = 0; i < packet.PlayerCount - 1; i++)
 		{
 			Node3D bud = buddy.Instantiate() as Node3D;
-			playerSeats.GetChild(i).AddChild(bud);
+			playerSeats[i].AddChild(bud);
 		}
 	}
 
@@ -69,10 +67,6 @@ public partial class MultiplayerPlayerClass : Node
 		ID = id;
 	}
 
-	private void GoToShop()
-	{
-		GetTree().CurrentScene.AddChild(shopScene.Instantiate());
-	}
 
 	// private void Remote(int id)
 	// {

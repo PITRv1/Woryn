@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://dvdmwt6fgnxqg"]
 
-[ext_resource type="Texture2D" uid="uid://738aakqtt7x8" path="res://Assets/UI/NineRect/Background_green.png" id="1_hqqjm"]
+[ext_resource type="Texture2D" uid="uid://738aakqtt7x8" path="res://Assets/UI/Images/NineRect/Background_green.png" id="1_hqqjm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pecf1"]
 texture = ExtResource("1_hqqjm")

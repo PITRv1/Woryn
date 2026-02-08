@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://djjxljhg1kjth"]
+[gd_scene format=3 uid="uid://djjxljhg1kjth"]
 
 [ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_twtsk"]
 [ext_resource type="Script" uid="uid://b88m3onkcju2s" path="res://UI/GoldConverter/GoldConverterUi.cs" id="2_5ydfb"]
-[ext_resource type="Texture2D" uid="uid://dry7q0avshvta" path="res://Assets/UI/NineRect/background_yellow.png" id="2_xdebu"]
+[ext_resource type="Texture2D" uid="uid://dry7q0avshvta" path="res://Assets/UI/Images/NineRect/background_yellow.png" id="2_xdebu"]
 
 [node name="GoldConverterUi" type="Control" node_paths=PackedStringArray("timerLabel", "timerObject", "spinBox", "goldConversionLabel")]
 texture_filter = 1

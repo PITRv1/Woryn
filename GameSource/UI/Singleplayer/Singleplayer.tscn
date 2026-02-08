@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb3padfqjdkm3"]
+[gd_scene format=3 uid="uid://bb3padfqjdkm3"]
 
 [ext_resource type="Theme" uid="uid://bjomj0kutkhks" path="res://Assets/UI/Themes/Main/UIThemeGreen.tres" id="1_7j8m0"]
 [ext_resource type="Script" uid="uid://b2fpk5bedcwdl" path="res://UI/Singleplayer/Singleplayer.cs" id="2_tiv78"]
-[ext_resource type="Texture2D" uid="uid://738aakqtt7x8" path="res://Assets/UI/NineRect/Background_green.png" id="2_tkb6s"]
+[ext_resource type="Texture2D" uid="uid://738aakqtt7x8" path="res://Assets/UI/Images/NineRect/Background_green.png" id="2_tkb6s"]
 [ext_resource type="Theme" uid="uid://dwothogalvoiq" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsGreen.tres" id="3_oqxs2"]
 
 [node name="SinglePlayer" type="Control"]

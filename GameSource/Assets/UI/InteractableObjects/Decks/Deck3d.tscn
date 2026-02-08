@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cyyxdvmulcre5"]
+
+[ext_resource type="Script" uid="uid://b0knrd1lwchxe" path="res://Assets/UI/InteractableObjects/Decks/Deck3d.cs" id="1_wcj5k"]
+[ext_resource type="PackedScene" uid="uid://u4jov6g4a1gc" path="res://Assets/UI/InteractableObjects/Cards/PointCard3D/PointCard3D.tscn" id="2_2r3fm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2r3fm"]
+size = Vector3(0.5175781, 0.32629395, 0.50561523)
+
+[node name="Deck3D" type="Node3D" unique_id=75278921 node_paths=PackedStringArray("area3D")]
+script = ExtResource("1_wcj5k")
+area3D = NodePath("Visual/Area3D")
+
+[node name="Visual" type="Node3D" parent="." unique_id=656219172]
+
+[node name="PointCard3D" parent="Visual" unique_id=1527816531 instance=ExtResource("2_2r3fm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="Visual" unique_id=414396887 groups=["CameraInteractable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Visual/Area3D" unique_id=1905173650 groups=["CameraInteractable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1606004, 0)
+shape = SubResource("BoxShape3D_2r3fm")

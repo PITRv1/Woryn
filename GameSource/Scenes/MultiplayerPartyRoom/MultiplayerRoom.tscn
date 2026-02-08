@@ -20,10 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://dcqemdcpybob0" path="res://Assets/models/MainMenuNewCollection/texturedTable.glb" id="19_5lnsn"]
 [ext_resource type="Material" uid="uid://cf5pnooiusef" path="res://Assets/textures/paintings/MACI.tres" id="19_r0tue"]
 [ext_resource type="PackedScene" uid="uid://gwdg53u5rxa5" path="res://Assets/models/MainMenuNewCollection/texturedChair.glb" id="21_boekd"]
-[ext_resource type="PackedScene" uid="uid://8psm5hemkmpu" path="res://Assets/UI/Cards/ModifierCard3D/ModifierCard3D.tscn" id="24_k5rf2"]
-[ext_resource type="Texture2D" uid="uid://cxn8hk2mjf50x" path="res://Assets/UI/NineRect/background_simple.png" id="26_yoguw"]
-[ext_resource type="Theme" uid="uid://bdetdcpnnocd8" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsBlue.tres" id="27_irpxd"]
-[ext_resource type="Theme" uid="uid://dwothogalvoiq" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsGreen.tres" id="28_fdwt2"]
+[ext_resource type="PackedScene" uid="uid://u4jov6g4a1gc" path="res://Assets/UI/InteractableObjects/Cards/PointCard3D/PointCard3D.tscn" id="23_nkcx5"]
+[ext_resource type="PackedScene" uid="uid://8psm5hemkmpu" path="res://Assets/UI/InteractableObjects/Cards/ModifierCard3D/ModifierCard3D.tscn" id="24_k5rf2"]
+[ext_resource type="PackedScene" uid="uid://cyyxdvmulcre5" path="res://Assets/UI/InteractableObjects/Decks/Deck3d.tscn" id="26_hdoun"]
+[ext_resource type="Script" uid="uid://yt6v27eq83pb" path="res://Scripts/Player/MultiplayerPlayerClass.cs" id="27_5lnsn"]
 [ext_resource type="PackedScene" uid="uid://c4mfb80u3jme5" path="res://Assets/models/MainMenuNewCollection/playerVisuals.tscn" id="31_1ab4g"]
 [ext_resource type="PackedScene" uid="uid://bs7f2puxk38eq" path="res://Systems/CardPlacementHandler/CardPlacementHandler.tscn" id="31_k5rf2"]
 
@@ -532,6 +532,14 @@ points = PackedVector3Array(-5.75, 7.5, -1, -5.75, 6.5, -1, -6, 7.5, -1, -6, 6.5
 
 [node name="Test" type="Node3D" unique_id=566470753]
 
+[node name="MultiplayerPlayer" type="Node" parent="." unique_id=1271720248 node_paths=PackedStringArray("pointCards", "modifCards", "playerSeats")]
+script = ExtResource("27_5lnsn")
+pointCards = NodePath("../PointCards")
+modifCards = NodePath("../ModifierCards")
+pointCardUI = ExtResource("23_nkcx5")
+modifierCardUI = ExtResource("24_k5rf2")
+playerSeats = []
+
 [node name="3DWorld" type="Node3D" parent="." unique_id=416216869]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="3DWorld" unique_id=1701279325]
@@ -851,159 +859,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.253, -2.368)
 [node name="Seat3" type="Marker3D" parent="3DWorld/PlayerSeats" unique_id=1229161944]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.368, 1.253, 0)
 
-[node name="Control" type="Control" parent="." unique_id=1383950086]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control" unique_id=451833227]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/HBoxContainer2" unique_id=99475950]
-layout_mode = 2
-alignment = 1
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Control/HBoxContainer2/VBoxContainer2" unique_id=1298206720]
-custom_minimum_size = Vector2(100, 170)
-layout_mode = 2
-texture = ExtResource("26_yoguw")
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 17
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1454232117]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer" unique_id=109502695]
-layout_mode = 2
-theme_override_constants/margin_right = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/MarginContainer" unique_id=847462116]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="Control/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1257643816]
-layout_mode = 2
-text = "Your points:"
-horizontal_alignment = 1
-
-[node name="Points" type="Label" parent="Control/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1759876759]
-layout_mode = 2
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="Control/HBoxContainer/MarginContainer/VBoxContainer" unique_id=968658058]
-layout_mode = 2
-text = "Pile value:"
-horizontal_alignment = 1
-
-[node name="MaxValue" type="Label" parent="Control/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1296150920]
-layout_mode = 2
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="Control/HBoxContainer/MarginContainer/VBoxContainer" unique_id=98974157]
-layout_mode = 2
-text = "Latest value:"
-horizontal_alignment = 1
-
-[node name="ThrowDeckValue" type="Label" parent="Control/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1073631171]
-layout_mode = 2
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HandHolder" type="VBoxContainer" parent="Control" unique_id=1407029601]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 80
-
-[node name="CardContainers" type="VBoxContainer" parent="Control/HandHolder" unique_id=2085949000]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 2
-
-[node name="HBox" type="HBoxContainer" parent="Control/HandHolder/CardContainers" unique_id=1595736666]
-custom_minimum_size = Vector2(0, 130)
-layout_mode = 2
-theme_override_constants/separation = 40
-
-[node name="PointCards" type="HBoxContainer" parent="Control/HandHolder/CardContainers/HBox" unique_id=1423731967]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 2
-
-[node name="ModifCards" type="HBoxContainer" parent="Control/HandHolder/CardContainers/HBox" unique_id=1817358788]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Buttons" type="HBoxContainer" parent="Control/HandHolder" unique_id=383075578]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-theme_override_constants/separation = 200
-alignment = 1
-
-[node name="GetCardsButtonContainer" type="HBoxContainer" parent="Control/HandHolder/Buttons" unique_id=1921488194]
-layout_mode = 2
-
-[node name="Fold" type="Button" parent="Control/HandHolder/Buttons/GetCardsButtonContainer" unique_id=1267556018]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("27_irpxd")
-text = "Fold"
-
-[node name="PlayCardsButtonContainer" type="HBoxContainer" parent="Control/HandHolder/Buttons" unique_id=428614350]
-layout_mode = 2
-
-[node name="DeckDown" type="Button" parent="Control/HandHolder/Buttons/PlayCardsButtonContainer" unique_id=886220820]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("28_fdwt2")
-text = "Play selected
-"
-
 [node name="PointCards" parent="." unique_id=2052042597 instance=ExtResource("31_k5rf2")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 1.3453918)
 
+[node name="PointCard3D" parent="PointCards" unique_id=1527816531 instance=ExtResource("23_nkcx5")]
+
+[node name="PointCard3D2" parent="PointCards" unique_id=1831898310 instance=ExtResource("23_nkcx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23446846, 0, 0)
+
+[node name="PointCard3D3" parent="PointCards" unique_id=517699627 instance=ExtResource("23_nkcx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46485442, 0, 0)
+
+[node name="PointCard3D4" parent="PointCards" unique_id=951847080 instance=ExtResource("23_nkcx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7081604, 0, 0)
+
 [node name="ModifierCards" parent="." unique_id=731615950 instance=ExtResource("31_k5rf2")]
-transform = Transform3D(9.553427e-16, -0.5, -2.1855694e-08, -2.1855694e-08, -2.1855694e-08, 0.5, -0.5, 0, -2.1855694e-08, 1.172086, 2.1048002, -0.27107477)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -1.345)
 gapAmount = 0.25
 
 [node name="ModifierCard3D" parent="ModifierCards" unique_id=1327020224 instance=ExtResource("24_k5rf2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29736996, -0.55076694, 0)
 
-[node name="ModifierCard3D2" parent="ModifierCards" unique_id=1174217351 instance=ExtResource("24_k5rf2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206743, -0.55076694, 0)
+[node name="ModifierCard3D2" parent="ModifierCards" unique_id=2091806130 instance=ExtResource("24_k5rf2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22397733, 0, 0)
 
-[node name="ModifierCard3D3" parent="ModifierCards" unique_id=697366048 instance=ExtResource("24_k5rf2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05156654, -0.55076694, 0)
+[node name="ModifierCard3D3" parent="ModifierCards" unique_id=2013474948 instance=ExtResource("24_k5rf2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48273754, 0, 0)
+
+[node name="ModifierCard3D4" parent="ModifierCards" unique_id=900990326 instance=ExtResource("24_k5rf2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72010326, 0, 0)
 
 [node name="PlayerVisuals" parent="." unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8922863, -0.99518967, 0)
@@ -1013,8 +896,26 @@ MaxYawDeg = 45.0
 MaxPitchDeg = 30.0
 RotationSpeed = 5.0
 
-[node name="BoneAttachment3D" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1020205244) index="25" unique_id=396461942]
-transform = Transform3D(-0.39478797, -0.6235659, 0.67476535, 0.041470766, 0.7215779, 0.69108987, -0.9178355, 0.30081713, -0.2590106, 0.31052947, 1.4698861, 0.3586135)
+[node name="BoneAttachment3D" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1198783362) index="25" unique_id=396461942]
+transform = Transform3D(-0.752279, -0.13185161, 0.6455167, 0.6450894, 0.051755235, 0.76235205, -0.13392583, 0.9899172, 0.046121653, 0.38432238, 1.2584677, 0.42813456)
+
+[node name="LeftArmTarget" parent="PlayerVisuals" index="2" unique_id=608260768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96080613, 3.1461694, 1.0703366)
+
+[node name="LeftArmPole" parent="PlayerVisuals/LeftArmTarget" index="0" unique_id=836124568]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.7747178, -1.3827975, -1.0747027)
+
+[node name="LeftHandTarget" parent="PlayerVisuals/LeftArmTarget" index="1" unique_id=1278405212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2787873, 1.0965779, -0.22765899)
+
+[node name="RightArmTarget" parent="PlayerVisuals" index="3" unique_id=880049463]
+transform = Transform3D(0.55403095, -0.8324959, 1.9493921e-08, 0.8324959, 0.55403095, -3.6389554e-08, 1.9493923e-08, 3.6389554e-08, 0.99999994, -0.74897724, 3.2133796, 0.94124675)
+
+[node name="RightArmPole" parent="PlayerVisuals/RightArmTarget" index="0" unique_id=1093313350]
+transform = Transform3D(2.5, 0, 1.4210855e-14, 0, 2.5, 0, -1.4210855e-14, 0, 2.5, -0.13273573, 0.075751066, -0.80137634)
+
+[node name="Deck3D" parent="." unique_id=75278921 instance=ExtResource("26_hdoun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2186053, 0)
 
 [editable path="PlayerVisuals"]
 [editable path="PlayerVisuals/templatePlayerRig"]

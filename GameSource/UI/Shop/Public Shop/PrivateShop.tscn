@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://rno5ugwb072s"]
+[gd_scene format=3 uid="uid://rno5ugwb072s"]
 
 [ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_v4e1g"]
 [ext_resource type="Script" uid="uid://3g6drc0jafvh" path="res://UI/Shop/Public Shop/PrivateShop.cs" id="2_uq3wd"]
-[ext_resource type="Texture2D" uid="uid://cdofbdbwlfext" path="res://Assets/UI/NineRect/backround_blue.png" id="2_v4e1g"]
+[ext_resource type="Texture2D" uid="uid://cdofbdbwlfext" path="res://Assets/UI/Images/NineRect/backround_blue.png" id="2_v4e1g"]
 
 [node name="PrivateShop" type="Control" node_paths=PackedStringArray("shopTimer", "shopTimerLabel")]
 layout_mode = 3

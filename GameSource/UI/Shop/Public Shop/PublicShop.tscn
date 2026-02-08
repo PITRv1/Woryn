@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7u8guxg4td0b"]
+[gd_scene format=3 uid="uid://b7u8guxg4td0b"]
 
 [ext_resource type="Script" uid="uid://dthm2lri1j1c" path="res://UI/Shop/Public Shop/PublicShop.cs" id="1_f6bil"]
 [ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_gubnd"]
-[ext_resource type="Texture2D" uid="uid://cxn8hk2mjf50x" path="res://Assets/UI/NineRect/background_simple.png" id="3_p2nfc"]
+[ext_resource type="Texture2D" uid="uid://cxn8hk2mjf50x" path="res://Assets/UI/Images/NineRect/background_simple.png" id="3_p2nfc"]
 [ext_resource type="Script" uid="uid://dmmh02xu4jmse" path="res://UI/Shop/Public Shop/CursorBlocker.cs" id="4_fk1l3"]
 
 [sub_resource type="Animation" id="Animation_p2nfc"]

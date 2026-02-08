@@ -35,8 +35,7 @@ public partial class CameraProjection : Camera3D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (Input.IsActionJustPressed("mouse_left"))
-            CastRayCast();
+        if (Input.IsActionJustPressed("mouse_left")) CastRayCast();
     }
 
     private void CastRayCast()
@@ -57,7 +56,8 @@ public partial class CameraProjection : Camera3D
         Area3D collider = (Area3D)result["collider"];
         if (!collider.IsInGroup("CameraInteractable")) return;
 
-        Node3D parent = collider.GetParent<Node3D>();
-        GD.Print($"{parent is ModifierCard3d} , {parent is PointCard3d}");
+        var parent = collider.GetParent().GetParent();
+        
+        if(parent.HasMethod("UseObject")) parent.Call("UseObject");
     }
 }

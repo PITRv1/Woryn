@@ -1,7 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://i7vf1nfeexfk"]
 
 [ext_resource type="FontFile" uid="uid://bgx48beeh6rf7" path="res://Assets/UI/Fonts/DigitalDisco.ttf" id="1_ekfea"]
-[ext_resource type="Texture2D" uid="uid://1lruscat13du" path="res://Assets/UI/NineRect/Background_red.png" id="2_5gk6q"]
+[ext_resource type="Texture2D" uid="uid://1lruscat13du" path="res://Assets/UI/Images/NineRect/Background_red.png" id="2_5gk6q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8887o"]
 bg_color = Color(0, 0, 0, 0.6745098)
