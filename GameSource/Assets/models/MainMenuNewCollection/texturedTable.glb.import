@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://nshntwgpepc3"
-path="res://.godot/imported/tableAdvanced.glb-2109d277a98b47e5acf58c884d9e7776.scn"
+uid="uid://dcqemdcpybob0"
+path="res://.godot/imported/texturedTable.glb-89fd72c4b5179941f326d5e7034e0316.scn"
 
 [deps]
 
-source_file="res://Assets/models/MainMenuNewCollection/tableAdvanced.glb"
-dest_files=["res://.godot/imported/tableAdvanced.glb-2109d277a98b47e5acf58c884d9e7776.scn"]
+source_file="res://Assets/models/MainMenuNewCollection/texturedTable.glb"
+dest_files=["res://.godot/imported/texturedTable.glb-89fd72c4b5179941f326d5e7034e0316.scn"]
 
 [params]
 

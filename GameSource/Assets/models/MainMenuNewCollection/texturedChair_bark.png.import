@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0ld63adexcmc"
-path.s3tc="res://.godot/imported/floorBoardTile.png-05cb356fe027f04d51e4e6e5d64ae7e5.s3tc.ctex"
+uid="uid://b53w5hsig24eb"
+path.s3tc="res://.godot/imported/texturedChair_bark.png-2e9a8f09eb4cb91007272a8ae4836cd0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "b12b7a641c139db084684fafb32892cd"
+}
 
 [deps]
 
-source_file="res://Assets/textures/world/floorBoardTile.png"
-dest_files=["res://.godot/imported/floorBoardTile.png-05cb356fe027f04d51e4e6e5d64ae7e5.s3tc.ctex"]
+source_file="res://Assets/models/MainMenuNewCollection/texturedChair_bark.png"
+dest_files=["res://.godot/imported/texturedChair_bark.png-2e9a8f09eb4cb91007272a8ae4836cd0.s3tc.ctex"]
 
 [params]
 

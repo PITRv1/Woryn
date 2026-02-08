@@ -17,14 +17,10 @@
 [ext_resource type="Material" uid="uid://n08aryo3hr2c" path="res://Assets/textures/paintings/painting6.tres" id="16_y68aj"]
 [ext_resource type="Material" uid="uid://wfkec16ns440" path="res://Assets/textures/world/wallBottomTile.tres" id="17_ubhqo"]
 [ext_resource type="Material" uid="uid://k61snhsjistj" path="res://Assets/textures/world/floorBoardTile.tres" id="18_7x2uj"]
+[ext_resource type="PackedScene" uid="uid://dcqemdcpybob0" path="res://Assets/models/MainMenuNewCollection/texturedTable.glb" id="19_5lnsn"]
 [ext_resource type="Material" uid="uid://cf5pnooiusef" path="res://Assets/textures/paintings/MACI.tres" id="19_r0tue"]
-[ext_resource type="PackedScene" uid="uid://njq1xlx2s0s7" path="res://Assets/models/MainMenuNewCollection/tableAdvanced.glb" id="20_ygrst"]
-[ext_resource type="PackedScene" uid="uid://c53mgemcft6cu" path="res://Assets/models/MainMenuNewCollection/chairAdvanced.glb" id="21_c4wi7"]
-[ext_resource type="PackedScene" uid="uid://bxs0hn6508qbt" path="res://Scenes/MultiplayerPlayer/multiplayer_player.tscn" id="22_juf2p"]
-[ext_resource type="PackedScene" uid="uid://u4jov6g4a1gc" path="res://Assets/UI/Cards/PointCard3D/PointCard3D.tscn" id="23_nkcx5"]
+[ext_resource type="PackedScene" uid="uid://gwdg53u5rxa5" path="res://Assets/models/MainMenuNewCollection/texturedChair.glb" id="21_boekd"]
 [ext_resource type="PackedScene" uid="uid://8psm5hemkmpu" path="res://Assets/UI/Cards/ModifierCard3D/ModifierCard3D.tscn" id="24_k5rf2"]
-[ext_resource type="PackedScene" uid="uid://drc2lcg4d2nmc" path="res://UI/CombinedShop/CombinedShopUI.tscn" id="25_bjp0a"]
-[ext_resource type="PackedScene" uid="uid://dr2b8kaijlck8" path="res://Assets/Etc/Buddy.tscn" id="26_6mnht"]
 [ext_resource type="Texture2D" uid="uid://cxn8hk2mjf50x" path="res://Assets/UI/NineRect/background_simple.png" id="26_yoguw"]
 [ext_resource type="Theme" uid="uid://bdetdcpnnocd8" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsBlue.tres" id="27_irpxd"]
 [ext_resource type="Theme" uid="uid://dwothogalvoiq" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsGreen.tres" id="28_fdwt2"]
@@ -554,6 +550,7 @@ metadata/_custom_type_script = "uid://cwu5cf7a0awcd"
 collision_mask = 0
 
 [node name="entity_0_mesh_instance" type="MeshInstance3D" parent="3DWorld/EnvironmentDetails/FuncGodotMap/entity_0_worldspawn" unique_id=1145276155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0006804466, 0, -0.0040234327)
 mesh = SubResource("ArrayMesh_yk0rv")
 
 [node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="3DWorld/EnvironmentDetails/FuncGodotMap/entity_0_worldspawn" unique_id=784888507]
@@ -804,23 +801,23 @@ shape = SubResource("ConvexPolygonShape3D_c2pb4")
 
 [node name="Models" type="Node3D" parent="3DWorld/EnvironmentDetails" unique_id=1430118107]
 
-[node name="tableAdvanced" parent="3DWorld/EnvironmentDetails/Models" unique_id=777406041 instance=ExtResource("20_ygrst")]
-transform = Transform3D(1.2477485, 0, 0, 0, 1.2477485, 0, 0, 0, 1.2477485, 0, 0, 0)
+[node name="texturedTable" parent="3DWorld/EnvironmentDetails/Models" unique_id=1413395030 instance=ExtResource("19_5lnsn")]
+transform = Transform3D(1.248, 0, 0, 0, 1.248, 0, 0, 0, 1.248, 0, 0, 0)
 
 [node name="Chairs" type="Node3D" parent="3DWorld/EnvironmentDetails/Models" unique_id=1683186454]
 transform = Transform3D(1.2477485, 0, 0, 0, 1.2477485, 0, 0, 0, 1.2477485, 0, 0, 0)
 
-[node name="chairAdvanced" parent="3DWorld/EnvironmentDetails/Models/Chairs" unique_id=530212714 instance=ExtResource("21_c4wi7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.984117)
+[node name="texturedChair" parent="3DWorld/EnvironmentDetails/Models/Chairs" unique_id=1012894689 instance=ExtResource("21_boekd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.984)
 
-[node name="chairAdvanced2" parent="3DWorld/EnvironmentDetails/Models/Chairs" unique_id=1912698661 instance=ExtResource("21_c4wi7")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.9730177, 0, 0)
+[node name="texturedChair2" parent="3DWorld/EnvironmentDetails/Models/Chairs" unique_id=1642574685 instance=ExtResource("21_boekd")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.958, 0, 0.041)
 
-[node name="chairAdvanced3" parent="3DWorld/EnvironmentDetails/Models/Chairs" unique_id=1012981150 instance=ExtResource("21_c4wi7")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.014788747, 0, -1.9435143)
+[node name="texturedChair3" parent="3DWorld/EnvironmentDetails/Models/Chairs" unique_id=888834889 instance=ExtResource("21_boekd")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.015, 0, -1.944)
 
-[node name="chairAdvanced4" parent="3DWorld/EnvironmentDetails/Models/Chairs" unique_id=859373365 instance=ExtResource("21_c4wi7")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.9582291, 0, 0.040602565)
+[node name="texturedChair4" parent="3DWorld/EnvironmentDetails/Models/Chairs" unique_id=65631833 instance=ExtResource("21_boekd")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.973, 0, 0)
 
 [node name="Lighting" type="Node3D" parent="3DWorld" unique_id=1988270341]
 
@@ -1011,17 +1008,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05156654, -0.55076694, 0)
 [node name="PlayerVisuals" parent="." unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8922863, -0.99518967, 0)
 
-
 [node name="Camera3D" parent="PlayerVisuals" index="0" unique_id=2049758961]
 MaxYawDeg = 45.0
 MaxPitchDeg = 30.0
 RotationSpeed = 5.0
 
-[node name="BoneAttachment3D" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1198783362) index="25" unique_id=396461942]
+[node name="BoneAttachment3D" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1020205244) index="25" unique_id=396461942]
 transform = Transform3D(-0.39478797, -0.6235659, 0.67476535, 0.041470766, 0.7215779, 0.69108987, -0.9178355, 0.30081713, -0.2590106, 0.31052947, 1.4698861, 0.3586135)
-
-[connection signal="pressed" from="Control/HandHolder/Buttons/GetCardsButtonContainer/Fold" to="MultiplayerPlayer" method="SendFoldRequest"]
-[connection signal="pressed" from="Control/HandHolder/Buttons/PlayCardsButtonContainer/DeckDown" to="MultiplayerPlayer" method="PlayCard"]
 
 [editable path="PlayerVisuals"]
 [editable path="PlayerVisuals/templatePlayerRig"]
