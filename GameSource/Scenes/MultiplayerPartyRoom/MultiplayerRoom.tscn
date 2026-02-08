@@ -1006,3 +1006,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.89
 
 [connection signal="pressed" from="Control/HandHolder/Buttons/GetCardsButtonContainer/Fold" to="MultiplayerPlayer" method="SendFoldRequest"]
 [connection signal="pressed" from="Control/HandHolder/Buttons/PlayCardsButtonContainer/DeckDown" to="MultiplayerPlayer" method="PlayCard"]
+
+[editable path="PlayerVisuals"]
+[editable path="PlayerVisuals/templatePlayerRig"]

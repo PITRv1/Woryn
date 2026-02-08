@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cm8k4xqvydxap"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cm8k4xqvydxap"]
 
 [ext_resource type="Shader" uid="uid://bbmvc0tybgr8u" path="res://Assets/Shaders/spatialGlass.gdshader" id="1_uj1q8"]
 
