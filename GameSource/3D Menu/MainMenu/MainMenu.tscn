@@ -2623,18 +2623,6 @@ top_radius = 0.4
 bottom_radius = 0.4
 height = 0.8
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yhysv"]
-viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h20l"]
-resource_local_to_scene = true
-transparency = 1
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_yhysv")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ef0mh"]
-size = Vector3(2, 1, 0.08)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxej8"]
 transparency = 1
 shading_mode = 0
@@ -2643,67 +2631,73 @@ albedo_color = Color(0, 0, 0, 0)
 [sub_resource type="QuadMesh" id="QuadMesh_wjjlg"]
 material = SubResource("StandardMaterial3D_mxej8")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_a6j3j"]
-viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint/DiegeticUI/SubViewport")
+[sub_resource type="BoxShape3D" id="BoxShape3D_ef0mh"]
+size = Vector3(2, 1, 0.08)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgmiw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fxvwu"]
+viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI/MainMeshInstance3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bv4a5"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_a6j3j")
+albedo_texture = SubResource("ViewportTexture_fxvwu")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ym0o4"]
-size = Vector2(0.875, 1)
+size = Vector2(2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxvwu"]
 size = Vector3(2, 1, 0.08)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1h20l"]
-viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/QuitPoint/DiegeticUI/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_ef0mh"]
+viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint/DiegeticUI/SettingsMeshInstance3D/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcx4x"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxvwu"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_1h20l")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ef0mh"]
-size = Vector2(0.5, 0.5)
+albedo_texture = SubResource("ViewportTexture_ef0mh")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv4a5"]
 size = Vector3(2, 1, 0.08)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4dtra"]
-viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/SinglePoint/DiegeticUI/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_bv4a5"]
+viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/QuitPoint/DiegeticUI/QuitMeshInstance3D/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pces8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3caok"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_4dtra")
+albedo_texture = SubResource("ViewportTexture_bv4a5")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_fxvwu"]
-size = Vector2(1.085, 1)
+[sub_resource type="ViewportTexture" id="ViewportTexture_u4fps"]
+viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/SinglePoint/DiegeticUI/SingleMeshInstance3D/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fgmiw"]
-viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/CreditsPoint/DiegeticUI/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbs77"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhysv"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_fgmiw")
+albedo_texture = SubResource("ViewportTexture_u4fps")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ohwkf"]
-viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_3caok"]
+viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/CreditsPoint/DiegeticUI/CreditsMeshInstance3D/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xi614"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h20l"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_ohwkf")
+albedo_texture = SubResource("ViewportTexture_3caok")
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_aehye"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yhysv"]
+viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI/CreditsMeshInstance3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dtra"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_yhysv")
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_yhysv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctpc2"]
 transparency = 1
@@ -2799,7 +2793,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenuCam:current")
+tracks/7/path = NodePath("MovingElements/Cameras/CameraController/MainMenuCam:current")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -2811,7 +2805,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenuCam/MeshInstance3D:mesh:material:albedo_color")
+tracks/8/path = NodePath("MovingElements/Cameras/CameraController/MainMenuCam/MeshInstance3D:mesh:material:albedo_color")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -2908,7 +2902,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenuCam:current")
+tracks/6/path = NodePath("MovingElements/Cameras/CameraController/MainMenuCam:current")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -2920,7 +2914,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenuCam/MeshInstance3D:mesh:material:albedo_color")
+tracks/7/path = NodePath("MovingElements/Cameras/CameraController/MainMenuCam/MeshInstance3D:mesh:material:albedo_color")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -5392,9 +5386,17 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 149.
 
 [node name="CameraController" type="Node" parent="MovingElements/Cameras" unique_id=89374239 node_paths=PackedStringArray("animatedCamera", "mainMenuUi", "focusPoints")]
 script = ExtResource("34_pkg1t")
-animatedCamera = NodePath("CameraFocusPoints/MainPoint/MainMenuCam")
+animatedCamera = NodePath("MainMenuCam")
 mainMenuUi = NodePath("../../../MainUI")
 focusPoints = [NodePath("CameraFocusPoints/MainPoint"), NodePath("CameraFocusPoints/SettingsPoint"), NodePath("CameraFocusPoints/QuitPoint"), NodePath("CameraFocusPoints/SinglePoint"), NodePath("CameraFocusPoints/CreditsPoint"), NodePath("CameraFocusPoints/MultiPoint")]
+
+[node name="MainMenuCam" type="Camera3D" parent="MovingElements/Cameras/CameraController" unique_id=52640180]
+transform = Transform3D(1, 0, 0, 0, 0.98388505, -0.17880222, 0, 0.17880222, 0.98388505, 140.26405, 2.3798974, -34.304573)
+fov = 65.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MovingElements/Cameras/CameraController/MainMenuCam" unique_id=865004464]
+transform = Transform3D(1, -5.1781496e-16, 0, 1.2585419e-15, 1, 2.7755576e-17, 0, 0, 1, -0.03552109, 0, -0.22886276)
+mesh = SubResource("QuadMesh_wjjlg")
 
 [node name="CameraFocusPoints" type="Node3D" parent="MovingElements/Cameras/CameraController" unique_id=1690959638]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.26405, 2.6648974, -30.045973)
@@ -5402,109 +5404,140 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.26405, 2.6648974, -30.045
 [node name="MainPoint" type="Marker3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints" unique_id=1941606375]
 transform = Transform3D(1, 0, 0, 0, 0.98388505, -0.17880222, 0, 0.17880222, 0.98388505, 0, -0.2850001, -4.2586)
 
-[node name="MainMenu3DUI" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint" unique_id=1556553460 instance=ExtResource("43_xspun")]
+[node name="MainMenu3DUI" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint" unique_id=1556553460 node_paths=PackedStringArray("meshInstance", "subViewport") instance=ExtResource("43_xspun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3624115, -1.9942207)
+meshInstance = NodePath("MainMeshInstance3D")
+subViewport = NodePath("MainMeshInstance3D/SubViewport")
 
-[node name="Mesh" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI" index="0"]
-material_override = SubResource("StandardMaterial3D_1h20l")
-
-[node name="CollisionShape3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI/Area" index="0"]
+[node name="CollisionShape3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI/Area" parent_id_path=PackedInt32Array(1556553460, 1730531719) index="0" unique_id=67754351]
 shape = SubResource("BoxShape3D_ef0mh")
 
-[node name="SubViewport" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI" index="2"]
-size = Vector2i(1050, 512)
-size_2d_override = Vector2i(1055, 375)
+[node name="MainMeshInstance3D" type="MeshInstance3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI" unique_id=1176858432]
+transform = Transform3D(1, 0, 0, 0, -4.4703484e-08, -1, 0, 1, -4.4703484e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_bv4a5")
+mesh = SubResource("PlaneMesh_ym0o4")
 
-[node name="MainMenu" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI/SubViewport" index="0" unique_id=680029106 node_paths=PackedStringArray("mainUI") instance=ExtResource("44_u6m4i")]
-mainUI = NodePath("../../../../../../../../MainUI")
+[node name="SubViewport" type="SubViewport" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI/MainMeshInstance3D" unique_id=224085421]
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(936, 512)
+size_2d_override = Vector2i(951, 440)
 
-[node name="MainMenuCam" type="Camera3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint" unique_id=52640180]
-fov = 65.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenuCam" unique_id=865004464]
-transform = Transform3D(1, -5.1781496e-16, 0, 1.2585419e-15, 1, 2.7755576e-17, 0, 0, 1, -0.03552109, 0, -0.22886276)
-mesh = SubResource("QuadMesh_wjjlg")
+[node name="MainMenu" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI/MainMeshInstance3D/SubViewport" unique_id=1260616562 node_paths=PackedStringArray("mainUI") instance=ExtResource("44_u6m4i")]
+mainUI = NodePath("../../../../../../../../../MainUI")
 
 [node name="SettingsPoint" type="Marker3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints" unique_id=181983306]
 transform = Transform3D(-4.371139e-08, -0.8890412, 0.4578274, 0, 0.4578274, 0.8890412, -1, 3.886122e-08, -2.001227e-08, -4.3485565, 0.22076988, -10.136965)
 
-[node name="DiegeticUI" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint" unique_id=896090145 instance=ExtResource("43_xspun")]
+[node name="DiegeticUI" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint" unique_id=896090145 node_paths=PackedStringArray("meshInstance", "subViewport") instance=ExtResource("43_xspun")]
 transform = Transform3D(1, 4.8470703e-09, 2.0532553e-08, -1.3899484e-08, 0.8835286, 0.4683769, -1.5870835e-08, -0.4683769, 0.8835286, 0, -0.044273376, -0.87615585)
+meshInstance = NodePath("SettingsMeshInstance3D")
+subViewport = NodePath("SettingsMeshInstance3D/SubViewport")
 
-[node name="Mesh" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint/DiegeticUI" index="0"]
-material_override = SubResource("StandardMaterial3D_fgmiw")
-mesh = SubResource("PlaneMesh_ym0o4")
-
-[node name="CollisionShape3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint/DiegeticUI/Area" index="0"]
+[node name="CollisionShape3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint/DiegeticUI/Area" parent_id_path=PackedInt32Array(896090145, 1730531719) index="0" unique_id=67754351]
 shape = SubResource("BoxShape3D_fxvwu")
 
-[node name="Settings" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint/DiegeticUI/SubViewport" index="0" unique_id=1230986765 node_paths=PackedStringArray("mainUI") instance=ExtResource("46_ym0o4")]
-mainUI = NodePath("../../../../../../../../MainUI")
+[node name="SettingsMeshInstance3D" type="MeshInstance3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint/DiegeticUI" unique_id=1601181178]
+transform = Transform3D(1, 0, 0, 0, -4.4703484e-08, -1, 0, 1, -4.4703484e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_fxvwu")
+mesh = SubResource("PlaneMesh_ym0o4")
+
+[node name="SubViewport" type="SubViewport" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint/DiegeticUI/SettingsMeshInstance3D" unique_id=663968654]
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(936, 512)
+size_2d_override = Vector2i(951, 440)
+
+[node name="Settings" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint/DiegeticUI/SettingsMeshInstance3D/SubViewport" unique_id=895228263 node_paths=PackedStringArray("mainUI") instance=ExtResource("46_ym0o4")]
+mainUI = NodePath("../../../../../../../../../MainUI")
 
 [node name="QuitPoint" type="Marker3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints" unique_id=1597715580]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -1.6479931)
 
-[node name="DiegeticUI" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/QuitPoint" unique_id=554510477 instance=ExtResource("43_xspun")]
+[node name="DiegeticUI" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/QuitPoint" unique_id=554510477 node_paths=PackedStringArray("meshInstance", "subViewport") instance=ExtResource("43_xspun")]
 transform = Transform3D(0.9994048, 0, 0.03449811, 0, 1, 0, -0.03449811, 0, 0.9994048, 0, -0.2034285, -0.8959389)
+meshInstance = NodePath("QuitMeshInstance3D")
+subViewport = NodePath("QuitMeshInstance3D/SubViewport")
 
-[node name="Mesh" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/QuitPoint/DiegeticUI" index="0"]
-material_override = SubResource("StandardMaterial3D_tcx4x")
-mesh = SubResource("PlaneMesh_ef0mh")
-
-[node name="CollisionShape3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/QuitPoint/DiegeticUI/Area" index="0"]
+[node name="CollisionShape3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/QuitPoint/DiegeticUI/Area" parent_id_path=PackedInt32Array(554510477, 1730531719) index="0" unique_id=67754351]
 shape = SubResource("BoxShape3D_bv4a5")
 
-[node name="SubViewport" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/QuitPoint/DiegeticUI" index="2"]
-size = Vector2i(312, 267)
+[node name="QuitMeshInstance3D" type="MeshInstance3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/QuitPoint/DiegeticUI" unique_id=879358135]
+transform = Transform3D(1, 0, 0, 0, -4.4703484e-08, -1, 0, 1, -4.4703484e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_3caok")
+mesh = SubResource("PlaneMesh_ym0o4")
 
-[node name="QuitWindow" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/QuitPoint/DiegeticUI/SubViewport" index="0" unique_id=896428952 node_paths=PackedStringArray("mainUI") instance=ExtResource("47_ef0mh")]
-mainUI = NodePath("../../../../../../../../MainUI")
+[node name="SubViewport" type="SubViewport" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/QuitPoint/DiegeticUI/QuitMeshInstance3D" unique_id=2120731899]
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(960, 512)
+
+[node name="QuitWindow" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/QuitPoint/DiegeticUI/QuitMeshInstance3D/SubViewport" unique_id=1623402749 node_paths=PackedStringArray("mainUI") instance=ExtResource("47_ef0mh")]
+mainUI = NodePath("../../../../../../../../../MainUI")
 
 [node name="SinglePoint" type="Marker3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints" unique_id=1682524930]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.981674, 0, -10.661562)
 
-[node name="DiegeticUI" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SinglePoint" unique_id=685394669 instance=ExtResource("43_xspun")]
+[node name="DiegeticUI" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SinglePoint" unique_id=685394669 node_paths=PackedStringArray("meshInstance", "subViewport") instance=ExtResource("43_xspun")]
 transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0, -0.76130676)
+meshInstance = NodePath("SingleMeshInstance3D")
+subViewport = NodePath("SingleMeshInstance3D/SubViewport")
 
-[node name="Mesh" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SinglePoint/DiegeticUI" index="0"]
-transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_pces8")
-mesh = SubResource("PlaneMesh_fxvwu")
+[node name="SingleMeshInstance3D" type="MeshInstance3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SinglePoint/DiegeticUI" unique_id=1799003538]
+transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_yhysv")
+mesh = SubResource("PlaneMesh_ym0o4")
 
-[node name="SinglePlayer" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SinglePoint/DiegeticUI/SubViewport" index="0" unique_id=2028589037 node_paths=PackedStringArray("mainUI") instance=ExtResource("48_fxvwu")]
-mainUI = NodePath("../../../../../../../../MainUI")
+[node name="SubViewport" type="SubViewport" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SinglePoint/DiegeticUI/SingleMeshInstance3D" unique_id=78980363]
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(960, 512)
+
+[node name="SinglePlayer" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SinglePoint/DiegeticUI/SingleMeshInstance3D/SubViewport" unique_id=1903004057 node_paths=PackedStringArray("mainUI") instance=ExtResource("48_fxvwu")]
+mainUI = NodePath("../../../../../../../../../MainUI")
 
 [node name="CreditsPoint" type="Marker3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints" unique_id=931771024]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.289459, 5.1801805, -7.9596653)
 
-[node name="DiegeticUI" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/CreditsPoint" unique_id=1025026512 instance=ExtResource("43_xspun")]
+[node name="DiegeticUI" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/CreditsPoint" unique_id=1025026512 node_paths=PackedStringArray("meshInstance", "subViewport") instance=ExtResource("43_xspun")]
 transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0, -0.76130676)
+meshInstance = NodePath("CreditsMeshInstance3D")
+subViewport = NodePath("CreditsMeshInstance3D/SubViewport")
 
-[node name="Mesh" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/CreditsPoint/DiegeticUI" index="0"]
-transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_xbs77")
-mesh = SubResource("PlaneMesh_fxvwu")
+[node name="CreditsMeshInstance3D" type="MeshInstance3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/CreditsPoint/DiegeticUI" unique_id=1267781209]
+transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_1h20l")
+mesh = SubResource("PlaneMesh_ym0o4")
 
-[node name="SubViewport" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/CreditsPoint/DiegeticUI" index="2"]
-size = Vector2i(822, 637)
+[node name="SubViewport" type="SubViewport" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/CreditsPoint/DiegeticUI/CreditsMeshInstance3D" unique_id=483328924]
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(960, 512)
 
-[node name="Credits" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/CreditsPoint/DiegeticUI/SubViewport" index="0" unique_id=1712206697 node_paths=PackedStringArray("mainUI") instance=ExtResource("49_bv4a5")]
-mainUI = NodePath("../../../../../../../../MainUI")
+[node name="Credits" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/CreditsPoint/DiegeticUI/CreditsMeshInstance3D/SubViewport" unique_id=726890353 node_paths=PackedStringArray("mainUI") instance=ExtResource("49_bv4a5")]
+mainUI = NodePath("../../../../../../../../../MainUI")
 
 [node name="MultiPoint" type="Marker3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints" unique_id=108967279]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.618872)
 
-[node name="DiegeticUI" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint" unique_id=844484915 instance=ExtResource("43_xspun")]
+[node name="DiegeticUI" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint" unique_id=844484915 node_paths=PackedStringArray("meshInstance", "subViewport") instance=ExtResource("43_xspun")]
 transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0, -1.2378502)
+meshInstance = NodePath("CreditsMeshInstance3D")
+subViewport = NodePath("CreditsMeshInstance3D/SubViewport")
 
-[node name="Mesh" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI" index="0"]
-transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_xi614")
-mesh = SubResource("PlaneMesh_fxvwu")
+[node name="CreditsMeshInstance3D" type="MeshInstance3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI" unique_id=1042433318]
+transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_4dtra")
+mesh = SubResource("PlaneMesh_ym0o4")
 
-[node name="Multiplayer" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI/SubViewport" index="0" unique_id=1664163400 node_paths=PackedStringArray("mainUI") instance=ExtResource("50_u4fps")]
-mainUI = NodePath("../../../../../../../../MainUI")
-optionGroup = SubResource("ButtonGroup_aehye")
+[node name="SubViewport" type="SubViewport" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI/CreditsMeshInstance3D" unique_id=327876802]
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(960, 512)
+
+[node name="Multiplayer" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI/CreditsMeshInstance3D/SubViewport" unique_id=180983133 node_paths=PackedStringArray("mainUI") instance=ExtResource("50_u4fps")]
+mainUI = NodePath("../../../../../../../../../MainUI")
+optionGroup = SubResource("ButtonGroup_yhysv")
 
 [node name="IntroCam" type="Camera3D" parent="MovingElements/Cameras" unique_id=705683571]
 transform = Transform3D(-1, -2.4683073e-08, -8.386589e-08, 0, 0.959314, -0.28234145, 8.742278e-08, -0.28234145, -0.959314, -0.315, 1.1, -18.965)

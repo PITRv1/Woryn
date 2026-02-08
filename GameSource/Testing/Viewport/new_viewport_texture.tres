@@ -1,0 +1,4 @@
+[gd_resource type="ViewportTexture" format=3 uid="uid://dlwwhecgc8q31"]
+
+[resource]
+viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI/MainSubViewport")

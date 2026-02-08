@@ -1004,6 +1004,14 @@ gapAmount = 0.25
 [node name="PlayerVisuals" parent="." unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8922863, -0.99518967, 0)
 
+[node name="Camera3D" parent="PlayerVisuals" index="0" unique_id=2049758961]
+MaxYawDeg = 45.0
+MaxPitchDeg = 30.0
+RotationSpeed = 5.0
+
+[node name="BoneAttachment3D" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1198783362) index="25" unique_id=396461942]
+transform = Transform3D(-0.39478797, -0.6235659, 0.67476535, 0.041470766, 0.7215779, 0.69108987, -0.9178355, 0.30081713, -0.2590106, 0.31052947, 1.4698861, 0.3586135)
+
 [connection signal="pressed" from="Control/HandHolder/Buttons/GetCardsButtonContainer/Fold" to="MultiplayerPlayer" method="SendFoldRequest"]
 [connection signal="pressed" from="Control/HandHolder/Buttons/PlayCardsButtonContainer/DeckDown" to="MultiplayerPlayer" method="PlayCard"]
 
