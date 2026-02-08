@@ -38,7 +38,8 @@ public partial class Multiplayer : Control
         CurrentMenu = multiTypeMenu;
 
 		ipAddressInputClient.Text = ipAddressOnLocalNetwork;
-		ipAddressInputServer.Text = ipAddressOnLocalNetwork;
+		// ipAddressInputServer.Text = ipAddressOnLocalNetwork;
+		ipAddressInputServer.Text = "0.0.0.0";
     }
 
 	public void ChangeMenu(string option)
