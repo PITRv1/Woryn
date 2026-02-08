@@ -13,12 +13,16 @@ public partial class MultiplayerPlayerClass : Node
 	[Export] CardPlacementHandler modifCards;
 	[Export] PackedScene pointCardUI;
 	[Export] PackedScene modifierCardUI;
+	[Export] Node3D playerSeats;
+
+	[ExportGroup("Deprecated")]
 	[Export] Label maxPoints;
 	[Export] Label points;
 	[Export] Label throwDeckValue;
 	[Export] PackedScene shopScene;
-	[Export] Node3D playerSeats;
 	[Export] PackedScene buddy;
+
+	
 	public override void _Ready()
 	{
 		ID = Global.multiplayerClientGlobals._id;

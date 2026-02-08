@@ -2643,14 +2643,14 @@ albedo_color = Color(0, 0, 0, 0)
 [sub_resource type="QuadMesh" id="QuadMesh_wjjlg"]
 material = SubResource("StandardMaterial3D_mxej8")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_a6j3j"]
-viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint/DiegeticUI/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_4dtra"]
+viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgmiw"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_a6j3j")
+albedo_texture = SubResource("ViewportTexture_4dtra")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ym0o4"]
 size = Vector2(0.875, 1)
@@ -2658,14 +2658,14 @@ size = Vector2(0.875, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxvwu"]
 size = Vector3(2, 1, 0.08)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1h20l"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ohwkf"]
 viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/QuitPoint/DiegeticUI/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcx4x"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_1h20l")
+albedo_texture = SubResource("ViewportTexture_ohwkf")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ef0mh"]
 size = Vector2(0.5, 0.5)
@@ -2673,35 +2673,35 @@ size = Vector2(0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv4a5"]
 size = Vector3(2, 1, 0.08)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4dtra"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_uqjnw"]
 viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/SinglePoint/DiegeticUI/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pces8"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_4dtra")
+albedo_texture = SubResource("ViewportTexture_uqjnw")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fxvwu"]
 size = Vector2(1.085, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fgmiw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_q24wk"]
 viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/CreditsPoint/DiegeticUI/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbs77"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_fgmiw")
+albedo_texture = SubResource("ViewportTexture_q24wk")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ohwkf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_gws7n"]
 viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xi614"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_ohwkf")
+albedo_texture = SubResource("ViewportTexture_gws7n")
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_aehye"]
 

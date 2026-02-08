@@ -4,6 +4,8 @@ using System;
 public partial class CardPlacementHandler : Node3D
 {
 	[Export] public float gapAmount = -0.25f;
+	[Export] public bool curveCards = true;
+
 	public Godot.Collections.Array<Node3D> cardArray { get; private set; } = new();
 
 	public void AddCard(Node3D card)

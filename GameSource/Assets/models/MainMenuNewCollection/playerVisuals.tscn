@@ -98,7 +98,7 @@ bone_name = "hand.L"
 bone_idx = 10
 
 [node name="CardPlacementHandler" parent="templatePlayerRig/metarig/Skeleton3D/BoneAttachment3D" unique_id=2147236481 instance=ExtResource("4_f0xh7")]
-transform = Transform3D(0.05371742, -0.19906628, 0.97851306, 0.9985447, 0.0060026553, -0.053595886, 0.0047954023, 0.97996795, 0.19909921, 0.035566777, 0.10965037, 0.0013126135)
+transform = Transform3D(0.026858712, -0.09953313, 0.48925632, 0.49927232, 0.0030013828, -0.026797967, 0.0023976802, 0.48998383, 0.0995495, 0.019707052, 0.07854623, -0.0017185351)
 
 [node name="LeftArmTarget" type="Marker3D" parent="." unique_id=608260768]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7763238, 3.6747153, 0.8965336)
