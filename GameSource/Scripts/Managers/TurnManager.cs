@@ -7,7 +7,6 @@ using System.Linq;
 public partial class TurnManager : Node
 {
 	private int currentMaxValue = 0;
-	// private List<ModifierCard> modifierCardsPlayed;
 	private PointCardDeck pointCardDeck;
 	private int currentPlayer = 0;
 	private int lastPlayer = 0;
@@ -17,12 +16,11 @@ public partial class TurnManager : Node
 	private int ThrowDeckValue = 0;
 	private int roundDirection = 1;
 	private int skipAmount = 0;
-	// private bool RoundOver
 	public bool throwDeckPulled = false;
 	private Timer foldTimer;
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 		foldTimer = new Timer
 		{
 			WaitTime = 30,
@@ -32,8 +30,8 @@ public partial class TurnManager : Node
 		foldTimer.Timeout += () => FoldTurn();
 		AddChild(foldTimer);
 
-        Global.turnManagerInstance = this;
-    }
+		Global.turnManagerInstance = this;
+	}
 	public void Setup(List<int> playerIds)
 	{
 		foreach (int id in playerIds)
@@ -62,20 +60,12 @@ public partial class TurnManager : Node
 			DealCards(player);
 		}
 
-		foreach (int player in players.Keys)
+		SetupPacket turnInfoPacket = new SetupPacket
 		{
+			PlayerCount = playerCount
+		};
 
-			SetupPacket turnInfoPacket = new SetupPacket
-			{
-				PlayerCount = playerCount
-			};
-
-			Global.networkHandler._clientPeers.TryGetValue(player, out var peer);
-			if (peer != null)
-			{
-				turnInfoPacket.Send(peer);
-			}
-		}
+		BroadCast(turnInfoPacket);
 	}
 
 	public void AddToMultiplayerList(int id)
@@ -92,23 +82,7 @@ public partial class TurnManager : Node
 	private void GetRandomPlayer()
 	{
 		RandomNumberGenerator rng = new RandomNumberGenerator();
-		// currentPlayer = rng.RandiRange(0, playerCount - 1);
 	}
-
-	// public void SetPointCardValue(int value)
-	// {
-	// 	pointCardValue = value;
-	// }
-
-	// public void AddCardToModifierCards(ModifierCard card)
-	// {
-	// 	modifierCardsPlayed.Add(card);
-	// }
-
-	// public void RemoveFromModifierCards(ModifierCard card)
-	// {
-	// 	modifierCardsPlayed.Remove(card);
-	// }
 
 	private int CalculateCardValue(int value, ModifierCard[] cards)
 	{
@@ -116,7 +90,6 @@ public partial class TurnManager : Node
 		{
 			value = card.Calculate(value);
 		}
-
 		return value;
 	}
 
@@ -196,9 +169,6 @@ public partial class TurnManager : Node
 			GD.Print("NOT YOUR TURN");
 			return;
 		}
-
-		
-
 	}
 
 	public void PickUpCards(int id)
@@ -233,29 +203,6 @@ public partial class TurnManager : Node
 			packet.Send(peer);
 	}
 
-	private bool DoesPlayerOwnModifiers(ModifierCard[] cards)
-	{
-		List<MODIFIER_TYPES> types = ModifierCardTypeConverter.ClassListToTypeList(players[currentPlayer].playerClass.ModifCardList);
-		foreach (ModifierCard card in cards)
-		{
-			if (!types.Contains(card.ModifierType))
-				return false;
-		}
-		return true;
-	}
-
-	private List<int> GetCardListValues(List<PointCard> cards)
-	{
-		List<int> values = new List<int>();
-
-		foreach (PointCard card in cards)
-		{
-			values.Add(card.PointValue);
-		}
-
-		return values;
-	}
-
 	private bool DoPlayersHaveCards()
 	{
 		foreach (MultiplayerPlayerClass player in players.Values)
@@ -282,14 +229,22 @@ public partial class TurnManager : Node
 		}
 	}
 
-	private void StartNewTurn(int pointCardIndex, byte[] modifierCardIndexes, List<ModifierCard> usedCards, int value, bool fold)
+	private bool CheckForEndGame(int value)
 	{
-		lastPlayer = currentPlayer;
+		if (!DoPlayersHaveCards())
+		{
+			ThrowDeckValue += value;
+			players[lastPlayer].playerClass.Points += ThrowDeckValue;
+			ThrowDeckValue = 0;
+			currentMaxValue = 0;
+			GoToShopScene();
+			return true;
+		}
+		return false;
+	}
 
-		foreach (ModifierCard card in usedCards)
-			if (!card.IsCardModifier)
-				DealWithModifiers(card);
-
+	private void SwitchToNextPlayer()
+	{
 		do
 		{
 			currentPlayer += roundDirection + (roundDirection * skipAmount);
@@ -302,31 +257,28 @@ public partial class TurnManager : Node
 			if (currentPlayer < 0)
 				currentPlayer = playerCount - 1;
 
-		} while(players[currentPlayer].playerClass.PointCardList.Count == 0 && DoPlayersHaveCards());
+		} while(players[currentPlayer].playerClass.PointCardList.Count == 0);
+	}
 
-		if (!DoPlayersHaveCards())
-		{
-			ThrowDeckValue += value;
-			players[lastPlayer].playerClass.Points += ThrowDeckValue;
-			ThrowDeckValue = 0;
-			currentMaxValue = 0;
-			GoToShopScene();
+	private void StartNewTurn(int pointCardIndex, byte[] modifierCardIndexes, List<ModifierCard> usedCards, int value)
+	{
+		lastPlayer = currentPlayer;
+
+		foreach (ModifierCard card in usedCards)
+			if (!card.IsCardModifier)
+				DealWithModifiers(card);
+
+		if (CheckForEndGame(value))
 			return;
-		}	
 
-		if (fold)
-		{
-		}
-		else
-		{
-			throwDeckPulled=false;
-			ThrowDeckValue += value;
-			currentMaxValue = value;
-		}
+		SwitchToNextPlayer();
+
+		throwDeckPulled = false;
+		ThrowDeckValue += value;
+		currentMaxValue = value;
 
 		foreach (int player in players.Keys)
 		{
-
 			TurnInfoPacket packet = new TurnInfoPacket
 			{
 				LastPlayer = lastPlayer,
@@ -449,14 +401,13 @@ public partial class TurnManager : Node
 
 		PickUpCards(currentPlayer);
 
-		StartNewTurn(packet.PointCardIndex, packet.ModifCardIndexes, usedCards, turnValue, false);
+		StartNewTurn(packet.PointCardIndex, packet.ModifCardIndexes, usedCards, turnValue);
 	}
 
 	private void SendOutNewDecks()
 	{
 		foreach (int player in players.Keys)
 		{
-
 			DeckSwap packet = new DeckSwap
 			{
 				PointCards = players[player].playerClass.PointCardList.ToArray(),
@@ -491,7 +442,15 @@ public partial class TurnManager : Node
 				break;
 
 		}
-
 	}
 
+	private void BroadCast(PacketInfo packet)
+	{
+		foreach (int player in players.Keys)
+		{
+			Global.networkHandler._clientPeers.TryGetValue(player, out var peer);
+			if (peer != null)
+				packet.Send(peer);
+		}
+	}
 }
