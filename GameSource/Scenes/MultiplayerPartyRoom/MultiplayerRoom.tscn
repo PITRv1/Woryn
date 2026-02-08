@@ -864,31 +864,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.368, 1.253, 0)
 [node name="PointCards" parent="." unique_id=2052042597 instance=ExtResource("31_k5rf2")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 1.3453918)
 
-[node name="PointCard3D" parent="PointCards" unique_id=1527816531 instance=ExtResource("23_nkcx5")]
-
-[node name="PointCard3D2" parent="PointCards" unique_id=1831898310 instance=ExtResource("23_nkcx5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23446846, 0, 0)
-
-[node name="PointCard3D3" parent="PointCards" unique_id=517699627 instance=ExtResource("23_nkcx5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46485442, 0, 0)
-
-[node name="PointCard3D4" parent="PointCards" unique_id=951847080 instance=ExtResource("23_nkcx5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7081604, 0, 0)
-
 [node name="ModifierCards" parent="." unique_id=731615950 instance=ExtResource("31_k5rf2")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -1.345)
 gapAmount = 0.25
-
-[node name="ModifierCard3D" parent="ModifierCards" unique_id=1327020224 instance=ExtResource("24_k5rf2")]
-
-[node name="ModifierCard3D2" parent="ModifierCards" unique_id=2091806130 instance=ExtResource("24_k5rf2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22397733, 0, 0)
-
-[node name="ModifierCard3D3" parent="ModifierCards" unique_id=2013474948 instance=ExtResource("24_k5rf2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48273754, 0, 0)
-
-[node name="ModifierCard3D4" parent="ModifierCards" unique_id=900990326 instance=ExtResource("24_k5rf2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72010326, 0, 0)
 
 [node name="PlayerVisuals" parent="." unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8922863, -0.99518967, 0)
@@ -918,6 +896,32 @@ transform = Transform3D(2.5, 0, 1.4210855e-14, 0, 2.5, 0, -1.4210855e-14, 0, 2.5
 
 [node name="Deck3D" parent="." unique_id=75278921 instance=ExtResource("26_hdoun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2186053, 0)
+
+[node name="CardsForTesting" type="Node" parent="." unique_id=1185551244]
+
+[node name="ModifierCard3D" parent="CardsForTesting" unique_id=1327020224 instance=ExtResource("24_k5rf2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -1.345)
+
+[node name="ModifierCard3D2" parent="CardsForTesting" unique_id=2091806130 instance=ExtResource("24_k5rf2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -1.1210227)
+
+[node name="ModifierCard3D3" parent="CardsForTesting" unique_id=2013474948 instance=ExtResource("24_k5rf2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -0.8622625)
+
+[node name="ModifierCard3D4" parent="CardsForTesting" unique_id=900990326 instance=ExtResource("24_k5rf2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -0.62489676)
+
+[node name="PointCard3D" parent="CardsForTesting" unique_id=1527816531 instance=ExtResource("23_nkcx5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 1.3453918)
+
+[node name="PointCard3D2" parent="CardsForTesting" unique_id=1831898310 instance=ExtResource("23_nkcx5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 1.1109233)
+
+[node name="PointCard3D3" parent="CardsForTesting" unique_id=517699627 instance=ExtResource("23_nkcx5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 0.88053733)
+
+[node name="PointCard3D4" parent="CardsForTesting" unique_id=951847080 instance=ExtResource("23_nkcx5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 0.63723135)
 
 [editable path="PlayerVisuals"]
 [editable path="PlayerVisuals/templatePlayerRig"]
