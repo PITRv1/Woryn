@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://c2v6ks7c7q5ef" path="res://Assets/UI/Fonts/FantaisieArtistique.ttf" id="1_3mlda"]
 [ext_resource type="Script" uid="uid://dch8wccnu36em" path="res://Assets/UI/Cards/PointCard3D/PointCard3d.cs" id="1_5plsr"]
-[ext_resource type="ArrayMesh" uid="uid://c1nyst51agnxd" path="res://Assets/models/MainMenuNewCollection/cardMesh.tres" id="2_shad3"]
+[ext_resource type="ArrayMesh" uid="uid://dm6f1qws7y5q7" path="res://Assets/models/MainMenuNewCollection/cardMesh.tres" id="2_shad3"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_xbnts"]
 size = Vector2(0.21, 0.31)
@@ -14,9 +14,10 @@ vertex_color_use_as_albedo = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_3mlda"]
 size = Vector3(0.2, 0.3, 0.01171875)
 
-[node name="PointCard3D" type="Node3D" unique_id=1527816531 node_paths=PackedStringArray("label")]
+[node name="PointCard3D" type="Node3D" unique_id=1527816531 node_paths=PackedStringArray("label", "outlineMesh")]
 script = ExtResource("1_5plsr")
 label = NodePath("Label3D")
+outlineMesh = NodePath("Outline")
 
 [node name="Background" type="MeshInstance3D" parent="." unique_id=1148260791]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.1, 0, 0)
@@ -41,3 +42,6 @@ font_size = 63
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=439986011]
 shape = SubResource("BoxShape3D_3mlda")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=34032053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.39857394)
