@@ -74,7 +74,7 @@ public partial class Multiplayer : Control
 	public void HostGame()
 	{
 		Global.networkHandler.StartServer(ipAddressInputServer.Text);
-        Global.networkHandler.StartClient("localhost");
+        Global.networkHandler.StartClient("127.0.0.1");
 
 		ChangeMenu("player");
 	}
