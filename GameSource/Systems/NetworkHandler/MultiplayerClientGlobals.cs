@@ -42,6 +42,8 @@ public partial class MultiplayerClientGlobals : Node
     {
         PACKET_TYPES packetType =(PACKET_TYPES)data[0];
 
+        GD.Print("PACKET CLIENT: " + packetType);
+
         switch (packetType)
         {
             case PACKET_TYPES.ID_ASSIGNMENT:
@@ -54,10 +56,13 @@ public partial class MultiplayerClientGlobals : Node
                 EmitSignal("NewPlayer", data);
                 break;
             case PACKET_TYPES.TURN_INFO:
+                GD.Print("TurnInfo");
                 EmitSignal("HandleTurnInfo", data);
                 break;
             case PACKET_TYPES.PICK_UP_CARD_ANSWER:
+                GD.Print("Pre Pickup answer");
                 EmitSignal("HandlePickUpCardAnswer", data);
+                GD.Print("Post Pickup answer");
                 break;
             case PACKET_TYPES.CURSOR_UPDATE:
                 EmitSignal("CursonUpdate", data);

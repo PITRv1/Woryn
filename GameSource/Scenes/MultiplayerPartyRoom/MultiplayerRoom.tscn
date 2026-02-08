@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ca0pr2up27plw" path="res://Assets/Shaders/pixelization_shader.gd" id="1_nkcx5"]
 [ext_resource type="Script" uid="uid://dqlwg2rtn14oa" path="res://Assets/Shaders/quantization_shader.gd" id="2_k5rf2"]
+[ext_resource type="PackedScene" uid="uid://dr2b8kaijlck8" path="res://Assets/Etc/Buddy.tscn" id="4_5lnsn"]
 [ext_resource type="Script" uid="uid://cwu5cf7a0awcd" path="res://addons/func_godot/src/map/func_godot_map.gd" id="4_ck38g"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="5_6mnht"]
 [ext_resource type="Material" uid="uid://c87l8wnlf0k07" path="res://Assets/textures/world/carpetTile.tres" id="6_bkq5j"]
@@ -538,7 +539,8 @@ pointCards = NodePath("../PointCards")
 modifCards = NodePath("../ModifierCards")
 pointCardUI = ExtResource("23_nkcx5")
 modifierCardUI = ExtResource("24_k5rf2")
-playerSeats = []
+playerSeats = [NodePath("../3DWorld/PlayerSeats/Seat1"), NodePath("../3DWorld/PlayerSeats/Seat2"), NodePath("../3DWorld/PlayerSeats/Seat3")]
+buddy = ExtResource("4_5lnsn")
 
 [node name="3DWorld" type="Node3D" parent="." unique_id=416216869]
 
@@ -896,7 +898,7 @@ MaxYawDeg = 45.0
 MaxPitchDeg = 30.0
 RotationSpeed = 5.0
 
-[node name="BoneAttachment3D" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1198783362) index="25" unique_id=396461942]
+[node name="BoneAttachment3D" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1857449162) index="25" unique_id=396461942]
 transform = Transform3D(-0.752279, -0.13185161, 0.6455167, 0.6450894, 0.051755235, 0.76235205, -0.13392583, 0.9899172, 0.046121653, 0.38432238, 1.2584677, 0.42813456)
 
 [node name="LeftArmTarget" parent="PlayerVisuals" index="2" unique_id=608260768]

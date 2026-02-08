@@ -42,6 +42,8 @@ public partial class MultiplayerServerGlobals : Node
 
     private void OnServerPacket(int peerId, byte[] data)
     {
+        GD.Print("PACKET SERVER: " + (PACKET_TYPES)data[0]);
+
         switch ((PACKET_TYPES)data[0])
         {
             case PACKET_TYPES.START_GAME:
@@ -55,7 +57,10 @@ public partial class MultiplayerServerGlobals : Node
                 GD.Print(_readyPlayers.Count + " --- Clients --- " + _peerIds.Count);
                 _readyPlayers.Add(peerId);
                 if (_readyPlayers.Count == _peerIds.Count)
+                {
                     Global.turnManagerInstance.PrepareGame();
+                    GD.Print("Game Prepared");
+                }
                 break;
             case PACKET_TYPES.TURN_DATA:
                 GD.PushError("Dani has no idea how we should handle this kind of packet.");

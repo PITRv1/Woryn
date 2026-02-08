@@ -150,6 +150,7 @@ public class PlayerClass
 
     public void ProccessPickUpAnswer(byte[] data)
     {
+        GD.Print("man udk");
         PickUpCardAnswer packet = PickUpCardAnswer.CreateFromData(data);
         // if (packet.PointCards.Length == 0) return;
 

@@ -57,6 +57,7 @@ public partial class TurnManager : Node
 
 		foreach (int player in players.Keys)
 		{
+			GD.Print("Player: " + player);
 			DealCards(player);
 		}
 
@@ -65,7 +66,11 @@ public partial class TurnManager : Node
 			PlayerCount = playerCount
 		};
 
+		GD.Print("WALLAHI");
+
 		BroadCast(turnInfoPacket);
+
+		GD.Print("WALLAHI PART 2");
 	}
 
 	public void AddToMultiplayerList(int id)
@@ -74,6 +79,10 @@ public partial class TurnManager : Node
 		{
 			ID = id,
 		};
+		
+		// Initialize playerClass!
+		newPlayer.playerClass = new PlayerClass();
+		
 		if (players == null)
 			players = new Dictionary<int, MultiplayerPlayerClass>();
 		players.Add(id, newPlayer);
@@ -99,6 +108,24 @@ public partial class TurnManager : Node
 		PointCard[] pointCards;
 		ModifierCard[] modifierCards;
 
+		if (!players.ContainsKey(id))
+		{
+			GD.PrintErr($"Player {id} not found in players dictionary!");
+			return;
+		}
+		
+		if (playerClass == null)
+		{
+			GD.PrintErr($"PlayerClass is null for player {id}!");
+			return;
+		}
+		
+		if (playerClass.PointCardList == null || playerClass.ModifCardList == null)
+		{
+			GD.PrintErr($"Card lists are null for player {id}!");
+			return;
+		}
+
 		pointCardDeck.PrintCards();
 
 		pointCards = pointCardDeck.PullCards(playerClass.PointCardList.Count);
@@ -115,10 +142,17 @@ public partial class TurnManager : Node
 
 		Global.networkHandler._clientPeers.TryGetValue(id, out var peer);
 
+		GD.Print("DealCards");
+
+		GD.Print($"Sending PickUpCardAnswer to player {id}, peer exists: {peer != null}");
+
 		if (peer != null)
 		{
 			packet.Send(peer);
 		}
+
+		GD.Print("DealCards 2");
+
 	}
 
 	public void CheckFoldRequest(byte[] data)
@@ -247,6 +281,7 @@ public partial class TurnManager : Node
 	{
 		do
 		{
+			GD.Print("yay");
 			currentPlayer += roundDirection + (roundDirection * skipAmount);
 
 			skipAmount = 0;

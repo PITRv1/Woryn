@@ -32,6 +32,7 @@ public partial class MultiplayerPlayerClass : Node
 		Global.multiplayerClientGlobals.HandleDeckSwap += Test;
 
 		Global.multiplayerPlayerClass = this;
+		ClientReady();
 	}
 
 	public void Test(byte[] data)
@@ -41,8 +42,9 @@ public partial class MultiplayerPlayerClass : Node
 
 	private void Setup(byte[] data)
 	{
+		GD.Print("WHZ");
 		SetupPacket packet = SetupPacket.CreateFromData(data);
-		for (int i = 0; i < packet.PlayerCount - 1; i++)
+		for (int i = 0; i < packet.PlayerCount; i++)
 		{
 			Node3D bud = buddy.Instantiate() as Node3D;
 			playerSeats[i].AddChild(bud);
