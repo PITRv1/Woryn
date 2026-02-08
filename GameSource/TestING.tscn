@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://snf07d46qqgx"]
+
+[ext_resource type="PackedScene" uid="uid://bxs0hn6508qbt" path="res://Scenes/MultiplayerPlayer/multiplayer_player.tscn" id="1_ydoub"]
+
+[node name="Node2D" type="Node2D" unique_id=138579765]
+
+[node name="MultiplayerPlayer" parent="." unique_id=1119381768 node_paths=PackedStringArray("playerSeats") instance=ExtResource("1_ydoub")]
+playerSeats = []

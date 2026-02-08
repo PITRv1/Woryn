@@ -18,7 +18,7 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface
 		}
 		set
 		{
-			PointCard = _pointCard;
+			_pointCard = value;
 
 			GD.Print($"Card rarity: {_pointCard.CardRarity}");
 

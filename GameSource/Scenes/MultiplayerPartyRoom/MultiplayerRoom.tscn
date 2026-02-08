@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://8psm5hemkmpu" path="res://Assets/UI/InteractableObjects/Cards/ModifierCard3D/ModifierCard3D.tscn" id="24_k5rf2"]
 [ext_resource type="PackedScene" uid="uid://bxs0hn6508qbt" path="res://Scenes/MultiplayerPlayer/multiplayer_player.tscn" id="26_5lnsn"]
 [ext_resource type="PackedScene" uid="uid://cyyxdvmulcre5" path="res://Assets/UI/InteractableObjects/Decks/Deck3d.tscn" id="26_hdoun"]
+[ext_resource type="PackedScene" uid="uid://dr2b8kaijlck8" path="res://Assets/Etc/Buddy.tscn" id="27_5lnsn"]
 [ext_resource type="PackedScene" uid="uid://c4mfb80u3jme5" path="res://Assets/models/MainMenuNewCollection/playerVisuals.tscn" id="31_1ab4g"]
 [ext_resource type="PackedScene" uid="uid://bs7f2puxk38eq" path="res://Systems/CardPlacementHandler/CardPlacementHandler.tscn" id="31_k5rf2"]
 
@@ -887,34 +888,13 @@ transform = Transform3D(2.5, 0, 1.4210855e-14, 0, 2.5, 0, -1.4210855e-14, 0, 2.5
 [node name="Deck3D" parent="." unique_id=75278921 instance=ExtResource("26_hdoun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2186053, 0)
 
-[node name="CardsForTesting" type="Node" parent="." unique_id=1185551244]
-
-[node name="ModifierCard3D" parent="CardsForTesting" unique_id=1327020224 instance=ExtResource("24_k5rf2")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -1.345)
-
-[node name="ModifierCard3D2" parent="CardsForTesting" unique_id=2091806130 instance=ExtResource("24_k5rf2")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -1.1210227)
-
-[node name="ModifierCard3D3" parent="CardsForTesting" unique_id=2013474948 instance=ExtResource("24_k5rf2")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -0.8622625)
-
-[node name="ModifierCard3D4" parent="CardsForTesting" unique_id=900990326 instance=ExtResource("24_k5rf2")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -0.62489676)
-
-[node name="PointCard3D" parent="CardsForTesting" unique_id=1527816531 instance=ExtResource("23_nkcx5")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 1.3453918)
-
-[node name="PointCard3D2" parent="CardsForTesting" unique_id=1831898310 instance=ExtResource("23_nkcx5")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 1.1109233)
-
-[node name="PointCard3D3" parent="CardsForTesting" unique_id=517699627 instance=ExtResource("23_nkcx5")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 0.88053733)
-
-[node name="PointCard3D4" parent="CardsForTesting" unique_id=951847080 instance=ExtResource("23_nkcx5")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 0.63723135)
-
-[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("playerSeats") instance=ExtResource("26_5lnsn")]
-playerSeats = []
+[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("pointCards", "modifCards", "playerSeats") instance=ExtResource("26_5lnsn")]
+pointCards = NodePath("../PointCards")
+modifCards = NodePath("../ModifierCards")
+pointCardUI = ExtResource("23_nkcx5")
+modifierCardUI = ExtResource("24_k5rf2")
+playerSeats = [NodePath("../3DWorld/PlayerSeats/Seat1"), NodePath("../3DWorld/PlayerSeats/Seat2"), NodePath("../3DWorld/PlayerSeats/Seat3")]
+buddy = ExtResource("27_5lnsn")
 
 [editable path="PlayerVisuals"]
 [editable path="PlayerVisuals/templatePlayerRig"]
