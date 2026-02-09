@@ -11,6 +11,8 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface
 	Color[] outlineColors = [Colors.Green, Colors.DeepSkyBlue, Colors.Yellow];
 
 	public bool isSelected = false;
+	public UiCommunicator UiCommunicator;
+
 
 	private PointCard _pointCard;
 	public PointCard PointCard
@@ -63,6 +65,7 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface
 
 	public void UseObject()
 	{
-		GD.Print("Haro, im pointi kard.");
+		if (isSelected) UiCommunicator.DeselectPointCard();
+		else UiCommunicator.SelectPointCard(this);
 	}
 }
