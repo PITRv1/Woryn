@@ -6,15 +6,15 @@ using System.Linq;
 public class PlayerClass
 {
     public List<PointCard> PointCardList { get; set; }
-    public List<ModifierCard> ModifCardList { get; set; }
-    public PlayerClassInterface ChoosenClass { get; }
-    public ModifierCardDeck modifierCardDeck { get; }
-    public MultiplayerPlayerClass parent;
+    public List<ModifierCard> ModifierCardList { get; set; }
+    public PlayerClassInterface ChosenClass { get; set; }
+    public ModifierCardDeck ModifierCardDeck { get; }
+    public MultiplayerPlayerClass Parent;
     public int Points { get; set; } = 0;
     public int Gold { get; set; } = 0;
-    public float pointsToGoldRatio = 0.5f;
+    public float PointsToGoldRatio = 0.5f;
 
-    public PointCard chosenPointCard ;
+    public PointCard ChosenPointCard { get; set; }
     // {
     //     get
     //     {
@@ -26,106 +26,89 @@ public class PlayerClass
     //         chosenPointCard = value;
     //     }
     // }
-    public readonly List<ModifierCard> chosenModifierCards = new();
+    public readonly List<ModifierCard> ChosenModifierCards = new();
 
-    public string EffectStatus { get; }
+    // public string EffectStatus { get; }
     
     public PlayerClass()
     {
         PointCardList = new List<PointCard>();
-        ModifCardList = new List<ModifierCard>();
+        ModifierCardList = new List<ModifierCard>();
 
-        modifierCardDeck = new ModifierCardDeck();
-        modifierCardDeck.GenerateDeck();
+        ModifierCardDeck = new ModifierCardDeck();
+        ModifierCardDeck.GenerateDeck();
     }
 
     public void HandleDeckSwap(byte[] data)
     {
         GD.Print("Jello HALLO");
-        DeckSwap packet = DeckSwap.CreateFromData(data);
+        var packet = DeckSwap.CreateFromData(data);
 
         SetPointCardDeck(packet.PointCards);
         SetModifierCards(packet.ModifierCards);
-        parent.ResetContainers();
+        Parent.ResetContainers();
     }
 
-    // public void HandleDeckSwap(List<PointCard> pointCards, List<ModifierCard> modifierCards)
-    // {
-    //     SetPointCardDeck(pointCards);
-    //     SetModifierCards(modifierCards);
-    //     parent.ResetContainers();
-    // }
-
-    public void SetPointCardDeck(PointCard[] cards)
+    private void SetPointCardDeck(PointCard[] cards)
     {
         PointCardList.Clear();
-
-        foreach (PointCard pointCard in cards)
-            PointCardList.Add(pointCard);
+        PointCardList.AddRange(cards);
     }
 
-    public void SetModifierCards(ModifierCard[] cards)
+    private void SetModifierCards(ModifierCard[] cards)
     {
-        ModifCardList.Clear();
-
-        foreach (ModifierCard modifierCard in cards)
-            ModifCardList.Add(modifierCard);
+        ModifierCardList.Clear();
+        ModifierCardList.AddRange(cards);
     }
 
     public void SetPointCardDeck(List<PointCard> cards)
     {
         PointCardList.Clear();
-
-        foreach (PointCard pointCard in cards)
-            PointCardList.Add(pointCard);
+        PointCardList.AddRange(cards);
     }
 
     public void SetModifierCards(List<ModifierCard> cards)
     {
-        ModifCardList.Clear();
-
-        foreach (ModifierCard modifierCard in cards)
-            ModifCardList.Add(modifierCard);
+        ModifierCardList.Clear();
+        ModifierCardList.AddRange(cards);
     }
 
     public bool AddToChosenModifierCards(ModifierCard card)
     {
-        if (chosenPointCard == null)
+        if (ChosenPointCard == null)
             return false;
-        if (chosenModifierCards.Count >= (int)chosenPointCard.CardRarity)
+        if (ChosenModifierCards.Count >= (int)ChosenPointCard.CardRarity)
             return false;
         
-        chosenModifierCards.Add(card);
+        ChosenModifierCards.Add(card);
         return true;
     }
 
     public void DecreaseCooldown()
     {
-        ChoosenClass.ActiveCooldown--;
-        ChoosenClass.PassiveCooldown--;
+        ChosenClass.ActiveCooldown--;
+        ChosenClass.PassiveCooldown--;
     }
 
     public void AddCardToPointCards(PointCard card)
     {
         if (PointCardList.Count == 4)
             return;
-        PointCardList.Append(card);
+        PointCardList.Add(card);
     }
 
     public void AddCardToModifierCards(ModifierCard card)
     {
-        if (ModifCardList.Count == 4)
+        if (ModifierCardList.Count == 4)
             return;
-        ModifCardList.Append(card);
+        ModifierCardList.Add(card);
     }
 
     public bool AddModifierCard(PointCard pointCard, ModifierCard modifCard)
     {
-        bool result = pointCard.AddModifier(modifCard);
-        
+        var result = pointCard.AddModifier(modifCard);
         if (result)
-            ModifCardList.Remove(modifCard);
-        
+            ModifierCardList.Remove(modifCard);
         return result;
     }
 
@@ -134,43 +117,37 @@ public class PlayerClass
         pointCard.RemoveModifier(modifCard);
     }
 
-    public void PlayCard(PointCard card, PlayPile playpile)
+    public void PlayCard(PointCard card, PlayPile playPile)
     {
         PointCardList.Remove(card);
-        playpile.AddCard(card);
+        playPile.AddCard(card);
     }
 
-    public void ProccessTurnInfoPacket(byte[] data)
+    public void ProcessTurnInfoPacket(byte[] data)
     {
-        TurnInfoPacket packet = TurnInfoPacket.CreateFromData(data);
+        var packet = TurnInfoPacket.CreateFromData(data);
         Points = packet.CurrentPointValue;
-        parent.SetUI(packet.MaxValue, packet.CurrentPointValue, packet.ThrowDeckValue);
-        parent.RemoveSelectedCards(packet.LastPlayer, packet.DeletePointCards, packet.DeleteModifierCards);
+        Parent.SetUi(packet.MaxValue, packet.CurrentPointValue, packet.ThrowDeckValue);
     }
 
-    public void ProccessPickUpAnswer(byte[] data)
+    public void ProcessPickUpAnswer(byte[] data)
     {
-        GD.Print("man udk");
-        PickUpCardAnswer packet = PickUpCardAnswer.CreateFromData(data);
+        var packet = PickUpCardAnswer.CreateFromData(data);
         // if (packet.PointCards.Length == 0) return;
 
         PointCardList.AddRange(packet.PointCards);
-        ModifCardList.AddRange(packet.ModifierCards);
+        ModifierCardList.AddRange(packet.ModifierCards);
 
-        foreach (PointCard card in packet.PointCards)
-        {
-            parent.AddPointToContainer(card);
-        }
+        foreach (var card in packet.PointCards)
+            Parent.AddPointToContainer(card);
 
-        foreach (ModifierCard card in packet.ModifierCards)
-        {
-            parent.AddModifierToContainer(card);
-        }
+        foreach (var card in packet.ModifierCards)
+            Parent.AddModifierToContainer(card);
 
     }
 
     public bool CanEndTurn()
     {
-        return chosenPointCard == null;
+        return ChosenPointCard == null;
     }
 }

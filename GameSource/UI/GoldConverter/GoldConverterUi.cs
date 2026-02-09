@@ -32,7 +32,7 @@ public partial class GoldConverterUi : Control
 
 	public void ConvertPointsToGold()
 	{
-		Global.multiplayerPlayerClass.playerClass.Points -= (int)spinBox.Value;
-		Global.multiplayerPlayerClass.playerClass.Gold += (int)Math.Round(spinBox.Value * 0.8f);
+		Global.multiplayerPlayerClass.PlayerClass.Points -= (int)spinBox.Value;
+		Global.multiplayerPlayerClass.PlayerClass.Gold += (int)Math.Round(spinBox.Value * 0.8f);
 	}
 }

@@ -12,11 +12,11 @@ public class CAlchemist : PlayerClassInterface
         //ki kéne választani a handbol egy kartyat ami lega lessz (I need UI Ábel plsss);
 
 
-        if (Parent.chosenPointCard!=null)
-            Parent.chosenPointCard.CardRarity = CardRaritiesEnum.LEGENDARY;
+        if (Parent.ChosenPointCard!=null)
+            Parent.ChosenPointCard.CardRarity = CardRaritiesEnum.LEGENDARY;
     }
     public void UsePassive()
     {
-        Parent.pointsToGoldRatio = 1;
+        Parent.PointsToGoldRatio = 1;
     }
 }

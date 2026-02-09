@@ -13,6 +13,6 @@ public class CMerchant : PlayerClassInterface
     }
     public void UsePassive()
     {
-        Parent.pointsToGoldRatio = 2;
+        Parent.PointsToGoldRatio = 2;
     }
 }

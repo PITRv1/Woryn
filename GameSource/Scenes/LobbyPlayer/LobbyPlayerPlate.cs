@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PlayerFein : Panel
+public partial class LobbyPlayerPlate : Panel
 {
 	[Export] Label text;
 

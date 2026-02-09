@@ -66,7 +66,7 @@ public partial class NetworkHandler : Node
                 break;
 
             case ENetConnection.EventType.Receive:
-                int peerId = (int)peer.GetMeta("id");
+                var peerId = (int)peer.GetMeta("id");
                 EmitSignal(SignalName.OnServerPacket, peerId, peer.GetPacket());
                 break;
         }
@@ -84,7 +84,7 @@ public partial class NetworkHandler : Node
         _clientPeers.Clear();
         _availablePeerIds.Clear();
 
-        for (int i = 255; i >= 0; i--) _availablePeerIds.Push(i);
+        for (var i = 255; i >= 0; i--) _availablePeerIds.Push(i);
 
         ServerConnection.Destroy();
         ServerConnection = null;
@@ -103,7 +103,7 @@ public partial class NetworkHandler : Node
         }
 
         ServerConnection = new ENetConnection();
-        Error err = ServerConnection.CreateHostBound(ip, port);
+        var err = ServerConnection.CreateHostBound(ip, port);
 
         if (err != Error.Ok)
         {
@@ -118,7 +118,7 @@ public partial class NetworkHandler : Node
 
     private void PeerConnected(ENetPacketPeer peer)
     {
-        int peerId = _availablePeerIds.Pop();
+        var peerId = _availablePeerIds.Pop();
         peer.SetMeta("id", peerId);
         _clientPeers[peerId] = peer;
 
@@ -128,7 +128,7 @@ public partial class NetworkHandler : Node
 
     private void PeerDisconnected(ENetPacketPeer peer)
     {
-        int peerId = (int)peer.GetMeta("id");
+        var peerId = (int)peer.GetMeta("id");
 
         _availablePeerIds.Push(peerId);
         _clientPeers.Remove(peerId);
@@ -166,7 +166,7 @@ public partial class NetworkHandler : Node
     public void StartClient(string ip = "127.0.0.1", int port = 6767)
     {
         ClientConnection = new ENetConnection();
-        Error err = ClientConnection.CreateHost(1);
+        var err = ClientConnection.CreateHost(1);
 
         if (err != Error.Ok)
         {

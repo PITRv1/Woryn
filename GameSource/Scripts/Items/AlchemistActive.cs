@@ -13,7 +13,7 @@ public class AlchemistActive : IItem
     public PlayerClass Parent { get; set; }
     public void UseItem() // i need ui here
     {
-        if (Parent.chosenPointCard!=null)
-            Parent.chosenPointCard.CardRarity = CardRaritiesEnum.LEGENDARY;
+        if (Parent.ChosenPointCard!=null)
+            Parent.ChosenPointCard.CardRarity = CardRaritiesEnum.LEGENDARY;
     }
 }

@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class MultiplayerServerGlobals : Node
 {
@@ -73,14 +74,11 @@ public partial class MultiplayerServerGlobals : Node
                 Global.turnManagerInstance.PickUpCards(peerId);
                 break;
             case PACKET_TYPES.END_TURN_REQUEST:
-                Global.turnManagerInstance.ProccessEndGameRequest(data);
+                Global.turnManagerInstance.ProcessEndGameRequest(data);
                 break;
             case PACKET_TYPES.CURSOR_UPDATE:
-                foreach (var pair in Global.networkHandler._clientPeers)
+                foreach (var pair in Global.networkHandler._clientPeers.Where(pair => pair.Key != peerId))
                 {
-                    if (pair.Key == peerId)
-                        continue;
-
                     pair.Value.Send(0, data, (int)ENetPacketPeer.FlagUnsequenced);
                 }
                 break;

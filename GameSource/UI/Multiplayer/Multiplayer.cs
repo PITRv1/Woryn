@@ -31,18 +31,17 @@ public partial class Multiplayer : Control
 
     public override void _Ready()
     {
-		string[] ipAdresses = IP.GetLocalAddresses();
+		var ipAdresses = IP.GetLocalAddresses();
 
-		string ipAddressOnLocalNetwork = ipAdresses[ipAdresses.Length-1];
+		var ipAddressOnLocalNetwork = ipAdresses[ipAdresses.Length-1];
 
         CurrentMenu = multiTypeMenu;
 
 		ipAddressInputClient.Text = ipAddressOnLocalNetwork;
-		// ipAddressInputServer.Text = ipAddressOnLocalNetwork;
 		ipAddressInputServer.Text = "0.0.0.0";
     }
 
-	public void ChangeMenu(string option)
+	private void ChangeMenu(string option)
 	{
 		switch(option)
 		{
@@ -71,7 +70,7 @@ public partial class Multiplayer : Control
 		}
 	}
 
-	public void HostGame()
+	private void HostGame()
 	{
 		Global.networkHandler.StartServer(ipAddressInputServer.Text);
         Global.networkHandler.StartClient("127.0.0.1");
@@ -79,7 +78,7 @@ public partial class Multiplayer : Control
 		ChangeMenu("player");
 	}
 
-	public void JoinGame()
+	private void JoinGame()
 	{
         Global.networkHandler.StartClient(ipAddressInputClient.Text);
 		ChangeMenu("player");

@@ -40,7 +40,7 @@ public partial class MultiplayerClientGlobals : Node
 
     private void OnClientPacket(byte[] data)
     {
-        PACKET_TYPES packetType =(PACKET_TYPES)data[0];
+        var packetType = (PACKET_TYPES)data[0];
 
         GD.Print("PACKET CLIENT: " + packetType);
 
@@ -92,7 +92,7 @@ public partial class MultiplayerClientGlobals : Node
 
             _remoteIds = idAssignment.RemoteIds;
 
-            foreach (int remoteId in _remoteIds)
+            foreach (var remoteId in _remoteIds)
             {
                 if (remoteId == _id)
                     continue;

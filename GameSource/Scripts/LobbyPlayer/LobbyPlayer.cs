@@ -5,12 +5,12 @@ using System.Linq;
 
 public partial class LobbyPlayer : Node
 {
-    public int ID;
-    List<int> ids = new();
+    private int _id;
+    private readonly List<int> _ids = [];
 
-	[Export] PackedScene lobbyPlayer;
-	[Export] PackedScene scene;
-	[Export] VBoxContainer lobbyBackground;
+	[Export] private PackedScene _lobbyPlayer;
+	[Export] private PackedScene _scene;
+	[Export] private VBoxContainer _lobbyBackground;
 
     public override void _Ready()
     {
@@ -24,51 +24,47 @@ public partial class LobbyPlayer : Node
 
     private void Local(int id)
     {
-        ID = id;
+        _id = id;
     }
 
     private void Remote(int id)
     {
-        ids.Add(id);
+        _ids.Add(id);
 		
     }
 
 	private void AddNewPlayer(byte[] data)
 	{
-		NewPlayer packet = NewPlayer.CreateFromData(data);
+		var packet = NewPlayer.CreateFromData(data);
 
-		for (int i = lobbyBackground.GetChildCount() - 1; i >= 0; i--)
-		{
-			lobbyBackground.RemoveChild(lobbyBackground.GetChild(i));
-		}
+		for (var i = _lobbyBackground.GetChildCount() - 1; i >= 0; i--)
+			_lobbyBackground.RemoveChild(_lobbyBackground.GetChild(i));
 
-		foreach (byte player in packet.playerArray)
+		foreach (var player in packet.playerArray)
 		{
-			PlayerFein newLobbyPlayer = lobbyPlayer.Instantiate() as PlayerFein;
+			var newLobbyPlayer = _lobbyPlayer.Instantiate() as LobbyPlayerPlate;
 			newLobbyPlayer.SetText(player.ToString());
-			lobbyBackground.AddChild(newLobbyPlayer);
+			_lobbyBackground.AddChild(newLobbyPlayer);
 		}
 	}
 
-	public void StartGameRequest()
+	private void StartGameRequest()
 	{
-		StartGame packet = new StartGame
+		var packet = new StartGame
 		{
-			senderId = (byte)ID,
+			senderId = (byte)_id,
 		};
 		Global.networkHandler._serverPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
 	}
 
-	public void StartGame()
+	private void StartGame()
 	{
-		GetTree().ChangeSceneToPacked(scene);
+		GetTree().ChangeSceneToPacked(_scene);
 	}
 
-	public void PrintIds()
+	private void PrintIds()
 	{
-		foreach (int id in ids)
-		{
+		foreach (var id in _ids)
 			GD.Print(id);
-		}
 	}
 }

@@ -1,162 +1,110 @@
 using Godot;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 
 public partial class MultiplayerPlayerClass : Node
 {
-	public PlayerClass playerClass;
-	public int ID;
+	public PlayerClass PlayerClass;
+	public int Id;
 	// List<int> ids = new();
 
-	[Export] CardPlacementHandler pointCards;
-	[Export] CardPlacementHandler modifCards;
-	[Export] PackedScene pointCardUI;
-	[Export] PackedScene modifierCardUI;
-	[Export] Godot.Collections.Array<Marker3D> playerSeats;
+	[Export] private CardPlacementHandler _pointCards;
+	[Export] private CardPlacementHandler _modifierCards;
+	[Export] private PackedScene _pointCardUi;
+	[Export] private PackedScene _modifierCardUi;
+	[Export] private Godot.Collections.Array<Marker3D> _playerSeats;
+	[Export] private PackedScene _buddy;
 
 	[ExportGroup("Deprecated")]
-	[Export] Label maxPoints;
-	[Export] Label points;
-	[Export] Label throwDeckValue;
-	[Export] PackedScene buddy;
+	[Export]
+	private Label _maxPoints;
+	[Export] private Label _points;
+	[Export] private Label _throwDeckValue;
 
 	
 	public override void _Ready()
 	{
-		ID = Global.multiplayerClientGlobals._id;
+		Id = Global.multiplayerClientGlobals._id;
 		Global.multiplayerClientGlobals.SetupPlace += Setup;
-		Global.multiplayerClientGlobals.HandleTurnInfo += playerClass.ProccessTurnInfoPacket;
-		Global.multiplayerClientGlobals.HandlePickUpCardAnswer += playerClass.ProccessPickUpAnswer;
-		Global.multiplayerClientGlobals.HandleDeckSwap += playerClass.HandleDeckSwap;
-		Global.multiplayerClientGlobals.HandleDeckSwap += Test;
+		Global.multiplayerClientGlobals.HandleTurnInfo += PlayerClass.ProcessTurnInfoPacket;
+		Global.multiplayerClientGlobals.HandlePickUpCardAnswer += PlayerClass.ProcessPickUpAnswer;
+		Global.multiplayerClientGlobals.HandleDeckSwap += PlayerClass.HandleDeckSwap;
 
 		Global.multiplayerPlayerClass = this;
 		ClientReady();
 	}
 
-	public void Test(byte[] data)
-	{
-		GD.Print("Help");
-	}
-
 	private void Setup(byte[] data)
 	{
-		GD.Print("WHZ");
-		SetupPacket packet = SetupPacket.CreateFromData(data);
-		for (int i = 0; i < packet.PlayerCount; i++)
+		var packet = SetupPacket.CreateFromData(data);
+		for (var i = 0; i < packet.PlayerCount; i++)
 		{
-			Node3D bud = buddy.Instantiate() as Node3D;
-			playerSeats[i].AddChild(bud);
+			var bud = _buddy.Instantiate() as Node3D;
+			_playerSeats[i].AddChild(bud);
 		}
 	}
 
-	public void ClientReady()
+	private static void ClientReady()
 	{
-		ClientReady packet = new ClientReady();
-
+		var packet = new ClientReady();
 		Global.networkHandler._serverPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
 	}
 
 	public MultiplayerPlayerClass()
 	{
-		playerClass = new PlayerClass();
-		playerClass.parent = this;
+		PlayerClass = new PlayerClass
+		{
+			Parent = this
+		};
 	}
 
 	private void Local(int id)
 	{
-		ID = id;
+		Id = id;
 	}
 
-
-	// private void Remote(int id)
-	// {
-	//     ids.Add(id);
-	// }
-
-	public void SetUI(int mPoints, int plrPoints, int throwValue)
+	public void SetUi(int mPoints, int plrPoints, int throwValue)
 	{
-		maxPoints.Text = mPoints.ToString();
-		points.Text = plrPoints.ToString();
-		throwDeckValue.Text = throwValue.ToString();
+		_maxPoints.Text = mPoints.ToString();
+		_points.Text = plrPoints.ToString();
+		_throwDeckValue.Text = throwValue.ToString();
 	}
 
-	public void PlayCard()
+	private void PlayCard()
 	{
-		if (playerClass.CanEndTurn())
+		if (PlayerClass.CanEndTurn())
 			return;
 
-		List<byte> modifIndexes = new List<byte>();
-
-		foreach (ModifierCard card in playerClass.chosenModifierCards)
+		var packet = new EndTurnRequest
 		{
-			modifIndexes.Add((byte)playerClass.ModifCardList.IndexOf(card));
-		}
-
-		EndTurnRequest packet = new EndTurnRequest
-		{
-			SenderId = ID,
-			PointCard = playerClass.chosenPointCard,
-			PointCardIndex = playerClass.PointCardList.IndexOf(playerClass.chosenPointCard),
-			ModifierCards = playerClass.chosenModifierCards.ToArray(),
-			ModifCardIndexes = modifIndexes.ToArray()
+			SenderId = Id,
+			PointCard = PlayerClass.ChosenPointCard,
+			PointCardIndex = PlayerClass.PointCardList.IndexOf(PlayerClass.ChosenPointCard),
+			ModifierCards = PlayerClass.ChosenModifierCards.ToArray(),
+			ModifCardIndexes = PlayerClass.ChosenModifierCards.Select(card => (byte)PlayerClass.ModifierCardList.IndexOf(card)).ToArray()
 		};
 
 		Global.networkHandler._serverPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
 	}
 
-	public void RemoveSelectedCards(int lastPlayer, int[] selectedPointCard, byte[] selectedModifiers)
+	private void PickUpCards()
 	{
-		// if (lastPlayer != ID)
-		// 	return;
-
-		// foreach (int index in selectedPointCard)
-		// {
-		// 	pointCards.RemoveChild(pointCards.GetChild(index));
-		// 	playerClass.PointCardList.RemoveAt(index);
-		// }
-
-		// List<int> modifIndexes = new List<int>();
-
-		// foreach (byte card in selectedModifiers)
-		// {
-		// 	modifIndexes.Add(card);
-		// 	playerClass.ModifCardList.RemoveAt(card);
-		// }
-
-		// modifIndexes.Sort();
-		// modifIndexes.Reverse();
-
-		// foreach (int index in modifIndexes)
-		// {
-		// 	modifCards.RemoveChild(modifCards.GetChild(index));
-		// }
-
-		// playerClass.chosenModifierCards.Clear();
-		// playerClass.chosenPointCard = null;
-	}
-
-	public void PickUpCards()
-	{
-		PickUpCardRequest packet = new PickUpCardRequest
+		var packet = new PickUpCardRequest
 		{
-			SenderId = ID,
+			SenderId = Id,
 		};
-
 		Global.networkHandler._serverPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
 	}
 
-	public void PlayAbilityRequest()
+	private void PlayAbilityRequest()
 	{
 		
 	}
 
-	public void SendFoldRequest()
+	private void SendFoldRequest()
 	{
-		Fold packet = new Fold
+		var packet = new Fold
 		{
-			SenderId = ID	
+			SenderId = Id	
 		};
 
 		Global.networkHandler._serverPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
@@ -164,30 +112,26 @@ public partial class MultiplayerPlayerClass : Node
 
 	public void AddPointToContainer(PointCard pointCard)
 	{
-		PointCard3d card = pointCardUI.Instantiate() as PointCard3d;
+		if (_pointCardUi.Instantiate() is not PointCard3d card) return;
 		card.PointCard = pointCard;
 
-		pointCards.AddCard(card);
+		_pointCards.AddCard(card);
 	}
 
-	public void AddModifierToContainer(ModifierCard modifCard)
+	public void AddModifierToContainer(ModifierCard modifierCard)
 	{
-		ModifierCard3d card = pointCardUI.Instantiate() as ModifierCard3d;
-		card.ModifierCard = modifCard;
+		if (_pointCardUi.Instantiate() is not ModifierCard3d card) return;
+		card.ModifierCard = modifierCard;
 
-		modifCards.AddCard(card);
+		_modifierCards.AddCard(card);
 	}
 
 	public void ResetContainers()
 	{
-		for (int i = 0; i < modifCards.GetChildCount(); i++)
-		{
-			modifCards.RemoveChild(modifCards.GetChild(1));
-		}
+		for (var i = 0; i < _modifierCards.GetChildCount(); i++)
+			_modifierCards.RemoveChild(_modifierCards.GetChild(1));
 
-		for (int i = 0; i < pointCards.GetChildCount(); i++)
-		{
-			pointCards.RemoveChild(pointCards.GetChild(1));
-		}
+		for (var i = 0; i < _pointCards.GetChildCount(); i++)
+			_pointCards.RemoveChild(_pointCards.GetChild(1));
 	}
 }
