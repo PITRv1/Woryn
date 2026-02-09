@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c6snpuiymvh7h"]
+
+[ext_resource type="Texture2D" uid="uid://dn5gffu6asq8x" path="res://Assets/effects/particles/coin.png" id="1_1csa2"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3xjnl"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 90.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 1, 0)
+radial_accel_min = -1.0000023
+radial_accel_max = 0.99999774
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = 0.99999774
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3gp3"]
+transparency = 1
+albedo_texture = ExtResource("1_1csa2")
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_rca0h"]
+material = SubResource("StandardMaterial3D_l3gp3")
+size = Vector2(0.5, 0.5)
+
+[node name="WizardClassParticle" type="Node3D" unique_id=5349700]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1151473731]
+amount = 10
+lifetime = 0.75
+interp_to_end = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_3xjnl")
+draw_pass_1 = SubResource("QuadMesh_rca0h")
