@@ -15,8 +15,7 @@ public partial class MultiplayerPlayerClass : Node
 	[Export] private PackedScene _buddy;
 
 	[ExportGroup("Deprecated")]
-	[Export]
-	private Label _maxPoints;
+	[Export] private Label _maxPoints;
 	[Export] private Label _points;
 	[Export] private Label _throwDeckValue;
 

@@ -10,6 +10,8 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface
 
 	Color[] outlineColors = [Colors.Green, Colors.DeepSkyBlue, Colors.Yellow];
 
+	public bool isSelected = false;
+
 	private PointCard _pointCard;
 	public PointCard PointCard
 	{
@@ -35,8 +37,13 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface
 		UpdateText();
 		UpdateMeshColor();
 
-		area3D.MouseEntered += () => animationPlayer.Play("Float");
-		area3D.MouseExited += () => animationPlayer.Play("RESET");
+		area3D.MouseEntered += () => {
+			animationPlayer.Play("Float");
+		};
+	
+		area3D.MouseExited += () => {
+			animationPlayer.Stop();
+		};
 	}
 
 	private void UpdateMeshColor()

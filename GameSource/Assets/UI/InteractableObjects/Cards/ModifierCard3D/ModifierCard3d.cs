@@ -8,6 +8,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface
     [Export] AnimationPlayer animationPlayer;
     [Export] Area3D area3D;
 
+	public bool isSelected = false;
 
     private ModifierCard _modifierCard;
     public ModifierCard ModifierCard
@@ -17,6 +18,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface
         {
             _modifierCard = value;
 			if (sprite3D == null) return;
+
             SetIcon();
         }
     }

@@ -5350,10 +5350,10 @@ omni_attenuation = 1.971
 [node name="Sketchfab_Scene4" parent="EnvironmentDetails/Models/BarLights" unique_id=1853098258 instance=ExtResource("41_674dm")]
 transform = Transform3D(0.006735303, 0, 0, 0, 0.006735303, 0, 0, 0, 0.006735303, 140.2793, 5.5856137, -49.69245)
 
-[node name="light_base_0" parent="EnvironmentDetails/Models/BarLights/Sketchfab_Scene4/Sketchfab_model/lamp_fbx/RootNode/light" parent_id_path=PackedInt32Array(1853098258, 1976673250) index="0" unique_id=1122675857]
+[node name="light_base_0" parent="EnvironmentDetails/Models/BarLights/Sketchfab_Scene4/Sketchfab_model/lamp_fbx/RootNode/light" index="0"]
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="EnvironmentDetails/Models/BarLights/Sketchfab_Scene4/Sketchfab_model/lamp_fbx/RootNode/light" parent_id_path=PackedInt32Array(1853098258, 1976673250) index="1" unique_id=17521764]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EnvironmentDetails/Models/BarLights/Sketchfab_Scene4/Sketchfab_model/lamp_fbx/RootNode/light" index="1" unique_id=17521764]
 transform = Transform3D(1.0000005, 0, 0, 0, -4.3711466e-08, 1.0000005, 0, -1.0000005, -4.3711466e-08, 0, 0, 0.37521267)
 mesh = SubResource("CylinderMesh_iukcp")
 
