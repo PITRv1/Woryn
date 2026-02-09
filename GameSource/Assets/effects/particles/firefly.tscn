@@ -12,15 +12,15 @@ colors = PackedColorArray(0, 0, 0, 1, 0.5241123, 0.4557904, 0.19335091, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_olxjv"]
 gradient = SubResource("Gradient_rpq5v")
 
-[sub_resource type="Gradient" id="Gradient_n4gdi"]
+[sub_resource type="Gradient" id="Gradient_olxjv"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.75)
 colors = PackedColorArray(0.7577476, 0.71431756, 0.3897902, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ffikm"]
-gradient = SubResource("Gradient_n4gdi")
+gradient = SubResource("Gradient_olxjv")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7t7ao"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4gdi"]
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("GradientTexture2D_olxjv")
 roughness = 0.0
@@ -32,7 +32,7 @@ ao_light_affect = 1.0
 subsurf_scatter_strength = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_0et2u"]
-material = SubResource("StandardMaterial3D_7t7ao")
+material = SubResource("StandardMaterial3D_n4gdi")
 radius = 0.012
 height = 0.025
 radial_segments = 6

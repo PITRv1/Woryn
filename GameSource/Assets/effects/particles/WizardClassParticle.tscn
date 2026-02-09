@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://sjnpwced8ffx"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i2aii"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+initial_velocity_max = 8.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_ua1tu"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.98655915)
+colors = PackedColorArray(0, 0, 0, 1, 0.4854623, 0.075931035, 0.5178871, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hfshd"]
+gradient = SubResource("Gradient_ua1tu")
+
+[sub_resource type="Gradient" id="Gradient_687eh"]
+colors = PackedColorArray(0.57729864, 0.17701322, 0.46921456, 1, 0.41487512, 0.08057795, 0.5156492, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e1t2s"]
+gradient = SubResource("Gradient_687eh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0pn5"]
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_hfshd")
+emission_enabled = true
+emission = Color(0.60994756, 0.35626757, 0.49510664, 1)
+emission_energy_multiplier = 16.0
+emission_texture = SubResource("GradientTexture2D_e1t2s")
+
+[sub_resource type="SphereMesh" id="SphereMesh_wjq3p"]
+material = SubResource("StandardMaterial3D_i0pn5")
+radius = 0.012
+height = 0.025
+radial_segments = 6
+rings = 4
+
+[node name="WizardClassParticle" type="Node3D" unique_id=5349700]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=2107812097]
+emitting = false
+amount = 300
+lifetime = 2.0
+interp_to_end = 1.0
+one_shot = true
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_i2aii")
+draw_pass_1 = SubResource("SphereMesh_wjq3p")
