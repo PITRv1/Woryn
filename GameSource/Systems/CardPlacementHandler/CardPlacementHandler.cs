@@ -7,9 +7,13 @@ public partial class CardPlacementHandler : Node3D
 	[Export] public bool curveCards = true;
 
 	public Godot.Collections.Array<Node3D> cardArray { get; private set; } = new();
+	[Export] UiCommunicator UiCommunicator;
 
 	public void AddCard(Node3D card)
 	{
+		if (card is PointCard3d pointCard) pointCard.UiCommunicator = UiCommunicator;
+		else if (card is ModifierCard3d modifierCard) modifierCard.UiCommunicator = UiCommunicator;
+
 		cardArray.Add(card);
 
 		AddChild(card);

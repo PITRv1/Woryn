@@ -9,6 +9,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface
     [Export] Area3D area3D;
 
 	public bool isSelected = false;
+	public UiCommunicator UiCommunicator;
 
     private ModifierCard _modifierCard;
     public ModifierCard ModifierCard
@@ -40,6 +41,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface
 
     public void UseObject()
     {
-        GD.Print("Haro, im mordekaiser kard.");
+        if (isSelected)UiCommunicator.RemoveModifierCard(this);
+        else UiCommunicator.AddModifierCard(this);
     }
 }

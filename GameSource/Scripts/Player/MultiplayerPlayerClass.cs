@@ -63,12 +63,13 @@ public partial class MultiplayerPlayerClass : Node
 
 	public void SetUi(int mPoints, int plrPoints, int throwValue)
 	{
-		_maxPoints.Text = mPoints.ToString();
-		_points.Text = plrPoints.ToString();
-		_throwDeckValue.Text = throwValue.ToString();
+		GD.Print("Dani will update the SetUI method.");
+		// _maxPoints.Text = mPoints.ToString();
+		// _points.Text = plrPoints.ToString();
+		// _throwDeckValue.Text = throwValue.ToString();
 	}
 
-	private void PlayCard()
+	public void PlayCard()
 	{
 		if (PlayerClass.CanEndTurn())
 			return;

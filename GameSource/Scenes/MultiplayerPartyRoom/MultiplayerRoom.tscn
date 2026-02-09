@@ -853,13 +853,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.253, -2.368)
 [node name="Seat3" type="Marker3D" parent="3DWorld/PlayerSeats" unique_id=1229161944]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.368, 1.253, 0)
 
-[node name="PointCards" parent="." unique_id=2052042597 instance=ExtResource("31_k5rf2")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 1.3453918)
-
-[node name="ModifierCards" parent="." unique_id=731615950 instance=ExtResource("31_k5rf2")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -1.345)
-gapAmount = 0.25
-
 [node name="PlayerVisuals" parent="." unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8922863, -0.99518967, 0)
 
@@ -886,8 +879,18 @@ transform = Transform3D(0.55403095, -0.8324959, 1.9493921e-08, 0.8324959, 0.5540
 [node name="RightArmPole" parent="PlayerVisuals/RightArmTarget" index="0" unique_id=1093313350]
 transform = Transform3D(2.5, 0, 1.4210855e-14, 0, 2.5, 0, -1.4210855e-14, 0, 2.5, -0.13273573, 0.075751066, -0.80137634)
 
-[node name="Deck3D" parent="." unique_id=75278921 instance=ExtResource("26_hdoun")]
+[node name="PointCards" parent="." unique_id=2052042597 node_paths=PackedStringArray("UiCommunicator") instance=ExtResource("31_k5rf2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 1.3453918)
+UiCommunicator = NodePath("../UICommunicator")
+
+[node name="ModifierCards" parent="." unique_id=731615950 node_paths=PackedStringArray("UiCommunicator") instance=ExtResource("31_k5rf2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -1.345)
+gapAmount = 0.25
+UiCommunicator = NodePath("../UICommunicator")
+
+[node name="Deck3D" parent="." unique_id=75278921 node_paths=PackedStringArray("UiCommunicator") instance=ExtResource("26_hdoun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2186053, 0)
+UiCommunicator = NodePath("../UICommunicator")
 
 [node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("_pointCards", "_modifierCards", "_playerSeats") instance=ExtResource("26_5lnsn")]
 _pointCards = NodePath("../PointCards")
@@ -897,7 +900,10 @@ _modifierCardUi = ExtResource("24_k5rf2")
 _playerSeats = [NodePath("../3DWorld/PlayerSeats/Seat1"), NodePath("../3DWorld/PlayerSeats/Seat2"), NodePath("../3DWorld/PlayerSeats/Seat3")]
 _buddy = ExtResource("27_5lnsn")
 
-[node name="UICommunicator" parent="." unique_id=1649124515 instance=ExtResource("28_boekd")]
+[node name="UICommunicator" parent="." unique_id=1649124515 node_paths=PackedStringArray("pointCards", "modifierCards", "multiplayerPlayer") instance=ExtResource("28_boekd")]
+pointCards = NodePath("../PointCards")
+modifierCards = NodePath("../ModifierCards")
+multiplayerPlayer = NodePath("../MultiplayerPlayer")
 
 [editable path="PlayerVisuals"]
 [editable path="PlayerVisuals/templatePlayerRig"]
