@@ -9,12 +9,12 @@ public partial class MultiplayerServerGlobals : Node
         Global.multiplayerServerGlobals = this;
     }
 
-    private List<int> _peerIds = new();
-    private HashSet<int> _readyPlayers = new();
+    private readonly List<int> _peerIds = new();
+    private readonly HashSet<int> _readyPlayers = new();
 
     public override void _Ready()
     {
-        NetworkHandler network = Global.networkHandler;
+        var network = Global.networkHandler;
 
         network.OnPeerConnected += OnPeerConnected;
         network.OnPeerDisconnected += OnPeerDisconnected;
@@ -29,9 +29,8 @@ public partial class MultiplayerServerGlobals : Node
         IDAssignment
             .Create(peerId, _peerIds)
             .Broadcast(Global.networkHandler.ServerConnection);
-
-        if (Global.lobbyManagerInstance == null)
-            Global.lobbyManagerInstance = new LobbyManager();
+        
+        Global.lobbyManagerInstance ??= new  LobbyManager();
 
         Global.lobbyManagerInstance.AddToMultiplayerList(peerId);
     }
@@ -43,8 +42,6 @@ public partial class MultiplayerServerGlobals : Node
 
     private void OnServerPacket(int peerId, byte[] data)
     {
-        GD.Print("PACKET SERVER: " + (PACKET_TYPES)data[0]);
-
         switch ((PACKET_TYPES)data[0])
         {
             case PACKET_TYPES.START_GAME:
@@ -60,7 +57,6 @@ public partial class MultiplayerServerGlobals : Node
                 if (_readyPlayers.Count == _peerIds.Count)
                 {
                     Global.turnManagerInstance.PrepareGame();
-                    GD.Print("Game Prepared");
                 }
                 break;
             case PACKET_TYPES.TURN_DATA:
@@ -77,7 +73,7 @@ public partial class MultiplayerServerGlobals : Node
                 Global.turnManagerInstance.ProcessEndGameRequest(data);
                 break;
             case PACKET_TYPES.CURSOR_UPDATE:
-                foreach (var pair in Global.networkHandler._clientPeers.Where(pair => pair.Key != peerId))
+                foreach (var pair in Global.networkHandler.ClientPeers.Where(pair => pair.Key != peerId))
                 {
                     pair.Value.Send(0, data, (int)ENetPacketPeer.FlagUnsequenced);
                 }

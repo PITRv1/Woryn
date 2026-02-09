@@ -54,7 +54,7 @@ public partial class LobbyPlayer : Node
 		{
 			senderId = (byte)_id,
 		};
-		Global.networkHandler._serverPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
+		Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
 	}
 
 	private void StartGame()

@@ -18,19 +18,19 @@ public partial class NetworkHandler : Node
     [Signal] public delegate void OnClientPacketEventHandler(byte[] data);
 
     private Stack<int> _availablePeerIds = new();
-    public Dictionary<int, ENetPacketPeer> _clientPeers = new();
+    public Dictionary<int, ENetPacketPeer> ClientPeers = new();
 
-    public ENetPacketPeer _serverPeer;
+    public ENetPacketPeer ServerPeer;
 
     public ENetConnection ServerConnection;
     public ENetConnection ClientConnection;
 
-    public bool _isServer {private set; get;}
+    public bool IsServer {private set; get;}
     private bool _isClient;
 
     public override void _Ready()
     {
-        for (int i = 255; i >= 0; i--)
+        for (var i = 255; i >= 0; i--)
             _availablePeerIds.Push(i);
 
         GD.Print("Network Handler ready!");
@@ -74,14 +74,14 @@ public partial class NetworkHandler : Node
 
     public void StopServer()
     {
-        if (!_isServer || ServerConnection == null) return;
+        if (!IsServer || ServerConnection == null) return;
 
         GD.Print("Stopping server...");
 
-        foreach (var peer in _clientPeers.Values) peer.PeerDisconnect();
+        foreach (var peer in ClientPeers.Values) peer.PeerDisconnect();
         
 
-        _clientPeers.Clear();
+        ClientPeers.Clear();
         _availablePeerIds.Clear();
 
         for (var i = 255; i >= 0; i--) _availablePeerIds.Push(i);
@@ -89,7 +89,7 @@ public partial class NetworkHandler : Node
         ServerConnection.Destroy();
         ServerConnection = null;
 
-        _isServer = false;
+        IsServer = false;
 
         GD.Print("Server stopped");
     }
@@ -112,7 +112,7 @@ public partial class NetworkHandler : Node
             return;
         }
 
-        _isServer = true;
+        IsServer = true;
         GD.Print("Server started");
     }
 
@@ -120,7 +120,7 @@ public partial class NetworkHandler : Node
     {
         var peerId = _availablePeerIds.Pop();
         peer.SetMeta("id", peerId);
-        _clientPeers[peerId] = peer;
+        ClientPeers[peerId] = peer;
 
         EmitSignal(SignalName.OnPeerConnected, peerId);
         GD.Print("Peer connected: ", peerId);
@@ -131,7 +131,7 @@ public partial class NetworkHandler : Node
         var peerId = (int)peer.GetMeta("id");
 
         _availablePeerIds.Push(peerId);
-        _clientPeers.Remove(peerId);
+        ClientPeers.Remove(peerId);
 
         EmitSignal(SignalName.OnPeerDisconnected, peerId);
         GD.Print("Peer disconnected: ", peerId);
@@ -175,7 +175,7 @@ public partial class NetworkHandler : Node
             return;
         }
 
-        _serverPeer = ClientConnection.ConnectToHost(ip, port);
+        ServerPeer = ClientConnection.ConnectToHost(ip, port);
         _isClient = true;
 
         GD.Print("Client connecting...");
@@ -183,9 +183,9 @@ public partial class NetworkHandler : Node
 
     public void DisconnectClient()
     {
-        if (!_isClient || _serverPeer == null) return;
+        if (!_isClient || ServerPeer == null) return;
 
-        _serverPeer.PeerDisconnect();
+        ServerPeer.PeerDisconnect();
     }
 
     private void ConnectedToServer()

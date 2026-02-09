@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://8psm5hemkmpu" path="res://Assets/UI/InteractableObjects/Cards/ModifierCard3D/ModifierCard3D.tscn" id="24_k5rf2"]
 [ext_resource type="PackedScene" uid="uid://bxs0hn6508qbt" path="res://Scenes/MultiplayerPlayer/multiplayer_player.tscn" id="26_5lnsn"]
 [ext_resource type="PackedScene" uid="uid://cyyxdvmulcre5" path="res://Assets/UI/InteractableObjects/Decks/Deck3d.tscn" id="26_hdoun"]
+[ext_resource type="PackedScene" uid="uid://dr2b8kaijlck8" path="res://Assets/Etc/Buddy.tscn" id="27_5lnsn"]
 [ext_resource type="PackedScene" uid="uid://c4mfb80u3jme5" path="res://Assets/models/MainMenuNewCollection/playerVisuals.tscn" id="31_1ab4g"]
 [ext_resource type="PackedScene" uid="uid://bs7f2puxk38eq" path="res://Systems/CardPlacementHandler/CardPlacementHandler.tscn" id="31_k5rf2"]
 
@@ -866,7 +867,7 @@ MaxYawDeg = 45.0
 MaxPitchDeg = 30.0
 RotationSpeed = 5.0
 
-[node name="BoneAttachment3D" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1198783362) index="25" unique_id=396461942]
+[node name="BoneAttachment3D" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1119998455) index="25" unique_id=396461942]
 transform = Transform3D(-0.752279, -0.13185161, 0.6455167, 0.6450894, 0.051755235, 0.76235205, -0.13392583, 0.9899172, 0.046121653, 0.38432238, 1.2584677, 0.42813456)
 
 [node name="LeftArmTarget" parent="PlayerVisuals" index="2" unique_id=608260768]
@@ -893,6 +894,7 @@ _modifierCards = NodePath("../ModifierCards")
 _pointCardUi = ExtResource("23_nkcx5")
 _modifierCardUi = ExtResource("24_k5rf2")
 _playerSeatsHolder = NodePath("../3DWorld/PlayerSeats")
+_buddy = ExtResource("27_5lnsn")
 
 [editable path="PlayerVisuals"]
 [editable path="PlayerVisuals/templatePlayerRig"]

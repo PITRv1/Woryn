@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class MultiplayerClientGlobals : Node
 {
@@ -24,14 +25,14 @@ public partial class MultiplayerClientGlobals : Node
     [Signal]
     public delegate void StartGameEventHandler();
     [Signal]
-    public delegate void CursonUpdateEventHandler(byte[] data);
+    public delegate void CursorUpdateEventHandler(byte[] data);
     [Signal]
     public delegate void ShopSceneEventHandler();
     [Signal]
     public delegate void SetupPlaceEventHandler(byte[] data);
 
-    public int _id = -1;
-    public List<int> _remoteIds = new();
+    public int Id = -1;
+    public List<int> RemoteIds = new();
 
     public override void _Ready()
     {
@@ -41,8 +42,6 @@ public partial class MultiplayerClientGlobals : Node
     private void OnClientPacket(byte[] data)
     {
         var packetType = (PACKET_TYPES)data[0];
-
-        GD.Print("PACKET CLIENT: " + packetType);
 
         switch (packetType)
         {
@@ -60,12 +59,10 @@ public partial class MultiplayerClientGlobals : Node
                 EmitSignal("HandleTurnInfo", data);
                 break;
             case PACKET_TYPES.PICK_UP_CARD_ANSWER:
-                GD.Print("Pre Pickup answer");
                 EmitSignal("HandlePickUpCardAnswer", data);
-                GD.Print("Post Pickup answer");
                 break;
             case PACKET_TYPES.CURSOR_UPDATE:
-                EmitSignal("CursonUpdate", data);
+                EmitSignal("CursorUpdate", data);
                 break;
             case PACKET_TYPES.SHOP_SCENE_CHANGE:
                 EmitSignal("ShopScene");
@@ -85,25 +82,22 @@ public partial class MultiplayerClientGlobals : Node
     private void ManageIds(IDAssignment idAssignment)
     {
         // local client ID
-        if (_id == -1)
+        if (Id == -1)
         {
-            _id = idAssignment.Id;
-            EmitSignal(SignalName.HandleLocalIdAssignment, _id);
+            Id = idAssignment.Id;
+            EmitSignal(SignalName.HandleLocalIdAssignment, Id);
 
-            _remoteIds = idAssignment.RemoteIds;
+            RemoteIds = idAssignment.RemoteIds;
 
-            foreach (var remoteId in _remoteIds)
+            foreach (var remoteId in RemoteIds.Where(remoteId => remoteId != Id))
             {
-                if (remoteId == _id)
-                    continue;
-
                 EmitSignal(SignalName.HandleRemoteIdAssignment, remoteId);
             }
         }
         // new remote peers
         else
         {
-            _remoteIds.Add(idAssignment.Id);
+            RemoteIds.Add(idAssignment.Id);
             EmitSignal(SignalName.HandleRemoteIdAssignment, idAssignment.Id);
         }
     }

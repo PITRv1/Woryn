@@ -103,7 +103,7 @@ public partial class TurnManager : Node
 			ModifierCards = modifierCards,
 		};
 
-		Global.networkHandler._clientPeers.TryGetValue(id, out var peer);
+		Global.networkHandler.ClientPeers.TryGetValue(id, out var peer);
 
 		if (peer != null)
 		{
@@ -142,7 +142,7 @@ public partial class TurnManager : Node
 				DeleteModifierCards = [],
 			};
 
-			Global.networkHandler._clientPeers.TryGetValue(player, out var peer);
+			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
 			if (peer != null)
 			{
 				turnInfoPacket.Send(peer);
@@ -185,7 +185,7 @@ public partial class TurnManager : Node
 			ModifierCards = modifierCards,
 		};
 
-		Global.networkHandler._clientPeers.TryGetValue(id, out var peer);
+		Global.networkHandler.ClientPeers.TryGetValue(id, out var peer);
 
 		if (peer != null)
 			packet.Send(peer);
@@ -204,7 +204,7 @@ public partial class TurnManager : Node
 
 		foreach (var player in _players.Keys)
 		{
-			Global.networkHandler._clientPeers.TryGetValue(player, out var peer);
+			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
 			if (peer != null)
 				packet.Send(peer);
 		}
@@ -270,7 +270,7 @@ public partial class TurnManager : Node
 				DeleteModifierCards = modifierCardIndexes
 			};
 
-			Global.networkHandler._clientPeers.TryGetValue(player, out var peer);
+			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
 			if (peer != null)
 				packet.Send(peer);
 		}
@@ -389,7 +389,7 @@ public partial class TurnManager : Node
 				ModifierCards = _players[player].PlayerClass.ModifierCardList.ToArray()
 			};
 
-			Global.networkHandler._clientPeers.TryGetValue(player, out var peer);
+			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
 			if (peer != null)
 			{
 				packet.Send(peer);
@@ -425,7 +425,7 @@ public partial class TurnManager : Node
 	{
 		foreach (var player in _players.Keys)
 		{
-			Global.networkHandler._clientPeers.TryGetValue(player, out var peer);
+			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
 			if (peer != null)
 				packet.Send(peer);
 		}

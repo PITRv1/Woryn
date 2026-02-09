@@ -22,7 +22,7 @@ public partial class MultiplayerPlayerClass : Node
 	
 	public override void _Ready()
 	{
-		Id = Global.multiplayerClientGlobals._id;
+		Id = Global.multiplayerClientGlobals.Id;
 		Global.multiplayerClientGlobals.SetupPlace += Setup;
 		Global.multiplayerClientGlobals.HandleTurnInfo += PlayerClass.ProcessTurnInfoPacket;
 		Global.multiplayerClientGlobals.HandlePickUpCardAnswer += PlayerClass.ProcessPickUpAnswer;
@@ -46,7 +46,7 @@ public partial class MultiplayerPlayerClass : Node
 	private static void ClientReady()
 	{
 		var packet = new ClientReady();
-		Global.networkHandler._serverPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
+		Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
 	}
 
 	public MultiplayerPlayerClass()
@@ -83,7 +83,7 @@ public partial class MultiplayerPlayerClass : Node
 			ModifCardIndexes = PlayerClass.ChosenModifierCards.Select(card => (byte)PlayerClass.ModifierCardList.IndexOf(card)).ToArray()
 		};
 
-		Global.networkHandler._serverPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
+		Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
 	}
 
 	private void PickUpCards()
@@ -92,7 +92,7 @@ public partial class MultiplayerPlayerClass : Node
 		{
 			SenderId = Id,
 		};
-		Global.networkHandler._serverPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
+		Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
 	}
 
 	private void PlayAbilityRequest()
@@ -107,7 +107,7 @@ public partial class MultiplayerPlayerClass : Node
 			SenderId = Id	
 		};
 
-		Global.networkHandler._serverPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
+		Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
 	}
 
 	public void AddPointToContainer(PointCard pointCard)

@@ -22,7 +22,7 @@ public partial class LobbyManager
 		
 		foreach (int player in players)
 		{
-			Global.networkHandler._clientPeers.TryGetValue(player, out var peer);
+			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
 
 			if (peer != null)
 				packet.Send(peer);
@@ -39,7 +39,7 @@ public partial class LobbyManager
 
 		foreach (int player in players)
 		{
-			Global.networkHandler._clientPeers.TryGetValue(player, out var peer);
+			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
 
 			if (peer != null)
 				packet.Send(peer);

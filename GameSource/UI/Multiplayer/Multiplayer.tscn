@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://dwothogalvoiq" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsGreen.tres" id="4_fobpq"]
 [ext_resource type="Texture2D" uid="uid://738aakqtt7x8" path="res://Assets/UI/Images/NineRect/Background_green.png" id="5_fobpq"]
 [ext_resource type="Script" uid="uid://iy4wp1ypdx84" path="res://Scripts/LobbyPlayer/LobbyPlayer.cs" id="6_akir0"]
+[ext_resource type="PackedScene" uid="uid://dcvukxwbsb0xg" path="res://Scenes/LobbyPlayer/PlayerPlaque.tscn" id="7_61xkh"]
 [ext_resource type="PackedScene" uid="uid://pelmk5an55xh" path="res://Scenes/MultiplayerPartyRoom/MultiplayerRoom.tscn" id="7_amu5d"]
 
 [node name="Multiplayer" type="Control" unique_id=180983133 node_paths=PackedStringArray("multiTypeMenu", "multiHostMenu", "multiJoinMenu", "playerListMenu", "gameNameText", "numberOfPlayersValue", "ipAddressInputServer", "ipAddressInputClient")]
@@ -240,6 +241,7 @@ text = "Back"
 
 [node name="LobbyPlayer" type="Node" parent="PlayersList" unique_id=1012462870 node_paths=PackedStringArray("_lobbyBackground")]
 script = ExtResource("6_akir0")
+_lobbyPlayer = ExtResource("7_61xkh")
 _scene = ExtResource("7_amu5d")
 _lobbyBackground = NodePath("../List")
 
