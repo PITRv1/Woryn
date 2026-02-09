@@ -24,10 +24,10 @@ tracks/0/path = NodePath("Visual:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.48296803, 7.210001),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.48296803, 7.210001, 0.48296803),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.09428641, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0.09428641, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_pqcdk"]
@@ -82,6 +82,8 @@ font = ExtResource("1_3mlda")
 font_size = 63
 
 [node name="Area3D" type="Area3D" parent="Visual" unique_id=1106532692 groups=["CameraInteractable"]]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Visual/Area3D" unique_id=439986011]
 shape = SubResource("BoxShape3D_3mlda")

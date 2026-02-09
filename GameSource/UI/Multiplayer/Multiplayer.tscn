@@ -239,11 +239,11 @@ layout_mode = 2
 theme = ExtResource("4_fobpq")
 text = "Back"
 
-[node name="LobbyPlayer" type="Node" parent="PlayersList" unique_id=1012462870 node_paths=PackedStringArray("lobbyBackground")]
+[node name="LobbyPlayer" type="Node" parent="PlayersList" unique_id=1012462870 node_paths=PackedStringArray("_lobbyBackground")]
 script = ExtResource("6_akir0")
-lobbyPlayer = ExtResource("7_amu5d")
-scene = ExtResource("8_61xkh")
-lobbyBackground = NodePath("../List")
+_lobbyPlayer = ExtResource("7_amu5d")
+_scene = ExtResource("8_61xkh")
+_lobbyBackground = NodePath("../List")
 
 [connection signal="pressed" from="MultiType/VBoxContainer/Host" to="." method="ChangeMenu" binds= ["host"]]
 [connection signal="pressed" from="MultiType/VBoxContainer/Join" to="." method="ChangeMenu" binds= ["join"]]

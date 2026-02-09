@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c2hm3pwevesgv"]
+
+[ext_resource type="Script" uid="uid://cxnlvdyxsblwc" path="res://Scenes/UICommunicator/UiCommunicator.cs" id="1_lad1w"]
+
+[node name="UICommunicator" type="Node" unique_id=1649124515]
+script = ExtResource("1_lad1w")
