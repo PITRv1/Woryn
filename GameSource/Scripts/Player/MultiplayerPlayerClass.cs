@@ -11,7 +11,7 @@ public partial class MultiplayerPlayerClass : Node
 	[Export] private CardPlacementHandler _modifierCards;
 	[Export] private PackedScene _pointCardUi;
 	[Export] private PackedScene _modifierCardUi;
-	[Export] private Godot.Collections.Array<Marker3D> _playerSeats;
+	[Export] private Node3D _playerSeatsHolder;
 	[Export] private PackedScene _buddy;
 
 	[ExportGroup("Deprecated")]
@@ -36,10 +36,11 @@ public partial class MultiplayerPlayerClass : Node
 	private void Setup(byte[] data)
 	{
 		var packet = SetupPacket.CreateFromData(data);
+		var seats = _playerSeatsHolder.GetChildren();
 		for (var i = 0; i < packet.PlayerCount; i++)
 		{
 			var bud = _buddy.Instantiate() as Node3D;
-			_playerSeats[i].AddChild(bud);
+			seats[i].AddChild(bud);
 		}
 	}
 
