@@ -47,6 +47,7 @@
 [ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="37_fxvwu"]
 [ext_resource type="PackedScene" uid="uid://dovfimrngf8o4" path="res://Assets/models/MainMenuNewCollection/hangingLampAsset.tscn" id="40_g8nf3"]
 [ext_resource type="PackedScene" uid="uid://dncmddvl1lk2j" path="res://Assets/models/MainMenuNewCollection/lamp.glb" id="41_674dm"]
+[ext_resource type="Material" uid="uid://disjia3hqpudr" path="res://Assets/Shaders/materials/curtainMaterial.tres" id="42_4dtra"]
 [ext_resource type="PackedScene" uid="uid://dktxx8mws2pq1" path="res://UI/3DUI/DiegeticUI.tscn" id="43_xspun"]
 [ext_resource type="PackedScene" uid="uid://cegma4u4cusqc" path="res://UI/MainMenu/MainMenu.tscn" id="44_u6m4i"]
 [ext_resource type="PackedScene" uid="uid://c3t23ac2wcdui" path="res://Assets/models/TrashBin.glb" id="45_1h20l"]
@@ -2580,20 +2581,8 @@ points = PackedVector3Array(154, 1.75, -47.25, 154, 0.5, -47.25, 153, 1.75, -47.
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7b5pj"]
 points = PackedVector3Array(154, 5, -46.5, 154, 0.5, -46.5, 153, 5, -46.5, 153, 0.5, -46.5, 154, 5, -47.25, 154, 0.5, -47.25, 153, 5, -47.25, 153, 0.5, -47.25)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ym0o4"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ef0mh"]
-noise = SubResource("FastNoiseLite_ym0o4")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u4fps"]
-cull_mode = 2
-albedo_color = Color(1, 0.26999998, 0.26999998, 1)
-normal_enabled = true
-normal_scale = 0.3
-normal_texture = SubResource("NoiseTexture2D_ef0mh")
-
 [sub_resource type="BoxMesh" id="BoxMesh_3caok"]
-material = SubResource("StandardMaterial3D_u4fps")
+material = ExtResource("42_4dtra")
 size = Vector3(2.585, 5.675, 0.085)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6j3j"]
@@ -2699,7 +2688,7 @@ transparency = 1
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_yhysv")
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_1h20l"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_fgmiw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctpc2"]
 transparency = 1
@@ -5565,7 +5554,7 @@ size = Vector2i(960, 512)
 
 [node name="Multiplayer" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI/CreditsMeshInstance3D/SubViewport" unique_id=180983133 node_paths=PackedStringArray("mainUI") instance=ExtResource("50_u4fps")]
 mainUI = NodePath("../../../../../../../../../MainUI")
-optionGroup = SubResource("ButtonGroup_1h20l")
+optionGroup = SubResource("ButtonGroup_fgmiw")
 
 [node name="IntroCam" type="Camera3D" parent="MovingElements/Cameras" unique_id=705683571]
 transform = Transform3D(-1, -2.4683073e-08, -8.386589e-08, 0, 0.959314, -0.28234145, 8.742278e-08, -0.28234145, -0.959314, -0.315, 1.1, -18.965)
