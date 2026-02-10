@@ -3,10 +3,12 @@ using System;
 
 public partial class CardPlacementHandler : Node3D
 {
-	[Export] public float GapAmount = -0.25f;
-	[Export] public bool CurveCards = true;
+	[Export] public float gapAmount = -0.25f;
+	[Export] public bool curveCards = true;
 	[Export] public float rotationStart = 10.0f;
 	[Export] public float rotationAmount = -5.0f;
+	[Export] public float angularRange = 180.0f;
+	[Export] public float gapDecreasion = .75f;
 
 	public Godot.Collections.Array<Node3D> CardArray { get; private set; } = new();
 	[Export] private UiCommunicator _uiCommunicator;
@@ -42,17 +44,18 @@ public partial class CardPlacementHandler : Node3D
 
 		foreach (var node in CardArray)
 		{
-			if (CurveCards) {
-				node.RotateZ(Mathf.DegToRad(rotationStart + nextRot * CardArray.IndexOf(node)));
+			if (curveCards) {
+				var cardIndex = CardArray.IndexOf(node);
 
-				node.GlobalPosition = GlobalPosition + new Vector3(0, (float)Math.Abs(Math.Sin(180f / CardArray.Count * CardArray.IndexOf(node))) * 0.1f, nextPos);
+				node.RotateZ(Mathf.DegToRad(rotationStart + nextRot * cardIndex));
+				node.GlobalPosition = GlobalPosition + new Vector3(0, (float)Math.Abs(Math.Sin(angularRange / CardArray.Count * cardIndex)) * 0.1f, nextPos);
 
-				nextPos += GapAmount * .75f;
+				nextPos += gapAmount * gapDecreasion;
 				nextRot += rotationAmount;
 			} else
 			{
 				node.GlobalPosition = GlobalPosition + new Vector3(0, 0, nextPos);
-				nextPos += GapAmount;
+				nextPos += gapAmount;
 			}
 		}
 	}
