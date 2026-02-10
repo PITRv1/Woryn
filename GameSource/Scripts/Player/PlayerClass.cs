@@ -127,10 +127,17 @@ public class PlayerClass
     public void ProcessTurnInfoPacket(byte[] data)
     {
         var packet = TurnInfoPacket.CreateFromData(data);
+        
         Points = packet.CurrentPointValue;
         Parent.SetUi(packet.MaxValue, packet.CurrentPointValue, packet.ThrowDeckValue);
+        
         var sortedPointCards = packet.DeletePointCards.OrderByDescending(x => x).ToList();
         var sortedModifierCards = packet.DeleteModifierCards.OrderByDescending(x => x).ToList();
+
+        if (Parent.Id != packet.LastPlayer)
+        {
+            return;
+        }
 
         foreach (var cardIndex in sortedPointCards)
         {
@@ -165,6 +172,6 @@ public class PlayerClass
 
     public bool CanEndTurn()
     {
-        return ChosenPointCard == null;
+        return ChosenPointCard != null;
     }
 }

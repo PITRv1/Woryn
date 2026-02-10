@@ -24,12 +24,12 @@ public partial class ModifierCardDeck
 
         //     modifierCards.Add(modifierCard);
         // }
-        // modifierCards.Add(new ModifierCardMultiplier());
-        // modifierCards.Add(new ModifierCardAddition());
-        modifierCards.Add(new ModifierCardSkip());
-        modifierCards.Add(new ModifierCardReversePlay());
-        modifierCards.Add(new ModifierCardNextPlayer());
-        modifierCards.Add(new ModifierCardChangeDeck());
+        modifierCards.Add(new ModifierCardMultiplier());
+        modifierCards.Add(new ModifierCardAddition());
+        // modifierCards.Add(new ModifierCardSkip());
+        // modifierCards.Add(new ModifierCardReversePlay());
+        // modifierCards.Add(new ModifierCardNextPlayer());
+        // modifierCards.Add(new ModifierCardChangeDeck());
     }
 
     public ModifierCard[] PullCards(int count)

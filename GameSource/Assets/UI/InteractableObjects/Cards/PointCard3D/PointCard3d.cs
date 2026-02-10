@@ -17,14 +17,10 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface
 	private PointCard _pointCard;
 	public PointCard PointCard
 	{
-		get {
-			return _pointCard;
-		}
+		get => _pointCard;
 		set
 		{
 			_pointCard = value;
-
-			GD.Print($"Card rarity: {_pointCard.CardRarity}");
 
 			if (label == null) return;
 			UpdateText();
@@ -52,7 +48,7 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface
 	{
 		if (PointCard == null) return;
 
-		StandardMaterial3D material = (StandardMaterial3D)outlineMesh.GetSurfaceOverrideMaterial(0);
+		var material = (StandardMaterial3D)outlineMesh.GetSurfaceOverrideMaterial(0);
 		material.AlbedoColor = outlineColors[(int)PointCard.CardRarity-1];
 		outlineMesh.SetSurfaceOverrideMaterial(0, material);
 	}

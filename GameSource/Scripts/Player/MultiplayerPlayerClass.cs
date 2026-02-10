@@ -72,7 +72,7 @@ public partial class MultiplayerPlayerClass : Node
 
 	public void PlayCard()
 	{
-		if (PlayerClass.CanEndTurn())
+		if (!PlayerClass.CanEndTurn())
 			return;
 
 		var packet = new EndTurnRequest
@@ -130,9 +130,13 @@ public partial class MultiplayerPlayerClass : Node
 	public void ResetContainers()
 	{
 		for (var i = 0; i < _modifierCards.GetChildCount(); i++)
+		{
 			_modifierCards.RemoveChild(_modifierCards.GetChild(1));
+		}
 
 		for (var i = 0; i < _pointCards.GetChildCount(); i++)
+		{
 			_pointCards.RemoveChild(_pointCards.GetChild(1));
+		}
 	}
 }

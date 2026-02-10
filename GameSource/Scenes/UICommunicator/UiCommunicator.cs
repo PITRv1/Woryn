@@ -10,6 +10,23 @@ public partial class UiCommunicator : Node
 
     public PointCard3d selectedPointCard3D {private set; get;}
     public List<ModifierCard3d> selectedModifierCard3Ds {private set; get;} = new();
+
+    public override void _Ready()
+    {
+        Global.multiplayerClientGlobals.HandleRoundSuccess += HandleRoundSuccess;
+    }
+
+    private void HandleRoundSuccess(byte[] data)
+    {
+        var packet = RoundSuccessPacket.CreateFromData(data);
+
+        if (packet.PlayerId != multiplayerPlayer.Id)
+        {
+            return;
+        }
+
+        RemoveSelectedCard();
+    }
  
     public void SelectPointCard(PointCard3d pointCard)
     {
@@ -51,17 +68,20 @@ public partial class UiCommunicator : Node
 
         multiplayerPlayer.PlayerClass.ChosenPointCard = selectedPointCard3D.PointCard;
 
-        foreach (ModifierCard3d modifierCard in selectedModifierCard3Ds)
+        foreach (var modifierCard in selectedModifierCard3Ds)
         {
             multiplayerPlayer.PlayerClass.AddToChosenModifierCards(modifierCard.ModifierCard);
         }
 
         multiplayerPlayer.PlayCard();
+    }
 
+    private void RemoveSelectedCard()
+    {
         pointCards.RemoveCard(selectedPointCard3D);
         selectedPointCard3D = null;
-
-        foreach (ModifierCard3d modifierCard in selectedModifierCard3Ds)
+    
+        foreach (var modifierCard in selectedModifierCard3Ds)
         {
             modifierCards.RemoveCard(modifierCard);
         }

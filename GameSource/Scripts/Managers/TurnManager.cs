@@ -246,6 +246,7 @@ public partial class TurnManager : Node
 
 	private void StartNewTurn(int pointCardIndex, byte[] modifierCardIndexes, List<ModifierCard> usedCards, int value)
 	{
+		GD.Print("NEW TURN");
 		_lastPlayer = _currentPlayer;
 
 		foreach (var card in usedCards.Where(card => !card.IsCardModifier))
@@ -276,7 +277,9 @@ public partial class TurnManager : Node
 
 			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
 			if (peer != null)
+			{
 				packet.Send(peer);
+			}
 		}
 
 		_foldTimer.Start();
@@ -346,37 +349,46 @@ public partial class TurnManager : Node
 
 		var pointCard = packet.PointCard;
 		var modifierCards = packet.ModifierCards;
-		
+
 		if (currPlayer.PointCardList[packet.PointCardIndex].PointValue != pointCard.PointValue)
+		{
 			return;
+		}
 
 		var usedCards = new List<ModifierCard>();
 
 		for (var i = 0; i < modifierCards.Length; i++)
 		{
 			var tempCard = currPlayer.ModifierCardList[packet.ModifCardIndexes[i]];
-			
+
 			if (tempCard.ModifierType != modifierCards[i].ModifierType)
+			{
 				return;
+			}
 
 			usedCards.Add(currPlayer.ModifierCardList[packet.ModifCardIndexes[i]]);
 		}
 
 		var turnValue = CalculateCardValue(pointCard.PointValue, usedCards.ToArray());
 
-		if (turnValue <= _currentMaxValue)
+		if (turnValue < _currentMaxValue)
 			return;
 
 		currPlayer.PointCardList.RemoveAt(packet.PointCardIndex);
 
-		var sortedIndexes = packet.ModifCardIndexes.ToList();
-		sortedIndexes.Sort();
-		sortedIndexes.Reverse();
+		var sortedIndexes = packet.ModifCardIndexes.OrderByDescending(index => index).ToList();
 
 		foreach (var index in sortedIndexes)
 		{
 			currPlayer.ModifierCardList.RemoveAt(index);			
 		}
+		
+		var roundSuccessPacket = new RoundSuccessPacket
+		{
+			PlayerId = packet.SenderId,
+		};
+		
+		BroadCast(roundSuccessPacket);
 
 		PickUpCards(_currentPlayer);
 

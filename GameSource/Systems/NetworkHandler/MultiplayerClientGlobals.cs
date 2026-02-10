@@ -30,6 +30,8 @@ public partial class MultiplayerClientGlobals : Node
     public delegate void ShopSceneEventHandler();
     [Signal]
     public delegate void SetupPlaceEventHandler(byte[] data);
+    [Signal]
+    public delegate void HandleRoundSuccessEventHandler(byte[] data);
 
     public int Id = -1;
     public List<int> RemoteIds = new();
@@ -55,7 +57,6 @@ public partial class MultiplayerClientGlobals : Node
                 EmitSignal("NewPlayer", data);
                 break;
             case PACKET_TYPES.TURN_INFO:
-                GD.Print("TurnInfo");
                 EmitSignal("HandleTurnInfo", data);
                 break;
             case PACKET_TYPES.PICK_UP_CARD_ANSWER:
@@ -72,6 +73,9 @@ public partial class MultiplayerClientGlobals : Node
                 break;
             case PACKET_TYPES.SETUP_PLACE:
                 EmitSignal("SetupPlace", data);
+                break;
+            case PACKET_TYPES.ROUND_SUCCESS:
+                EmitSignal("HandleRoundSuccess", data);
                 break;
             default:
                 GD.PushError($"Packet type with index {(int)packetType} unhandled!");
