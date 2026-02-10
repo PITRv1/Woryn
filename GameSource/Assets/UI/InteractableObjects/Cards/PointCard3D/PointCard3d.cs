@@ -11,7 +11,7 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface, ICard3D
 	Color[] outlineColors = [Colors.Green, Colors.DeepSkyBlue, Colors.Yellow];
 
 	public bool isSelected = false;
-	public UiCommunicator UiCommunicator { get; set; }
+	public UiCommunicator UiCommunicatorInstance { get; set; }
 
 
 	private PointCard _pointCard;
@@ -32,6 +32,7 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface, ICard3D
 
     public override void _Ready()
 	{
+		UiCommunicatorInstance = (UiCommunicator)GetTree().GetFirstNodeInGroup("UICommunicator");
 		UpdateText();
 		UpdateMeshColor();
 
@@ -61,8 +62,8 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface, ICard3D
 
 	public void UseObject()
 	{
-		GD.Print(UiCommunicator);
-		if (isSelected) UiCommunicator.DeselectPointCard();
-		else UiCommunicator.SelectPointCard(this);
+		GD.Print(UiCommunicatorInstance);
+		if (isSelected) UiCommunicatorInstance.DeselectPointCard();
+		else UiCommunicatorInstance.SelectPointCard(this);
 	}
 }

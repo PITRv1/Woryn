@@ -9,7 +9,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
     [Export] Area3D area3D;
 
 	public bool isSelected = false;
-    public UiCommunicator UiCommunicator { get; set; }
+    public UiCommunicator UiCommunicatorInstance { get; set; }
 
     private ModifierCard _modifierCard;
     public ModifierCard ModifierCard
@@ -26,6 +26,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
 
     public override void _Ready()
     {
+		UiCommunicatorInstance = (UiCommunicator)GetTree().GetFirstNodeInGroup("UICommunicator");
         SetIcon();
 
         area3D.MouseEntered += () => animationPlayer.Play("Move");
@@ -41,7 +42,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
 
     public void UseObject()
     {
-        if (isSelected)UiCommunicator.RemoveModifierCard(this);
-        else UiCommunicator.AddModifierCard(this);
+        if (isSelected)UiCommunicatorInstance.RemoveModifierCard(this);
+        else UiCommunicatorInstance.AddModifierCard(this);
     }
 }

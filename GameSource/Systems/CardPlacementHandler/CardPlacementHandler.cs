@@ -15,11 +15,6 @@ public partial class CardPlacementHandler : Node3D
 
 	public void AddCard(Node3D card)
 	{
-		if (card is ICard3D card3d)
-		{
-			card3d.UiCommunicator = _uiCommunicator;
-		}
-
 		CardArray.Add(card);
 		
 		AddChild(card);
@@ -39,7 +34,7 @@ public partial class CardPlacementHandler : Node3D
 		foreach (Node3D node in GetChildren())
 		{
 			node.GlobalPosition = GlobalPosition;
-			node.RotateZ(0);
+			node.GlobalRotation *= new Vector3(1,1,0);
 		}
 
 		var nextPos = 0f;
