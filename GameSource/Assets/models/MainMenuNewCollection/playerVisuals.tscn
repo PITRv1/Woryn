@@ -503,6 +503,6 @@ parameters/Transition/transition_request = ""
 parameters/Transition/current_index = 1
 parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
-parameters/OneShot/request = 0
+parameters/OneShot/request = 1
 
 [editable path="templatePlayerRig"]
