@@ -861,7 +861,7 @@ MaxYawDeg = 45.0
 MaxPitchDeg = 30.0
 RotationSpeed = 5.0
 
-[node name="BoneAttachment3D" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1119998455) index="25" unique_id=396461942]
+[node name="BoneAttachment3D" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1198783362) index="25" unique_id=396461942]
 transform = Transform3D(-0.752279, -0.13185161, 0.6455167, 0.6450894, 0.051755235, 0.76235205, -0.13392583, 0.9899172, 0.046121653, 0.38432238, 1.2584677, 0.42813456)
 
 [node name="LeftArmTarget" parent="PlayerVisuals" index="2" unique_id=608260768]
@@ -885,19 +885,22 @@ _uiCommunicator = NodePath("../UICommunicator")
 
 [node name="ModifierCards" parent="." unique_id=731615950 node_paths=PackedStringArray("_uiCommunicator") instance=ExtResource("31_k5rf2")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -1.345)
+GapAmount = 0.25
+CurveCards = false
 _uiCommunicator = NodePath("../UICommunicator")
 
 [node name="Deck3D" parent="." unique_id=75278921 node_paths=PackedStringArray("UiCommunicator") instance=ExtResource("26_hdoun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2186053, 0)
 UiCommunicator = NodePath("../UICommunicator")
 
-[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("_pointCards", "_modifierCards", "_playerSeatsHolder") instance=ExtResource("26_5lnsn")]
+[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("_pointCards", "_modifierCards", "_playerSeatsHolder", "deck3D") instance=ExtResource("26_5lnsn")]
 _pointCards = NodePath("../PointCards")
 _modifierCards = NodePath("../ModifierCards")
 _pointCardUi = ExtResource("23_nkcx5")
 _modifierCardUi = ExtResource("24_k5rf2")
 _playerSeatsHolder = NodePath("../3DWorld/PlayerSeats")
 _buddy = ExtResource("27_5lnsn")
+deck3D = NodePath("../Deck3D")
 
 [node name="UICommunicator" parent="." unique_id=1649124515 node_paths=PackedStringArray("pointCards", "modifierCards", "multiplayerPlayer") instance=ExtResource("28_boekd")]
 pointCards = NodePath("../PointCards")

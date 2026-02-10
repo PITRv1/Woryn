@@ -14,6 +14,8 @@ public partial class MultiplayerPlayerClass : Node
 	[Export] private Node3D _playerSeatsHolder;
 	[Export] private PackedScene _buddy;
 
+	[Export] private Deck3d deck3D;
+
 	[ExportGroup("Deprecated")]
 	[Export] private Label _maxPoints;
 	[Export] private Label _points;
@@ -64,6 +66,8 @@ public partial class MultiplayerPlayerClass : Node
 
 	public void SetUi(int mPoints, int plrPoints, int throwValue)
 	{
+		deck3D.UpdateTotalValueText(throwValue);
+		deck3D.UpdateCurrentValueText(mPoints);
 		GD.Print("Dani will update the SetUI method.");
 		// _maxPoints.Text = mPoints.ToString();
 		// _points.Text = plrPoints.ToString();

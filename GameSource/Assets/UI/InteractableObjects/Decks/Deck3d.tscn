@@ -2,13 +2,16 @@
 
 [ext_resource type="Script" uid="uid://b0knrd1lwchxe" path="res://Assets/UI/InteractableObjects/Decks/Deck3d.cs" id="1_wcj5k"]
 [ext_resource type="PackedScene" uid="uid://u4jov6g4a1gc" path="res://Assets/UI/InteractableObjects/Cards/PointCard3D/PointCard3D.tscn" id="2_2r3fm"]
+[ext_resource type="FontFile" uid="uid://c2v6ks7c7q5ef" path="res://Assets/UI/Fonts/FantaisieArtistique.ttf" id="3_oatko"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2r3fm"]
 size = Vector3(0.5175781, 0.32629395, 0.50561523)
 
-[node name="Deck3D" type="Node3D" unique_id=75278921 node_paths=PackedStringArray("area3D")]
+[node name="Deck3D" type="Node3D" unique_id=75278921 node_paths=PackedStringArray("area3D", "currentValue", "totalValue")]
 script = ExtResource("1_wcj5k")
 area3D = NodePath("Visual/Area3D")
+currentValue = NodePath("CurrentValue")
+totalValue = NodePath("TotalValue")
 
 [node name="Visual" type="Node3D" parent="." unique_id=656219172]
 
@@ -20,3 +23,27 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Visual/Area3D" unique_id=1905173650 groups=["CameraInteractable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1606004, 0)
 shape = SubResource("BoxShape3D_2r3fm")
+
+[node name="CurrentValue" type="Label3D" parent="." unique_id=397330819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7071448, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+texture_filter = 0
+modulate = Color(0.3254902, 0.3137255, 1, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "0"
+font = ExtResource("3_oatko")
+font_size = 396
+
+[node name="TotalValue" type="Label3D" parent="." unique_id=869243162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49140602, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+texture_filter = 0
+modulate = Color(0, 0, 0, 0)
+outline_modulate = Color(1, 0, 0.8862745, 1)
+text = "0"
+font = ExtResource("3_oatko")
+font_size = 247
