@@ -1,20 +1,333 @@
 [gd_scene format=3 uid="uid://c4mfb80u3jme5"]
 
+[ext_resource type="Script" uid="uid://bjp751q3yns8c" path="res://Assets/models/MainMenuNewCollection/PlayerVisualController.cs" id="1_5iesj"]
 [ext_resource type="PackedScene" uid="uid://sufxeilrpghx" path="res://Assets/models/MainMenuNewCollection/templatePlayerRig.glb" id="1_7ob1p"]
 [ext_resource type="Material" uid="uid://d3vn755pds2ns" path="res://Assets/Shaders/materials/playerColorShader.tres" id="2_q3p8h"]
 [ext_resource type="Script" uid="uid://dqjcru3p0xbbd" path="res://Scripts/CameraProjection/CameraProjection.cs" id="3_q3p8h"]
 [ext_resource type="PackedScene" uid="uid://bs7f2puxk38eq" path="res://Systems/CardPlacementHandler/CardPlacementHandler.tscn" id="4_f0xh7"]
+[ext_resource type="PackedScene" uid="uid://u4jov6g4a1gc" path="res://Assets/UI/InteractableObjects/Cards/PointCard3D/PointCard3D.tscn" id="5_bfane"]
+[ext_resource type="PackedScene" uid="uid://bp7r6il82lo83" path="res://Assets/models/ring bell.glb" id="7_cjqnh"]
+[ext_resource type="PackedScene" uid="uid://dcqemdcpybob0" path="res://Assets/models/MainMenuNewCollection/texturedTable.glb" id="22_g5ov8"]
+
+[sub_resource type="Animation" id="Animation_5iesj"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftArmTarget:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.63620746, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftArmTarget:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3.3097155, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftArmTarget:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.8965336, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftArmTarget:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.7128287, 3.3529735, 0.8965336)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LeftArmTarget/LeftArmPole:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.8533874, -1.3827975, -1.0747027)]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RightArmTarget:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.1438669, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RightArmTarget:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3.102376, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("RightArmTarget:position:z")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.0545368, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("RightArmTarget/RightHandTarget:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.42217362, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("RightArmTarget/RightHandTarget:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-4.511525, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("RightArmTarget/RightHandTarget:position:z")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.12409383, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_7kuq2"]
+resource_name = "playerBellHit"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightArmTarget:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0),
+"points": PackedFloat32Array(-1.0361034, 0, 0, 0, 0.62167525, -0.1438669, -0.06666668, -0.059824586, 0.19999999, 0.0757788, -0.59489286, -0.20684372, 0.075171, 0, 0),
+"times": PackedFloat32Array(0, 0.10000001, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightArmTarget:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0),
+"points": PackedFloat32Array(3.637, 0, 0, 0.2, 0.12582636, 3.102376, -0.06666666, 0.0018913746, 0.06666668, 0.35114145, 3.1501884, -0.26666668, 0.0023794174, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightArmTarget:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0),
+"points": PackedFloat32Array(0.2222116, 0, 0, 0, 0.60306877, 1.0545368, -0.06666668, -0.08030999, 0.19999999, 0.04116094, 0.5730523, -0.20684372, 0.080247425, 0, 0),
+"times": PackedFloat32Array(0, 0.10000001, 0.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightArmTarget/RightHandTarget:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.38553655, 0, 0, 0.26666668, -1.0254183, -0.42217362, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.9206914)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RightArmTarget/RightHandTarget:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(-0.7860637, 0, 0, 0.06666667, -3.4533768, -4.511525, -0.28735805, 0.07790613, 0.25, 0),
+"times": PackedFloat32Array(0, 1.9206914)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RightArmTarget/RightHandTarget:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.4687456, 0, 0, 0.53333336, -0.20346227, -0.12409383, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.9206914)
+}
+
+[sub_resource type="Animation" id="Animation_cjqnh"]
+resource_name = "playerIdle"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftArmTarget:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.0000005, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.7128287, 3.3529735, 0.8965336), Vector3(0.713, 3.416, 0.897), Vector3(0.7128287, 3.3529735, 0.8965336)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftArmTarget/LeftArmPole:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.6391773, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.8533874, -1.3827975, -1.0747027), Vector3(1.4168913, -1.3827975, -1.0747027), Vector3(1.8533874, -1.3827975, -1.0747027)]
+}
+
+[sub_resource type="Animation" id="Animation_usn6a"]
+resource_name = "playerPullUp"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftArmTarget:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0.7128287, 0, 0, 0.050000004, 0, 0.7128287, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftArmTarget:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(1.8773518, 0, 0, 0.06666667, 2.0535574, 3.3529735, -0.16666667, -0.008232355, 0.15, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftArmTarget:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0.59513295, 0, 0, 0.050000004, 0.050233446, 0.8965336, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7kuq2"]
+_data = {
+&"RESET": SubResource("Animation_5iesj"),
+&"playerBellHit": SubResource("Animation_7kuq2"),
+&"playerIdle": SubResource("Animation_cjqnh"),
+&"playerPullUp": SubResource("Animation_usn6a")
+}
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_13o6v"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qrsut"]
+animation = &"playerBellHit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n3mnv"]
+animation = &"playerIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_va7xd"]
+animation = &"playerPullUp"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_p41l4"]
+input_0/name = "pullUp"
+input_0/auto_advance = true
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "idle"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3wcy2"]
+graph_offset = Vector2(-943.2248, -61.315815)
+nodes/Idle/node = SubResource("AnimationNodeAnimation_n3mnv")
+nodes/Idle/position = Vector2(-765.2174, 208.69566)
+nodes/PullUp/node = SubResource("AnimationNodeAnimation_va7xd")
+nodes/PullUp/position = Vector2(-765.2174, 34.782608)
+nodes/Transition/node = SubResource("AnimationNodeTransition_p41l4")
+nodes/Transition/position = Vector2(-208.69566, 86.95652)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_13o6v")
+nodes/Add2/position = Vector2(139.13043, 69.565216)
+nodes/BellHit/node = SubResource("AnimationNodeAnimation_qrsut")
+nodes/BellHit/position = Vector2(-156.52174, 382.6087)
+node_connections = [&"output", 0, &"Add2", &"Transition", 0, &"PullUp", &"Transition", 1, &"Idle", &"Add2", 0, &"Transition", &"Add2", 1, &"BellHit"]
 
 [node name="PlayerVisuals" type="Node3D" unique_id=241039124]
+script = ExtResource("1_5iesj")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2049758961]
-transform = Transform3D(-0.99994767, 0, 0.010227382, 0, 1, 0, -0.010227382, 0, -0.99994767, 0, 4.1284485, -0.041933775)
+[node name="Neck" type="Node3D" parent="." unique_id=702888186]
+transform = Transform3D(1, 0, 0, 0, 0.98018485, -0.19808504, 0, 0.19808504, 0.98018485, 0, 4.128, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck" unique_id=2049758961]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+fov = 70.0
 script = ExtResource("3_q3p8h")
-MaxYawDeg = 35.0
+MaxYawDeg = 10.0
 MaxPitchDeg = 15.0
-RotationSpeed = 16.0
 
-[node name="TorsoTarget" type="Marker3D" parent="Camera3D" unique_id=947115167]
+[node name="TorsoTarget" type="Marker3D" parent="Neck/Camera3D" unique_id=947115167]
 transform = Transform3D(1, -4.440892e-16, 0, 8.881784e-16, 0.9999999, 0, 0, 0, 0.9999999, 0.118999995, -0.1441102, -1.2970002)
 
 [node name="templatePlayerRig" parent="." unique_id=1520022567 instance=ExtResource("1_7ob1p")]
@@ -81,8 +394,8 @@ settings/1/end_bone/length = 0.0
 
 [node name="JacobianIK3D" type="JacobianIK3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="22" unique_id=404138472]
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="23" unique_id=955177941]
-target_node = NodePath("../../../../Camera3D/TorsoTarget")
+[node name="HeadLookAtMod" type="LookAtModifier3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="23" unique_id=955177941]
+target_node = NodePath("../../../../Neck/Camera3D/TorsoTarget")
 bone_name = "spine.005"
 bone = 5
 
@@ -92,27 +405,62 @@ bone_name = "hand.L"
 bone = 10
 forward_axis = 0
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="25" unique_id=396461942]
-transform = Transform3D(-0.39478794, -0.62356573, 0.67476547, 0.04147041, 0.72157824, 0.6910895, -0.9178357, 0.30081663, -0.25901085, 0.3105294, 1.4698862, 0.35861337)
+[node name="RightHandLookAtMod" type="LookAtModifier3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="25" unique_id=43258270]
+target_node = NodePath("../../../../RightArmTarget/RightHandTarget")
+bone_name = "hand.R"
+bone = 14
+forward_axis = 1
+
+[node name="LeftHandAttachmentMod" type="BoneAttachment3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="26" unique_id=396461942]
+transform = Transform3D(-0.5674061, -0.7813246, 0.25996616, 0.17137343, 0.19674635, 0.9653609, -0.8054073, 0.5923031, 0.022263259, 0.28513646, 1.343073, 0.35862726)
 bone_name = "hand.L"
 bone_idx = 10
 
-[node name="CardPlacementHandler" parent="templatePlayerRig/metarig/Skeleton3D/BoneAttachment3D" unique_id=2147236481 instance=ExtResource("4_f0xh7")]
-transform = Transform3D(0.026858712, -0.09953313, 0.48925632, 0.49927232, 0.0030013828, -0.026797967, 0.0023976802, 0.48998383, 0.0995495, 0.019707052, 0.07854623, -0.0017185351)
+[node name="PointCards" parent="templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" unique_id=181677031 instance=ExtResource("4_f0xh7")]
+transform = Transform3D(0.04980082, 1.4901161e-08, 0.39688766, 0.31571373, 0.24239539, -0.039615225, -0.24050942, 0.3181895, 0.03017869, 0.00945621, -0.00017682591, 0.098005824)
+visible = false
+
+[node name="PointCard3D" parent="templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PointCards" unique_id=1527816531 instance=ExtResource("5_bfane")]
+
+[node name="PointCard3D2" parent="templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PointCards" unique_id=226040016 instance=ExtResource("5_bfane")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25094676, 0, 0)
+
+[node name="PointCard3D3" parent="templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PointCards" unique_id=1707160736 instance=ExtResource("5_bfane")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52434367, 0, 0)
 
 [node name="LeftArmTarget" type="Marker3D" parent="." unique_id=608260768]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7763238, 3.6747153, 0.8965336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7128287, 3.3529735, 0.8965336)
 
 [node name="LeftArmPole" type="Marker3D" parent="LeftArmTarget" unique_id=836124568]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.6460674, -1.3827975, -1.0747027)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8533874, -1.3827975, -1.0747027)
 
 [node name="LeftHandTarget" type="Marker3D" parent="LeftArmTarget" unique_id=1278405212]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5807435, 0.0610044, -1.3501606)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4939257, 0.14918005, -0.7011053)
 
 [node name="RightArmTarget" type="Marker3D" parent="." unique_id=880049463]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1844926, 2.8762617, 0.6007309)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1438669, 3.102376, 1.0545368)
 
 [node name="RightArmPole" type="Marker3D" parent="RightArmTarget" unique_id=1093313350]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.005493641, 0.075751066, -0.6695131)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2468054, 0.075751066, -0.6695131)
+
+[node name="RightHandTarget" type="Marker3D" parent="RightArmTarget" unique_id=337216926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42217362, -4.511525, -0.12409383)
+
+[node name="ring bell" parent="." unique_id=2018728083 instance=ExtResource("7_cjqnh")]
+transform = Transform3D(0.088, 0, 0, 0, 0.088, 0, 0, 0, 0.088, 0, 2.982, 1.2233713)
+
+[node name="texturedTable" parent="." unique_id=1540907101 instance=ExtResource("22_g5ov8")]
+transform = Transform3D(1.248, 0, 0, 0, 1.248, 0, 0, 0, 1.248, 0, 0.898, 2.869)
+
+[node name="PlayerAnimator" type="AnimationPlayer" parent="." unique_id=523274783]
+libraries/ = SubResource("AnimationLibrary_7kuq2")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=92736569]
+tree_root = SubResource("AnimationNodeBlendTree_3wcy2")
+anim_player = NodePath("../PlayerAnimator")
+parameters/Transition/current_state = "idle"
+parameters/Transition/transition_request = ""
+parameters/Transition/current_index = 1
+parameters/Add2/add_amount = 1.0
 
 [editable path="templatePlayerRig"]

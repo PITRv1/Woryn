@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://vjkw4o72syhy"]
+
+[ext_resource type="Texture2D" uid="uid://dxudxh3exhpue" path="res://Assets/textures/images/poolTable.png" id="1_dcmix"]
+
+[resource]
+albedo_texture = ExtResource("1_dcmix")
+metallic_specular = 0.0
+texture_filter = 2

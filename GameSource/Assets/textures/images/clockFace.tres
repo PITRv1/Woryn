@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://t8vj35a0h7y6"]
+
+[ext_resource type="Texture2D" uid="uid://bwtpl0fuiyky4" path="res://Assets/textures/images/clockFace.png" id="1_10nqs"]
+
+[resource]
+albedo_texture = ExtResource("1_10nqs")
+metallic_specular = 0.0
+texture_filter = 2
