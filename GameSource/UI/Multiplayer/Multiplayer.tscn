@@ -4,12 +4,13 @@
 [ext_resource type="Script" uid="uid://cbmpbge5cjt4m" path="res://UI/Multiplayer/Multiplayer.cs" id="2_akir0"]
 [ext_resource type="ButtonGroup" uid="uid://c8lhp1s2lwvyu" path="res://UI/Multiplayer/MultiGameTypeButtonGroup.tres" id="4_f40x6"]
 [ext_resource type="Theme" uid="uid://dwothogalvoiq" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsGreen.tres" id="4_fobpq"]
+[ext_resource type="PackedScene" uid="uid://sh4ecpmjk4b8" path="res://Scenes/LobbyPlayer/JoinableGamePlaque.tscn" id="4_vmpp6"]
 [ext_resource type="Texture2D" uid="uid://738aakqtt7x8" path="res://Assets/UI/Images/NineRect/Background_green.png" id="5_fobpq"]
 [ext_resource type="Script" uid="uid://iy4wp1ypdx84" path="res://Scripts/LobbyPlayer/LobbyPlayer.cs" id="6_akir0"]
 [ext_resource type="PackedScene" uid="uid://dcvukxwbsb0xg" path="res://Scenes/LobbyPlayer/PlayerPlaque.tscn" id="7_61xkh"]
 [ext_resource type="PackedScene" uid="uid://pelmk5an55xh" path="res://Scenes/MultiplayerPartyRoom/MultiplayerRoom.tscn" id="7_amu5d"]
 
-[node name="Multiplayer" type="Control" unique_id=180983133 node_paths=PackedStringArray("multiTypeMenu", "multiHostMenu", "multiJoinMenu", "playerListMenu", "gameNameText", "numberOfPlayersValue", "ipAddressInputServer", "ipAddressInputClient")]
+[node name="Multiplayer" type="Control" unique_id=180983133 node_paths=PackedStringArray("multiTypeMenu", "multiHostMenu", "multiFindMenu", "multiJoinMenu", "playerListMenu", "numberOfPlayersValue", "ipAddressInputClient", "_gameNameInput", "_gamesContainer")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -21,13 +22,15 @@ theme = ExtResource("1_f40x6")
 script = ExtResource("2_akir0")
 multiTypeMenu = NodePath("MultiType")
 multiHostMenu = NodePath("Host")
+multiFindMenu = NodePath("FindServer")
 multiJoinMenu = NodePath("Join")
 playerListMenu = NodePath("PlayersList")
-gameNameText = NodePath("Host/Ip/ServerIpInput")
 numberOfPlayersValue = NodePath("Host/Players/Players")
 optionGroup = ExtResource("4_f40x6")
-ipAddressInputServer = NodePath("Host/Ip/ServerIpInput")
 ipAddressInputClient = NodePath("Join/LineEdit")
+_gameNameInput = NodePath("Host/GameName/LineEdit")
+_gamesContainer = NodePath("FindServer/VScrollBar/GameContainer")
+_joinableGamePlaque = ExtResource("4_vmpp6")
 
 [node name="Title" type="Label" parent="." unique_id=6155999]
 visible = false
@@ -86,6 +89,11 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Host"
 
+[node name="FindServer" type="Button" parent="MultiType/VBoxContainer" unique_id=2011545475]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Find Server"
+
 [node name="Join" type="Button" parent="MultiType/VBoxContainer" unique_id=103320775]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -112,19 +120,19 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
 
-[node name="Ip" type="VBoxContainer" parent="Host" unique_id=692076688]
+[node name="GameName" type="VBoxContainer" parent="Host" unique_id=443308487]
 layout_mode = 2
 
-[node name="IPLabel" type="Label" parent="Host/Ip" unique_id=2096832281]
+[node name="Game Name" type="Label" parent="Host/GameName" unique_id=1354435208]
 layout_mode = 2
-text = "Server ip"
+text = "Game Name"
 horizontal_alignment = 1
 
-[node name="ServerIpInput" type="LineEdit" parent="Host/Ip" unique_id=1766263423]
-custom_minimum_size = Vector2(100, 40)
+[node name="LineEdit" type="LineEdit" parent="Host/GameName" unique_id=1370491700]
+custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-text = "127.0.0.1"
-placeholder_text = "IP address"
+size_flags_vertical = 3
+placeholder_text = "Game Name"
 
 [node name="Players" type="VBoxContainer" parent="Host" unique_id=1984120845]
 layout_mode = 2
@@ -198,7 +206,6 @@ grow_vertical = 2
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_vertical = 3
-text = "127.0.0.1"
 placeholder_text = "IP address"
 
 [node name="Button" type="Button" parent="Join" unique_id=1536006841]
@@ -207,6 +214,43 @@ theme = ExtResource("4_fobpq")
 text = "Join"
 
 [node name="BackButton" type="Button" parent="Join" unique_id=705925737]
+layout_mode = 2
+theme = ExtResource("4_fobpq")
+text = "Back"
+
+[node name="FindServer" type="VBoxContainer" parent="." unique_id=1861328889]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -215.61
+offset_right = 146.0
+offset_bottom = 224.39136
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="FindServer" unique_id=1955743789]
+custom_minimum_size = Vector2(292, 340)
+layout_mode = 2
+
+[node name="GameContainer" type="VBoxContainer" parent="FindServer/VScrollBar" unique_id=358665567]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Refresh" type="Button" parent="FindServer" unique_id=2060852125]
+layout_mode = 2
+theme = ExtResource("4_fobpq")
+text = "Refresh"
+
+[node name="BackButton" type="Button" parent="FindServer" unique_id=1885225612]
 layout_mode = 2
 theme = ExtResource("4_fobpq")
 text = "Back"
@@ -246,11 +290,14 @@ _scene = ExtResource("7_amu5d")
 _lobbyBackground = NodePath("../List")
 
 [connection signal="pressed" from="MultiType/VBoxContainer/Host" to="." method="ChangeMenu" binds= ["host"]]
+[connection signal="pressed" from="MultiType/VBoxContainer/FindServer" to="." method="ChangeMenu" binds= ["find"]]
 [connection signal="pressed" from="MultiType/VBoxContainer/Join" to="." method="ChangeMenu" binds= ["join"]]
 [connection signal="pressed" from="MultiType/BackButton" to="." method="ChangeMenu" binds= ["main"]]
 [connection signal="pressed" from="Host/VBoxContainer/Create" to="." method="HostGame"]
 [connection signal="pressed" from="Host/VBoxContainer/BackButton" to="." method="ChangeMenu" binds= ["select"]]
 [connection signal="pressed" from="Join/Button" to="." method="JoinGame"]
 [connection signal="pressed" from="Join/BackButton" to="." method="ChangeMenu" binds= ["select"]]
+[connection signal="pressed" from="FindServer/Refresh" to="." method="RefreshGames"]
+[connection signal="pressed" from="FindServer/BackButton" to="." method="ChangeMenu" binds= ["select"]]
 [connection signal="pressed" from="PlayersList/StartButton" to="PlayersList/LobbyPlayer" method="StartGameRequest"]
-[connection signal="pressed" from="PlayersList/BackButton" to="." method="ChangeMenu" binds= ["select"]]
+[connection signal="pressed" from="PlayersList/BackButton" to="." method="ChangeMenu" binds= ["select&stop"]]

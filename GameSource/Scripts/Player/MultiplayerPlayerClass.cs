@@ -121,7 +121,7 @@ public partial class MultiplayerPlayerClass : Node
 
 	public void AddModifierToContainer(ModifierCard modifierCard)
 	{
-		if (_pointCardUi.Instantiate() is not ModifierCard3d card) return;
+		if (_modifierCardUi.Instantiate() is not ModifierCard3d card) return;
 		card.ModifierCard = modifierCard;
 
 		_modifierCards.AddCard(card);

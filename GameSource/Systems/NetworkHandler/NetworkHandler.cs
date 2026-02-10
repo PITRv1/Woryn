@@ -16,6 +16,7 @@ public partial class NetworkHandler : Node
     [Signal] public delegate void OnConnectedToServerEventHandler();
     [Signal] public delegate void OnDisconnectedFromServerEventHandler();
     [Signal] public delegate void OnClientPacketEventHandler(byte[] data);
+    [Signal] public delegate void OnServerStoppedEventHandler();
 
     private Stack<int> _availablePeerIds = new();
     public Dictionary<int, ENetPacketPeer> ClientPeers = new();
@@ -25,6 +26,8 @@ public partial class NetworkHandler : Node
     public ENetConnection ServerConnection;
     public ENetConnection ClientConnection;
 
+    public LanDiscovery LanDiscovery;
+
     public bool IsServer {private set; get;}
     private bool _isClient;
 
@@ -32,6 +35,9 @@ public partial class NetworkHandler : Node
     {
         for (var i = 255; i >= 0; i--)
             _availablePeerIds.Push(i);
+        
+        LanDiscovery = new LanDiscovery();
+        AddChild(LanDiscovery);
 
         GD.Print("Network Handler ready!");
     }
@@ -90,11 +96,12 @@ public partial class NetworkHandler : Node
         ServerConnection = null;
 
         IsServer = false;
-
+        LanDiscovery.StopServerBroadcast();
         GD.Print("Server stopped");
+        EmitSignal(SignalName.OnServerStopped);
     }
 
-    public void StartServer(string ip = "127.0.0.1", int port = 6767)
+    public void StartServer(string ip = "0.0.0.0", int port = 6767)
     {
         if (ServerConnection != null)
         {
@@ -113,6 +120,7 @@ public partial class NetworkHandler : Node
         }
 
         IsServer = true;
+        LanDiscovery.StartServerBroadcast("My Game Server");
         GD.Print("Server started");
     }
 

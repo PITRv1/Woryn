@@ -6,13 +6,16 @@ public partial class Multiplayer : Control
 	[Export] MainUI mainUI;
 	[Export] Control multiTypeMenu;
 	[Export] Control multiHostMenu;
+	[Export] Control multiFindMenu;
 	[Export] Control multiJoinMenu;
 	[Export] Control playerListMenu;
 	[Export] LineEdit gameNameText;
 	[Export] HSlider numberOfPlayersValue;
     [Export] ButtonGroup optionGroup;
-	[Export] LineEdit ipAddressInputServer;
-	[Export] LineEdit ipAddressInputClient;
+    [Export] LineEdit ipAddressInputClient;
+	[Export] private LineEdit _gameNameInput;
+	[Export] private VBoxContainer _gamesContainer;
+	[Export] private PackedScene _joinableGamePlaque;
 
 
 	private Control _currentMenu;
@@ -28,6 +31,32 @@ public partial class Multiplayer : Control
 		}
 	}
 
+	private void RefreshGames()
+	{
+		foreach (var child in _gamesContainer.GetChildren())
+		{
+			child.QueueFree();
+		}
+		
+		Global.networkHandler.LanDiscovery.StartClientDiscovery();
+	}
+	
+	private void OnServerDiscovered(string ip, string serverName)
+	{
+		var serverItem = _joinableGamePlaque.Instantiate() as JoinableGamePlaque;
+		serverItem.SetMenu(serverName, ip, 1, 4);
+		serverItem.JoinPressed += () => JoinServer(ip);
+        
+		_gamesContainer.AddChild(serverItem);
+	}
+    
+	private void JoinServer(string ip)
+	{
+		Global.networkHandler.LanDiscovery.StopClientDiscovery();
+		Global.networkHandler.StartClient(ip);
+		ChangeMenu("player");
+	}
+
 
     public override void _Ready()
     {
@@ -38,7 +67,8 @@ public partial class Multiplayer : Control
         CurrentMenu = multiTypeMenu;
 
 		ipAddressInputClient.Text = ipAddressOnLocalNetwork;
-		ipAddressInputServer.Text = "0.0.0.0";
+		
+		Global.networkHandler.LanDiscovery.ServerDiscovered += OnServerDiscovered;
     }
 
 	private void ChangeMenu(string option)
@@ -59,6 +89,10 @@ public partial class Multiplayer : Control
 				
 				CurrentMenu = multiTypeMenu;
 				break;
+			case "find":
+				CurrentMenu = multiFindMenu;
+				RefreshGames();
+				break;
 			case "player":
 				CurrentMenu = playerListMenu;
 				break;
@@ -72,8 +106,10 @@ public partial class Multiplayer : Control
 
 	private void HostGame()
 	{
-		Global.networkHandler.StartServer(ipAddressInputServer.Text);
-        Global.networkHandler.StartClient("127.0.0.1");
+		Global.networkHandler.LanDiscovery.ServerName = _gameNameInput.Text;
+		
+		Global.networkHandler.StartServer();
+		Global.networkHandler.StartClient();
 
 		ChangeMenu("player");
 	}

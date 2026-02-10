@@ -19,7 +19,7 @@ public partial class MultiplayerServerGlobals : Node
         network.OnPeerConnected += OnPeerConnected;
         network.OnPeerDisconnected += OnPeerDisconnected;
         network.OnServerPacket += OnServerPacket;
-        
+        Global.networkHandler.OnServerStopped += () => Global.lobbyManagerInstance.ResetPlayList();
     }
 
     private void OnPeerConnected(int peerId)
@@ -30,7 +30,7 @@ public partial class MultiplayerServerGlobals : Node
             .Create(peerId, _peerIds)
             .Broadcast(Global.networkHandler.ServerConnection);
         
-        Global.lobbyManagerInstance ??= new  LobbyManager();
+        Global.lobbyManagerInstance ??= new LobbyManager();
 
         Global.lobbyManagerInstance.AddToMultiplayerList(peerId);
     }
@@ -38,6 +38,8 @@ public partial class MultiplayerServerGlobals : Node
     private void OnPeerDisconnected(int peerId)
     {
         _peerIds.Remove(peerId);
+        GD.Print("Peer disconnected");
+        Global.lobbyManagerInstance.RemoveFromMultiplayerList(peerId);
     }
 
     private void OnServerPacket(int peerId, byte[] data)

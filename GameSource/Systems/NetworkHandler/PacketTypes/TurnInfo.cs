@@ -44,16 +44,15 @@ public partial class TurnInfoPacket : PacketInfo
 
 		data.AddRange(BitConverter.GetBytes(DeleteModifierCards.Length));
 
-		foreach (byte index in DeleteModifierCards)
-			data.Add(index);
+		data.AddRange(DeleteModifierCards);
 
 		return data.ToArray();
     }
 
 	public static TurnInfoPacket CreateFromData(byte[] data)
 	{
-		TurnInfoPacket packet = new TurnInfoPacket();
-		int index = 1;
+		var packet = new TurnInfoPacket();
+		var index = 1;
 
 		packet.LastPlayer = BitConverter.ToInt32(data, index);
 		index += 4;
@@ -73,11 +72,11 @@ public partial class TurnInfoPacket : PacketInfo
 		packet.CurrentPointValue = BitConverter.ToInt32(data, index);
 		index += 4;
 
-		int size = BitConverter.ToInt32(data, index); 
+		var size = BitConverter.ToInt32(data, index); 
 		index += 4;
 		packet.DeletePointCards = new int[size];
 
-		for (int i = 0; i < size; i++)
+		for (var i = 0; i < size; i++)
 		{
 			packet.DeletePointCards[i] = BitConverter.ToInt32(data, index);
 			index += 4;
@@ -87,7 +86,7 @@ public partial class TurnInfoPacket : PacketInfo
 		index += 4;
 		packet.DeleteModifierCards = new byte[size];
 
-		for (int i = 0; i < size; i++)
+		for (var i = 0; i < size; i++)
 		{
 			packet.DeleteModifierCards[i] = data[index];
 			index++;

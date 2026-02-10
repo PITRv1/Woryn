@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Drawing;
 using System.Linq;
 public class PlayerClass
@@ -128,6 +129,18 @@ public class PlayerClass
         var packet = TurnInfoPacket.CreateFromData(data);
         Points = packet.CurrentPointValue;
         Parent.SetUi(packet.MaxValue, packet.CurrentPointValue, packet.ThrowDeckValue);
+        var sortedPointCards = packet.DeletePointCards.OrderByDescending(x => x).ToList();
+        var sortedModifierCards = packet.DeleteModifierCards.OrderByDescending(x => x).ToList();
+
+        foreach (var cardIndex in sortedPointCards)
+        {
+            PointCardList.RemoveAt(cardIndex);
+        }
+
+        foreach (var cardIndex in sortedModifierCards)
+        {
+            ModifierCardList.RemoveAt(cardIndex);
+        }
     }
 
     public void ProcessPickUpAnswer(byte[] data)
@@ -139,10 +152,14 @@ public class PlayerClass
         ModifierCardList.AddRange(packet.ModifierCards);
 
         foreach (var card in packet.PointCards)
+        {
             Parent.AddPointToContainer(card);
+        }
 
         foreach (var card in packet.ModifierCards)
+        {
             Parent.AddModifierToContainer(card);
+        }
 
     }
 

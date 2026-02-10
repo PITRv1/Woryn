@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bxs0hn6508qbt" path="res://Scenes/MultiplayerPlayer/multiplayer_player.tscn" id="26_5lnsn"]
 [ext_resource type="PackedScene" uid="uid://cyyxdvmulcre5" path="res://Assets/UI/InteractableObjects/Decks/Deck3d.tscn" id="26_hdoun"]
 [ext_resource type="PackedScene" uid="uid://dr2b8kaijlck8" path="res://Assets/Etc/Buddy.tscn" id="27_5lnsn"]
+[ext_resource type="PackedScene" uid="uid://c2hm3pwevesgv" path="res://Scenes/UICommunicator/UICommunicator.tscn" id="28_boekd"]
 [ext_resource type="PackedScene" uid="uid://c4mfb80u3jme5" path="res://Assets/models/MainMenuNewCollection/playerVisuals.tscn" id="31_1ab4g"]
 [ext_resource type="PackedScene" uid="uid://bs7f2puxk38eq" path="res://Systems/CardPlacementHandler/CardPlacementHandler.tscn" id="31_k5rf2"]
 
@@ -878,14 +879,13 @@ transform = Transform3D(0.55403095, -0.8324959, 1.9493921e-08, 0.8324959, 0.5540
 [node name="RightArmPole" parent="PlayerVisuals/RightArmTarget" index="0" unique_id=1093313350]
 transform = Transform3D(2.5, 0, 1.4210855e-14, 0, 2.5, 0, -1.4210855e-14, 0, 2.5, -0.13273573, 0.075751066, -0.80137634)
 
-[node name="PointCards" parent="." unique_id=2052042597 node_paths=PackedStringArray("UiCommunicator") instance=ExtResource("31_k5rf2")]
+[node name="PointCards" parent="." unique_id=2052042597 node_paths=PackedStringArray("_uiCommunicator") instance=ExtResource("31_k5rf2")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 1.3453918)
-UiCommunicator = NodePath("../UICommunicator")
+_uiCommunicator = NodePath("../UICommunicator")
 
-[node name="ModifierCards" parent="." unique_id=731615950 node_paths=PackedStringArray("UiCommunicator") instance=ExtResource("31_k5rf2")]
+[node name="ModifierCards" parent="." unique_id=731615950 node_paths=PackedStringArray("_uiCommunicator") instance=ExtResource("31_k5rf2")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -1.345)
-gapAmount = 0.25
-UiCommunicator = NodePath("../UICommunicator")
+_uiCommunicator = NodePath("../UICommunicator")
 
 [node name="Deck3D" parent="." unique_id=75278921 node_paths=PackedStringArray("UiCommunicator") instance=ExtResource("26_hdoun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2186053, 0)
@@ -898,6 +898,11 @@ _pointCardUi = ExtResource("23_nkcx5")
 _modifierCardUi = ExtResource("24_k5rf2")
 _playerSeatsHolder = NodePath("../3DWorld/PlayerSeats")
 _buddy = ExtResource("27_5lnsn")
+
+[node name="UICommunicator" parent="." unique_id=1649124515 node_paths=PackedStringArray("pointCards", "modifierCards", "multiplayerPlayer") instance=ExtResource("28_boekd")]
+pointCards = NodePath("../PointCards")
+modifierCards = NodePath("../ModifierCards")
+multiplayerPlayer = NodePath("../MultiplayerPlayer")
 
 [editable path="PlayerVisuals"]
 [editable path="PlayerVisuals/templatePlayerRig"]

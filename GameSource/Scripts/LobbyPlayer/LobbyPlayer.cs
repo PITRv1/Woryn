@@ -38,7 +38,9 @@ public partial class LobbyPlayer : Node
 		var packet = NewPlayer.CreateFromData(data);
 
 		for (var i = _lobbyBackground.GetChildCount() - 1; i >= 0; i--)
+		{
 			_lobbyBackground.RemoveChild(_lobbyBackground.GetChild(i));
+		}
 
 		foreach (var player in packet.playerArray)
 		{

@@ -116,7 +116,9 @@ public partial class TurnManager : Node
 		var packet = Fold.CreateFromData(data);
 
 		if (packet.SenderId != _currentPlayer)
+		{
 			return;
+		}
 
 		FoldTurn();
 	}
@@ -213,7 +215,9 @@ public partial class TurnManager : Node
 	private bool CheckForEndGame(int value)
 	{
 		if (DoPlayersHaveCards())
+		{
 			return false;
+		}
 		
 		_throwDeckValue += value;
 		_players[_lastPlayer].PlayerClass.Points += _throwDeckValue;
@@ -342,7 +346,7 @@ public partial class TurnManager : Node
 
 		var pointCard = packet.PointCard;
 		var modifierCards = packet.ModifierCards;
-
+		
 		if (currPlayer.PointCardList[packet.PointCardIndex].PointValue != pointCard.PointValue)
 			return;
 
@@ -427,7 +431,9 @@ public partial class TurnManager : Node
 		{
 			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
 			if (peer != null)
+			{
 				packet.Send(peer);
+			}
 		}
 	}
 }
