@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bs7f2puxk38eq" path="res://Systems/CardPlacementHandler/CardPlacementHandler.tscn" id="4_f0xh7"]
 [ext_resource type="PackedScene" uid="uid://u4jov6g4a1gc" path="res://Assets/UI/InteractableObjects/Cards/PointCard3D/PointCard3D.tscn" id="5_bfane"]
 [ext_resource type="PackedScene" uid="uid://bp7r6il82lo83" path="res://Assets/models/ring bell.glb" id="7_cjqnh"]
-[ext_resource type="Script" uid="uid://cjjhll14h1e55" path="res://Assets/models/RingBell.cs" id="8_usn6a"]
 [ext_resource type="PackedScene" uid="uid://dcqemdcpybob0" path="res://Assets/models/MainMenuNewCollection/texturedTable.glb" id="22_g5ov8"]
 
 [sub_resource type="Animation" id="Animation_5iesj"]
@@ -77,7 +76,7 @@ tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.1438669, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-0.5001725, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/6/type = "bezier"
@@ -88,7 +87,7 @@ tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3.102376, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(2.5376568, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/7/type = "bezier"
@@ -99,7 +98,7 @@ tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1.0545368, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0.7523208, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/8/type = "bezier"
@@ -110,7 +109,7 @@ tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.42217362, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1.6304147, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/9/type = "bezier"
@@ -121,7 +120,7 @@ tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-4.511525, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0.3011651, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/10/type = "bezier"
@@ -158,7 +157,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(2, 0, 0),
-"points": PackedFloat32Array(3.637, 0, 0, 0.2, 0.12582636, 3.102376, -0.06666666, 0.0018913746, 0.06666668, 0.35114145, 3.1501884, -0.26666668, 0.0023794174, 0, 0),
+"points": PackedFloat32Array(3.637, 0, 0, 0.2, 0.12582636, 3.102376, -0.06666666, 0.0018913746, 0.090207085, 0.1481328, 3.1501884, -0.26666668, 0.0023794174, 0, 0),
 "times": PackedFloat32Array(0, 0.2, 0.6)
 }
 tracks/2/type = "bezier"
@@ -280,13 +279,15 @@ _data = {
 &"playerPullUp": SubResource("Animation_usn6a")
 }
 
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_13o6v"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qrsut"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cjqnh"]
 animation = &"playerBellHit"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n3mnv"]
 animation = &"playerIdle"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_usn6a"]
+filter_enabled = true
+filters = ["RightArmTarget/RightHandTarget:position:x", "RightArmTarget/RightHandTarget:position:y", "RightArmTarget/RightHandTarget:position:z", "RightArmTarget:position:x", "RightArmTarget:position:y", "RightArmTarget:position:z"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_va7xd"]
 animation = &"playerPullUp"
@@ -302,21 +303,22 @@ input_1/break_loop_at_end = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3wcy2"]
-graph_offset = Vector2(-943.2248, -61.315815)
+graph_offset = Vector2(-1038.494, -18.733654)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_n3mnv")
 nodes/Idle/position = Vector2(-765.2174, 208.69566)
 nodes/PullUp/node = SubResource("AnimationNodeAnimation_va7xd")
 nodes/PullUp/position = Vector2(-765.2174, 34.782608)
 nodes/Transition/node = SubResource("AnimationNodeTransition_p41l4")
-nodes/Transition/position = Vector2(-208.69566, 86.95652)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_13o6v")
-nodes/Add2/position = Vector2(139.13043, 69.565216)
-nodes/BellHit/node = SubResource("AnimationNodeAnimation_qrsut")
-nodes/BellHit/position = Vector2(-156.52174, 382.6087)
-node_connections = [&"output", 0, &"Add2", &"Transition", 0, &"PullUp", &"Transition", 1, &"Idle", &"Add2", 0, &"Transition", &"Add2", 1, &"BellHit"]
+nodes/Transition/position = Vector2(-243.47827, -17.391304)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_usn6a")
+nodes/OneShot/position = Vector2(104.34783, 17.391304)
+nodes/BellHit/node = SubResource("AnimationNodeAnimation_cjqnh")
+nodes/BellHit/position = Vector2(-243.47827, 243.47827)
+node_connections = [&"output", 0, &"OneShot", &"Transition", 0, &"PullUp", &"Transition", 1, &"Idle", &"OneShot", 0, &"Transition", &"OneShot", 1, &"BellHit"]
 
-[node name="PlayerVisuals" type="Node3D" unique_id=241039124]
+[node name="PlayerVisuals" type="Node3D" unique_id=241039124 node_paths=PackedStringArray("animationTree")]
 script = ExtResource("1_5iesj")
+animationTree = NodePath("AnimationTree")
 
 [node name="Neck" type="Node3D" parent="." unique_id=702888186]
 transform = Transform3D(1, 0, 0, 0, 0.98018485, -0.19808504, 0, 0.19808504, 0.98018485, 0, 4.128, 0)
@@ -334,37 +336,37 @@ transform = Transform3D(1, -4.440892e-16, 0, 8.881784e-16, 0.9999999, 0, 0, 0, 0
 [node name="templatePlayerRig" parent="." unique_id=1520022567 instance=ExtResource("1_7ob1p")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 
-[node name="Cube" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="0" unique_id=1605693247]
+[node name="Cube" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="0" unique_id=942286867]
 material_override = ExtResource("2_q3p8h")
 
-[node name="Cube_002" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="2" unique_id=134311262]
+[node name="Cube_002" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="2" unique_id=353802687]
 material_override = ExtResource("2_q3p8h")
 
-[node name="Cube_006" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="6" unique_id=249793623]
+[node name="Cube_006" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="6" unique_id=1515488391]
 material_override = ExtResource("2_q3p8h")
 
-[node name="Cube_007" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="7" unique_id=107229171]
+[node name="Cube_007" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="7" unique_id=336252554]
 material_override = ExtResource("2_q3p8h")
 
-[node name="Cube_008" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="8" unique_id=104335866]
+[node name="Cube_008" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="8" unique_id=1109311632]
 material_override = ExtResource("2_q3p8h")
 
-[node name="Cube_010" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="10" unique_id=238597927]
+[node name="Cube_010" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="10" unique_id=627780466]
 material_override = ExtResource("2_q3p8h")
 
-[node name="Cube_011" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="11" unique_id=1144373884]
+[node name="Cube_011" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="11" unique_id=943965003]
 material_override = ExtResource("2_q3p8h")
 
-[node name="Cube_015" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="13" unique_id=1814484165]
+[node name="Cube_015" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="13" unique_id=2143453037]
 material_override = ExtResource("2_q3p8h")
 
-[node name="Cube_016" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="14" unique_id=924334297]
+[node name="Cube_016" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="14" unique_id=251317222]
 material_override = ExtResource("2_q3p8h")
 
-[node name="Cube_022" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="20" unique_id=1154863033]
+[node name="Cube_022" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="20" unique_id=1955532070]
 material_override = ExtResource("2_q3p8h")
 
-[node name="TwoBoneIK3D" type="TwoBoneIK3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="21" unique_id=1653888979]
+[node name="TwoBoneIK3D" type="TwoBoneIK3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="21" unique_id=1653888979]
 setting_count = 2
 settings/0/target_node = NodePath("../../../../LeftArmTarget")
 settings/0/pole_node = NodePath("../../../../LeftArmTarget/LeftArmPole")
@@ -393,27 +395,27 @@ settings/1/extend_end_bone = true
 settings/1/end_bone/direction = 6
 settings/1/end_bone/length = 0.0
 
-[node name="JacobianIK3D" type="JacobianIK3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="22" unique_id=404138472]
+[node name="JacobianIK3D" type="JacobianIK3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="22" unique_id=404138472]
 
-[node name="HeadLookAtMod" type="LookAtModifier3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="23" unique_id=955177941]
+[node name="HeadLookAtMod" type="LookAtModifier3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="23" unique_id=955177941]
 target_node = NodePath("../../../../Neck/Camera3D/TorsoTarget")
 bone_name = "spine.005"
 bone = 5
 
-[node name="LeftHandLookAtMod" type="LookAtModifier3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="24" unique_id=2093459123]
+[node name="LeftHandLookAtMod" type="LookAtModifier3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="24" unique_id=2093459123]
 target_node = NodePath("../../../../LeftArmTarget/LeftHandTarget")
 bone_name = "hand.L"
 bone = 10
 forward_axis = 0
 
-[node name="RightHandLookAtMod" type="LookAtModifier3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="25" unique_id=43258270]
+[node name="RightHandLookAtMod" type="LookAtModifier3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="25" unique_id=43258270]
 target_node = NodePath("../../../../RightArmTarget/RightHandTarget")
 bone_name = "hand.R"
 bone = 14
 forward_axis = 1
 
-[node name="LeftHandAttachmentMod" type="BoneAttachment3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1198783362) index="26" unique_id=396461942]
-transform = Transform3D(-0.5674065, -0.7456993, 0.34926075, 0.17137337, 0.3079219, 0.9358498, -0.8054074, 0.5908611, -0.04692384, 0.28518343, 1.360343, 0.35875508)
+[node name="LeftHandAttachmentMod" type="BoneAttachment3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="26" unique_id=396461942]
+transform = Transform3D(-0.56740624, -0.7835983, 0.25303024, 0.17137355, 0.18818149, 0.96706694, -0.80540746, 0.59208244, 0.02751273, 0.28513145, 1.3411893, 0.3586134)
 bone_name = "hand.L"
 bone_idx = 10
 
@@ -439,17 +441,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8533874, -1.3827975, -1.074
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4939257, 0.14918005, -0.7011053)
 
 [node name="RightArmTarget" type="Marker3D" parent="." unique_id=880049463]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1438669, 3.102376, 1.0545368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5001725, 2.5376568, 0.7523208)
 
 [node name="RightArmPole" type="Marker3D" parent="RightArmTarget" unique_id=1093313350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2468054, 0.075751066, -0.6695131)
 
 [node name="RightHandTarget" type="Marker3D" parent="RightArmTarget" unique_id=337216926]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42217362, -4.511525, -0.12409383)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6304147, 0.3011651, -0.12409383)
 
 [node name="ring bell" parent="." unique_id=2018728083 instance=ExtResource("7_cjqnh")]
 transform = Transform3D(0.088, 0, 0, 0, 0.088, 0, 0, 0, 0.088, 0, 2.982, 1.2233713)
-script = ExtResource("8_usn6a")
 
 [node name="texturedTable" parent="." unique_id=1540907101 instance=ExtResource("22_g5ov8")]
 transform = Transform3D(1.248, 0, 0, 0, 1.248, 0, 0, 0, 1.248, 0, 0.898, 2.869)
@@ -463,6 +464,8 @@ anim_player = NodePath("../PlayerAnimator")
 parameters/Transition/current_state = "idle"
 parameters/Transition/transition_request = ""
 parameters/Transition/current_index = 1
-parameters/Add2/add_amount = 1.0
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
 
 [editable path="templatePlayerRig"]
