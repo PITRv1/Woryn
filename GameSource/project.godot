@@ -49,6 +49,7 @@ folder_colors={
 "res://Assets/": "red",
 "res://Enums/": "pink",
 "res://Maps/": "purple",
+"res://SFX/": "gray",
 "res://Scenes/": "purple",
 "res://Scripts/": "orange",
 "res://Singletons/": "yellow",
