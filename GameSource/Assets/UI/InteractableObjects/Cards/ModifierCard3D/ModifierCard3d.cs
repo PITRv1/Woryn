@@ -1,7 +1,7 @@
  using System;
 using Godot;
 
-public partial class ModifierCard3d : Node3D, InteractableObjectInterface
+public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard3D
 {
     [Export] Sprite3D sprite3D;
     [Export] Godot.Collections.Array<CompressedTexture2D> modifierIcons;
@@ -9,7 +9,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface
     [Export] Area3D area3D;
 
 	public bool isSelected = false;
-	public UiCommunicator UiCommunicator;
+    public UiCommunicator UiCommunicator { get; set; }
 
     private ModifierCard _modifierCard;
     public ModifierCard ModifierCard

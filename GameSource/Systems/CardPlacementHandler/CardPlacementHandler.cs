@@ -15,8 +15,10 @@ public partial class CardPlacementHandler : Node3D
 
 	public void AddCard(Node3D card)
 	{
-		if (card is PointCard3d pointCard) pointCard.UiCommunicator = _uiCommunicator;
-		else if (card is ModifierCard3d modifierCard) modifierCard.UiCommunicator = _uiCommunicator;
+		if (card is ICard3D card3d)
+		{
+			card3d.UiCommunicator = _uiCommunicator;
+		}
 
 		CardArray.Add(card);
 		

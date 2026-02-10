@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PointCard3d : Node3D, InteractableObjectInterface
+public partial class PointCard3d : Node3D, InteractableObjectInterface, ICard3D
 {
 	[Export] Label3D label;
 	[Export] MeshInstance3D outlineMesh;
@@ -11,7 +11,7 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface
 	Color[] outlineColors = [Colors.Green, Colors.DeepSkyBlue, Colors.Yellow];
 
 	public bool isSelected = false;
-	public UiCommunicator UiCommunicator;
+	public UiCommunicator UiCommunicator { get; set; }
 
 
 	private PointCard _pointCard;
@@ -61,6 +61,7 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface
 
 	public void UseObject()
 	{
+		GD.Print(UiCommunicator);
 		if (isSelected) UiCommunicator.DeselectPointCard();
 		else UiCommunicator.SelectPointCard(this);
 	}
