@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dcqemdcpybob0" path="res://Assets/models/MainMenuNewCollection/texturedTable.glb" id="19_5lnsn"]
 [ext_resource type="Material" uid="uid://cq8j7owruuxtf" path="res://Assets/textures/images/bookshlef2.tres" id="20_ck38g"]
 [ext_resource type="PackedScene" uid="uid://gwdg53u5rxa5" path="res://Assets/models/MainMenuNewCollection/texturedChair.glb" id="21_boekd"]
+[ext_resource type="FontFile" uid="uid://c2v6ks7c7q5ef" path="res://Assets/UI/Fonts/FantaisieArtistique.ttf" id="23_k5rf2"]
 [ext_resource type="PackedScene" uid="uid://u4jov6g4a1gc" path="res://Assets/UI/InteractableObjects/Cards/PointCard3D/PointCard3D.tscn" id="23_nkcx5"]
 [ext_resource type="PackedScene" uid="uid://8psm5hemkmpu" path="res://Assets/UI/InteractableObjects/Cards/ModifierCard3D/ModifierCard3D.tscn" id="24_k5rf2"]
 [ext_resource type="PackedScene" uid="uid://bxs0hn6508qbt" path="res://Scenes/MultiplayerPlayer/multiplayer_player.tscn" id="26_5lnsn"]
@@ -30,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://c2hm3pwevesgv" path="res://Scenes/UICommunicator/UICommunicator.tscn" id="28_boekd"]
 [ext_resource type="PackedScene" uid="uid://c4mfb80u3jme5" path="res://Assets/models/MainMenuNewCollection/playerVisuals.tscn" id="31_1ab4g"]
 [ext_resource type="PackedScene" uid="uid://bs7f2puxk38eq" path="res://Systems/CardPlacementHandler/CardPlacementHandler.tscn" id="31_k5rf2"]
+[ext_resource type="Script" uid="uid://cxkdctenlyi7c" path="res://Systems/CardPlacementHandler/CardPlacementHandler.cs" id="32_1ab4g"]
 
 [sub_resource type="Gradient" id="Gradient_ihayo"]
 interpolation_mode = 2
@@ -936,11 +938,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.253, -2.368)
 [node name="Seat3" type="Marker3D" parent="3DWorld/PlayerSeats" unique_id=1229161944]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.368, 1.253, 0)
 
+[node name="ShopVisual" type="Node3D" parent="3DWorld" unique_id=899393964]
+
+[node name="Label3D" type="Label3D" parent="3DWorld/ShopVisual" unique_id=1288424149]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.24283284, 8.034264, 6.332926)
+text = "S h o p
+
+
+
+
+
+"
+font = ExtResource("23_k5rf2")
+font_size = 53
+
 [node name="PlayerVisuals" parent="." unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8922863, -0.9262209, 0)
 
-[node name="LeftHandAttachmentMod" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 607341800) index="26" unique_id=396461942]
-transform = Transform3D(-0.7522789, -0.15707685, 0.6398467, 0.6450895, 0.021804303, 0.76379573, -0.1339258, 0.9873456, 0.08492554, 0.28518462, 1.3607711, 0.3587584)
+[node name="LeftHandAttachmentMod" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1198783362) index="26" unique_id=396461942]
+transform = Transform3D(-0.75227886, -0.20235522, 0.6270001, 0.6450893, -0.03277936, 0.7634035, -0.13392584, 0.9787632, 0.15519619, 0.2851319, 1.3414034, 0.35861492)
 
 [node name="LeftArmPole" parent="PlayerVisuals/LeftArmTarget" parent_id_path=PackedInt32Array(241039124, 608260768) index="0" unique_id=836124568]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 1.8533874, -1.3827975, -1.0747027)
@@ -955,8 +971,7 @@ transform = Transform3D(0.55403095, -0.8324959, 1.9493921e-08, 0.8324959, 0.5540
 transform = Transform3D(2.5, 0, 1.4210855e-14, 0, 2.5, 0, -1.4210855e-14, 0, 2.5, -0.13273573, 0.075751066, -0.80137634)
 
 [node name="AnimationTree" parent="PlayerVisuals" index="8" unique_id=92736569]
-parameters/OneShot/active = true
-parameters/OneShot/internal_active = true
+parameters/OneShot/request = 0
 
 [node name="PointCards" parent="." unique_id=2052042597 node_paths=PackedStringArray("_uiCommunicator") instance=ExtResource("31_k5rf2")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6474962, 2.5520134, 1.3453918)
@@ -978,10 +993,16 @@ _modifierCardUi = ExtResource("24_k5rf2")
 _playerSeatsHolder = NodePath("../3DWorld/PlayerSeats")
 _buddy = ExtResource("27_5lnsn")
 
-[node name="UICommunicator" parent="." unique_id=1649124515 node_paths=PackedStringArray("pointCards", "modifierCards", "multiplayerPlayer") instance=ExtResource("28_boekd")]
+[node name="UICommunicator" parent="." unique_id=1649124515 node_paths=PackedStringArray("pointCards", "modifierCards", "shopCards", "multiplayerPlayer") instance=ExtResource("28_boekd")]
 pointCards = NodePath("../PointCards")
 modifierCards = NodePath("../ModifierCards")
+shopCards = NodePath("../ShopCards")
 multiplayerPlayer = NodePath("../MultiplayerPlayer")
+
+[node name="ShopCards" type="Node3D" parent="." unique_id=1230698513 node_paths=PackedStringArray("_uiCommunicator")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0024338, 6.603452, 6.739063)
+script = ExtResource("32_1ab4g")
+_uiCommunicator = NodePath("../UICommunicator")
 
 [editable path="PlayerVisuals"]
 [editable path="PlayerVisuals/templatePlayerRig"]

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bv6yi73mqnr5i"]
+
+[ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_83qw4"]
+[ext_resource type="Script" uid="uid://egpg7con1hbu" path="res://UI/ToolTipMenu/ToolTipMenu.cs" id="2_6ocpn"]
+
+[node name="ToolTipMenu" type="Control" unique_id=1439534742]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_83qw4")
+script = ExtResource("2_6ocpn")
+
+[node name="Menu" type="VBoxContainer" parent="." unique_id=639291015]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TitleBar" type="VBoxContainer" parent="Menu" unique_id=878195405]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Menu/TitleBar" unique_id=309157023]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(3.85046e-07, 0.5076809, 0.44266796, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/TitleBar/ColorRect" unique_id=663355378]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="Label" type="Label" parent="Menu/TitleBar/ColorRect/MarginContainer" unique_id=1511409166]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "InteractableObjectName"
+vertical_alignment = 1
+
+[node name="Description" type="VBoxContainer" parent="Menu" unique_id=852383341]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Menu/Description" unique_id=1878809554]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.6784314)
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/Description/ColorRect" unique_id=404785792]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu/Description/ColorRect/MarginContainer" unique_id=1991700499]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "Yoooo buy this [color=green]SPECIAL ITEM[/color] for only [color=yellow]5.99 GOLD[/color]
+
+This item will [color=red]enlarge[/color] your little pp.
+
+You can use this [color=skyblue]5 times in a turn[/color]."
+fit_content = true

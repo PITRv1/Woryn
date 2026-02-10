@@ -6,6 +6,7 @@ public partial class UiCommunicator : Node
 {
     [Export] CardPlacementHandler pointCards;
     [Export] CardPlacementHandler modifierCards;
+    [Export] CardPlacementHandler shopCards;
     [Export] MultiplayerPlayerClass multiplayerPlayer;
 
     public PointCard3d selectedPointCard3D {private set; get;}

@@ -4,7 +4,7 @@ using System;
 public partial class CardPlacementHandler : Node3D
 {
 	[Export] public float gapAmount = -0.25f;
-	[Export] public bool curveCards = true;
+	[Export] public bool curveCards = false;
 	[Export] public float rotationStart = 10.0f;
 	[Export] public float rotationAmount = -5.0f;
 	[Export] public float angularRange = 180.0f;
@@ -37,6 +37,7 @@ public partial class CardPlacementHandler : Node3D
 		foreach (Node3D node in GetChildren())
 		{
 			node.GlobalPosition = GlobalPosition;
+			node.RotateZ(0);
 		}
 
 		var nextPos = 0f;
