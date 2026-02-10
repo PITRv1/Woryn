@@ -367,7 +367,7 @@ material_override = ExtResource("2_q3p8h")
 material_override = ExtResource("2_q3p8h")
 
 [node name="TwoBoneIK3D" type="TwoBoneIK3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="21" unique_id=1653888979]
-setting_count = 2
+setting_count = 4
 settings/0/target_node = NodePath("../../../../LeftArmTarget")
 settings/0/pole_node = NodePath("../../../../LeftArmTarget/LeftArmPole")
 settings/0/root_bone_name = "upper_arm.L"
@@ -394,6 +394,28 @@ settings/1/use_virtual_end = false
 settings/1/extend_end_bone = true
 settings/1/end_bone/direction = 6
 settings/1/end_bone/length = 0.0
+settings/2/target_node = NodePath("../../../../LegControls/LeftLegTarget")
+settings/2/pole_node = NodePath("../../../../LegControls/LeftLegTarget/LeftLegPole")
+settings/2/root_bone_name = "thigh.L"
+settings/2/root_bone = 17
+settings/2/middle_bone_name = "shin.L"
+settings/2/middle_bone = 18
+settings/2/pole_direction = 0
+settings/2/end_bone_name = "foot.L"
+settings/2/end_bone = 19
+settings/2/use_virtual_end = false
+settings/2/extend_end_bone = false
+settings/3/target_node = NodePath("../../../../LegControls/RightLegTarget")
+settings/3/pole_node = NodePath("../../../../LegControls/RightLegTarget/RightLegPole")
+settings/3/root_bone_name = "thigh.R"
+settings/3/root_bone = 21
+settings/3/middle_bone_name = "shin.R"
+settings/3/middle_bone = 22
+settings/3/pole_direction = 0
+settings/3/end_bone_name = "foot.R"
+settings/3/end_bone = 23
+settings/3/use_virtual_end = false
+settings/3/extend_end_bone = false
 
 [node name="JacobianIK3D" type="JacobianIK3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="22" unique_id=404138472]
 
@@ -449,11 +471,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2468054, 0.075751066, -0.6
 [node name="RightHandTarget" type="Marker3D" parent="RightArmTarget" unique_id=337216926]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6304147, 0.3011651, -0.12409383)
 
+[node name="LegControls" type="Node3D" parent="." unique_id=645746649]
+
+[node name="LeftLegTarget" type="Marker3D" parent="LegControls" unique_id=501032739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41560364, 1.1858858, 1.0436621)
+
+[node name="LeftLegPole" type="Marker3D" parent="LegControls/LeftLegTarget" unique_id=1588276199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15585268, 1.4472775, 0.26523995)
+
+[node name="RightLegTarget" type="Marker3D" parent="LegControls" unique_id=932227728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.491242, 1.1858858, 1.0436621)
+
+[node name="RightLegPole" type="Marker3D" parent="LegControls/RightLegTarget" unique_id=1473183008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12820965, 1.4472775, 0.26523995)
+
 [node name="ring bell" parent="." unique_id=2018728083 instance=ExtResource("7_cjqnh")]
 transform = Transform3D(0.088, 0, 0, 0, 0.088, 0, 0, 0, 0.088, 0, 2.982, 1.2233713)
 
 [node name="texturedTable" parent="." unique_id=1540907101 instance=ExtResource("22_g5ov8")]
 transform = Transform3D(1.248, 0, 0, 0, 1.248, 0, 0, 0, 1.248, 0, 0.898, 2.869)
+visible = false
 
 [node name="PlayerAnimator" type="AnimationPlayer" parent="." unique_id=523274783]
 libraries/ = SubResource("AnimationLibrary_7kuq2")

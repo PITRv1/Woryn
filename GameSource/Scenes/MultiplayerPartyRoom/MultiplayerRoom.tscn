@@ -819,7 +819,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.9
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.015, 0, -1.944)
 
 [node name="texturedChair4" parent="3DWorld/EnvironmentDetails/Models/Chairs" unique_id=65631833 instance=ExtResource("21_boekd")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.973, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.1892006, 0, 0)
 
 [node name="Lighting" type="Node3D" parent="3DWorld" unique_id=1988270341]
 
@@ -854,10 +854,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.253, -2.368)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.368, 1.253, 0)
 
 [node name="PlayerVisuals" parent="." unique_id=241039124 instance=ExtResource("31_1ab4g")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8922863, -0.99518967, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8922863, -0.9262209, 0)
 
-[node name="LeftHandAttachmentMod" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1198783362) index="26" unique_id=396461942]
-transform = Transform3D(-0.7522788, -0.14795882, 0.6420165, 0.64508957, 0.032667622, 0.7634081, -0.1339258, 0.9884536, 0.07087134, 0.2851776, 1.3582115, 0.35873944)
+[node name="LeftHandAttachmentMod" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 607341800) index="26" unique_id=396461942]
+transform = Transform3D(-0.752279, -0.13750081, 0.6443371, 0.64508945, 0.04507549, 0.7627763, -0.13392606, 0.98947525, 0.05479081, 0.2851902, 1.362837, 0.3587737)
 
 [node name="LeftArmPole" parent="PlayerVisuals/LeftArmTarget" parent_id_path=PackedInt32Array(241039124, 608260768) index="0" unique_id=836124568]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 1.8533874, -1.3827975, -1.0747027)
@@ -866,7 +866,7 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 1.8533874, -1.3827975, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2787873, 1.0965779, -0.22765899)
 
 [node name="RightArmTarget" parent="PlayerVisuals" index="3" unique_id=880049463]
-transform = Transform3D(0.55403095, -0.8324959, 1.9493921e-08, 0.8324959, 0.55403095, -3.6389554e-08, 1.9493923e-08, 3.6389554e-08, 0.99999994, -0.1438669, 3.102376, 1.0545368)
+transform = Transform3D(0.55403095, -0.8324959, 1.9493921e-08, 0.8324959, 0.55403095, -3.6389554e-08, 1.9493923e-08, 3.6389554e-08, 0.99999994, -0.5001725, 2.5376568, 0.7523208)
 
 [node name="RightArmPole" parent="PlayerVisuals/RightArmTarget" index="0" unique_id=1093313350]
 transform = Transform3D(2.5, 0, 1.4210855e-14, 0, 2.5, 0, -1.4210855e-14, 0, 2.5, -0.13273573, 0.075751066, -0.80137634)
@@ -877,8 +877,6 @@ _uiCommunicator = NodePath("../UICommunicator")
 
 [node name="ModifierCards" parent="." unique_id=731615950 node_paths=PackedStringArray("_uiCommunicator") instance=ExtResource("31_k5rf2")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -1.345)
-GapAmount = 0.25
-CurveCards = false
 _uiCommunicator = NodePath("../UICommunicator")
 
 [node name="Deck3D" parent="." unique_id=75278921 node_paths=PackedStringArray("UiCommunicator") instance=ExtResource("26_hdoun")]
