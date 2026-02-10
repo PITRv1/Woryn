@@ -105,7 +105,7 @@ public partial class MultiplayerPlayerClass : Node
 		
 	}
 
-	private void SendFoldRequest()
+	public void SendFoldRequest()
 	{
 		var packet = new Fold
 		{
