@@ -340,7 +340,7 @@ public partial class TurnManager : Node
 	{
 		var packet = EndTurnRequest.CreateFromData(data);
 
-		GD.Print(_currentPlayer + " --- " + packet.SenderId);
+		GD.Print("END GAME REQ: \n" + _currentPlayer + " --- " + packet.SenderId);
 
 		if (_currentPlayer != packet.SenderId)
 			return;

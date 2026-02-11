@@ -22,8 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://dcqemdcpybob0" path="res://Assets/models/MainMenuNewCollection/texturedTable.glb" id="19_5lnsn"]
 [ext_resource type="Material" uid="uid://cq8j7owruuxtf" path="res://Assets/textures/images/bookshlef2.tres" id="20_ck38g"]
 [ext_resource type="PackedScene" uid="uid://gwdg53u5rxa5" path="res://Assets/models/MainMenuNewCollection/texturedChair.glb" id="21_boekd"]
-[ext_resource type="FontFile" uid="uid://c2v6ks7c7q5ef" path="res://Assets/UI/Fonts/FantaisieArtistique.ttf" id="23_k5rf2"]
 [ext_resource type="PackedScene" uid="uid://b3s7bxqueli8d" path="res://Assets/models/Plant.glb" id="23_7g3om"]
+[ext_resource type="FontFile" uid="uid://c2v6ks7c7q5ef" path="res://Assets/UI/Fonts/FantaisieArtistique.ttf" id="23_k5rf2"]
 [ext_resource type="PackedScene" uid="uid://u4jov6g4a1gc" path="res://Assets/UI/InteractableObjects/Cards/PointCard3D/PointCard3D.tscn" id="23_nkcx5"]
 [ext_resource type="PackedScene" uid="uid://b27gi5n7pm4nr" path="res://Assets/models/MainMenuNewCollection/books/redBook.glb" id="24_0tc0y"]
 [ext_resource type="PackedScene" uid="uid://8psm5hemkmpu" path="res://Assets/UI/InteractableObjects/Cards/ModifierCard3D/ModifierCard3D.tscn" id="24_k5rf2"]
@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://bs7f2puxk38eq" path="res://Systems/CardPlacementHandler/CardPlacementHandler.tscn" id="31_k5rf2"]
 [ext_resource type="Script" uid="uid://cxkdctenlyi7c" path="res://Systems/CardPlacementHandler/CardPlacementHandler.cs" id="32_1ab4g"]
 [ext_resource type="PackedScene" uid="uid://b5ab613qv1tho" path="res://Assets/models/MainMenuNewCollection/curtain.glb" id="39_0tc0y"]
+[ext_resource type="Script" uid="uid://cjjhll14h1e55" path="res://Scripts/RingBell.cs" id="42_krtbm"]
 
 [sub_resource type="Gradient" id="Gradient_ihayo"]
 interpolation_mode = 2
@@ -647,6 +648,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nmul7")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_krtbm"]
+size = Vector3(0.17123413, 0.13193512, 0.17218018)
+
 [node name="Test" type="Node3D" unique_id=566470753]
 
 [node name="3DWorld" type="Node3D" parent="." unique_id=416216869]
@@ -1112,10 +1116,12 @@ font_size = 53
 [node name="PlayerVisuals" parent="." unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8922863, -0.9262209, 0)
 
+[node name="LeftHandAttachmentMod" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1119998455) index="26" unique_id=396461942]
+transform = Transform3D(-0.7522788, -0.16469781, 0.6379276, 0.6450895, 0.012692735, 0.76400137, -0.13392615, 0.9862623, 0.096696176, 0.2851769, 1.3579257, 0.35873744)
 
-[node name="LeftHandAttachmentMod" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 607341800) index="26" unique_id=396461942]
-transform = Transform3D(-0.7522788, -0.20307872, 0.6267662, 0.6450895, -0.03366041, 0.7633651, -0.13392574, 0.97858346, 0.1563258, 0.28513137, 1.3411893, 0.35861352)
-
+[node name="PointCards" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=181677031]
+transform = Transform3D(0.04980081, 3.427268e-08, 0.39688766, 0.31571373, 0.24239542, -0.039615225, -0.2405094, 0.31818947, 0.030178672, 0.00945621, -0.00017682591, 0.098005824)
+visible = true
 
 [node name="LeftArmPole" parent="PlayerVisuals/LeftArmTarget" parent_id_path=PackedInt32Array(241039124, 608260768) index="0" unique_id=836124568]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 1.8533874, -1.3827975, -1.0747027)
@@ -1145,13 +1151,14 @@ _uiCommunicator = NodePath("../UICommunicator")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2186053, 0)
 UiCommunicator = NodePath("../UICommunicator")
 
-[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("_pointCards", "_modifierCards", "_playerSeatsHolder", "deck3D") instance=ExtResource("26_5lnsn")]
+[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("_pointCards", "_modifierCards", "_playerSeatsHolder", "_evilCards", "deck3D") instance=ExtResource("26_5lnsn")]
 _pointCards = NodePath("../PointCards")
 _modifierCards = NodePath("../ModifierCards")
 _pointCardUi = ExtResource("23_nkcx5")
 _modifierCardUi = ExtResource("24_k5rf2")
 _playerSeatsHolder = NodePath("../3DWorld/PlayerSeats")
 _buddy = ExtResource("27_5lnsn")
+_evilCards = NodePath("../PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PointCards")
 deck3D = NodePath("../Deck3D")
 
 [node name="UICommunicator" parent="." unique_id=1649124515 node_paths=PackedStringArray("pointCards", "modifierCards", "shopCards", "multiplayerPlayer") groups=["UICommunicator"] instance=ExtResource("28_boekd")]
@@ -1159,7 +1166,6 @@ pointCards = NodePath("../PointCards")
 modifierCards = NodePath("../ModifierCards")
 shopCards = NodePath("../ShopCards")
 multiplayerPlayer = NodePath("../MultiplayerPlayer")
-
 
 [node name="ShopCards" type="Node3D" parent="." unique_id=1230698513 node_paths=PackedStringArray("_uiCommunicator")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0024338, 6.603452, 6.739063)
@@ -1169,7 +1175,7 @@ _uiCommunicator = NodePath("../UICommunicator")
 [node name="curtain" parent="." unique_id=152688818 instance=ExtResource("39_0tc0y")]
 transform = Transform3D(-0.10385153, 0, 0.9945928, 0, 1, 0, -0.9945928, 0, -0.10385153, -7.01008, 0.106413364, 0.33820117)
 
-[node name="Plane" parent="curtain" index="0" unique_id=1403861649]
+[node name="Plane" parent="curtain" index="0" unique_id=1639387656]
 transform = Transform3D(1.730112, 0, 0, 0, 0, -1.730113, 0, 1.730112, 0, -1.5716673, 2.4554563, -0.16410732)
 material_override = SubResource("StandardMaterial3D_3h8vp")
 
@@ -1179,6 +1185,19 @@ material_override = SubResource("StandardMaterial3D_krtbm")
 mesh = SubResource("ArrayMesh_ktcpd")
 skeleton = NodePath("")
 
+[node name="Bell" type="Node3D" parent="." unique_id=970012675 node_paths=PackedStringArray("multiplayerPlayerClass", "_area3D")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6630696, 2.1280937, 0)
+script = ExtResource("42_krtbm")
+multiplayerPlayerClass = NodePath("../MultiplayerPlayer")
+_area3D = NodePath("PlaceholderParent/BellArea")
+
+[node name="PlaceholderParent" type="Node3D" parent="Bell" unique_id=709527833]
+
+[node name="BellArea" type="Area3D" parent="Bell/PlaceholderParent" unique_id=1282344882 groups=["CameraInteractable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bell/PlaceholderParent/BellArea" unique_id=1976555522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066070557, 0.035655975, 0.0007019043)
+shape = SubResource("BoxShape3D_krtbm")
 
 [editable path="PlayerVisuals"]
 [editable path="PlayerVisuals/templatePlayerRig"]

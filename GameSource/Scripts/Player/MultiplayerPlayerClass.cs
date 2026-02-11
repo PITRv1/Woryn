@@ -13,6 +13,7 @@ public partial class MultiplayerPlayerClass : Node
 	[Export] private PackedScene _modifierCardUi;
 	[Export] private Node3D _playerSeatsHolder;
 	[Export] private PackedScene _buddy;
+	[Export] private Node3D _evilCards;
 
 	[Export] private Deck3d deck3D;
 
@@ -29,6 +30,9 @@ public partial class MultiplayerPlayerClass : Node
 		Global.multiplayerClientGlobals.HandleTurnInfo += PlayerClass.ProcessTurnInfoPacket;
 		Global.multiplayerClientGlobals.HandlePickUpCardAnswer += PlayerClass.ProcessPickUpAnswer;
 		Global.multiplayerClientGlobals.HandleDeckSwap += PlayerClass.HandleDeckSwap;
+		
+		// REMOVES EVIL CARDS
+		_evilCards.QueueFree();
 
 		Global.multiplayerPlayerClass = this;
 		ClientReady();
@@ -76,8 +80,12 @@ public partial class MultiplayerPlayerClass : Node
 
 	public void PlayCard()
 	{
+		GD.Print("Play card called");
 		if (!PlayerClass.CanEndTurn())
+		{
+			GD.Print("Player cannot end turn");			
 			return;
+		}
 
 		var packet = new EndTurnRequest
 		{
@@ -119,7 +127,7 @@ public partial class MultiplayerPlayerClass : Node
 	{
 		if (_pointCardUi.Instantiate() is not PointCard3d card) return;
 		card.PointCard = pointCard;
-
+		
 		_pointCards.AddCard(card);
 	}
 

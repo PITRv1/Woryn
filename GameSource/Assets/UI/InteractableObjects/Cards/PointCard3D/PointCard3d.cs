@@ -62,7 +62,7 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface, ICard3D
 
 	public void UseObject()
 	{
-		GD.Print(UiCommunicatorInstance);
+		GD.Print($"_pointCard == null: {_pointCard == null}, Object: {this.Name}, Path: {this.GetPath()}");
 		if (isSelected) UiCommunicatorInstance.DeselectPointCard();
 		else UiCommunicatorInstance.SelectPointCard(this);
 	}

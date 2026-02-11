@@ -32,16 +32,18 @@ public partial class UiCommunicator : Node
     public void SelectPointCard(PointCard3d pointCard)
     {
         if (selectedPointCard3D != null) selectedPointCard3D.isSelected = false;
+        GD.Print("CARD SELCTED");
         selectedPointCard3D = pointCard;
         selectedPointCard3D.isSelected = true;
     }
 
     public void DeselectPointCard()
     {
+        GD.Print("CARD DESELCTED");
         selectedPointCard3D.isSelected = false;
         selectedPointCard3D = null;
 
-        foreach (ModifierCard3d modifierCard in selectedModifierCard3Ds)
+        foreach (var modifierCard in selectedModifierCard3Ds)
         {
             RemoveModifierCard(modifierCard);
         }
@@ -65,9 +67,20 @@ public partial class UiCommunicator : Node
 
     public void PlayCards()
     {
-        if (selectedPointCard3D == null) return;
-
+        GD.Print("PlayCard called");
+        if (selectedPointCard3D == null)
+        {
+            GD.Print("selectedPointCard3D is null");
+            return;
+        }
+        
         multiplayerPlayer.PlayerClass.ChosenPointCard = selectedPointCard3D.PointCard;
+        
+        GD.Print("PlayerClass: " + multiplayerPlayer.PlayerClass.ChosenPointCard);
+        if (multiplayerPlayer.PlayerClass.ChosenPointCard == null) GD.Print("ChosenPointCard is null here");
+        if (selectedPointCard3D.PointCard == null) GD.Print("Selected is null here");
+        GD.Print("PlayerClass ChosenCard: " + multiplayerPlayer.PlayerClass.ChosenPointCard.GetType());
+        GD.Print("PlayerClass ChosenCard: " + multiplayerPlayer.GetType());
 
         foreach (var modifierCard in selectedModifierCard3Ds)
         {

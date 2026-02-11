@@ -11,6 +11,7 @@ public partial class Deck3d : Node3D, InteractableObjectInterface
 
 	public void UseObject()
 	{
+		GD.Print("UseObject() called");
 		UiCommunicator.PlayCards();
 	}
 
