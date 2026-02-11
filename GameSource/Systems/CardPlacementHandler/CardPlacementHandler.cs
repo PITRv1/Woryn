@@ -4,11 +4,13 @@ using System;
 public partial class CardPlacementHandler : Node3D
 {
 	[Export] public float gapAmount = -0.25f;
+	[Export] public Vector3 cardDisplayDirection = new Vector3(0,0,1);
 	[Export] public bool curveCards = false;
 	[Export] public float rotationStart = 10.0f;
 	[Export] public float rotationAmount = -5.0f;
 	[Export] public float angularRange = 180.0f;
 	[Export] public float gapDecreasion = .75f;
+
 
 	public Godot.Collections.Array<Node3D> CardArray { get; private set; } = new();
 	[Export] private UiCommunicator _uiCommunicator;
@@ -52,7 +54,7 @@ public partial class CardPlacementHandler : Node3D
 				nextRot += rotationAmount;
 			} else
 			{
-				node.GlobalPosition = GlobalPosition + new Vector3(0, 0, nextPos);
+				node.GlobalPosition = GlobalPosition + new Vector3(nextPos, nextPos, nextPos) * cardDisplayDirection;
 				nextPos += gapAmount;
 			}
 		}

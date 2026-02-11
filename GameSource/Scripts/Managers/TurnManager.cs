@@ -198,8 +198,9 @@ public partial class TurnManager : Node
 		return _players.Values.Any(player => player.PlayerClass.PointCardList.Count > 0);
 	}
 
-	private void GoToShopScene()
+	public void GoToShopScene()
 	{
+		GD.Print("Shop start method is exposed to the public. -Dani");
 		Global.shopManager ??= new ShopManager();
 
 		var packet = new ShopSceneChange();
