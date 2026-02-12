@@ -8,7 +8,7 @@ public partial class PlayAbility : PacketInfo
 	
 	public PlayAbility()
 	{
-		PacketType = PACKET_TYPES.PLAY_ABLITIY;
+		PacketType = PACKET_TYPES.PLAY_ABILITY;
 	}
 
 	public override byte[] Encode()

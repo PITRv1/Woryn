@@ -29,6 +29,8 @@ public partial class MultiplayerClientGlobals : Node
     [Signal]
     public delegate void ShopSceneEventHandler();
     [Signal]
+    public delegate void ShopItemsEventHandler();
+    [Signal]
     public delegate void SetupPlaceEventHandler(byte[] data);
     [Signal]
     public delegate void HandleRoundSuccessEventHandler(byte[] data);
@@ -76,6 +78,9 @@ public partial class MultiplayerClientGlobals : Node
                 break;
             case PACKET_TYPES.ROUND_SUCCESS:
                 EmitSignal("HandleRoundSuccess", data);
+                break;
+            case PACKET_TYPES.SHOP_ITEMS:
+                EmitSignal(SignalName.ShopItems, data);
                 break;
             default:
                 GD.PushError($"Packet type with index {(int)packetType} unhandled!");

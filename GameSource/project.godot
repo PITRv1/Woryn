@@ -28,6 +28,7 @@ NetworkHandler="*res://Systems/NetworkHandler/NetworkHandler.cs"
 AudioManager="*res://Systems/AudioManager/AudioManager.tscn"
 TimerHost="*res://Scripts/Managers/TimerHost.cs"
 TurnManager="*res://Scripts/Managers/TurnManager.cs"
+ShopManager="*uid://dkx707ehadjjb"
 
 [display]
 

@@ -80,7 +80,7 @@ public partial class MultiplayerServerGlobals : Node
                     pair.Value.Send(0, data, (int)ENetPacketPeer.FlagUnsequenced);
                 }
                 break;
-            case PACKET_TYPES.PLAY_ABLITIY:
+            case PACKET_TYPES.PLAY_ABILITY:
                 Global.turnManagerInstance.PlayPlayerAbility(data);
                 break;
             case PACKET_TYPES.FOLD:

@@ -76,12 +76,6 @@ public partial class UiCommunicator : Node
         }
         
         multiplayerPlayer.PlayerClass.ChosenPointCard = selectedPointCard3D.PointCard;
-        
-        GD.Print("PlayerClass: " + multiplayerPlayer.PlayerClass.ChosenPointCard);
-        if (multiplayerPlayer.PlayerClass.ChosenPointCard == null) GD.Print("ChosenPointCard is null here");
-        if (selectedPointCard3D.PointCard == null) GD.Print("Selected is null here");
-        GD.Print("PlayerClass ChosenCard: " + multiplayerPlayer.PlayerClass.ChosenPointCard.GetType());
-        GD.Print("PlayerClass ChosenCard: " + multiplayerPlayer.GetType());
 
         foreach (var modifierCard in selectedModifierCard3Ds)
         {

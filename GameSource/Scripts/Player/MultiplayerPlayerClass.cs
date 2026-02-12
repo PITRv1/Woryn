@@ -35,8 +35,6 @@ public partial class MultiplayerPlayerClass : Node
 		Global.multiplayerClientGlobals.ShopScene += uiCommunicator.StartShop;
 		Global.turnManagerInstance.GoToShopScene();
 		GD.Print("Dani: Shop will start with the first round for testing purposes. \nComment out line 36 in MultiplayerPlayerClass.cs");
-		
-
 
 		Global.multiplayerPlayerClass = this;
 		ClientReady();

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class AlchemistActive : IItem
+public partial class AlchemistActive : IItem
 {
 	public string itemName { get; set; } = "Transformation";
     public int price { get; set; } = 10;//(?)

@@ -8,7 +8,7 @@ public class PlayerClass
 {
     public List<PointCard> PointCardList { get; set; }
     public List<ModifierCard> ModifierCardList { get; set; }
-    public PlayerClassInterface ChosenClass { get; set; }
+    public PlayerStats PlayerStats { get; set; }
     public ModifierCardDeck ModifierCardDeck { get; }
     public MultiplayerPlayerClass Parent;
     public int Points { get; set; } = 0;
@@ -38,6 +38,8 @@ public class PlayerClass
 
         ModifierCardDeck = new ModifierCardDeck();
         ModifierCardDeck.GenerateDeck();
+        
+        PlayerStats = new PlayerStats();
     }
 
     public void HandleDeckSwap(byte[] data)
@@ -85,11 +87,11 @@ public class PlayerClass
         return true;
     }
 
-    public void DecreaseCooldown()
-    {
-        ChosenClass.ActiveCooldown--;
-        ChosenClass.PassiveCooldown--;
-    }
+    // public void DecreaseCooldown()
+    // {
+    //     PlayerStats.ActiveCooldown--;
+    //     PlayerStats.PassiveCooldown--;
+    // }
 
     public void AddCardToPointCards(PointCard card)
     {
