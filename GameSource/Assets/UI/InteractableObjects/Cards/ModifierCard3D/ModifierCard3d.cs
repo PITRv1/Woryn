@@ -8,6 +8,8 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
     [Export] AnimationPlayer animationPlayer;
     [Export] Area3D area3D;
 
+    public bool isShopCard;
+
 	public bool isSelected = false;
     public UiCommunicator UiCommunicatorInstance { get; set; }
 
@@ -42,7 +44,15 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
 
     public void UseObject()
     {
-        if (isSelected)UiCommunicatorInstance.RemoveModifierCard(this);
+        if (isShopCard)
+        {
+            UiCommunicatorInstance.AddShopModifierCardToPlayerCards(ModifierCard);
+            UiCommunicatorInstance.modifierCards.RemoveCard(this);
+            UiCommunicatorInstance.CloseShop();
+            return;
+        }
+
+        if (isSelected) UiCommunicatorInstance.RemoveModifierCard(this);
         else UiCommunicatorInstance.AddModifierCard(this);
     }
 }

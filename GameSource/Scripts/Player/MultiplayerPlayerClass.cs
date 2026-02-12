@@ -15,6 +15,8 @@ public partial class MultiplayerPlayerClass : Node
 	[Export] private PackedScene _buddy;
 	[Export] private Node3D _evilCards;
 
+	[Export] private UiCommunicator uiCommunicator;
+
 	[Export] private Deck3d deck3D;
 
 	[ExportGroup("Deprecated")]
@@ -30,6 +32,9 @@ public partial class MultiplayerPlayerClass : Node
 		Global.multiplayerClientGlobals.HandleTurnInfo += PlayerClass.ProcessTurnInfoPacket;
 		Global.multiplayerClientGlobals.HandlePickUpCardAnswer += PlayerClass.ProcessPickUpAnswer;
 		Global.multiplayerClientGlobals.HandleDeckSwap += PlayerClass.HandleDeckSwap;
+		Global.multiplayerClientGlobals.ShopScene += uiCommunicator.StartShop;
+		Global.turnManagerInstance.GoToShopScene();
+		GD.Print("Dani: Shop will start with the first round for testing purposes. \nComment out line 36 in MultiplayerPlayerClass.cs");
 		
 		// REMOVES EVIL CARDS
 		_evilCards.QueueFree();

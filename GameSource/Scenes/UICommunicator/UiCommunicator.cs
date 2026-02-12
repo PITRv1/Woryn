@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 public partial class UiCommunicator : Node
 {
-    [Export] CardPlacementHandler pointCards;
-    [Export] CardPlacementHandler modifierCards;
+    [Export] public CardPlacementHandler pointCards {private set; get;}
+    [Export] public CardPlacementHandler modifierCards {private set; get;}
     [Export] CardPlacementHandler shopCards;
     [Export] MultiplayerPlayerClass multiplayerPlayer;
+    [Export] PackedScene modifierCard3D;
 
     public PointCard3d selectedPointCard3D {private set; get;}
     public List<ModifierCard3d> selectedModifierCard3Ds {private set; get;} = new();
@@ -100,5 +101,35 @@ public partial class UiCommunicator : Node
             modifierCards.RemoveCard(modifierCard);
         }
         selectedModifierCard3Ds.Clear();
+    }
+
+    public void StartShop()
+    {
+        GD.Print("Shop started!");
+        Random random = new();
+
+        for (int i = 0; i < 4; i++)
+        {
+            ModifierCard3d modifierCard3DInstance = modifierCard3D.Instantiate<ModifierCard3d>();
+            modifierCard3DInstance.isShopCard = true;
+            modifierCard3DInstance.ModifierCard = ModifierCardTypeConverter.TypeToClass((MODIFIER_TYPES)random.Next(1,7));
+            shopCards.AddCard(modifierCard3DInstance);
+        }
+    }
+
+    public void CloseShop()
+    {
+        foreach (Node3D modifCard in shopCards.GetChildren())
+        {
+            shopCards.RemoveCard(modifCard);
+        }
+    }
+
+    public void AddShopModifierCardToPlayerCards(ModifierCard modifierCard)
+    {
+        ModifierCard3d modifierCard3DInstance = modifierCard3D.Instantiate<ModifierCard3d>();
+        modifierCard3DInstance.ModifierCard = modifierCard;
+
+        modifierCards.AddCard(modifierCard3DInstance);
     }
 }

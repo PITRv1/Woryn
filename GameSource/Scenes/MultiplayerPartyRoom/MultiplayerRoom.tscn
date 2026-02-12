@@ -1116,8 +1116,8 @@ font_size = 53
 [node name="PlayerVisuals" parent="." unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8922863, -0.9262209, 0)
 
-[node name="LeftHandAttachmentMod" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1119998455) index="26" unique_id=396461942]
-transform = Transform3D(-0.7522788, -0.16469781, 0.6379276, 0.6450895, 0.012692735, 0.76400137, -0.13392615, 0.9862623, 0.096696176, 0.2851769, 1.3579257, 0.35873744)
+[node name="LeftHandAttachmentMod" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1198783362) index="26" unique_id=396461942]
+transform = Transform3D(-0.7522788, -0.20307872, 0.6267662, 0.6450895, -0.03366041, 0.7633651, -0.13392574, 0.97858346, 0.1563258, 0.28513137, 1.3411893, 0.35861352)
 
 [node name="PointCards" parent="PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=181677031]
 transform = Transform3D(0.04980081, 3.427268e-08, 0.39688766, 0.31571373, 0.24239542, -0.039615225, -0.2405094, 0.31818947, 0.030178672, 0.00945621, -0.00017682591, 0.098005824)
@@ -1151,7 +1151,14 @@ _uiCommunicator = NodePath("../UICommunicator")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2186053, 0)
 UiCommunicator = NodePath("../UICommunicator")
 
-[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("_pointCards", "_modifierCards", "_playerSeatsHolder", "_evilCards", "deck3D") instance=ExtResource("26_5lnsn")]
+[node name="UICommunicator" parent="." unique_id=1649124515 node_paths=PackedStringArray("pointCards", "modifierCards", "shopCards", "multiplayerPlayer") groups=["UICommunicator"] instance=ExtResource("28_boekd")]
+pointCards = NodePath("../PointCards")
+modifierCards = NodePath("../ModifierCards")
+shopCards = NodePath("../ShopCards")
+multiplayerPlayer = NodePath("../MultiplayerPlayer")
+modifierCard3D = ExtResource("24_k5rf2")
+
+[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("_pointCards", "_modifierCards", "_playerSeatsHolder", "_evilCards", "uiCommunicator", "deck3D") instance=ExtResource("26_5lnsn")]
 _pointCards = NodePath("../PointCards")
 _modifierCards = NodePath("../ModifierCards")
 _pointCardUi = ExtResource("23_nkcx5")
@@ -1159,23 +1166,20 @@ _modifierCardUi = ExtResource("24_k5rf2")
 _playerSeatsHolder = NodePath("../3DWorld/PlayerSeats")
 _buddy = ExtResource("27_5lnsn")
 _evilCards = NodePath("../PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PointCards")
+uiCommunicator = NodePath("../UICommunicator")
 deck3D = NodePath("../Deck3D")
 
-[node name="UICommunicator" parent="." unique_id=1649124515 node_paths=PackedStringArray("pointCards", "modifierCards", "shopCards", "multiplayerPlayer") groups=["UICommunicator"] instance=ExtResource("28_boekd")]
-pointCards = NodePath("../PointCards")
-modifierCards = NodePath("../ModifierCards")
-shopCards = NodePath("../ShopCards")
-multiplayerPlayer = NodePath("../MultiplayerPlayer")
-
 [node name="ShopCards" type="Node3D" parent="." unique_id=1230698513 node_paths=PackedStringArray("_uiCommunicator")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0024338, 6.603452, 6.739063)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.4890492, 6.5597486, 6.1171465)
 script = ExtResource("32_1ab4g")
+gapAmount = -0.5
+cardDisplayDirection = Vector3(1, 0, 0)
 _uiCommunicator = NodePath("../UICommunicator")
 
 [node name="curtain" parent="." unique_id=152688818 instance=ExtResource("39_0tc0y")]
 transform = Transform3D(-0.10385153, 0, 0.9945928, 0, 1, 0, -0.9945928, 0, -0.10385153, -7.01008, 0.106413364, 0.33820117)
 
-[node name="Plane" parent="curtain" index="0" unique_id=1639387656]
+[node name="Plane" parent="curtain" index="0" unique_id=1162435543]
 transform = Transform3D(1.730112, 0, 0, 0, 0, -1.730113, 0, 1.730112, 0, -1.5716673, 2.4554563, -0.16410732)
 material_override = SubResource("StandardMaterial3D_3h8vp")
 
