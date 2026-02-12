@@ -10,4 +10,5 @@ public partial class Global : Node
     public static LobbyManager lobbyManagerInstance;
     public static ShopManager shopManagerInstance;
     public static MultiplayerPlayerClass multiplayerPlayerClass;
+    public static ToolTipMenu toolTipMenu;
 }

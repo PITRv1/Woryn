@@ -1,15 +1,32 @@
 using Godot;
 using System;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public partial class ToolTipMenu : Control
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	[Export] Timer timer;
+	Vector2 lastMousePos;
+
+	public ToolTipMenu()
 	{
+		Global.toolTipMenu = this;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public void ShowMenu()
 	{
+		lastMousePos = GetViewport().GetMousePosition();
 	}
+
+	public void StartTimer()
+	{
+		timer.Start();
+	}
+
+    public override void _Process(double delta)
+    {
+        if (GetViewport().GetMousePosition() == lastMousePos) return;
+		
+		if (!timer.IsStopped()) timer.Stop();
+		if (Visible) Visible = false;
+    }
 }

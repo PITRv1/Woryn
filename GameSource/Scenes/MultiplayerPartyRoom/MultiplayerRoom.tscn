@@ -1183,7 +1183,7 @@ font_size = 53
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.9010963, -0.9423759, -1.7291548e-07)
 
 [node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1198783362) index="26" unique_id=396461942]
-transform = Transform3D(-0.567406, -0.74278355, 0.35542026, 0.17137414, 0.31565624, 0.9332694, -0.8054075, 0.5904523, -0.051811494, 0.28518838, 1.3622025, 0.35876876)
+transform = Transform3D(-0.56740606, -0.7683203, 0.2962004, 0.17137352, 0.24165128, 0.9551102, -0.8054075, 0.5926962, -0.0054447055, 0.28515297, 1.3491478, 0.35867232)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)
@@ -1208,6 +1208,13 @@ _uiCommunicator = NodePath("../UICommunicator")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2186053, 0)
 UiCommunicator = NodePath("../UICommunicator")
 
+[node name="ShopCards" type="Node3D" parent="." unique_id=1230698513 node_paths=PackedStringArray("_uiCommunicator")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.4890492, 6.5597486, 6.1171465)
+script = ExtResource("32_1ab4g")
+gapAmount = -0.5
+cardDisplayDirection = Vector3(1, 0, 0)
+_uiCommunicator = NodePath("../UICommunicator")
+
 [node name="UICommunicator" parent="." unique_id=1649124515 node_paths=PackedStringArray("pointCards", "modifierCards", "shopCards", "multiplayerPlayer") groups=["UICommunicator"] instance=ExtResource("28_boekd")]
 pointCards = NodePath("../3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PositioningNode/PointCards")
 modifierCards = NodePath("../ModifierCards")
@@ -1225,13 +1232,6 @@ _buddy = ExtResource("27_5lnsn")
 _playerHud = NodePath("../PlayerHUD")
 uiCommunicator = NodePath("../UICommunicator")
 deck3D = NodePath("../Deck3D")
-
-[node name="ShopCards" type="Node3D" parent="." unique_id=1230698513 node_paths=PackedStringArray("_uiCommunicator")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.4890492, 6.5597486, 6.1171465)
-script = ExtResource("32_1ab4g")
-gapAmount = -0.5
-cardDisplayDirection = Vector3(1, 0, 0)
-_uiCommunicator = NodePath("../UICommunicator")
 
 [node name="PlayerHUD" parent="." unique_id=1196410565 instance=ExtResource("43_v7sr5")]
 
