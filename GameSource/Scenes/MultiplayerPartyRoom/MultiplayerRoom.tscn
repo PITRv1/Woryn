@@ -1183,7 +1183,7 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.90
 bodyparts = []
 
 [node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 607341800) index="26" unique_id=396461942]
-transform = Transform3D(-0.5674062, -0.7827242, 0.2557217, 0.17137405, 0.19150372, 0.96641463, -0.8054075, 0.59217346, 0.02547808, 0.2851334, 1.341923, 0.35861874)
+transform = Transform3D(-0.56740594, -0.7405071, 0.36013937, 0.17137384, 0.32158816, 0.9312421, -0.8054077, 0.5901107, -0.05556757, 0.2851999, 1.3663981, 0.3588001)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)
@@ -1201,7 +1201,7 @@ speed_scale = 3.0
 active = true
 
 [node name="ModifierCards" parent="." unique_id=731615950 node_paths=PackedStringArray("_uiCommunicator") instance=ExtResource("31_k5rf2")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.647, 2.552, -1.345)
+transform = Transform3D(-4.3711385e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 0, 1.555774, 2.139, -0.27729005)
 _uiCommunicator = NodePath("../UICommunicator")
 
 [node name="Deck3D" parent="." unique_id=75278921 node_paths=PackedStringArray("UiCommunicator") instance=ExtResource("26_hdoun")]
