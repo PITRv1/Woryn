@@ -2745,7 +2745,7 @@ transparency = 1
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_yhysv")
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_1h20l"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_4dtra"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctpc2"]
 transparency = 1
@@ -5357,7 +5357,7 @@ mesh = SubResource("QuadMesh_1h20l")
 [node name="curtain" parent="EnvironmentDetails/Models/BarDetails" unique_id=152688818 instance=ExtResource("42_4dtra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.04108, 1.0017983, -51.2725)
 
-[node name="Plane" parent="EnvironmentDetails/Models/BarDetails/curtain" index="0" unique_id=1403861649]
+[node name="Plane" parent="EnvironmentDetails/Models/BarDetails/curtain" index="0" unique_id=1162435543]
 transform = Transform3D(1.5577803, 0, 0, 0, 0, -2.370239, 0, 1.730112, 0, -1.391571, 2.4554563, -0.16410828)
 material_override = SubResource("StandardMaterial3D_tcx4x")
 
@@ -5434,27 +5434,12 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 149.
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 149.98465, 0.5, -39.32026)
 
 [node name="TrashBin" parent="EnvironmentDetails" unique_id=43335728 instance=ExtResource("45_1h20l")]
-transform = Transform3D(-0.4253686, 0, 0.9050202, 0, 1, 0, -0.9050202, 0, -0.4253686, 10.671808, -0.24845576, -2.8546581)
+transform = Transform3D(0.004787311, 0, 0.5949808, 0, 0.595, 0, -0.5949808, 0, 0.004787311, 14.403, -0.24845576, -2.7520509)
 
 [node name="Fireflies" type="Node3D" parent="EnvironmentDetails" unique_id=732704866]
 
-[node name="Firefly" parent="EnvironmentDetails/Fireflies" unique_id=941565741 instance=ExtResource("45_a6j3j")]
-transform = Transform3D(1.4406353, 0, 0, 0, 1.6441159, 0, 0, 0, 2.0954888, 6.6911526, 1.595381, -0.3213234)
-
-[node name="Firefly2" parent="EnvironmentDetails/Fireflies" unique_id=347912356 instance=ExtResource("45_a6j3j")]
-transform = Transform3D(1.4406353, 0, 0, 0, 1.6441159, 0, 0, 0, 2.0954888, -7.399719, 1.595381, -2.6373367)
-
-[node name="Firefly3" parent="EnvironmentDetails/Fireflies" unique_id=920623626 instance=ExtResource("45_a6j3j")]
-transform = Transform3D(1.4406353, 0, 0, 0, 1.6441159, 0, 0, 0, 2.0954888, -3.0333238, 0.7415478, 0.54908395)
-
-[node name="Firefly4" parent="EnvironmentDetails/Fireflies" unique_id=137361550 instance=ExtResource("45_a6j3j")]
-transform = Transform3D(1.4406353, 0, 0, 0, 1.6441159, 0, 0, 0, 2.0954888, 16.538755, 0.7415478, -0.7974832)
-
-[node name="Firefly5" parent="EnvironmentDetails/Fireflies" unique_id=167927299 instance=ExtResource("45_a6j3j")]
-transform = Transform3D(1.4406353, 0, 0, 0, 1.6441159, 0, 0, 0, 2.0954888, -15.836832, 0.17202497, -0.7974832)
-
 [node name="Firefly6" parent="EnvironmentDetails/Fireflies" unique_id=1798869121 instance=ExtResource("45_a6j3j")]
-transform = Transform3D(1.4406353, 0, 0, 0, 1.6441159, 0, 0, 0, 2.0954888, -10.719062, 6.0064487, -2.0038881)
+transform = Transform3D(1.4406353, 0, 0, 0, 1.6441159, 0, 0, 0, 2.0954888, -8.845434, 6.006448, -2.0038881)
 
 [node name="Firefly7" parent="EnvironmentDetails/Fireflies" unique_id=2132314112 instance=ExtResource("45_a6j3j")]
 transform = Transform3D(1.4406353, 0, 0, 0, 1.6441159, 0, 0, 0, 2.0954888, 11.144216, 8.57049, -1.731262)
@@ -5616,7 +5601,7 @@ size = Vector2i(960, 512)
 
 [node name="Multiplayer" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI/CreditsMeshInstance3D/SubViewport" unique_id=180983133 node_paths=PackedStringArray("mainUI") instance=ExtResource("50_u4fps")]
 mainUI = NodePath("../../../../../../../../../MainUI")
-optionGroup = SubResource("ButtonGroup_1h20l")
+optionGroup = SubResource("ButtonGroup_4dtra")
 
 [node name="IntroCam" type="Camera3D" parent="MovingElements/Cameras" unique_id=705683571]
 transform = Transform3D(-1, -2.4683073e-08, -8.386589e-08, 0, 0.959314, -0.28234145, 8.742278e-08, -0.28234145, -0.959314, -0.315, 1.1, -18.965)

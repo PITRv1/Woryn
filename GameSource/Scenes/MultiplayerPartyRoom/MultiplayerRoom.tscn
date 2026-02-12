@@ -42,6 +42,7 @@
 [ext_resource type="Script" uid="uid://cxkdctenlyi7c" path="res://Systems/CardPlacementHandler/CardPlacementHandler.cs" id="32_1ab4g"]
 [ext_resource type="PackedScene" uid="uid://b5ab613qv1tho" path="res://Assets/models/MainMenuNewCollection/curtain.glb" id="39_0tc0y"]
 [ext_resource type="Script" uid="uid://cjjhll14h1e55" path="res://Scripts/RingBell.cs" id="42_krtbm"]
+[ext_resource type="PackedScene" uid="uid://2cmeqjx7gsos" path="res://UI/PlayerHUD/player_hud.tscn" id="43_v7sr5"]
 
 [sub_resource type="Gradient" id="Gradient_ihayo"]
 interpolation_mode = 2
@@ -1057,7 +1058,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78381586, 4.1443086, 6.123
 [node name="curtain" parent="3DWorld/EnvironmentDetails/Models" unique_id=152688818 instance=ExtResource("39_0tc0y")]
 transform = Transform3D(-0.10385153, 0, 0.9945928, 0, 1, 0, -0.9945928, 0, -0.10385153, -7.01008, 0.106413364, 0.33820117)
 
-[node name="Plane" parent="3DWorld/EnvironmentDetails/Models/curtain" index="0" unique_id=1639387656]
+[node name="Plane" parent="3DWorld/EnvironmentDetails/Models/curtain" index="0" unique_id=1162435543]
 transform = Transform3D(1.730112, 0, 0, 0, 0, -1.730113, 0, 1.730112, 0, -1.5716673, 2.4554563, -0.16410732)
 material_override = SubResource("StandardMaterial3D_3h8vp")
 
@@ -1178,12 +1179,11 @@ text = "S h o p
 font = ExtResource("23_k5rf2")
 font_size = 53
 
-[node name="PlayerVisuals" parent="3DWorld" unique_id=241039124 node_paths=PackedStringArray("bodyparts") instance=ExtResource("31_1ab4g")]
+[node name="PlayerVisuals" parent="3DWorld" unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.9010963, -0.9423759, -1.7291548e-07)
-bodyparts = []
 
-[node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1119998455) index="26" unique_id=396461942]
-transform = Transform3D(-0.56740594, -0.7713649, 0.28817865, 0.17137337, 0.23168646, 0.9575762, -0.80540776, 0.5927206, 0.00073108077, 0.28515673, 1.3505392, 0.35868263)
+[node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1198783362) index="26" unique_id=396461942]
+transform = Transform3D(-0.567406, -0.74278355, 0.35542026, 0.17137414, 0.31565624, 0.9332694, -0.8054075, 0.5904523, -0.051811494, 0.28518838, 1.3622025, 0.35876876)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)
@@ -1215,13 +1215,14 @@ shopCards = NodePath("../ShopCards")
 multiplayerPlayer = NodePath("../MultiplayerPlayer")
 modifierCard3D = ExtResource("24_k5rf2")
 
-[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("_pointCards", "_modifierCards", "_playerSeatsHolder", "uiCommunicator", "deck3D") instance=ExtResource("26_5lnsn")]
+[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("_pointCards", "_modifierCards", "_playerSeatsHolder", "_playerHud", "uiCommunicator", "deck3D") instance=ExtResource("26_5lnsn")]
 _pointCards = NodePath("../3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PositioningNode/PointCards")
 _modifierCards = NodePath("../ModifierCards")
 _pointCardUi = ExtResource("23_nkcx5")
 _modifierCardUi = ExtResource("24_k5rf2")
 _playerSeatsHolder = NodePath("../3DWorld/PlayerSeats")
 _buddy = ExtResource("27_5lnsn")
+_playerHud = NodePath("../PlayerHUD")
 uiCommunicator = NodePath("../UICommunicator")
 deck3D = NodePath("../Deck3D")
 
@@ -1231,6 +1232,8 @@ script = ExtResource("32_1ab4g")
 gapAmount = -0.5
 cardDisplayDirection = Vector3(1, 0, 0)
 _uiCommunicator = NodePath("../UICommunicator")
+
+[node name="PlayerHUD" parent="." unique_id=1196410565 instance=ExtResource("43_v7sr5")]
 
 [editable path="3DWorld/EnvironmentDetails/Models/curtain"]
 [editable path="3DWorld/PlayerVisuals"]
