@@ -17,6 +17,6 @@ public class CAlchemist : PlayerClassInterface
     }
     public void UsePassive()
     {
-        Parent.PointsToGoldRatio = 1;
+        // Parent.PointsToGoldRatio = 1;
     }
 }

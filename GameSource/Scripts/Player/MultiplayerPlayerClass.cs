@@ -13,11 +13,11 @@ public partial class MultiplayerPlayerClass : Node
 	[Export] private PackedScene _modifierCardUi;
 	[Export] private Node3D _playerSeatsHolder;
 	[Export] private PackedScene _buddy;
-	[Export] private Node3D _evilCards;
 
 	[Export] private UiCommunicator uiCommunicator;
 
 	[Export] private Deck3d deck3D;
+
 
 	[ExportGroup("Deprecated")]
 	[Export] private Label _maxPoints;
@@ -36,8 +36,7 @@ public partial class MultiplayerPlayerClass : Node
 		Global.turnManagerInstance.GoToShopScene();
 		GD.Print("Dani: Shop will start with the first round for testing purposes. \nComment out line 36 in MultiplayerPlayerClass.cs");
 		
-		// REMOVES EVIL CARDS
-		_evilCards.QueueFree();
+
 
 		Global.multiplayerPlayerClass = this;
 		ClientReady();

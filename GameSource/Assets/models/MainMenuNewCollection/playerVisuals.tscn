@@ -4,10 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://sufxeilrpghx" path="res://Assets/models/MainMenuNewCollection/templatePlayerRig.glb" id="1_7ob1p"]
 [ext_resource type="Material" uid="uid://d3vn755pds2ns" path="res://Assets/Shaders/materials/playerColorShader.tres" id="2_q3p8h"]
 [ext_resource type="Script" uid="uid://dqjcru3p0xbbd" path="res://Scripts/CameraProjection/CameraProjection.cs" id="3_q3p8h"]
-[ext_resource type="PackedScene" uid="uid://bs7f2puxk38eq" path="res://Systems/CardPlacementHandler/CardPlacementHandler.tscn" id="4_f0xh7"]
-[ext_resource type="PackedScene" uid="uid://u4jov6g4a1gc" path="res://Assets/UI/InteractableObjects/Cards/PointCard3D/PointCard3D.tscn" id="5_bfane"]
 [ext_resource type="PackedScene" uid="uid://bp7r6il82lo83" path="res://Assets/models/ring bell.glb" id="7_cjqnh"]
-[ext_resource type="PackedScene" uid="uid://dcqemdcpybob0" path="res://Assets/models/MainMenuNewCollection/texturedTable.glb" id="22_g5ov8"]
 
 [sub_resource type="Animation" id="Animation_5iesj"]
 length = 0.001
@@ -303,7 +300,7 @@ input_1/break_loop_at_end = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3wcy2"]
-graph_offset = Vector2(-1038.494, -18.733654)
+graph_offset = Vector2(-850.4348, -163.47827)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_n3mnv")
 nodes/Idle/position = Vector2(-765.2174, 208.69566)
 nodes/PullUp/node = SubResource("AnimationNodeAnimation_va7xd")
@@ -441,18 +438,6 @@ transform = Transform3D(-0.56740624, -0.7835983, 0.25303024, 0.17137355, 0.18818
 bone_name = "hand.L"
 bone_idx = 10
 
-[node name="PointCards" parent="templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" unique_id=181677031 instance=ExtResource("4_f0xh7")]
-transform = Transform3D(0.04980082, 1.4901161e-08, 0.39688766, 0.31571373, 0.24239539, -0.039615225, -0.24050942, 0.3181895, 0.03017869, 0.00945621, -0.00017682591, 0.098005824)
-visible = false
-
-[node name="PointCard3D" parent="templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PointCards" unique_id=1527816531 instance=ExtResource("5_bfane")]
-
-[node name="PointCard3D2" parent="templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PointCards" unique_id=226040016 instance=ExtResource("5_bfane")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25094676, 0, 0)
-
-[node name="PointCard3D3" parent="templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PointCards" unique_id=1707160736 instance=ExtResource("5_bfane")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52434367, 0, 0)
-
 [node name="LeftArmTarget" type="Marker3D" parent="." unique_id=608260768]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7128287, 3.3529735, 0.8965336)
 
@@ -488,14 +473,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12820965, 1.4472775, 0.2652
 [node name="ring bell" parent="." unique_id=2018728083 instance=ExtResource("7_cjqnh")]
 transform = Transform3D(0.088, 0, 0, 0, 0.088, 0, 0, 0, 0.088, 0, 2.982, 1.2233713)
 
-[node name="texturedTable" parent="." unique_id=1540907101 instance=ExtResource("22_g5ov8")]
-transform = Transform3D(1.248, 0, 0, 0, 1.248, 0, 0, 0, 1.248, 0, 0.898, 2.869)
-visible = false
-
 [node name="PlayerAnimator" type="AnimationPlayer" parent="." unique_id=523274783]
 libraries/ = SubResource("AnimationLibrary_7kuq2")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=92736569]
+active = false
 tree_root = SubResource("AnimationNodeBlendTree_3wcy2")
 anim_player = NodePath("../PlayerAnimator")
 parameters/Transition/current_state = "idle"
@@ -503,6 +485,6 @@ parameters/Transition/transition_request = ""
 parameters/Transition/current_index = 1
 parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
-parameters/OneShot/request = 1
+parameters/OneShot/request = 0
 
 [editable path="templatePlayerRig"]
