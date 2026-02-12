@@ -251,10 +251,14 @@ public partial class TurnManager : Node
 		_lastPlayer = _currentPlayer;
 
 		foreach (var card in usedCards.Where(card => !card.IsCardModifier))
+		{
 			DealWithModifiers(card);
+		}
 
 		if (CheckForEndGame(value))
+		{
 			return;
+		}
 
 		SwitchToNextPlayer();
 

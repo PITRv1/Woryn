@@ -9,6 +9,7 @@ public class PlayerClass
     public List<PointCard> PointCardList { get; set; }
     public List<ModifierCard> ModifierCardList { get; set; }
     public PlayerStats PlayerStats { get; set; }
+    private readonly List<IActiveItems> _currentItems = new List<IActiveItems>();
     public ModifierCardDeck ModifierCardDeck { get; }
     public MultiplayerPlayerClass Parent;
     public int Points { get; set; } = 0;
@@ -16,21 +17,8 @@ public class PlayerClass
     
 
     public PointCard ChosenPointCard { get; set; }
-    // {
-    //     get
-    //     {
-    //         return chosenPointCard;
-    //     }
-    //     set
-    //     {
-    //         chosenModifierCards.Clear();
-    //         chosenPointCard = value;
-    //     }
-    // }
     public readonly List<ModifierCard> ChosenModifierCards = new();
 
-    // public string EffectStatus { get; }
-    
     public PlayerClass()
     {
         PointCardList = new List<PointCard>();
@@ -86,12 +74,6 @@ public class PlayerClass
         ChosenModifierCards.Add(card);
         return true;
     }
-
-    // public void DecreaseCooldown()
-    // {
-    //     PlayerStats.ActiveCooldown--;
-    //     PlayerStats.PassiveCooldown--;
-    // }
 
     public void AddCardToPointCards(PointCard card)
     {

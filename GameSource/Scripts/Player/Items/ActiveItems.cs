@@ -20,9 +20,13 @@ public enum ItemType
 	CLAIRVOYANT_PASSIVE,
 }
 
-public interface ActiveItems
+public interface IActiveItems
 {
 	public bool MultiUse { get; set; }
 	public int Amount { get; set; }
 	public ItemType ItemType { get; set; }
+	public void PlayAbility()
+	{
+		
+	}
 }
