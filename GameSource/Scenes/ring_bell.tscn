@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://d0ifsdecs5mtl"]
+
+[ext_resource type="PackedScene" uid="uid://bp7r6il82lo83" path="res://Assets/models/ring bell.glb" id="1_1pwf2"]
+
+[node name="ring bell" unique_id=1287286431 instance=ExtResource("1_1pwf2")]

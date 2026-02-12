@@ -651,6 +651,42 @@ shadow_mesh = SubResource("ArrayMesh_xffdd")
 [sub_resource type="BoxShape3D" id="BoxShape3D_krtbm"]
 size = Vector3(0.17123413, 0.13193512, 0.17218018)
 
+[sub_resource type="Animation" id="Animation_dael7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RingUpper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rgm5j"]
+resource_name = "ring"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RingUpper:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.26666665, 0.51666665, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.3851968, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_krtbm"]
+_data = {
+&"RESET": SubResource("Animation_dael7"),
+&"ring": SubResource("Animation_rgm5j")
+}
+
 [node name="Test" type="Node3D" unique_id=566470753]
 
 [node name="3DWorld" type="Node3D" parent="." unique_id=416216869]
@@ -1021,7 +1057,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78381586, 4.1443086, 6.123
 [node name="curtain" parent="3DWorld/EnvironmentDetails/Models" unique_id=152688818 instance=ExtResource("39_0tc0y")]
 transform = Transform3D(-0.10385153, 0, 0.9945928, 0, 1, 0, -0.9945928, 0, -0.10385153, -7.01008, 0.106413364, 0.33820117)
 
-[node name="Plane" parent="3DWorld/EnvironmentDetails/Models/curtain" index="0" unique_id=1403861649]
+[node name="Plane" parent="3DWorld/EnvironmentDetails/Models/curtain" index="0" unique_id=1057766926]
 transform = Transform3D(1.730112, 0, 0, 0, 0, -1.730113, 0, 1.730112, 0, -1.5716673, 2.4554563, -0.16410732)
 material_override = SubResource("StandardMaterial3D_3h8vp")
 
@@ -1031,12 +1067,13 @@ material_override = SubResource("StandardMaterial3D_krtbm")
 mesh = SubResource("ArrayMesh_ktcpd")
 skeleton = NodePath("")
 
-[node name="Bell" type="Node3D" parent="3DWorld/EnvironmentDetails/Models" unique_id=970012675 node_paths=PackedStringArray("multiplayerPlayerClass", "_area3D", "playerVisualController")]
+[node name="Bell" type="Node3D" parent="3DWorld/EnvironmentDetails/Models" unique_id=970012675 node_paths=PackedStringArray("multiplayerPlayerClass", "_area3D", "playerVisualController", "ringAnimPlayer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6630696, 2.1280937, 0)
 script = ExtResource("42_krtbm")
 multiplayerPlayerClass = NodePath("../../../../MultiplayerPlayer")
 _area3D = NodePath("PlaceholderParent/BellArea")
 playerVisualController = NodePath("../../../PlayerVisuals")
+ringAnimPlayer = NodePath("../../../PlayerVisuals/ring bell/RingBellAnimationPlayer")
 
 [node name="PlaceholderParent" type="Node3D" parent="3DWorld/EnvironmentDetails/Models/Bell" unique_id=709527833]
 
@@ -1144,8 +1181,11 @@ font_size = 53
 [node name="PlayerVisuals" parent="3DWorld" unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.9010963, -0.9423759, -1.7291548e-07)
 
-[node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 607341800) index="26" unique_id=396461942]
-transform = Transform3D(-0.56740624, -0.7729292, 0.28395587, 0.17137387, 0.22644572, 0.9588288, -0.8054073, 0.59270823, 0.0039731264, 0.28515375, 1.3494414, 0.3586743)
+[node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1020205244) index="26" unique_id=396461942]
+transform = Transform3D(-0.5674063, -0.76310956, 0.30937722, 0.171374, 0.2580502, 0.9508106, -0.8054073, 0.592515, -0.01564227, 0.2851599, 1.351676, 0.35869098)
+
+[node name="RingBellAnimationPlayer" type="AnimationPlayer" parent="3DWorld/PlayerVisuals/ring bell" parent_id_path=PackedInt32Array(241039124, 2018728083) index="2" unique_id=1411014788]
+libraries/ = SubResource("AnimationLibrary_krtbm")
 
 [node name="AnimationTree" parent="3DWorld/PlayerVisuals" index="7" unique_id=92736569]
 active = true
