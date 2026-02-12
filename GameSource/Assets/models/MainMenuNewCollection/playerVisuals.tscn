@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bjp751q3yns8c" path="res://Assets/models/MainMenuNewCollection/PlayerVisualController.cs" id="1_5iesj"]
 [ext_resource type="PackedScene" uid="uid://sufxeilrpghx" path="res://Assets/models/MainMenuNewCollection/templatePlayerRig.glb" id="1_7ob1p"]
-[ext_resource type="Material" uid="uid://d3vn755pds2ns" path="res://Assets/Shaders/materials/playerColorShader.tres" id="2_q3p8h"]
+[ext_resource type="Material" uid="uid://fljhpostayqq" path="res://Assets/Shaders/materials/playerMats/playerMat2.material" id="3_cjqnh"]
 [ext_resource type="Script" uid="uid://dqjcru3p0xbbd" path="res://Scripts/CameraProjection/CameraProjection.cs" id="3_q3p8h"]
-[ext_resource type="PackedScene" uid="uid://utxgwvmbegic" path="res://Assets/models/MainMenuNewCollection/cape.glb" id="6_5iesj"]
+[ext_resource type="Material" uid="uid://74v7ndcsh607" path="res://Assets/Shaders/materials/playerMats/playerMat1.material" id="4_bfane"]
+[ext_resource type="Material" uid="uid://biuaj50qeyti2" path="res://Assets/Shaders/materials/playerMats/playerMat3.material" id="4_usn6a"]
+[ext_resource type="Material" uid="uid://d0rk876pvg0ay" path="res://Assets/Shaders/materials/playerMats/playerMat4.material" id="5_7kuq2"]
 [ext_resource type="PackedScene" uid="uid://bp7r6il82lo83" path="res://Assets/models/ring bell.glb" id="7_cjqnh"]
-[ext_resource type="PackedScene" uid="uid://bvatpmmmlieis" path="res://Assets/models/MainMenuNewCollection/hatTop.glb" id="7_usn6a"]
 
 [sub_resource type="Animation" id="Animation_5iesj"]
 length = 0.001
@@ -315,9 +316,11 @@ nodes/BellHit/node = SubResource("AnimationNodeAnimation_cjqnh")
 nodes/BellHit/position = Vector2(-243.47827, 243.47827)
 node_connections = [&"output", 0, &"OneShot", &"Transition", 0, &"PullUp", &"Transition", 1, &"Idle", &"OneShot", 0, &"Transition", &"OneShot", 1, &"BellHit"]
 
-[node name="PlayerVisuals" type="Node3D" unique_id=241039124 node_paths=PackedStringArray("animationTree")]
+[node name="PlayerVisuals" type="Node3D" unique_id=241039124 node_paths=PackedStringArray("animationTree", "bodyparts")]
 script = ExtResource("1_5iesj")
 animationTree = NodePath("AnimationTree")
+materials = Array[Material]([ExtResource("4_bfane"), ExtResource("3_cjqnh"), ExtResource("4_usn6a"), ExtResource("5_7kuq2")])
+bodyparts = [NodePath("templatePlayerRig/metarig/Skeleton3D/Cube"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_002"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_006"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_007"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_008"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_010"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_011"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_015"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_016"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_022")]
 
 [node name="Neck" type="Node3D" parent="." unique_id=702888186]
 transform = Transform3D(1, 0, 0, 0, 0.98018485, -0.19808504, 0, 0.19808504, 0.98018485, 0, 4.128, 0)
@@ -336,34 +339,34 @@ transform = Transform3D(1, -4.440892e-16, 0, 8.881784e-16, 0.9999999, 0, 0, 0, 0
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 
 [node name="Cube" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="0" unique_id=942286867]
-material_override = ExtResource("2_q3p8h")
+material_override = ExtResource("4_bfane")
 
 [node name="Cube_002" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="2" unique_id=353802687]
-material_override = ExtResource("2_q3p8h")
+material_override = ExtResource("4_bfane")
 
 [node name="Cube_006" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="6" unique_id=1515488391]
-material_override = ExtResource("2_q3p8h")
+material_override = ExtResource("4_bfane")
 
 [node name="Cube_007" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="7" unique_id=336252554]
-material_override = ExtResource("2_q3p8h")
+material_override = ExtResource("4_bfane")
 
 [node name="Cube_008" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="8" unique_id=1109311632]
-material_override = ExtResource("2_q3p8h")
+material_override = ExtResource("4_bfane")
 
 [node name="Cube_010" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="10" unique_id=627780466]
-material_override = ExtResource("2_q3p8h")
+material_override = ExtResource("4_bfane")
 
 [node name="Cube_011" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="11" unique_id=943965003]
-material_override = ExtResource("2_q3p8h")
+material_override = ExtResource("4_bfane")
 
 [node name="Cube_015" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="13" unique_id=2143453037]
-material_override = ExtResource("2_q3p8h")
+material_override = ExtResource("4_bfane")
 
 [node name="Cube_016" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="14" unique_id=251317222]
-material_override = ExtResource("2_q3p8h")
+material_override = ExtResource("4_bfane")
 
 [node name="Cube_022" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="20" unique_id=1955532070]
-material_override = ExtResource("2_q3p8h")
+material_override = ExtResource("4_bfane")
 
 [node name="TwoBoneIK3D" type="TwoBoneIK3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="21" unique_id=1653888979]
 setting_count = 4
@@ -488,11 +491,5 @@ parameters/Transition/current_index = 1
 parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
-
-[node name="cape" parent="." unique_id=1119996306 instance=ExtResource("6_5iesj")]
-transform = Transform3D(2.679, 0, 0, 0, 2.679, 0, 0, 0, 2.1542673, -0.029973276, 3.246045, -0.074895665)
-
-[node name="hatTop" parent="." unique_id=2072440115 instance=ExtResource("7_usn6a")]
-transform = Transform3D(2.6, 0, 0, 0, 2.6, 0, 0, 0, 2.6, 0.013416413, 4.3678775, 0.03025093)
 
 [editable path="templatePlayerRig"]
