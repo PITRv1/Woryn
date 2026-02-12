@@ -13,7 +13,7 @@ public class PlayerClass
     public MultiplayerPlayerClass Parent;
     public int Points { get; set; } = 0;
     public int Gold { get; set; } = 0;
-    public float PointsToGoldRatio = 0.5f;
+    
 
     public PointCard ChosenPointCard { get; set; }
     // {

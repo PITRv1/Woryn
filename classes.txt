@@ -1,0 +1,23 @@
+Based on upgrade level : x/2x/3x - or sum like that
+Passive : x/2x/3x based on how many purchased, the classes start on level 3
+Active:- Class ability / bough ability (one charge)
+
+Clairvoyant:
+Passive:- See the next 1/2/3 cards in the deck
+Active:- Can see everyone's decks if she looks at them / Can see one of the player's deck
+
+Mirror Maiden:
+Passive:- Immune to 1/2/3 active abilities per round
+Active:- Next bad effect coming her way gets reflected (includes player abilities and cards) long recharge / Next bad effect has no effect
+
+Alchemist/transmutator (wizard rework)
+Passive:- points to gold ratio 1:0.5/1:0.75/1:1
+Active:- Promote card to legendary / promote a card to epic
+
+Gambler (Hakari reference):
+Passive:- At the end of each round, 10%/25%/40% chance to double your points earned that round
+Active:- Shuffles all the cards of the players / 2 cards of each players
+
+Noble/Politician:
+Passive:- gets 4%/6%/8% of every point collected
+Active:- takes a player to prison for 3 of his turns / takes a player to prison for 2 turns
