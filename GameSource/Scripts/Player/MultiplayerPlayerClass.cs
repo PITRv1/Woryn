@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 using System.Linq;
 
@@ -33,7 +34,7 @@ public partial class MultiplayerPlayerClass : Node
 		Global.multiplayerClientGlobals.HandlePickUpCardAnswer += PlayerClass.ProcessPickUpAnswer;
 		Global.multiplayerClientGlobals.HandleDeckSwap += PlayerClass.HandleDeckSwap;
 		Global.multiplayerClientGlobals.ShopScene += uiCommunicator.StartShop;
-		Global.turnManagerInstance.GoToShopScene();
+		// Global.turnManagerInstance.GoToShopScene();
 		GD.Print("Dani: Shop will start with the first round for testing purposes. \nComment out line 36 in MultiplayerPlayerClass.cs");
 
 		Global.multiplayerPlayerClass = this;
@@ -44,10 +45,28 @@ public partial class MultiplayerPlayerClass : Node
 	{
 		var packet = SetupPacket.CreateFromData(data);
 		var seats = _playerSeatsHolder.GetChildren();
-		for (var i = 0; i < packet.PlayerCount; i++)
+		int myIndex = Id; // e.g., 2
+
+		// For each player (excluding myself)
+		for (int playerIndex = 0; playerIndex < packet.PlayerCount; playerIndex++)
 		{
-			var bud = _buddy.Instantiate() as Node3D;
-			seats[i].AddChild(bud);
+			if (playerIndex == myIndex) continue; // Skip myself
+        
+			// Calculate how many steps this player is from me (going backwards/counter-clockwise)
+			int offset = (playerIndex - myIndex + packet.PlayerCount) % packet.PlayerCount;
+        
+			// Map to seat: offset 1→seat 0, offset 2→seat 1, offset 3→seat 2
+			int seatIndex = offset - 1;
+        
+			var bud = _buddy.Instantiate() as PlayerVisualController;
+			bud.PlayerIndex = playerIndex;
+
+			seats[seatIndex].AddChild(bud);
+			bud.Position = new Vector3(0, -2f, 0);
+        
+			var tableCenter = new Vector3(0, bud.GlobalPosition.Y, 0);
+			bud.LookAt(tableCenter, Vector3.Up);
+			bud.RotateY(Mathf.Pi);
 		}
 	}
 

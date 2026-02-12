@@ -27,6 +27,8 @@ public interface IActiveItems
 	public ItemType ItemType { get; set; }
 	public void PlayAbility()
 	{
-		
+	}
+	public void ReduceCooldown()
+	{
 	}
 }

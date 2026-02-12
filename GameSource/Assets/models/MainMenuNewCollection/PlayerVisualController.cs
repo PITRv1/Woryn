@@ -3,7 +3,7 @@ using System;
 
 public partial class PlayerVisualController : Node3D
 {
-    [Export] int playerIndex = 1;
+    [Export] public int PlayerIndex = 1;
     [Export] AnimationTree animationTree;
 
     [ExportGroup("Bodyparts")]
@@ -12,9 +12,9 @@ public partial class PlayerVisualController : Node3D
 
     public override void _Ready()
     {
-        Material material = materials[playerIndex];
+        var material = materials[PlayerIndex];
 
-        foreach (MeshInstance3D item in bodyparts)
+        foreach (var item in bodyparts)
         {
             item.MaterialOverlay = material;
         }

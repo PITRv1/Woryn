@@ -31,7 +31,6 @@
 [ext_resource type="PackedScene" uid="uid://dm53rv1j080tn" path="res://Assets/models/MainMenuNewCollection/books/purpleBook.glb" id="26_3h8vp"]
 [ext_resource type="PackedScene" uid="uid://bxs0hn6508qbt" path="res://Scenes/MultiplayerPlayer/multiplayer_player.tscn" id="26_5lnsn"]
 [ext_resource type="PackedScene" uid="uid://cyyxdvmulcre5" path="res://Assets/UI/InteractableObjects/Decks/Deck3d.tscn" id="26_hdoun"]
-[ext_resource type="PackedScene" uid="uid://dr2b8kaijlck8" path="res://Assets/Etc/Buddy.tscn" id="27_5lnsn"]
 [ext_resource type="PackedScene" uid="uid://gtg65p3s6x13" path="res://Assets/models/MainMenuNewCollection/books/yellowBook.glb" id="27_krtbm"]
 [ext_resource type="PackedScene" uid="uid://c2hm3pwevesgv" path="res://Scenes/UICommunicator/UICommunicator.tscn" id="28_boekd"]
 [ext_resource type="PackedScene" uid="uid://41km513ky5lw" path="res://Assets/models/MainMenuNewCollection/P O L E.glb" id="28_v7sr5"]
@@ -1183,7 +1182,7 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.90
 bodyparts = []
 
 [node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1119998455) index="26" unique_id=396461942]
-transform = Transform3D(-0.56740594, -0.7713649, 0.28817865, 0.17137337, 0.23168646, 0.9575762, -0.80540776, 0.5927206, 0.00073108077, 0.28515673, 1.3505392, 0.35868263)
+transform = Transform3D(-0.567406, -0.771419, 0.28803378, 0.17137343, 0.23150651, 0.95761967, -0.80540746, 0.5927207, 0.00084261596, 0.2851488, 1.3476114, 0.35866088)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)
@@ -1221,7 +1220,7 @@ _modifierCards = NodePath("../ModifierCards")
 _pointCardUi = ExtResource("23_nkcx5")
 _modifierCardUi = ExtResource("24_k5rf2")
 _playerSeatsHolder = NodePath("../3DWorld/PlayerSeats")
-_buddy = ExtResource("27_5lnsn")
+_buddy = ExtResource("31_1ab4g")
 uiCommunicator = NodePath("../UICommunicator")
 deck3D = NodePath("../Deck3D")
 

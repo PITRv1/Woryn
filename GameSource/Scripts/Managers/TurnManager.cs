@@ -204,7 +204,7 @@ public partial class TurnManager : Node
 		Global.shopManagerInstance ??= new ShopManager();
 
 		var packet = new ShopSceneChange();
-
+		
 		foreach (var player in Players.Keys)
 		{
 			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);

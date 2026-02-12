@@ -12,6 +12,7 @@ public partial class UiCommunicator : Node
 
     public PointCard3d selectedPointCard3D {private set; get;}
     public List<ModifierCard3d> selectedModifierCard3Ds {private set; get;} = new();
+    public bool PlayerSelectionMode = false;
 
     public override void _Ready()
     {
@@ -68,6 +69,10 @@ public partial class UiCommunicator : Node
 
     public void PlayCards()
     {
+        if (PlayerSelectionMode)
+        {
+            return;
+        }
         GD.Print("PlayCard called");
         if (selectedPointCard3D == null)
         {

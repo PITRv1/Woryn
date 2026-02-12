@@ -11,7 +11,7 @@ public partial class PoliticanActive : IActiveItems
 
 	public void PlayAbility()
 	{
-		_cooldown = MaxCooldown;
+		// _cooldown = MaxCooldown;
 		
 		
 	}
