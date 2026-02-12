@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bl2inu1shpipu"]
+[gd_resource type="Theme" format=3 uid="uid://bl2inu1shpipu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57dk6"]
 border_width_left = 8

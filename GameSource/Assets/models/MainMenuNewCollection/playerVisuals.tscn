@@ -4,7 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://sufxeilrpghx" path="res://Assets/models/MainMenuNewCollection/templatePlayerRig.glb" id="1_7ob1p"]
 [ext_resource type="Material" uid="uid://d3vn755pds2ns" path="res://Assets/Shaders/materials/playerColorShader.tres" id="2_q3p8h"]
 [ext_resource type="Script" uid="uid://dqjcru3p0xbbd" path="res://Scripts/CameraProjection/CameraProjection.cs" id="3_q3p8h"]
+[ext_resource type="PackedScene" uid="uid://utxgwvmbegic" path="res://Assets/models/MainMenuNewCollection/cape.glb" id="6_5iesj"]
 [ext_resource type="PackedScene" uid="uid://bp7r6il82lo83" path="res://Assets/models/ring bell.glb" id="7_cjqnh"]
+[ext_resource type="PackedScene" uid="uid://bvatpmmmlieis" path="res://Assets/models/MainMenuNewCollection/hatTop.glb" id="7_usn6a"]
 
 [sub_resource type="Animation" id="Animation_5iesj"]
 length = 0.001
@@ -486,5 +488,11 @@ parameters/Transition/current_index = 1
 parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
+
+[node name="cape" parent="." unique_id=1119996306 instance=ExtResource("6_5iesj")]
+transform = Transform3D(2.679, 0, 0, 0, 2.679, 0, 0, 0, 2.1542673, -0.029973276, 3.246045, -0.074895665)
+
+[node name="hatTop" parent="." unique_id=2072440115 instance=ExtResource("7_usn6a")]
+transform = Transform3D(2.6, 0, 0, 0, 2.6, 0, 0, 0, 2.6, 0.013416413, 4.3678775, 0.03025093)
 
 [editable path="templatePlayerRig"]
