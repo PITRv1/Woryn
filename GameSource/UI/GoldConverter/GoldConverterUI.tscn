@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b88m3onkcju2s" path="res://UI/GoldConverter/GoldConverterUi.cs" id="2_5ydfb"]
 [ext_resource type="Texture2D" uid="uid://dry7q0avshvta" path="res://Assets/UI/Images/NineRect/background_yellow.png" id="2_xdebu"]
 
-[node name="GoldConverterUi" type="Control" node_paths=PackedStringArray("timerLabel", "timerObject", "spinBox", "goldConversionLabel")]
+[node name="GoldConverterUi" type="Control" unique_id=432262640 node_paths=PackedStringArray("timerLabel", "timerObject", "spinBox", "goldConversionLabel")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -19,7 +19,7 @@ timerObject = NodePath("MarginContainer/TimerContainer/HBoxContainer/Timer")
 spinBox = NodePath("MarginContainer/CenterContainer/VBoxContainer/SpinBox")
 goldConversionLabel = NodePath("MarginContainer/CenterContainer/VBoxContainer/TotalGold")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=902785814]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,10 +31,10 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=4547432]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/CenterContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/CenterContainer" unique_id=1345634238]
 custom_minimum_size = Vector2(400, 240)
 layout_mode = 2
 texture = ExtResource("2_xdebu")
@@ -43,55 +43,54 @@ patch_margin_top = 17
 patch_margin_right = 17
 patch_margin_bottom = 17
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer" unique_id=321003879]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=912364508]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 41
 text = "Gold converter"
 
-[node name="Info" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+[node name="Info" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=1861010270]
 layout_mode = 2
-text = "The conversion has a 20% loss.
-You cant convert back to gold.
+text = "You cant convert back to gold.
 Your gold won't be lost."
 horizontal_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MarginContainer/CenterContainer/VBoxContainer"]
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=1280726098]
 layout_mode = 2
 custom_arrow_step = 10.0
 
-[node name="TotalGold" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+[node name="TotalGold" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=1833521979]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.6666667, 0, 1)
 theme_override_font_sizes/font_size = 26
 text = "Total: 0"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=930535895]
 layout_mode = 2
 alignment = 1
 
-[node name="Convert" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="Convert" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1133195809]
 layout_mode = 2
 text = "Convert"
 
-[node name="TimerContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="TimerContainer" type="VBoxContainer" parent="MarginContainer" unique_id=16143521]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TimerContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TimerContainer" unique_id=380492325]
 layout_mode = 2
 alignment = 1
 
-[node name="TimerLabel" type="Label" parent="MarginContainer/TimerContainer/HBoxContainer"]
+[node name="TimerLabel" type="Label" parent="MarginContainer/TimerContainer/HBoxContainer" unique_id=1790864003]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 56
 text = "00"
 
-[node name="Timer" type="Timer" parent="MarginContainer/TimerContainer/HBoxContainer"]
+[node name="Timer" type="Timer" parent="MarginContainer/TimerContainer/HBoxContainer" unique_id=1731853489]
 wait_time = 12.0
 one_shot = true
 autostart = true
