@@ -68,11 +68,8 @@ public partial class ToolTipMenu : Control
 	{
 		if (GetViewport().GetMousePosition() - lastMousePos > new Vector2())
 		{
-			GD.Print("We are good");
 			return;
 		}
-
-		GD.Print(timer.TimeLeft);
 
 		// if (!timer.IsStopped()) timer.Stop();
 		if (Visible) Visible = false;

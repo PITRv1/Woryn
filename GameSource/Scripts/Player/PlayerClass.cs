@@ -123,6 +123,8 @@ public class PlayerClass
             GD.Print("Client player cards");
             foreach (var card in PointCardList)
                 GD.Print(card.PointValue + " ");
+            foreach (ModifierCard card in ModifierCardList)
+                GD.Print(card.ModifierType + " ");
         }
 
         if (Parent.Id != packet.LastPlayer)
