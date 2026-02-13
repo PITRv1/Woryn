@@ -75,6 +75,19 @@ public partial class MultiplayerPlayerClass : Node
 
 		PlayerClass.ChosenPointCard = null;
 		PlayerClass.ChosenModifierCards.Clear();
+		
+		var sortedPointCards = packet.DeletePointCards.OrderByDescending(x => x).ToList();
+		var sortedModifierCards = packet.DeleteModifierCards.OrderByDescending(x => x).ToList();
+		
+		foreach (var cardIndex in sortedPointCards)
+		{
+			PlayerClass.PointCardList.RemoveAt(cardIndex);
+		}
+
+		foreach (var cardIndex in sortedModifierCards)
+		{
+			PlayerClass.ModifierCardList.RemoveAt(cardIndex);
+		}
 	}
 
 	private void Setup(byte[] data)
@@ -217,14 +230,27 @@ public partial class MultiplayerPlayerClass : Node
 
 	public void ResetContainers()
 	{
-		for (var i = 0; i < _modifierCards.GetChildCount(); i++)
+		var count = _modifierCards.GetChildCount();
+		for (var i = 0; i < count; i++)
 		{
-			_modifierCards.RemoveChild(_modifierCards.GetChild(1));
+			_modifierCards.RemoveCard(_modifierCards.GetChild(0) as Node3D);
+			// _modifierCards.RemoveCard();
 		}
 
-		for (var i = 0; i < _pointCards.GetChildCount(); i++)
+		count = _pointCards.GetChildCount();
+		for (var i = 0; i < count; i++)
 		{
-			_pointCards.RemoveChild(_pointCards.GetChild(1));
+			_pointCards.RemoveCard(_pointCards.GetChild(0) as Node3D);
+		}
+
+		foreach (var card in PlayerClass.PointCardList)
+		{
+			AddPointToContainer(card);
+		}
+		
+		foreach (var card in PlayerClass.ModifierCardList)
+		{
+			AddModifierToContainer(card);
 		}
 	}
 }

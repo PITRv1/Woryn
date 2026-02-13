@@ -26,6 +26,7 @@ public partial class CardPlacementHandler : Node3D
 	public void RemoveCard(Node3D card)
 	{
 		CardArray.Remove(card);
+		RemoveChild(card);
 		card.QueueFree();
 
 		ReorganizeCards();

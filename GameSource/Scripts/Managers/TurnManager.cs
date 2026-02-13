@@ -141,8 +141,6 @@ public partial class TurnManager : Node
 				MaxValue = _currentMaxValue,
 				CurrentPointValue = Players[player].PlayerClass.Points,
 				ThrowDeckValue = _throwDeckValue,
-				DeletePointCards = [],
-				DeleteModifierCards = [],
 			};
 
 			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
@@ -230,8 +228,6 @@ public partial class TurnManager : Node
 				MaxValue = _currentMaxValue,
 				CurrentPointValue = Players[player].PlayerClass.Points,
 				ThrowDeckValue = _throwDeckValue,
-				DeletePointCards = [],
-				DeleteModifierCards = []
 			};
 
 			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
@@ -262,7 +258,7 @@ public partial class TurnManager : Node
 		} while(Players[_currentPlayer].PlayerClass.PointCardList.Count == 0);
 	}
 
-	private void StartNewTurn(int pointCardIndex, byte[] modifierCardIndexes, List<ModifierCard> usedCards, int value)
+	private void StartNewTurn(List<ModifierCard> usedCards, int value)
 	{
 		GD.Print("NEW TURN");
 		_lastPlayer = _currentPlayer;
@@ -293,8 +289,6 @@ public partial class TurnManager : Node
 				MaxValue = _currentMaxValue,
 				CurrentPointValue = Players[player].PlayerClass.Points,
 				ThrowDeckValue = _throwDeckValue,
-				DeletePointCards = [pointCardIndex],
-				DeleteModifierCards = modifierCardIndexes
 			};
 
 			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
@@ -305,9 +299,9 @@ public partial class TurnManager : Node
 		}
 
 		GD.Print("Server player cards");
-		foreach (PointCard card in Players[_currentPlayer].PlayerClass.PointCardList)
+		foreach (var card in Players[_currentPlayer].PlayerClass.PointCardList)
 			GD.Print(card.PointValue + " ");
-		foreach (ModifierCard card in Players[_currentPlayer].PlayerClass.ModifierCardList)
+		foreach (var card in Players[_currentPlayer].PlayerClass.ModifierCardList)
 			GD.Print(card.ModifierType + " ");
 		_foldTimer.Start();
 	}
@@ -423,13 +417,15 @@ public partial class TurnManager : Node
 		var roundSuccessPacket = new RoundSuccessPacket
 		{
 			PlayerId = packet.SenderId,
+			DeletePointCards = [packet.PointCardIndex],
+			DeleteModifierCards = packet.ModifCardIndexes,
 		};
 		
 		BroadCast(roundSuccessPacket);
 
 		PickUpCards(_currentPlayer);
 
-		StartNewTurn(packet.PointCardIndex, packet.ModifCardIndexes, usedCards, turnValue);
+		StartNewTurn(usedCards, turnValue);
 	}
 
 	public void HandleGoldConvert(byte[] data)

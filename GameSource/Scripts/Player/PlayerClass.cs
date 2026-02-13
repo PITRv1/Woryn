@@ -38,6 +38,16 @@ public class PlayerClass
         SetPointCardDeck(packet.PointCards);
         SetModifierCards(packet.ModifierCards);
         Parent.ResetContainers();
+        
+        GD.Print(Parent.Id + " currentCards: ");
+        foreach (var card in packet.PointCards)
+        {
+            GD.Print(card.PointValue + " ");
+        }
+        foreach (var card in packet.ModifierCards)
+        {
+            GD.Print(card.ModifierType + " ");
+        }
     }
 
     private void SetPointCardDeck(PointCard[] cards)
@@ -115,8 +125,6 @@ public class PlayerClass
         Points = packet.CurrentPointValue;
         Parent.SetUi(packet.MaxValue, packet.CurrentPointValue, packet.ThrowDeckValue);
         
-        var sortedPointCards = packet.DeletePointCards.OrderByDescending(x => x).ToList();
-        var sortedModifierCards = packet.DeleteModifierCards.OrderByDescending(x => x).ToList();
         
         if (Parent.Id == packet.CurrentPlayerId)
         {
@@ -129,22 +137,6 @@ public class PlayerClass
             Parent._playerHud.StartCountdownTimer();
         }
 
-        if (Parent.Id != packet.LastPlayer)
-        {
-            return;
-        }
-
-        foreach (var cardIndex in sortedPointCards)
-        {
-            PointCardList.RemoveAt(cardIndex);
-        }
-
-        foreach (var cardIndex in sortedModifierCards)
-        {
-            ModifierCardList.RemoveAt(cardIndex);
-        }
-
-        
     }
 
     public void ProcessPickUpAnswer(byte[] data)

@@ -11,9 +11,6 @@ public partial class UiCommunicator : Node
     [Export] PackedScene modifierCard3D;
     [Export] PlayerVisualController playerVisualController;
     [Export] GoldConverterController goldConverterController;
-    
-
-
 
     public PointCard3d selectedPointCard3D {private set; get;}
     public List<ModifierCard3d> selectedModifierCard3Ds {private set; get;} = new();
