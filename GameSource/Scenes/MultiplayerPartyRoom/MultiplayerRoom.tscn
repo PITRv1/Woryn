@@ -117,7 +117,7 @@ metadata/_custom_type_script = "uid://ca0pr2up27plw"
 [sub_resource type="CompositorEffect" id="CompositorEffect_ef0mh"]
 resource_local_to_scene = false
 resource_name = ""
-enabled = true
+enabled = false
 effect_callback_type = 4
 needs_motion_vectors = false
 needs_normal_roughness = false
@@ -688,6 +688,9 @@ _data = {
 
 [node name="Test" type="Node3D" unique_id=566470753]
 
+[node name="PlayerHUD" parent="." unique_id=1196410565 instance=ExtResource("43_v7sr5")]
+mouse_filter = 2
+
 [node name="3DWorld" type="Node3D" parent="." unique_id=416216869]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="3DWorld" unique_id=1701279325]
@@ -1232,8 +1235,6 @@ _buddy = ExtResource("31_1ab4g")
 _playerHud = NodePath("../PlayerHUD")
 uiCommunicator = NodePath("../UICommunicator")
 deck3D = NodePath("../Deck3D")
-
-[node name="PlayerHUD" parent="." unique_id=1196410565 instance=ExtResource("43_v7sr5")]
 
 [editable path="3DWorld/EnvironmentDetails/Models/curtain"]
 [editable path="3DWorld/PlayerVisuals"]

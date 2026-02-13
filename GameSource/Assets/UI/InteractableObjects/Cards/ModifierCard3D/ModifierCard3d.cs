@@ -32,6 +32,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
         SetIcon();
 
         area3D.MouseEntered += () => animationPlayer.Play("Move");
+        
         area3D.MouseExited += () => animationPlayer.Play("RESET");
     }
 
