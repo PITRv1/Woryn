@@ -25,7 +25,7 @@ public partial class ModifierCardMultiplier : ModifierCard
 	public void RandomizeProperties()
 	{
 		RandomNumberGenerator rng = new RandomNumberGenerator();
-		Amount = rng.RandiRange(2, 6);
+		Amount = rng.RandiRange(2, 4);
         // Amount = 1;
 	}
 
