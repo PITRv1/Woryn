@@ -83,8 +83,6 @@ public partial class MultiplayerPlayerClass : Node
 		// _playerVisualController.PlayerIndex = 3;
 		// _playerVisualController.SetColor();
 
-		packet.PlayerCount += 3;
-
 		for (var playerIndex = 0; playerIndex < packet.PlayerCount; playerIndex++)
 		{
 			if (playerIndex == Id) continue; // Skip myself
