@@ -1191,8 +1191,11 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.90
 [node name="Neck" parent="3DWorld/PlayerVisuals" index="0" unique_id=702888186]
 transform = Transform3D(1, 0, 0, 0, 0.98018485, -0.19808501, 0, 0.19808502, 0.9801848, 0, 4.128, 0)
 
+[node name="HeadLookAtMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 607341800) index="23" unique_id=955177941]
+process_mode = 0
+
 [node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 607341800) index="26" unique_id=396461942]
-transform = Transform3D(-0.56740624, -0.7637722, 0.30773786, 0.1713739, 0.2560078, 0.9513625, -0.8054073, 0.5925472, -0.01436989, 0.28517035, 1.3555123, 0.3587194)
+transform = Transform3D(-0.56740636, -0.7467522, 0.34700364, 0.17137352, 0.3050897, 0.9367768, -0.8054073, 0.5910003, -0.045136295, 0.28518194, 1.359749, 0.35875073)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)
@@ -1225,7 +1228,7 @@ multiplayerPlayer = NodePath("../MultiplayerPlayer")
 modifierCard3D = ExtResource("24_k5rf2")
 playerVisualController = NodePath("../3DWorld/PlayerVisuals")
 
-[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("_pointCards", "_modifierCards", "_playerSeatsHolder", "_playerHud", "uiCommunicator", "deck3D") instance=ExtResource("26_5lnsn")]
+[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("_pointCards", "_modifierCards", "_playerSeatsHolder", "_playerHud", "uiCommunicator", "deck3D", "_playerVisualController") instance=ExtResource("26_5lnsn")]
 _pointCards = NodePath("../3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PositioningNode/PointCards")
 _modifierCards = NodePath("../ModifierCards")
 _pointCardUi = ExtResource("23_nkcx5")
@@ -1235,6 +1238,7 @@ _buddy = ExtResource("31_1ab4g")
 _playerHud = NodePath("../PlayerHUD")
 uiCommunicator = NodePath("../UICommunicator")
 deck3D = NodePath("../Deck3D")
+_playerVisualController = NodePath("../3DWorld/PlayerVisuals")
 
 [editable path="3DWorld/EnvironmentDetails/Models/curtain"]
 [editable path="3DWorld/PlayerVisuals"]

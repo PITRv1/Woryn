@@ -3,7 +3,7 @@ using System;
 
 public partial class PlayerVisualController : Node3D
 {
-    [Export] public int PlayerIndex = 1;
+    public int PlayerIndex = 1;
     [Export] AnimationTree animationTree;
     [Export] public bool PlayerControlled = true;
     [Export] public Camera3D Camera;
@@ -17,17 +17,17 @@ public partial class PlayerVisualController : Node3D
 
     float target = 0.0f;
 
-    public override void _Ready()
+    public void SetColor()
     {
         GD.Print("PLAYER INDEXXXXXXX: " + PlayerIndex);
         var material = materials[PlayerIndex];
+
+         GD.Print(material);
 
         foreach (var item in bodyparts)
         {
             item.MaterialOverlay = material;
         }
-
-        // target = 1.0f;
     }
  
     public void playBellHit()
