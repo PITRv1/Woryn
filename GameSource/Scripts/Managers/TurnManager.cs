@@ -287,6 +287,9 @@ public partial class TurnManager : Node
 			}
 		}
 
+		GD.Print("Server player cards");
+		foreach (PointCard card in Players[_currentPlayer].PlayerClass.PointCardList)
+			GD.Print(card.PointValue + " ");
 		_foldTimer.Start();
 	}
 

@@ -132,6 +132,13 @@ public class PlayerClass
         {
             ModifierCardList.RemoveAt(cardIndex);
         }
+
+        if (Parent.Id == packet.CurrentPlayerId)
+        {
+            GD.Print("Client player cards");
+            foreach (PointCard card in PointCardList)
+                GD.Print(card.PointValue + " ");
+        }
     }
 
     public void ProcessPickUpAnswer(byte[] data)
