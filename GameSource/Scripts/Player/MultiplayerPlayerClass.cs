@@ -70,7 +70,7 @@ public partial class MultiplayerPlayerClass : Node
 			var index = playerIndex - Id;
 			if (index < 0)
 			{
-				index = packet.PlayerCount - index;
+				index = packet.PlayerCount + index;
 			}
 
 			GD.Print("My Id: " + Id + " other offset: " + index);
