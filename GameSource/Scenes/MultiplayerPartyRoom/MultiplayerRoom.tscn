@@ -1060,7 +1060,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78381586, 4.1443086, 6.123
 [node name="curtain" parent="3DWorld/EnvironmentDetails/Models" unique_id=152688818 instance=ExtResource("39_0tc0y")]
 transform = Transform3D(-0.10385153, 0, 0.9945928, 0, 1, 0, -0.9945928, 0, -0.10385153, -7.01008, 0.106413364, 0.33820117)
 
-[node name="Plane" parent="3DWorld/EnvironmentDetails/Models/curtain" index="0" unique_id=1162435543]
+[node name="Plane" parent="3DWorld/EnvironmentDetails/Models/curtain" index="0" unique_id=1403861649]
 transform = Transform3D(1.730112, 0, 0, 0, 0, -1.730113, 0, 1.730112, 0, -1.5716673, 2.4554563, -0.16410732)
 material_override = SubResource("StandardMaterial3D_3h8vp")
 
@@ -1091,6 +1091,11 @@ objectDescription = "To skip your turn, [color=red]hit[/color] the [color=gold]b
 [node name="CollisionShape3D" type="CollisionShape3D" parent="3DWorld/EnvironmentDetails/Models/Bell/PlaceholderParent/BellArea" unique_id=1976555522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066070557, 0.035655975, 0.0007019043)
 shape = SubResource("BoxShape3D_krtbm")
+
+[node name="RingBellAnimationPlayer" type="AnimationPlayer" parent="3DWorld/EnvironmentDetails/Models/Bell" unique_id=1411014788]
+root_node = NodePath("../../../../PlayerVisuals/ring bell")
+libraries/ = SubResource("AnimationLibrary_krtbm")
+speed_scale = 3.0
 
 [node name="Lighting" type="Node3D" parent="3DWorld" unique_id=1988270341]
 

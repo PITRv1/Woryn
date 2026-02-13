@@ -17,4 +17,6 @@ public enum PACKET_TYPES
     SETUP_PLACE = 14,
     ROUND_SUCCESS = 15,
     SHOP_ITEMS = 16,
+    LOOK_AT_PACKET = 17,
+    
 }
