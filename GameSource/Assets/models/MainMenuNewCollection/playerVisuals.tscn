@@ -2,11 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bjp751q3yns8c" path="res://Assets/models/MainMenuNewCollection/PlayerVisualController.cs" id="1_5iesj"]
 [ext_resource type="PackedScene" uid="uid://sufxeilrpghx" path="res://Assets/models/MainMenuNewCollection/templatePlayerRig.glb" id="1_7ob1p"]
-[ext_resource type="Material" uid="uid://fljhpostayqq" path="res://Assets/Shaders/materials/playerMats/playerMat2.material" id="3_cjqnh"]
 [ext_resource type="Script" uid="uid://dqjcru3p0xbbd" path="res://Scripts/CameraProjection/CameraProjection.cs" id="3_q3p8h"]
 [ext_resource type="Material" uid="uid://74v7ndcsh607" path="res://Assets/Shaders/materials/playerMats/playerMat1.material" id="4_bfane"]
-[ext_resource type="Material" uid="uid://biuaj50qeyti2" path="res://Assets/Shaders/materials/playerMats/playerMat3.material" id="4_usn6a"]
-[ext_resource type="Material" uid="uid://d0rk876pvg0ay" path="res://Assets/Shaders/materials/playerMats/playerMat4.material" id="5_7kuq2"]
 [ext_resource type="PackedScene" uid="uid://bp7r6il82lo83" path="res://Assets/models/ring bell.glb" id="7_cjqnh"]
 
 [sub_resource type="Animation" id="Animation_5iesj"]
@@ -424,7 +421,6 @@ script = ExtResource("1_5iesj")
 animationTree = NodePath("AnimationTree")
 Camera = NodePath("Neck/Camera3D")
 TargetMarker = NodePath("Neck/Camera3D/TorsoTarget")
-materials = Array[Material]([ExtResource("4_bfane"), ExtResource("3_cjqnh"), ExtResource("4_usn6a"), ExtResource("5_7kuq2")])
 bodyparts = [NodePath("templatePlayerRig/metarig/Skeleton3D/Cube"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_002"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_006"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_007"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_008"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_010"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_011"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_015"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_016"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_022")]
 
 [node name="Neck" type="Node3D" parent="." unique_id=702888186]
@@ -528,7 +524,7 @@ settings/3/extend_end_bone = false
 
 [node name="JacobianIK3D" type="JacobianIK3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="22" unique_id=404138472]
 
-[node name="HeadLookAtMod" type="LookAtModifier3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1119998455) index="23" unique_id=955177941]
+[node name="HeadLookAtMod" type="LookAtModifier3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="23" unique_id=955177941]
 process_mode = 3
 target_node = NodePath("../../../../Neck/Camera3D/TorsoTarget")
 bone_name = "spine.005"
@@ -546,8 +542,8 @@ bone_name = "hand.R"
 bone = 14
 forward_axis = 1
 
-[node name="LeftHandAttachmentMod" type="BoneAttachment3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 1119998455) index="26" unique_id=396461942]
-transform = Transform3D(-0.56740606, -0.7402143, 0.36074015, 0.17137375, 0.3223438, 0.9309807, -0.8054074, 0.59006566, -0.056046553, 0.28519982, 1.3663936, 0.35879984)
+[node name="LeftHandAttachmentMod" type="BoneAttachment3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="26" unique_id=396461942]
+transform = Transform3D(-0.56740606, -0.76182795, 0.31252012, 0.17137375, 0.26196724, 0.94973874, -0.80540746, 0.5924454, -0.018084511, 0.28517354, 1.356695, 0.3587281)
 bone_name = "hand.L"
 bone_idx = 10
 

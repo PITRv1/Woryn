@@ -17,7 +17,9 @@ public partial class MultiplayerPlayerClass : Node
 	[Export] public PlayerHud _playerHud {private set; get;}
 	[Export] private UiCommunicator uiCommunicator;
 	[Export] private Deck3d deck3D;
+	[Export] private PlayerVisualController _playerVisualController;
 	private readonly Dictionary<int, PlayerVisualController> _playerVisuals = new Dictionary<int, PlayerVisualController>();
+
 
 	
 	public override void _Ready()
@@ -34,6 +36,7 @@ public partial class MultiplayerPlayerClass : Node
 		GD.Print("Dani: Shop will start with the first round for testing purposes. \nComment out line 36 in MultiplayerPlayerClass.cs");
 
 		Global.multiplayerPlayerClass = this;
+		// _playerVisualController.SetColor();
 		ClientReady();
 	}
 
@@ -77,6 +80,8 @@ public partial class MultiplayerPlayerClass : Node
 		};
 		
 		GD.Print("Player count from setup: " + packet.PlayerCount);
+		// _playerVisualController.PlayerIndex = 3;
+		// _playerVisualController.SetColor();
 
 		for (var playerIndex = 0; playerIndex < packet.PlayerCount; playerIndex++)
 		{
@@ -96,15 +101,16 @@ public partial class MultiplayerPlayerClass : Node
 			GD.Print("My Id: " + Id + " other seat: " + playerSeat);
         
 			var bud = _buddy.Instantiate() as PlayerVisualController;
-			bud.PlayerIndex = playerIndex;
+			bud.PlayerIndex = 2;
+			bud.SetColor();
 			bud.Camera.ProcessMode = ProcessModeEnum.Disabled;
 			bud.PlayerControlled = false;
-			
+
 			_playerVisuals.Add(playerIndex, bud);
 
 			seats[playerSeat].AddChild(bud);
 			bud.Position = new Vector3(0, -2f, 0);
-        
+
 			var tableCenter = new Vector3(0, bud.GlobalPosition.Y, 0);
 			bud.LookAt(tableCenter, Vector3.Up);
 			bud.RotateY(Mathf.Pi);
