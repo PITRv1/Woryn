@@ -3,16 +3,21 @@
 [ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_83qw4"]
 [ext_resource type="Script" uid="uid://egpg7con1hbu" path="res://UI/ToolTipMenu/ToolTipMenu.cs" id="2_6ocpn"]
 
-[node name="ToolTipMenu" type="Control" unique_id=1439534742]
+[node name="ToolTipMenu" type="Control" unique_id=1439534742 node_paths=PackedStringArray("timer", "colorRect", "titleLabel", "descriptionLabel")]
 texture_filter = 1
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.35300002
+anchor_bottom = 0.42100003
+offset_right = 0.34399414
+offset_bottom = 0.19198608
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_83qw4")
 script = ExtResource("2_6ocpn")
+timer = NodePath("Timer")
+colorRect = NodePath("Menu/TitleBar/ColorRect")
+titleLabel = NodePath("Menu/TitleBar/ColorRect/MarginContainer/Label")
+descriptionLabel = NodePath("Menu/Description/ColorRect/MarginContainer/RichTextLabel")
 
 [node name="Menu" type="VBoxContainer" parent="." unique_id=639291015]
 layout_mode = 1
@@ -70,11 +75,12 @@ theme_override_constants/margin_bottom = 10
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Menu/Description/ColorRect/MarginContainer" unique_id=1991700499]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "Yoooo buy this [color=green]SPECIAL ITEM[/color] for only [color=yellow]5.99 GOLD[/color]
-
-This item will [color=red]enlarge[/color] your little pp.
-
-You can use this [color=skyblue]5 times in a turn[/color]."
 fit_content = true
+
+[node name="Timer" type="Timer" parent="." unique_id=912903400]
+wait_time = 6.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="ShowMenuOnScreen"]
