@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class MaidenActive : IActiveItems
+public partial class MaidenActive : IActiveItem
 {
 	public bool MultiUse { get; set; }
 	public int Amount { get; set; }

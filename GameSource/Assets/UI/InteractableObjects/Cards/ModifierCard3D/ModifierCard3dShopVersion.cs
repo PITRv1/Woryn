@@ -84,6 +84,11 @@ public partial class ModifierCard3dShopVersion : Node3D, ICard3D
     //     }
     // }
 
+    // public void UseObject()
+    // {
+	   //  
+    // }
+
     public void ShowMenu()
 	{
 		Global.toolTipMenu.ShowMenu(toolTipInfo);

@@ -10,7 +10,7 @@ public partial class ShopManager : Node
     // remove from ui (both modif and spells)
     // add card to turn peterventory
 
-    private int _amountOfPublicItems = 8;
+    private int _amountOfPublicItems = 4;
     private int _amountOfPrivateItems = 8;
     private List<ItemType> _currentPublicShopItems;
     private Dictionary<int, List<MODIFIER_TYPES>> _currentPrivateShopItemsPerPlayer;
@@ -22,6 +22,7 @@ public partial class ShopManager : Node
     
     private static readonly List<MODIFIER_TYPES> Modifiers = Enum.GetValues(typeof(MODIFIER_TYPES))
 	    .Cast<MODIFIER_TYPES>()
+	    .Skip(1)
 	    .ToList();
     
     public override void _Ready()
@@ -45,7 +46,7 @@ public partial class ShopManager : Node
 	    return Modifiers[rng.RandiRange(0, Modifiers.Count - 1)];
     }
 
-    private void GeneratePublicShop()
+    public void GeneratePublicShop()
     {
 	    var publicItems = new List<ItemType>();
 	    for (var i = 0; i < _amountOfPublicItems; i++)
@@ -56,8 +57,15 @@ public partial class ShopManager : Node
 	    var privateItems = new Dictionary<int, List<MODIFIER_TYPES>>();
 	    foreach (var player in Global.turnManagerInstance.Players.Keys)
 	    {
-		    privateItems[player] ??= new List<MODIFIER_TYPES>();
-		    privateItems[player].Add(GetRandomModifier());
+		    if (!privateItems.TryGetValue(player, out List<MODIFIER_TYPES> value))
+		    {
+                value = new List<MODIFIER_TYPES>();
+                privateItems.Add(player, value);
+		    }
+		    for (var i = 0; i < _amountOfPrivateItems; i++)
+		    {
+                value.Add(GetRandomModifier());
+		    }
 	    }
 	    
 	    _currentPublicShopItems = publicItems;

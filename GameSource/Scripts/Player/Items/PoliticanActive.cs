@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PoliticanActive : IActiveItems
+public partial class PoliticanActive : IActiveItem
 {
 	public bool MultiUse { get; set; }
 	public int Amount { get; set; }

@@ -29,7 +29,7 @@ public partial class MultiplayerClientGlobals : Node
     [Signal]
     public delegate void ShopSceneEventHandler();
     [Signal]
-    public delegate void ShopItemsEventHandler();
+    public delegate void ShopItemsEventHandler(byte[] data);
     [Signal]
     public delegate void SetupPlaceEventHandler(byte[] data);
     [Signal]

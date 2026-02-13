@@ -11,7 +11,6 @@ public partial class CardPlacementHandler : Node3D
 	[Export] public float angularRange = 180.0f;
 	[Export] public float gapDecreasion = .75f;
 
-
 	public Godot.Collections.Array<Node3D> CardArray { get; private set; } = new();
 	[Export] private UiCommunicator _uiCommunicator;
 
@@ -49,7 +48,7 @@ public partial class CardPlacementHandler : Node3D
 				var cardIndex = CardArray.IndexOf(node);
 
 				node.RotateZ(Mathf.DegToRad(rotationStart + nextRot * cardIndex));
-				Vector3 calculatedPosition = GlobalPosition + new Vector3(0, (float)Math.Abs(Math.Sin(angularRange / CardArray.Count * cardIndex)) * 0.1f, nextPos);
+				var calculatedPosition = GlobalPosition + new Vector3(0, (float)Math.Abs(Math.Sin(angularRange / CardArray.Count * cardIndex)) * 0.1f, nextPos);
 				node.GlobalPosition = calculatedPosition;
 
 				nextPos += gapAmount * gapDecreasion;
@@ -57,7 +56,7 @@ public partial class CardPlacementHandler : Node3D
 
 			} else
 			{
-				Vector3 calculatedPosition = GlobalPosition + new Vector3(nextPos, nextPos, nextPos) * cardDisplayDirection;
+				var calculatedPosition = GlobalPosition + new Vector3(nextPos, nextPos, nextPos) * cardDisplayDirection;
 				node.GlobalPosition = calculatedPosition;
 
 				nextPos += gapAmount;

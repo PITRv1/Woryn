@@ -17,6 +17,7 @@ public partial class TurnManager : Node
 	private int _skipAmount;
 	private bool _throwDeckPulled;
 	private Timer _foldTimer;
+	private int _shopReady = 0;
 
 	public override void _Ready()
 	{
@@ -61,6 +62,18 @@ public partial class TurnManager : Node
 		};
 
 		BroadCast(turnInfoPacket);
+	}
+
+	public void AddToShopReady(byte[] data)
+	{
+		_shopReady++;
+
+		if (_shopReady == _playerCount)
+		{
+			Global.shopManagerInstance.GeneratePublicShop();
+			_shopReady = 0;	
+		}
+		
 	}
 
 	private void AddToMultiplayerList(int id)

@@ -1,6 +1,8 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 public partial class UiCommunicator : Node
 {
@@ -12,6 +14,9 @@ public partial class UiCommunicator : Node
     [Export] PlayerVisualController playerVisualController;
     [Export] GoldConverterController goldConverterController;
 
+    private List<ModifierCard> _currentPrivateCards = new List<ModifierCard>();
+    private List<ItemType> _currentPublicCards = new List<ItemType>();
+
     public PointCard3d selectedPointCard3D {private set; get;}
     public List<ModifierCard3d> selectedModifierCard3Ds {private set; get;} = new();
     public bool PlayerSelectionMode = false;
@@ -19,6 +24,38 @@ public partial class UiCommunicator : Node
     public override void _Ready()
     {
         Global.multiplayerClientGlobals.HandleRoundSuccess += HandleRoundSuccess;
+        goldConverterController.goldConverterUi.timerObject.Timeout += SendShopReadyPacket;
+        Global.multiplayerClientGlobals.ShopItems += HandleShopItems;
+    }
+
+    private async void HandleShopItems(byte[] data)
+    {
+        var packet = ShopItems.CreateFromData(data);
+        
+        GD.Print("ModifierCards: " + packet.ModifierTypes.Length);
+
+        _currentPublicCards = packet.ItemTypes.ToList();
+        _currentPrivateCards = packet.ModifierTypes.Select(ModifierCardTypeConverter.TypeToClass).ToList();
+
+        foreach (var modifierCard in _currentPrivateCards)
+        {
+            GD.Print("Modifier CARD: " + modifierCard);
+            var modifierCard3DInstance = modifierCard3D.Instantiate<ModifierCard3d>();
+            modifierCard3DInstance.isShopCard = true;
+            modifierCard3DInstance.ModifierCard = modifierCard;
+            shopCards.AddCard(modifierCard3DInstance);
+            await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+        }
+    }
+
+    private void SendShopReadyPacket()
+    {
+        var packet = new ShopReadyPacket()
+        {
+            SenderId = Global.multiplayerPlayerClass.Id
+        };
+        
+        Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
     }
 
     private void HandleRoundSuccess(byte[] data)
@@ -111,14 +148,14 @@ public partial class UiCommunicator : Node
         goldConverterController.OpenGoldConverter();
         goldConverterController.goldConverterUi.timerObject.Start();
 
-        for (int i = 0; i < 4; i++)
-        {
-            ModifierCard3d modifierCard3DInstance = modifierCard3D.Instantiate<ModifierCard3d>();
-            modifierCard3DInstance.isShopCard = true;
-            modifierCard3DInstance.ModifierCard = ModifierCardTypeConverter.TypeToClass((MODIFIER_TYPES)random.Next(1,7));
-            shopCards.AddCard(modifierCard3DInstance);
-            await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
-        }
+        // for (int i = 0; i < 4; i++)
+        // {
+        //     ModifierCard3d modifierCard3DInstance = modifierCard3D.Instantiate<ModifierCard3d>();
+        //     modifierCard3DInstance.isShopCard = true;
+        //     modifierCard3DInstance.ModifierCard = ModifierCardTypeConverter.TypeToClass((MODIFIER_TYPES)random.Next(1,7));
+        //     shopCards.AddCard(modifierCard3DInstance);
+        //     await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+        // }
 
         playerVisualController.moveCamera(1);
     }
@@ -129,16 +166,14 @@ public partial class UiCommunicator : Node
         {
             shopCards.RemoveCard(modifCard);
             await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
-
         }
 
         playerVisualController.moveCamera(0);
-
     }
 
     public void AddShopModifierCardToPlayerCards(ModifierCard modifierCard)
     {
-        ModifierCard3d modifierCard3DInstance = modifierCard3D.Instantiate<ModifierCard3d>();
+        var modifierCard3DInstance = modifierCard3D.Instantiate<ModifierCard3d>();
         modifierCard3DInstance.ModifierCard = modifierCard;
 
         modifierCards.AddCard(modifierCard3DInstance);

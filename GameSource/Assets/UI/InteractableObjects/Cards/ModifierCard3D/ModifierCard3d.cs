@@ -70,7 +70,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
         {
             UiCommunicatorInstance.AddShopModifierCardToPlayerCards(ModifierCard);
             UiCommunicatorInstance.modifierCards.RemoveCard(this);
-            UiCommunicatorInstance.CloseShop();
+            // UiCommunicatorInstance.CloseShop();
             return;
         }
 

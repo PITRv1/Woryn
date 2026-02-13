@@ -9,7 +9,7 @@ public class PlayerClass
     public List<PointCard> PointCardList { get; set; }
     public List<ModifierCard> ModifierCardList { get; set; }
     public PlayerStats PlayerStats { get; set; }
-    private readonly List<IActiveItems> _currentItems = new List<IActiveItems>();
+    private readonly List<IActiveItem> _currentItems = new List<IActiveItem>();
     public ModifierCardDeck ModifierCardDeck { get; }
     public MultiplayerPlayerClass Parent;
     public int Points { get; set; } = 0;
