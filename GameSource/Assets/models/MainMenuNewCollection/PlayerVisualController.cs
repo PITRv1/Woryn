@@ -10,19 +10,27 @@ public partial class PlayerVisualController : Node3D
     [Export] public Marker3D TargetMarker;
 
     [ExportGroup("Bodyparts")]
-    [Export] private Godot.Collections.Array<Material> materials;
+    private Godot.Collections.Array<string> materials = 
+        ["res://Assets/Shaders/materials/playerMats/playerMat1.material", 
+        "res://Assets/Shaders/materials/playerMats/playerMat2.material",
+        "res://Assets/Shaders/materials/playerMats/playerMat3.material",
+        "res://Assets/Shaders/materials/playerMats/playerMat4.material"];
     [Export] private Godot.Collections.Array<MeshInstance3D> bodyparts;
 
     private const string BlendPath = "parameters/BlendSpace1D/blend_position";
 
     float target = 0.0f;
 
+    public override void _Ready()
+    {
+    SetColor();    
+    }
+
+
     public void SetColor()
     {
         GD.Print("PLAYER INDEXXXXXXX: " + PlayerIndex);
-        var material = materials[PlayerIndex];
-
-         GD.Print(material);
+        var material = GD.Load<StandardMaterial3D>(materials[PlayerIndex]);
 
         foreach (var item in bodyparts)
         {
