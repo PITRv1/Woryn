@@ -36,6 +36,7 @@ public partial class MultiplayerPlayerClass : Node
 		GD.Print("Dani: Shop will start with the first round for testing purposes. \nComment out line 36 in MultiplayerPlayerClass.cs");
 
 		Global.multiplayerPlayerClass = this;
+		// _playerVisualController.SetColor();
 		ClientReady();
 	}
 
@@ -79,8 +80,10 @@ public partial class MultiplayerPlayerClass : Node
 		};
 		
 		GD.Print("Player count from setup: " + packet.PlayerCount);
-		_playerVisualController.PlayerIndex = 3;
-		_playerVisualController.SetColor();
+		// _playerVisualController.PlayerIndex = 3;
+		// _playerVisualController.SetColor();
+
+		packet.PlayerCount += 3;
 
 		for (var playerIndex = 0; playerIndex < packet.PlayerCount; playerIndex++)
 		{
@@ -101,15 +104,14 @@ public partial class MultiplayerPlayerClass : Node
         
 			var bud = _buddy.Instantiate() as PlayerVisualController;
 			bud.PlayerIndex = 2;
+			bud.SetColor();
 			bud.Camera.ProcessMode = ProcessModeEnum.Disabled;
 			bud.PlayerControlled = false;
-
 
 			_playerVisuals.Add(playerIndex, bud);
 
 			seats[playerSeat].AddChild(bud);
 			bud.Position = new Vector3(0, -2f, 0);
-			bud.SetColor();
 
 			var tableCenter = new Vector3(0, bud.GlobalPosition.Y, 0);
 			bud.LookAt(tableCenter, Vector3.Up);

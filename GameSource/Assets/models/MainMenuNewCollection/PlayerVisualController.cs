@@ -3,7 +3,7 @@ using System;
 
 public partial class PlayerVisualController : Node3D
 {
-    public int PlayerIndex = 1;
+    public int PlayerIndex = 2;
     [Export] AnimationTree animationTree;
     [Export] public bool PlayerControlled = true;
     [Export] public Camera3D Camera;
