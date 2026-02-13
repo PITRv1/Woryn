@@ -6,82 +6,6 @@
 [ext_resource type="Material" uid="uid://74v7ndcsh607" path="res://Assets/Shaders/materials/playerMats/playerMat1.material" id="4_bfane"]
 [ext_resource type="PackedScene" uid="uid://bp7r6il82lo83" path="res://Assets/models/ring bell.glb" id="7_cjqnh"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_si7su"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fp7bm"]
-noise = SubResource("FastNoiseLite_si7su")
-seamless = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfane"]
-resource_local_to_scene = true
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.1982396, 0.37512174, 1)
-emission = Color(0.16078432, 0.47058824, 1, 1)
-emission_energy_multiplier = 3.07
-emission_operator = 1
-emission_texture = SubResource("NoiseTexture2D_fp7bm")
-stencil_flags = 2
-stencil_reference = 2
-stencil_outline_thickness = 0.005
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_0i0q8"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5iesj"]
-noise = SubResource("FastNoiseLite_0i0q8")
-seamless = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjqnh"]
-resource_local_to_scene = true
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.3834001, 0, 0.14474112, 1)
-emission = Color(0.16078432, 0.47058824, 1, 1)
-emission_energy_multiplier = 3.07
-emission_operator = 1
-emission_texture = SubResource("NoiseTexture2D_5iesj")
-stencil_flags = 2
-stencil_reference = 2
-stencil_outline_thickness = 0.005
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_usn6a"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7kuq2"]
-noise = SubResource("FastNoiseLite_usn6a")
-seamless = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13o6v"]
-resource_local_to_scene = true
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.23818743, 0.15032625, 1)
-emission = Color(0.16078432, 0.47058824, 1, 1)
-emission_energy_multiplier = 3.07
-emission_operator = 1
-emission_texture = SubResource("NoiseTexture2D_7kuq2")
-stencil_flags = 2
-stencil_reference = 2
-stencil_outline_thickness = 0.005
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_qrsut"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n3mnv"]
-noise = SubResource("FastNoiseLite_qrsut")
-seamless = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_va7xd"]
-resource_local_to_scene = true
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.45882353, 0.3372549, 0, 1)
-emission = Color(0.16078432, 0.47058824, 1, 1)
-emission_energy_multiplier = 3.07
-emission_operator = 1
-emission_texture = SubResource("NoiseTexture2D_n3mnv")
-stencil_flags = 2
-stencil_reference = 2
-stencil_outline_thickness = 0.005
-
 [sub_resource type="Animation" id="Animation_5iesj"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -497,7 +421,6 @@ script = ExtResource("1_5iesj")
 animationTree = NodePath("AnimationTree")
 Camera = NodePath("Neck/Camera3D")
 TargetMarker = NodePath("Neck/Camera3D/TorsoTarget")
-materials = Array[Material]([SubResource("StandardMaterial3D_bfane"), SubResource("StandardMaterial3D_cjqnh"), SubResource("StandardMaterial3D_13o6v"), SubResource("StandardMaterial3D_va7xd")])
 bodyparts = [NodePath("templatePlayerRig/metarig/Skeleton3D/Cube"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_002"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_006"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_007"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_008"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_010"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_011"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_015"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_016"), NodePath("templatePlayerRig/metarig/Skeleton3D/Cube_022")]
 
 [node name="Neck" type="Node3D" parent="." unique_id=702888186]
@@ -620,7 +543,7 @@ bone = 14
 forward_axis = 1
 
 [node name="LeftHandAttachmentMod" type="BoneAttachment3D" parent="templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(1520022567, 607341800) index="26" unique_id=396461942]
-transform = Transform3D(-0.5674062, -0.75143266, 0.33674893, 0.17137343, 0.292238, 0.9408655, -0.80540764, 0.59156275, -0.037041977, 0.28518888, 1.3623755, 0.3587701)
+transform = Transform3D(-0.56740606, -0.76182795, 0.31252012, 0.17137375, 0.26196724, 0.94973874, -0.80540746, 0.5924454, -0.018084511, 0.28517354, 1.356695, 0.3587281)
 bone_name = "hand.L"
 bone_idx = 10
 
