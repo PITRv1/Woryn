@@ -38,23 +38,37 @@ public partial class MultiplayerPlayerClass : Node
 	{
 		var packet = SetupPacket.CreateFromData(data);
 		var seats = _playerSeatsHolder.GetChildren();
-		int myIndex = Id; // e.g., 2
-
-		// For each player (excluding myself)
-		for (int playerIndex = 0; playerIndex < packet.PlayerCount; playerIndex++)
+		var playerToSeat = new Dictionary<int, int>()
 		{
-			if (playerIndex == myIndex) continue; // Skip myself
-        
-			// Calculate how many steps this player is from me (going backwards/counter-clockwise)
-			int offset = (playerIndex - myIndex + packet.PlayerCount) % packet.PlayerCount;
-        
-			// Map to seat: offset 1→seat 0, offset 2→seat 1, offset 3→seat 2
-			int seatIndex = offset - 1;
+			{ 0, 3 },
+			{ 1, 0 },
+			{ 2, 1 },
+			{ 3, 2 }
+		};
+
+		for (var playerIndex = 0; playerIndex < packet.PlayerCount; playerIndex++)
+		{
+			if (playerIndex == Id) continue; // Skip myself
+			
+
+			var index = playerIndex - Id;
+			if (index < 0)
+			{
+				index = packet.PlayerCount - index;
+			}
+
+			GD.Print("My Id: " + Id + " other offset: " + index);
+			
+			var playerSeat = playerToSeat[index];
+			
+			GD.Print("My Id: " + Id + " other seat: " + playerSeat);
         
 			var bud = _buddy.Instantiate() as PlayerVisualController;
 			bud.PlayerIndex = playerIndex;
+			bud.Camera.ProcessMode = ProcessModeEnum.Disabled;
+			bud.PlayerControlled = false;
 
-			seats[seatIndex].AddChild(bud);
+			seats[playerSeat].AddChild(bud);
 			bud.Position = new Vector3(0, -2f, 0);
         
 			var tableCenter = new Vector3(0, bud.GlobalPosition.Y, 0);

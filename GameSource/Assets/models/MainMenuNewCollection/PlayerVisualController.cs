@@ -5,6 +5,8 @@ public partial class PlayerVisualController : Node3D
 {
     [Export] public int PlayerIndex = 1;
     [Export] AnimationTree animationTree;
+    [Export] public bool PlayerControlled = true;
+    [Export] public Camera3D Camera;
 
     [ExportGroup("Bodyparts")]
     [Export] private Godot.Collections.Array<Material> materials;
@@ -41,6 +43,11 @@ public partial class PlayerVisualController : Node3D
             target,
             delta * 5f
         ));
+
+        if (!PlayerControlled)
+        {
+            
+        }
     }
 
 }
