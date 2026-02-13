@@ -8,7 +8,6 @@ public partial class ToolTipMenu : Control
 	[Export] ColorRect colorRect;
 	[Export] Label titleLabel;
 	[Export] RichTextLabel descriptionLabel;
-	Vector2 lastMousePos;
 
 	private Area3D _currentArea3d;
 
@@ -20,10 +19,10 @@ public partial class ToolTipMenu : Control
 		}
 		set
 		{
-			if (currentArea3d != null) _currentArea3d.AreaExited -= HideMenu;
+			if (currentArea3d != null) _currentArea3d.MouseExited -= HideMenu;
 			_currentArea3d = value;
 
-			// _currentArea3d;
+			_currentArea3d.MouseExited += HideMenu;
 		}
 	}
 
@@ -48,7 +47,7 @@ public partial class ToolTipMenu : Control
 		StartTimer();
 	}
 
-	private void HideMenu(Area3D area)
+	private void HideMenu()
 	{
 		Visible = false;
 	}
@@ -60,21 +59,7 @@ public partial class ToolTipMenu : Control
 
 	public void ShowMenuOnScreen()
 	{
-		Position = lastMousePos;
+		Position = GetViewport().GetMousePosition();
 		Visible = true;
-	}
-
-    public override void _Process(double delta)
-	{
-		if (GetViewport().GetMousePosition() - lastMousePos > new Vector2())
-		{
-			GD.Print("We are good");
-			return;
-		}
-
-		GD.Print(timer.TimeLeft);
-
-		// if (!timer.IsStopped()) timer.Stop();
-		if (Visible) Visible = false;
 	}
 }

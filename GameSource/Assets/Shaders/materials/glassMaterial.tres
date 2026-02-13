@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://cm8k4xqvydxap"]
 
-[ext_resource type="Shader" path="res://Assets/Shaders/spatialGlass.gdshader" id="1_uj1q8"]
+[ext_resource type="Shader" uid="uid://bbmvc0tybgr8u" path="res://Assets/Shaders/spatialGlass.gdshader" id="1_uj1q8"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uj1q8"]
 
