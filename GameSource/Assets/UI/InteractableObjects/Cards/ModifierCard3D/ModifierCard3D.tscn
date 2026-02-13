@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://8psm5hemkmpu"]
+[gd_scene format=4 uid="uid://8psm5hemkmpu"]
 
 [ext_resource type="Script" uid="uid://dcn7w7xx4on16" path="res://Assets/UI/InteractableObjects/Cards/ModifierCard3D/ModifierCard3d.cs" id="1_b412a"]
 [ext_resource type="Texture2D" uid="uid://dop4lway50rd1" path="res://Assets/UI/Images/ModifierIcons/Add.png" id="2_2yeh7"]
@@ -8,7 +8,40 @@
 [ext_resource type="Texture2D" uid="uid://sto6bfw3uoro" path="res://Assets/UI/Images/ModifierIcons/SwapAll.png" id="6_cfx1j"]
 [ext_resource type="Texture2D" uid="uid://lw5qul8qlaru" path="res://Assets/UI/Images/ModifierIcons/SwapPlayer.png" id="7_5inku"]
 [ext_resource type="PackedScene" uid="uid://chykv5bcqt0n0" path="res://UI/ToolTipMenu/ToolTipInfo.tscn" id="8_q2nsq"]
-[ext_resource type="ArrayMesh" uid="uid://dm6f1qws7y5q7" path="res://Assets/models/MainMenuNewCollection/cardMesh.tres" id="8_uspdd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfkyt"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tn7lh"]
+_surfaces = [{
+"aabb": AABB(-1.1324686e-08, -0.15, -0.2, 1e-05, 0.3, 0.2),
+"format": 34896613377,
+"index_count": 66,
+"index_data": PackedByteArray("EAABAAIABAACAAUABAAQAAIAEAAEAAMAAAAQAAMAAQAGAAcAAQAIAAYAAAARABAAEAASAAEACAABABIAEQASABAADgARAAAAEwAIABIAEQATABIADgANABEADQATABEADQAOAA8AEwAKAAgADQAJABMAEwALAAoADAATAAkAEwAMAAsA"),
+"lods": [1.0335656e-05, PackedByteArray("AAABAAIAAAACAAMAAgAEAAMABAACAAUAAQAGAAcAAQAIAAYACQAIAAEAAAAJAAEACQAKAAgACQALAAoACQAMAAsADQAJAAAADgANAAAADQAOAA8A")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("EADjG///AACUAP//hCsAAJQA//+Y2QAAhQBl5v//AACKAEXu//8AAJQA//9p5QAAkAC8+QAAAACUAP//ZAkAAIUAZeYAAAAAAAAAAIQrAAAQAOMbAAAAAAoAuREAAAAAAAAAAJUaAAAAAAAAmNkAAAMAQgb//wAAAAAAAJr2AACFAGXmmNkAABAA4xuY2QAAhQBl5oQrAAAQAOMbhCsAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uq6o7"]
+resource_name = "cardTemplate_Plane"
+_surfaces = [{
+"aabb": AABB(-1.1324686e-08, -0.15, -0.2, 1e-05, 0.3, 0.2),
+"attribute_data": PackedByteArray("4xv/////hCv//5jZZeb//0Xu/////2nlvPkAAP//ZAll5gAAAACEK+MbAAC5EQAAAACVGgAAmNlCBv//AACa9mXmmNnjG5jZZeaEK+MbhCs="),
+"format": 34896613399,
+"index_count": 66,
+"index_data": PackedByteArray("EAABAAIABAACAAUABAAQAAIAEAAEAAMAAAAQAAMAAQAGAAcAAQAIAAYAAAARABAAEAASAAEACAABABIAEQASABAADgARAAAAEwAIABIAEQATABIADgANABEADQATABEADQAOAA8AEwAKAAgADQAJABMAEwALAAoADAATAAkAEwAMAAsA"),
+"lods": [1.0335656e-05, PackedByteArray("AAABAAIAAAACAAMAAgAEAAMABAACAAUAAQAGAAcAAQAIAAYACQAIAAEAAAAJAAEACQAKAAgACQALAAoACQAMAAsADQAJAAAADgANAAAADQAOAA8A")],
+"material": SubResource("StandardMaterial3D_vfkyt"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("EADjG///VNWUAP//hCtU1ZQA//+Y2VTVhQBl5v//VNWKAEXu//9U1ZQA//9p5VTVkAC8+QAAVNWUAP//ZAlU1YUAZeYAAFTVAAAAAIQrVNUQAOMbAABU1QoAuREAAFTVAAAAAJUaVNUAAAAAmNlU1QMAQgb//1TVAAAAAJr2VNWFAGXmmNlU1RAA4xuY2VTVhQBl5oQrVNUQAOMbhCtU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tn7lh")
 
 [sub_resource type="QuadMesh" id="QuadMesh_xbnts"]
 size = Vector2(0.21, 0.31)
@@ -58,10 +91,11 @@ _data = {
 &"RESET": SubResource("Animation_1rcg8")
 }
 
-[node name="ModifierCard3D" type="Node3D" unique_id=1327020224 node_paths=PackedStringArray("sprite3D", "animationPlayer", "area3D", "toolTipInfo")]
+[node name="ModifierCard3D" type="Node3D" unique_id=1327020224 node_paths=PackedStringArray("sprite3D", "outlineMesh", "animationPlayer", "area3D", "toolTipInfo")]
 script = ExtResource("1_b412a")
 sprite3D = NodePath("Visual/Sprite3D")
 modifierIcons = Array[CompressedTexture2D]([ExtResource("2_8b7j7"), ExtResource("2_2yeh7"), ExtResource("4_75qwh"), ExtResource("5_a1cwk"), ExtResource("6_cfx1j"), ExtResource("7_5inku")])
+outlineMesh = NodePath("Visual/Outline")
 animationPlayer = NodePath("AnimationPlayer")
 area3D = NodePath("Visual/Area3D")
 toolTipInfo = NodePath("Visual/ToolTipInfo")
@@ -76,7 +110,7 @@ objectDescription = "What does it do? [wave][color=ff80ff]Maybe try it out?[/col
 
 [node name="Background2" type="MeshInstance3D" parent="Visual" unique_id=1946730633]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.1, 0, 0)
-mesh = ExtResource("8_uspdd")
+mesh = SubResource("ArrayMesh_uq6o7")
 skeleton = NodePath("")
 
 [node name="Outline" type="MeshInstance3D" parent="Visual" unique_id=1872776060]

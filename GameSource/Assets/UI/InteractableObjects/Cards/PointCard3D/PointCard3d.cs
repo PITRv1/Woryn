@@ -8,7 +8,6 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface, ICard3D
 	[Export] AnimationPlayer animationPlayer;
 	[Export] Area3D area3D;
 	[Export] ToolTipInfo toolTipInfo;
-
 	Color[] outlineColors = [Colors.Green, Colors.DeepSkyBlue, Colors.Yellow];
 
 	public bool isSelected = false;
@@ -55,6 +54,15 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface, ICard3D
 		outlineMesh.SetSurfaceOverrideMaterial(0, material);
 	}
 
+	private void UpdateMeshColor(Color color)
+	{
+		if (PointCard == null) return;
+
+		var material = (StandardMaterial3D)outlineMesh.GetSurfaceOverrideMaterial(0).DuplicateDeep();
+		material.AlbedoColor = color;
+		outlineMesh.SetSurfaceOverrideMaterial(0, material);
+	}
+
 	private void UpdateText()
 	{
 		if (PointCard == null) return;
@@ -65,11 +73,11 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface, ICard3D
 	{
 		if (isSelected) {
 			UiCommunicatorInstance.DeselectPointCard();
-            Position -= new Vector3(0, 0.1f, 0);
+			UpdateMeshColor();
 		}
 		else {
 			UiCommunicatorInstance.SelectPointCard(this);
-            Position += new Vector3(0, 0.1f, 0);
+			UpdateMeshColor(Colors.Purple);
 		}
 	}
 

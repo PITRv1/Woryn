@@ -5,6 +5,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
 {
     [Export] Sprite3D sprite3D;
     [Export] Godot.Collections.Array<CompressedTexture2D> modifierIcons;
+    [Export] MeshInstance3D outlineMesh;
     [Export] AnimationPlayer animationPlayer;
     [Export] Area3D area3D;
     [Export] ToolTipInfo toolTipInfo;
@@ -27,8 +28,12 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
         }
     }
 
+    StandardMaterial3D defaultMaterial;
+
     public override void _Ready()
     {
+        defaultMaterial = (StandardMaterial3D)outlineMesh.GetSurfaceOverrideMaterial(0).DuplicateDeep();
+
 		UiCommunicatorInstance = (UiCommunicator)GetTree().GetFirstNodeInGroup("UICommunicator");
         SetIcon();
 
@@ -41,6 +46,18 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
 	{
         if (ModifierCard == null) return;
 		sprite3D.Texture = modifierIcons[(int)_modifierCard.ModifierType-1];
+	}
+
+	private void UpdateMeshColor(Color color)
+	{
+		var material = (StandardMaterial3D)outlineMesh.GetSurfaceOverrideMaterial(0).DuplicateDeep();
+		material.AlbedoColor = color;
+		outlineMesh.SetSurfaceOverrideMaterial(0, material);
+	}
+
+    private void UpdateMeshColor()
+	{
+		outlineMesh.SetSurfaceOverrideMaterial(0, defaultMaterial);
 	}
 
 
@@ -56,11 +73,11 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
 
         if (isSelected) {
             UiCommunicatorInstance.RemoveModifierCard(this);
-            Position -= new Vector3(0, 0.10f, 0);
+            UpdateMeshColor();
         }
-        else {
+        else if (UiCommunicatorInstance.selectedPointCard3D != null) {
             UiCommunicatorInstance.AddModifierCard(this);
-            Position += new Vector3(0, 0.10f, 0);
+            UpdateMeshColor(Colors.Purple);
         }
     }
 

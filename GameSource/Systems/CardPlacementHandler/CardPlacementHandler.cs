@@ -48,13 +48,17 @@ public partial class CardPlacementHandler : Node3D
 				var cardIndex = CardArray.IndexOf(node);
 
 				node.RotateZ(Mathf.DegToRad(rotationStart + nextRot * cardIndex));
-				node.GlobalPosition = GlobalPosition + new Vector3(0, (float)Math.Abs(Math.Sin(angularRange / CardArray.Count * cardIndex)) * 0.1f, nextPos);
+				Vector3 calculatedPosition = GlobalPosition + new Vector3(0, (float)Math.Abs(Math.Sin(angularRange / CardArray.Count * cardIndex)) * 0.1f, nextPos);
+				node.GlobalPosition = calculatedPosition;
 
 				nextPos += gapAmount * gapDecreasion;
 				nextRot += rotationAmount;
+
 			} else
 			{
-				node.GlobalPosition = GlobalPosition + new Vector3(nextPos, nextPos, nextPos) * cardDisplayDirection;
+				Vector3 calculatedPosition = GlobalPosition + new Vector3(nextPos, nextPos, nextPos) * cardDisplayDirection;
+				node.GlobalPosition = calculatedPosition;
+
 				nextPos += gapAmount;
 			}
 		}
