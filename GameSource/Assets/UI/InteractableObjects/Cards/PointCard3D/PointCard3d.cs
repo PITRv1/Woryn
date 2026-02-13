@@ -63,8 +63,14 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface, ICard3D
 
 	public void UseObject()
 	{
-		if (isSelected) UiCommunicatorInstance.DeselectPointCard();
-		else UiCommunicatorInstance.SelectPointCard(this);
+		if (isSelected) {
+			UiCommunicatorInstance.DeselectPointCard();
+            Position -= new Vector3(0, 0.1f, 0);
+		}
+		else {
+			UiCommunicatorInstance.SelectPointCard(this);
+            Position += new Vector3(0, 0.1f, 0);
+		}
 	}
 
 	public void ShowMenu()

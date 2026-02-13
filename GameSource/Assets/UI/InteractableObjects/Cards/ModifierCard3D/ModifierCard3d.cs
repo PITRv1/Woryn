@@ -54,8 +54,14 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
             return;
         }
 
-        if (isSelected) UiCommunicatorInstance.RemoveModifierCard(this);
-        else UiCommunicatorInstance.AddModifierCard(this);
+        if (isSelected) {
+            UiCommunicatorInstance.RemoveModifierCard(this);
+            Position -= new Vector3(0, 0.10f, 0);
+        }
+        else {
+            UiCommunicatorInstance.AddModifierCard(this);
+            Position += new Vector3(0, 0.10f, 0);
+        }
     }
 
     public void ShowMenu()
