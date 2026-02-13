@@ -206,12 +206,7 @@ public partial class TurnManager : Node
 
 		var packet = new ShopSceneChange();
 		
-		foreach (var player in Players.Keys)
-		{
-			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
-			if (peer != null)
-				packet.Send(peer);
-		}
+		BroadCast(packet);
 	}
 
 	private bool CheckForEndGame(int value)
@@ -222,9 +217,30 @@ public partial class TurnManager : Node
 		}
 		
 		_throwDeckValue += value;
-		Players[_lastPlayer].PlayerClass.Points += _throwDeckValue;
+		Players[_lastPlayer].PlayerClass.Points += _throwDeckValue + 3000;
 		_throwDeckValue = 0;
 		_currentMaxValue = 0;
+		foreach (var player in Players.Keys)
+		{
+			var packet = new TurnInfoPacket
+			{
+				LastPlayer = _lastPlayer,
+				CurrentPlayerId = _currentPlayer,
+				CurrentRound = _currentRound,
+				MaxValue = _currentMaxValue,
+				CurrentPointValue = Players[player].PlayerClass.Points,
+				ThrowDeckValue = _throwDeckValue,
+				DeletePointCards = [],
+				DeleteModifierCards = []
+			};
+
+			Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
+			if (peer != null)
+			{
+				packet.Send(peer);
+			}
+		}
+		
 		GoToShopScene();
 		return true;
 	}
@@ -394,9 +410,13 @@ public partial class TurnManager : Node
 		currPlayer.PointCardList.RemoveAt(packet.PointCardIndex);
 
 		var sortedIndexes = packet.ModifCardIndexes.OrderByDescending(index => index).ToList();
+		
+		GD.Print("Sorted count: " + sortedIndexes.Count);
+		GD.Print("Curr player modif count: " + currPlayer.ModifierCardList.Count);
 
 		foreach (var index in sortedIndexes)
 		{
+			GD.Print("Card index: " + index);
 			currPlayer.ModifierCardList.RemoveAt(index);			
 		}
 		
@@ -418,7 +438,7 @@ public partial class TurnManager : Node
 		var player = Players[packet.SenderId].PlayerClass;
 		var points = player.Points;
 
-		if (points > packet.PointAmount)
+		if (points < packet.PointAmount)
 		{
 			return;
 		}
