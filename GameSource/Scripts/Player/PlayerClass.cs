@@ -117,6 +117,13 @@ public class PlayerClass
         
         var sortedPointCards = packet.DeletePointCards.OrderByDescending(x => x).ToList();
         var sortedModifierCards = packet.DeleteModifierCards.OrderByDescending(x => x).ToList();
+        
+        if (Parent.Id == packet.CurrentPlayerId)
+        {
+            GD.Print("Client player cards");
+            foreach (var card in PointCardList)
+                GD.Print(card.PointValue + " ");
+        }
 
         if (Parent.Id != packet.LastPlayer)
         {
@@ -133,12 +140,7 @@ public class PlayerClass
             ModifierCardList.RemoveAt(cardIndex);
         }
 
-        if (Parent.Id == packet.CurrentPlayerId)
-        {
-            GD.Print("Client player cards");
-            foreach (PointCard card in PointCardList)
-                GD.Print(card.PointValue + " ");
-        }
+        
     }
 
     public void ProcessPickUpAnswer(byte[] data)

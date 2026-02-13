@@ -1,11 +1,12 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public class LookAtPacket : PacketInfo
 {
 	public int PlayerId;
 	public Vector3 TargetPosition;
-	public SetupPacket()
+	public LookAtPacket()
 	{
 		PacketType = PACKET_TYPES.SETUP_PLACE;
 	}

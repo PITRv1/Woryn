@@ -1181,7 +1181,7 @@ font_size = 53
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.9010963, -0.9423759, -1.7291548e-07)
 
 [node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1119998455) index="26" unique_id=396461942]
-transform = Transform3D(-0.5674061, -0.7689992, 0.2944334, 0.17137304, 0.23945557, 0.9556631, -0.80540776, 0.5927069, -0.0040828437, 0.28515208, 1.3488139, 0.35866988)
+transform = Transform3D(-0.56740606, -0.74735826, 0.34569687, 0.17137346, 0.3034507, 0.93730915, -0.8054076, 0.5910782, -0.044102505, 0.28519404, 1.3642517, 0.35878414)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)
@@ -1214,20 +1214,22 @@ gapAmount = -0.5
 cardDisplayDirection = Vector3(1, 0, 0)
 _uiCommunicator = NodePath("../UICommunicator")
 
-[node name="UICommunicator" parent="." unique_id=1649124515 node_paths=PackedStringArray("pointCards", "modifierCards", "shopCards", "multiplayerPlayer") groups=["UICommunicator"] instance=ExtResource("28_boekd")]
+[node name="UICommunicator" parent="." unique_id=1649124515 node_paths=PackedStringArray("pointCards", "modifierCards", "shopCards", "multiplayerPlayer", "playerVisualController") groups=["UICommunicator"] instance=ExtResource("28_boekd")]
 pointCards = NodePath("../3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PositioningNode/PointCards")
 modifierCards = NodePath("../ModifierCards")
 shopCards = NodePath("../ShopCards")
 multiplayerPlayer = NodePath("../MultiplayerPlayer")
 modifierCard3D = ExtResource("24_k5rf2")
+playerVisualController = NodePath("../3DWorld/PlayerVisuals")
 
-[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("_pointCards", "_modifierCards", "_playerSeatsHolder", "uiCommunicator", "deck3D") instance=ExtResource("26_5lnsn")]
+[node name="MultiplayerPlayer" parent="." unique_id=156663359 node_paths=PackedStringArray("_pointCards", "_modifierCards", "_playerSeatsHolder", "_playerHud", "uiCommunicator", "deck3D") instance=ExtResource("26_5lnsn")]
 _pointCards = NodePath("../3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PositioningNode/PointCards")
 _modifierCards = NodePath("../ModifierCards")
 _pointCardUi = ExtResource("23_nkcx5")
 _modifierCardUi = ExtResource("24_k5rf2")
 _playerSeatsHolder = NodePath("../3DWorld/PlayerSeats")
 _buddy = ExtResource("31_1ab4g")
+_playerHud = NodePath("../PlayerHUD")
 uiCommunicator = NodePath("../UICommunicator")
 deck3D = NodePath("../Deck3D")
 

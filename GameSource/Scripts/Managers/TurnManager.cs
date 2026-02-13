@@ -290,6 +290,8 @@ public partial class TurnManager : Node
 		GD.Print("Server player cards");
 		foreach (PointCard card in Players[_currentPlayer].PlayerClass.PointCardList)
 			GD.Print(card.PointValue + " ");
+		foreach (ModifierCard card in Players[_currentPlayer].PlayerClass.ModifierCardList)
+			GD.Print(card.ModifierType + " ");
 		_foldTimer.Start();
 	}
 
@@ -348,7 +350,7 @@ public partial class TurnManager : Node
 	{
 		var packet = EndTurnRequest.CreateFromData(data);
 
-		GD.Print("END GAME REQ: \n" + _currentPlayer + " --- " + packet.SenderId);
+		GD.Print(_currentPlayer + " --- " + packet.SenderId);
 
 		if (_currentPlayer != packet.SenderId)
 			return;
@@ -357,6 +359,9 @@ public partial class TurnManager : Node
 
 		var pointCard = packet.PointCard;
 		var modifierCards = packet.ModifierCards;
+		
+		GD.Print("Server player cards count: " + currPlayer.PointCardList.Count);
+		GD.Print("Card index: " + packet.PointCardIndex);
 
 		if (currPlayer.PointCardList[packet.PointCardIndex].PointValue != pointCard.PointValue)
 		{
