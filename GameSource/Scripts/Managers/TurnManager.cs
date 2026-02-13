@@ -369,6 +369,9 @@ public partial class TurnManager : Node
 		}
 
 		var usedCards = new List<ModifierCard>();
+		
+		GD.Print("Server player cards count: " + currPlayer.PointCardList.Count);
+		GD.Print("Card index: " + packet.ModifCardIndexes.Length);
 
 		for (var i = 0; i < modifierCards.Length; i++)
 		{

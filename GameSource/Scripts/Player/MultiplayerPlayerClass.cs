@@ -27,11 +27,25 @@ public partial class MultiplayerPlayerClass : Node
 		Global.multiplayerClientGlobals.HandlePickUpCardAnswer += PlayerClass.ProcessPickUpAnswer;
 		Global.multiplayerClientGlobals.HandleDeckSwap += PlayerClass.HandleDeckSwap;
 		Global.multiplayerClientGlobals.ShopScene += uiCommunicator.StartShop;
+		Global.multiplayerClientGlobals.HandleRoundSuccess += HandleRoundSuccess;
 		// Global.turnManagerInstance.GoToShopScene();
 		GD.Print("Dani: Shop will start with the first round for testing purposes. \nComment out line 36 in MultiplayerPlayerClass.cs");
 
 		Global.multiplayerPlayerClass = this;
 		ClientReady();
+	}
+
+	private void HandleRoundSuccess(byte[] data)
+	{
+		var packet = RoundSuccessPacket.CreateFromData(data);
+
+		if (packet.PlayerId != Id)
+		{
+			return;
+		}
+
+		PlayerClass.ChosenPointCard = null;
+		PlayerClass.ChosenModifierCards.Clear();
 	}
 
 	private void Setup(byte[] data)
