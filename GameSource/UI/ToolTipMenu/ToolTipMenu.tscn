@@ -6,10 +6,10 @@
 [node name="ToolTipMenu" type="Control" unique_id=1439534742 node_paths=PackedStringArray("colorRect", "titleLabel", "descriptionLabel")]
 texture_filter = 1
 layout_mode = 3
-anchor_right = 0.224
-anchor_bottom = 0.22600001
-offset_right = 0.9199829
-offset_bottom = -0.08001709
+anchor_right = 0.35200003
+anchor_bottom = 0.363
+offset_right = -0.5040283
+offset_bottom = -0.22399902
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_83qw4")
