@@ -7,6 +7,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
     [Export] Godot.Collections.Array<CompressedTexture2D> modifierIcons;
     [Export] AnimationPlayer animationPlayer;
     [Export] Area3D area3D;
+    [Export] ToolTipInfo toolTipInfo;
 
     public bool isShopCard;
 
@@ -56,4 +57,9 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
         if (isSelected) UiCommunicatorInstance.RemoveModifierCard(this);
         else UiCommunicatorInstance.AddModifierCard(this);
     }
+
+    public void ShowMenu()
+	{
+		Global.toolTipMenu.ShowMenu(toolTipInfo);
+	}
 }

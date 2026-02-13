@@ -13,6 +13,11 @@ public partial class PlayerHud : Control
 		timer.Start();
 	}
 
+	public void StopCountdownTimer()
+	{
+		timer.Stop();
+	}
+
 	public void UpdateGoldAmount(int amount)
 	{
 		goldLabel.Text =$"[wave freq=1] Gold: {amount}";

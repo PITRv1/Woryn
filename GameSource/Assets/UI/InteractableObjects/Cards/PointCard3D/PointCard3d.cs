@@ -7,6 +7,7 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface, ICard3D
 	[Export] MeshInstance3D outlineMesh;
 	[Export] AnimationPlayer animationPlayer;
 	[Export] Area3D area3D;
+	[Export] ToolTipInfo toolTipInfo;
 
 	Color[] outlineColors = [Colors.Green, Colors.DeepSkyBlue, Colors.Yellow];
 
@@ -64,5 +65,10 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface, ICard3D
 	{
 		if (isSelected) UiCommunicatorInstance.DeselectPointCard();
 		else UiCommunicatorInstance.SelectPointCard(this);
+	}
+
+	public void ShowMenu()
+	{
+		Global.toolTipMenu.ShowMenu(toolTipInfo);
 	}
 }

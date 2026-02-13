@@ -45,10 +45,11 @@ public partial class CameraProjection : Camera3D
         };
         
         Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
-        if (Input.IsActionJustPressed("mouse_left")) CastRayCast();
+        if (Input.IsActionJustPressed("mouse_left")) CastRayCast("UseObject");
+        if (Input.IsActionJustPressed("mouse_right")) CastRayCast("ShowMenu");
     }
 
-    private void CastRayCast()
+    private void CastRayCast(string methodName)
     {
         var spaceState = GetWorld3D().DirectSpaceState;
         Vector2 mousePos = GetViewport().GetMousePosition();
@@ -68,6 +69,6 @@ public partial class CameraProjection : Camera3D
 
         var parent = collider.GetParent().GetParent();
         
-        if(parent.HasMethod("UseObject")) parent.Call("UseObject");
+        if(parent.HasMethod("UseObject")) parent.Call(methodName);
     }
 }

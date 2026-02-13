@@ -4,27 +4,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public partial class ToolTipMenu : Control
 {
-	[Export] Timer timer;
 	[Export] ColorRect colorRect;
 	[Export] Label titleLabel;
 	[Export] RichTextLabel descriptionLabel;
 
-	private Area3D _currentArea3d;
+	Vector2 positionOffsetVector = new(-10, -10);
 
-	public Area3D currentArea3d
-	{
-		get
-		{
-			return _currentArea3d;
-		}
-		set
-		{
-			if (currentArea3d != null) _currentArea3d.MouseExited -= HideMenu;
-			_currentArea3d = value;
-
-			_currentArea3d.MouseExited += HideMenu;
-		}
-	}
 
     public ToolTipMenu()
 	{
@@ -36,30 +21,19 @@ public partial class ToolTipMenu : Control
 		Visible = false;
     }
 
-	public void ShowMenu(ToolTipInfo toolTipInfo, Area3D area3D)
+	public void ShowMenu(ToolTipInfo toolTipInfo)
 	{
 		colorRect.Color = toolTipInfo.titleColor;
 		titleLabel.Text = toolTipInfo.objectName;
 		descriptionLabel.Text = toolTipInfo.objectDescription;
 
-
-		currentArea3d = area3D;
-		StartTimer();
-	}
-
-	private void HideMenu()
-	{
-		Visible = false;
-	}
-
-	public void StartTimer()
-	{
-		timer.Start(6);
-	}
-
-	public void ShowMenuOnScreen()
-	{
-		Position = GetViewport().GetMousePosition();
+		Position = GetViewport().GetMousePosition() - positionOffsetVector;
 		Visible = true;
 	}
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventMouseMotion && Visible) Visible = false;
+    }
+
 }

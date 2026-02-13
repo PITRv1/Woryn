@@ -7,7 +7,12 @@ public partial class RingBell : Node3D, InteractableObjectInterface
 	[Export] private Area3D _area3D;
 	[Export] private PlayerVisualController playerVisualController;
 	[Export] private AnimationPlayer ringAnimPlayer;
+	[Export] private ToolTipInfo toolTipInfo;
 
+	public void ShowMenu()
+	{
+		Global.toolTipMenu.ShowMenu(toolTipInfo);
+	}
 
 	public void UseObject()
 	{

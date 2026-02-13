@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c2uwhfete5gis" path="res://Assets/UI/Images/ModifierIcons/Reverse.png" id="5_a1cwk"]
 [ext_resource type="Texture2D" uid="uid://sto6bfw3uoro" path="res://Assets/UI/Images/ModifierIcons/SwapAll.png" id="6_cfx1j"]
 [ext_resource type="Texture2D" uid="uid://lw5qul8qlaru" path="res://Assets/UI/Images/ModifierIcons/SwapPlayer.png" id="7_5inku"]
+[ext_resource type="PackedScene" uid="uid://chykv5bcqt0n0" path="res://UI/ToolTipMenu/ToolTipInfo.tscn" id="8_q2nsq"]
 [ext_resource type="ArrayMesh" uid="uid://dm6f1qws7y5q7" path="res://Assets/models/MainMenuNewCollection/cardMesh.tres" id="8_uspdd"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_xbnts"]
@@ -57,15 +58,21 @@ _data = {
 &"RESET": SubResource("Animation_1rcg8")
 }
 
-[node name="ModifierCard3D" type="Node3D" unique_id=1327020224 node_paths=PackedStringArray("sprite3D", "animationPlayer", "area3D")]
+[node name="ModifierCard3D" type="Node3D" unique_id=1327020224 node_paths=PackedStringArray("sprite3D", "animationPlayer", "area3D", "toolTipInfo")]
 script = ExtResource("1_b412a")
 sprite3D = NodePath("Visual/Sprite3D")
 modifierIcons = Array[CompressedTexture2D]([ExtResource("2_8b7j7"), ExtResource("2_2yeh7"), ExtResource("4_75qwh"), ExtResource("5_a1cwk"), ExtResource("6_cfx1j"), ExtResource("7_5inku")])
 animationPlayer = NodePath("AnimationPlayer")
 area3D = NodePath("Visual/Area3D")
+toolTipInfo = NodePath("Visual/ToolTipInfo")
 
 [node name="Visual" type="Node3D" parent="." unique_id=1149214977]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ToolTipInfo" parent="Visual" unique_id=1032654321 instance=ExtResource("8_q2nsq")]
+objectName = "Modifier Card"
+titleColor = Color(1, 0.5019608, 1, 1)
+objectDescription = "What does it do? [wave][color=ff80ff]Maybe try it out?[/color][/wave]"
 
 [node name="Background2" type="MeshInstance3D" parent="Visual" unique_id=1946730633]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.1, 0, 0)
