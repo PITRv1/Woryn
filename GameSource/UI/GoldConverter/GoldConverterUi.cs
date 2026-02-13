@@ -1,19 +1,22 @@
 using Godot;
 using System;
+using System.ComponentModel;
 
 public partial class GoldConverterUi : Control
 {
+    [Signal] public delegate void GoldTimerTimeoutEventHandler();
     [Export] Label timerLabel;
-	[Export] Timer timerObject;
+	[Export] public Timer timerObject;
 	[Export] SpinBox spinBox;
 	[Export] Label goldConversionLabel;
 
-    [Signal] public delegate void GoldTimerTimeoutEventHandler();
+	[Export] PlayerHud playerHud;
+	
+
 
 	public void StartGoldUI()
 	{
 		Visible = true;
-		timerObject.Start();
 	}
 
     public override void _PhysicsProcess(double delta)
@@ -32,5 +35,10 @@ public partial class GoldConverterUi : Control
 	{
 		Global.multiplayerPlayerClass.PlayerClass.Points -= (int)spinBox.Value;
 		Global.multiplayerPlayerClass.PlayerClass.Gold += (int)Math.Round(spinBox.Value * 0.8f);
+		
+		
+		playerHud.UpdatePointsAmount(Global.multiplayerPlayerClass.PlayerClass.Points);
+		playerHud.UpdateGoldAmount(Global.multiplayerPlayerClass.PlayerClass.Gold);
+
 	}
 }

@@ -10,6 +10,9 @@ public partial class UiCommunicator : Node
     [Export] MultiplayerPlayerClass multiplayerPlayer;
     [Export] PackedScene modifierCard3D;
     [Export] PlayerVisualController playerVisualController;
+    [Export] GoldConverterController goldConverterController;
+    
+
 
 
     public PointCard3d selectedPointCard3D {private set; get;}
@@ -108,6 +111,8 @@ public partial class UiCommunicator : Node
     {
         GD.Print("Shop started!");
         Random random = new();
+        goldConverterController.OpenGoldConverter();
+        goldConverterController.goldConverterUi.timerObject.Start();
 
         for (int i = 0; i < 4; i++)
         {
