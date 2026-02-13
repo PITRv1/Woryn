@@ -1,5 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://dmklwetq8ngsw"]
 
+[ext_resource type="FontFile" uid="uid://bgx48beeh6rf7" path="res://Assets/UI/Fonts/DigitalDisco.ttf" id="1_3ogga"]
 [ext_resource type="Texture2D" uid="uid://cdofbdbwlfext" path="res://Assets/UI/Images/NineRect/backround_blue.png" id="2_stdu2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pecf1"]
@@ -17,10 +18,8 @@ texture_margin_top = 17.0
 texture_margin_right = 17.0
 texture_margin_bottom = 17.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iv8ul"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_stdu2"]
-texture = SubResource("CompressedTexture2D_iv8ul")
+texture = ExtResource("2_stdu2")
 texture_margin_left = 17.0
 texture_margin_top = 17.0
 texture_margin_right = 17.0
@@ -28,6 +27,8 @@ texture_margin_bottom = 17.0
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("1_3ogga")
 Button/styles/hover = SubResource("StyleBoxTexture_pecf1")
 Button/styles/normal = SubResource("StyleBoxTexture_htkgl")
 Button/styles/pressed = SubResource("StyleBoxTexture_stdu2")
+Label/fonts/font = ExtResource("1_3ogga")

@@ -133,7 +133,7 @@ metadata/_custom_type_script = "uid://ca0pr2up27plw"
 [sub_resource type="CompositorEffect" id="CompositorEffect_ef0mh"]
 resource_local_to_scene = false
 resource_name = ""
-enabled = false
+enabled = true
 effect_callback_type = 4
 needs_motion_vectors = false
 needs_normal_roughness = false
@@ -5357,7 +5357,7 @@ mesh = SubResource("QuadMesh_1h20l")
 [node name="curtain" parent="EnvironmentDetails/Models/BarDetails" unique_id=152688818 instance=ExtResource("42_4dtra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.04108, 1.0017983, -51.2725)
 
-[node name="Plane" parent="EnvironmentDetails/Models/BarDetails/curtain" index="0" unique_id=1403861649]
+[node name="Plane" parent="EnvironmentDetails/Models/BarDetails/curtain" index="0" unique_id=1162435543]
 transform = Transform3D(1.5577803, 0, 0, 0, 0, -2.370239, 0, 1.730112, 0, -1.391571, 2.4554563, -0.16410828)
 material_override = SubResource("StandardMaterial3D_tcx4x")
 
@@ -5401,10 +5401,10 @@ omni_attenuation = 1.971
 [node name="Sketchfab_Scene4" parent="EnvironmentDetails/Models/BarLights" unique_id=1853098258 instance=ExtResource("41_674dm")]
 transform = Transform3D(0.006735303, 0, 0, 0, 0.006735303, 0, 0, 0, 0.006735303, 140.2793, 5.5856137, -49.69245)
 
-[node name="light_base_0" parent="EnvironmentDetails/Models/BarLights/Sketchfab_Scene4/Sketchfab_model/lamp_fbx/RootNode/light" parent_id_path=PackedInt32Array(1853098258, 251525642) index="0" unique_id=1593702395]
+[node name="light_base_0" parent="EnvironmentDetails/Models/BarLights/Sketchfab_Scene4/Sketchfab_model/lamp_fbx/RootNode/light" index="0"]
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="EnvironmentDetails/Models/BarLights/Sketchfab_Scene4/Sketchfab_model/lamp_fbx/RootNode/light" parent_id_path=PackedInt32Array(1853098258, 251525642) index="1" unique_id=17521764]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EnvironmentDetails/Models/BarLights/Sketchfab_Scene4/Sketchfab_model/lamp_fbx/RootNode/light" index="1" unique_id=17521764]
 transform = Transform3D(1.0000005, 0, 0, 0, -4.3711466e-08, 1.0000005, 0, -1.0000005, -4.3711466e-08, 0, 0, 0.37521267)
 mesh = SubResource("CylinderMesh_iukcp")
 
