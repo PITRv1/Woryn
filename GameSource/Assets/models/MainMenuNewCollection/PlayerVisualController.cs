@@ -14,7 +14,7 @@ public partial class PlayerVisualController : Node3D
 
     private const string BlendPath = "parameters/BlendSpace1d/blend_position";
 
-    float target = 1.0f;
+    float target = 0.0f;
 
     public override void _Ready()
     {
