@@ -18,5 +18,6 @@ public enum PACKET_TYPES
     ROUND_SUCCESS = 15,
     SHOP_ITEMS = 16,
     LOOK_AT_PACKET = 17,
+    GOLD_CONVERT = 18,
     
 }

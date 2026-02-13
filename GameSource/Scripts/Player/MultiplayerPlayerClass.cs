@@ -32,12 +32,22 @@ public partial class MultiplayerPlayerClass : Node
 		Global.multiplayerClientGlobals.ShopScene += uiCommunicator.StartShop;
 		Global.multiplayerClientGlobals.HandleRoundSuccess += HandleRoundSuccess;
 		Global.multiplayerClientGlobals.HandleLookAt += SetTargetPosition;
+		Global.multiplayerClientGlobals.HandleGoldUpdate += SetGoldAmount;
 		// Global.turnManagerInstance.GoToShopScene();
 		GD.Print("Dani: Shop will start with the first round for testing purposes. \nComment out line 36 in MultiplayerPlayerClass.cs");
 
 		Global.multiplayerPlayerClass = this;
 		// _playerVisualController.SetColor();
 		ClientReady();
+	}
+
+	private void SetGoldAmount(byte[] data)
+	{
+		var packet = GoldPacket.CreateFromData(data);
+		PlayerClass.Gold += packet.GoldAmount;
+		PlayerClass.Points -= packet.PointAmount;
+		_playerHud.UpdatePointsAmount(PlayerClass.Points);
+		_playerHud.UpdateGoldAmount(PlayerClass.Gold);
 	}
 
 	private void SetTargetPosition(byte[] data)

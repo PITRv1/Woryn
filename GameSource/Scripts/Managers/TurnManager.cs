@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using System.Collections.Generic;
 using System.Linq;
@@ -409,6 +410,35 @@ public partial class TurnManager : Node
 		PickUpCards(_currentPlayer);
 
 		StartNewTurn(packet.PointCardIndex, packet.ModifCardIndexes, usedCards, turnValue);
+	}
+
+	public void HandleGoldConvert(byte[] data)
+	{
+		var packet = GoldPacket.CreateFromData(data);
+		var player = Players[packet.SenderId].PlayerClass;
+		var points = player.Points;
+
+		if (points > packet.PointAmount)
+		{
+			return;
+		}
+
+		var rawGoldAmount = packet.PointAmount * player.PlayerStats.PointsToGoldRatio;
+		var gold = (int)Math.Ceiling(rawGoldAmount);
+		
+		player.Gold += gold;
+		player.Points -= packet.PointAmount;
+		var returnPacket = new GoldPacket()
+		{
+			PointAmount = packet.PointAmount,
+			GoldAmount = gold,
+		};
+		
+		Global.networkHandler.ClientPeers.TryGetValue(packet.SenderId, out var peer);
+		if (peer != null)
+		{
+			returnPacket.Send(peer);
+		}
 	}
 
 	private void SendOutNewDecks()

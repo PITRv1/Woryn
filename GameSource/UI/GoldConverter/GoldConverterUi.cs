@@ -33,12 +33,18 @@ public partial class GoldConverterUi : Control
 
 	public void ConvertPointsToGold()
 	{
-		Global.multiplayerPlayerClass.PlayerClass.Points -= (int)spinBox.Value;
-		Global.multiplayerPlayerClass.PlayerClass.Gold += (int)Math.Round(spinBox.Value * 0.8f);
+		// Global.multiplayerPlayerClass.PlayerClass.Points -= (int)spinBox.Value;
+		// Global.multiplayerPlayerClass.PlayerClass.Gold += (int)Math.Round(spinBox.Value * 0.8f);
+		//
+		// playerHud.UpdatePointsAmount(Global.multiplayerPlayerClass.PlayerClass.Points);
+		// playerHud.UpdateGoldAmount(Global.multiplayerPlayerClass.PlayerClass.Gold);
+		var packet = new GoldPacket()
+		{
+			SenderId = Global.multiplayerPlayerClass.Id,
+			PointAmount = (int)spinBox.Value,
+			GoldAmount = 0,
+		};
 		
-		
-		playerHud.UpdatePointsAmount(Global.multiplayerPlayerClass.PlayerClass.Points);
-		playerHud.UpdateGoldAmount(Global.multiplayerPlayerClass.PlayerClass.Gold);
-
+		Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
 	}
 }

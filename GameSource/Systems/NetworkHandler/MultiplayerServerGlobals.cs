@@ -97,6 +97,9 @@ public partial class MultiplayerServerGlobals : Node
                     }
                 }
                 break;
+            case PACKET_TYPES.GOLD_CONVERT:
+                Global.turnManagerInstance.HandleGoldConvert(data);
+                break;
             default:
                 GD.PushError($"Packet type with index {(PACKET_TYPES)data[0]} unhandled");
                 break;
