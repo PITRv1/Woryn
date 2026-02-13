@@ -8,28 +8,43 @@ public class LookAtPacket : PacketInfo
 	public Vector3 TargetPosition;
 	public LookAtPacket()
 	{
-		PacketType = PACKET_TYPES.SETUP_PLACE;
+		PacketType = PACKET_TYPES.LOOK_AT_PACKET;
 	}
 
 	public override byte[] Encode()
 	{
-		List<byte> data = new List<byte>();
+		var data = new List<byte>();
 
 		data.Add((byte)PacketType);
 
 		data.AddRange(BitConverter.GetBytes(PlayerId));
 
+		data.AddRange(BitConverter.GetBytes(TargetPosition.X));
+		data.AddRange(BitConverter.GetBytes(TargetPosition.Y));
+		data.AddRange(BitConverter.GetBytes(TargetPosition.Z));
+		
+		
 		return data.ToArray();
 	}
 
-	public static SetupPacket CreateFromData(byte[] data)
+	public static LookAtPacket CreateFromData(byte[] data)
 	{
-		SetupPacket packet = new SetupPacket();
+		var packet = new LookAtPacket();
 
-		int index = 1;
+		var index = 1;
 
-		packet.PlayerCount = BitConverter.ToInt32(data, index);
-
+		packet.PlayerId = BitConverter.ToInt32(data, index);
+		
+		index += 4;
+		
+		var X = BitConverter.ToSingle(data, index);
+		index += 4;
+		var Y = BitConverter.ToSingle(data, index);
+		index += 4;
+		var Z = BitConverter.ToSingle(data, index);
+		
+		packet.TargetPosition = new Vector3(X, Y, Z);
+		
 		return packet;
 	}
 }

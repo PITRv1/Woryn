@@ -17,6 +17,7 @@ public partial class MultiplayerPlayerClass : Node
 	[Export] private PlayerHud _playerHud;
 	[Export] private UiCommunicator uiCommunicator;
 	[Export] private Deck3d deck3D;
+	private readonly Dictionary<int, PlayerVisualController> _playerVisuals = new Dictionary<int, PlayerVisualController>();
 
 	
 	public override void _Ready()
@@ -28,11 +29,26 @@ public partial class MultiplayerPlayerClass : Node
 		Global.multiplayerClientGlobals.HandleDeckSwap += PlayerClass.HandleDeckSwap;
 		Global.multiplayerClientGlobals.ShopScene += uiCommunicator.StartShop;
 		Global.multiplayerClientGlobals.HandleRoundSuccess += HandleRoundSuccess;
+		Global.multiplayerClientGlobals.HandleLookAt += SetTargetPosition;
 		// Global.turnManagerInstance.GoToShopScene();
 		GD.Print("Dani: Shop will start with the first round for testing purposes. \nComment out line 36 in MultiplayerPlayerClass.cs");
 
 		Global.multiplayerPlayerClass = this;
 		ClientReady();
+	}
+
+	private void SetTargetPosition(byte[] data)
+	{
+		var packet = LookAtPacket.CreateFromData(data);
+		if (Id == packet.PlayerId)
+		{
+			return;
+		}
+
+		if (_playerVisuals.TryGetValue(packet.PlayerId, out var value))
+		{
+            value.TargetMarker.Position = packet.TargetPosition;
+		}
 	}
 
 	private void HandleRoundSuccess(byte[] data)
@@ -83,6 +99,8 @@ public partial class MultiplayerPlayerClass : Node
 			bud.PlayerIndex = playerIndex;
 			bud.Camera.ProcessMode = ProcessModeEnum.Disabled;
 			bud.PlayerControlled = false;
+			
+			_playerVisuals.Add(playerIndex, bud);
 
 			seats[playerSeat].AddChild(bud);
 			bud.Position = new Vector3(0, -2f, 0);

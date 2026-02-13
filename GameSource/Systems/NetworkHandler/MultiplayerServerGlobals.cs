@@ -86,6 +86,17 @@ public partial class MultiplayerServerGlobals : Node
             case PACKET_TYPES.FOLD:
                 Global.turnManagerInstance.CheckFoldRequest(data);
                 break;
+            case PACKET_TYPES.LOOK_AT_PACKET:
+                var packet = LookAtPacket.CreateFromData(data);
+                foreach (var player in _peerIds)
+                {
+                    Global.networkHandler.ClientPeers.TryGetValue(player, out var peer);
+                    if (peer != null)
+                    {
+                        packet.Send(peer);
+                    }
+                }
+                break;
             default:
                 GD.PushError($"Packet type with index {(PACKET_TYPES)data[0]} unhandled");
                 break;

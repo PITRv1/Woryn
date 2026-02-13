@@ -8,11 +8,14 @@ public partial class CameraProjection : Camera3D
     [Export] public float MaxYawDeg = 45f;
     [Export] public float MaxPitchDeg = 30f;
     [Export] public float RotationSpeed = 5f;
+    
+    [Export] private Marker3D _targetMarker;
 
     private Vector3 _baseRotation;
 
     public override void _Ready()
     {
+        
         Input.MouseMode = Input.MouseModeEnum.Visible;
         _baseRotation = Rotation;
     }
@@ -35,6 +38,13 @@ public partial class CameraProjection : Camera3D
 
     public override void _PhysicsProcess(double delta)
     {
+        var packet = new LookAtPacket()
+        {
+            PlayerId = Global.multiplayerPlayerClass.Id,
+            TargetPosition = _targetMarker.Position
+        };
+        
+        Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
         if (Input.IsActionJustPressed("mouse_left")) CastRayCast();
     }
 

@@ -7,6 +7,7 @@ public partial class PlayerVisualController : Node3D
     [Export] AnimationTree animationTree;
     [Export] public bool PlayerControlled = true;
     [Export] public Camera3D Camera;
+    [Export] public Marker3D TargetMarker;
 
     [ExportGroup("Bodyparts")]
     [Export] private Godot.Collections.Array<Material> materials;
@@ -18,6 +19,7 @@ public partial class PlayerVisualController : Node3D
 
     public override void _Ready()
     {
+        GD.Print("PLAYER INDEXXXXXXX: " + PlayerIndex);
         var material = materials[PlayerIndex];
 
         foreach (var item in bodyparts)
