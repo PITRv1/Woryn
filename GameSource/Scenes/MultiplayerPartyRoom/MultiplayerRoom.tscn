@@ -1059,7 +1059,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78381586, 4.1443086, 6.123
 [node name="curtain" parent="3DWorld/EnvironmentDetails/Models" unique_id=152688818 instance=ExtResource("39_0tc0y")]
 transform = Transform3D(-0.10385153, 0, 0.9945928, 0, 1, 0, -0.9945928, 0, -0.10385153, -7.01008, 0.106413364, 0.33820117)
 
-[node name="Plane" parent="3DWorld/EnvironmentDetails/Models/curtain" index="0" unique_id=1162435543]
+[node name="Plane" parent="3DWorld/EnvironmentDetails/Models/curtain" index="0" unique_id=1403861649]
 transform = Transform3D(1.730112, 0, 0, 0, 0, -1.730113, 0, 1.730112, 0, -1.5716673, 2.4554563, -0.16410732)
 material_override = SubResource("StandardMaterial3D_3h8vp")
 
@@ -1075,7 +1075,7 @@ script = ExtResource("42_krtbm")
 multiplayerPlayerClass = NodePath("../../../../MultiplayerPlayer")
 _area3D = NodePath("PlaceholderParent/BellArea")
 playerVisualController = NodePath("../../../PlayerVisuals")
-ringAnimPlayer = NodePath("../../../PlayerVisuals/ring bell/RingBellAnimationPlayer")
+ringAnimPlayer = NodePath("RingBellAnimationPlayer")
 
 [node name="PlaceholderParent" type="Node3D" parent="3DWorld/EnvironmentDetails/Models/Bell" unique_id=709527833]
 
@@ -1084,6 +1084,11 @@ ringAnimPlayer = NodePath("../../../PlayerVisuals/ring bell/RingBellAnimationPla
 [node name="CollisionShape3D" type="CollisionShape3D" parent="3DWorld/EnvironmentDetails/Models/Bell/PlaceholderParent/BellArea" unique_id=1976555522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066070557, 0.035655975, 0.0007019043)
 shape = SubResource("BoxShape3D_krtbm")
+
+[node name="RingBellAnimationPlayer" type="AnimationPlayer" parent="3DWorld/EnvironmentDetails/Models/Bell" unique_id=1411014788]
+root_node = NodePath("../../../../PlayerVisuals/ring bell")
+libraries/ = SubResource("AnimationLibrary_krtbm")
+speed_scale = 3.0
 
 [node name="Lighting" type="Node3D" parent="3DWorld" unique_id=1988270341]
 
@@ -1183,8 +1188,11 @@ font_size = 53
 [node name="PlayerVisuals" parent="3DWorld" unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.9010963, -0.9423759, -1.7291548e-07)
 
-[node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1119998455) index="26" unique_id=396461942]
-transform = Transform3D(-0.56740606, -0.74735826, 0.34569687, 0.17137346, 0.3034507, 0.93730915, -0.8054076, 0.5910782, -0.044102505, 0.28519404, 1.3642517, 0.35878414)
+[node name="Neck" parent="3DWorld/PlayerVisuals" index="0" unique_id=702888186]
+transform = Transform3D(1, 0, 0, 0, 0.98018485, -0.19808501, 0, 0.19808502, 0.9801848, 0, 4.128, 0)
+
+[node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 607341800) index="26" unique_id=396461942]
+transform = Transform3D(-0.56740624, -0.7637722, 0.30773786, 0.1713739, 0.2560078, 0.9513625, -0.8054073, 0.5925472, -0.01436989, 0.28517035, 1.3555123, 0.3587194)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)
@@ -1193,14 +1201,6 @@ transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370
 transform = Transform3D(0.22696249, 0.06854959, 0.32216308, 0.31262726, 0.07833583, -0.23691285, -0.10369283, 0.38621822, -0.009127969, 0, 0, 0)
 curveCards = true
 _uiCommunicator = NodePath("../../../../../../../../UICommunicator")
-
-[node name="RingBellAnimationPlayer" type="AnimationPlayer" parent="3DWorld/PlayerVisuals/ring bell" parent_id_path=PackedInt32Array(241039124, 2018728083) index="2" unique_id=1411014788]
-libraries/ = SubResource("AnimationLibrary_krtbm")
-speed_scale = 3.0
-
-[node name="AnimationTree" parent="3DWorld/PlayerVisuals" index="7" unique_id=92736569]
-parameters/BlendSpace1D/blend_position = 0.0
-parameters/Add2/add_amount = 0.0
 
 [node name="ModifierCards" parent="." unique_id=731615950 node_paths=PackedStringArray("_uiCommunicator") instance=ExtResource("31_k5rf2")]
 transform = Transform3D(-4.3711385e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 0, 1.555774, 2.139, -0.27729005)
