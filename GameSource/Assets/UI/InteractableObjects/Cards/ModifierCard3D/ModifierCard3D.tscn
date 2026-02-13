@@ -91,7 +91,7 @@ _data = {
 &"RESET": SubResource("Animation_1rcg8")
 }
 
-[node name="ModifierCard3D" type="Node3D" unique_id=1327020224 node_paths=PackedStringArray("sprite3D", "outlineMesh", "animationPlayer", "area3D", "toolTipInfo")]
+[node name="ModifierCard3D" type="Node3D" unique_id=1327020224 node_paths=PackedStringArray("sprite3D", "outlineMesh", "animationPlayer", "area3D", "toolTipInfo", "modifCardValueLabel")]
 script = ExtResource("1_b412a")
 sprite3D = NodePath("Visual/Sprite3D")
 modifierIcons = Array[CompressedTexture2D]([ExtResource("2_8b7j7"), ExtResource("2_2yeh7"), ExtResource("4_75qwh"), ExtResource("5_a1cwk"), ExtResource("6_cfx1j"), ExtResource("7_5inku")])
@@ -99,6 +99,7 @@ outlineMesh = NodePath("Visual/Outline")
 animationPlayer = NodePath("AnimationPlayer")
 area3D = NodePath("Visual/Area3D")
 toolTipInfo = NodePath("Visual/ToolTipInfo")
+modifCardValueLabel = NodePath("Visual/ValueLabel")
 
 [node name="Visual" type="Node3D" parent="." unique_id=1149214977]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.14, 0)
@@ -125,6 +126,11 @@ shaded = true
 double_sided = false
 texture_filter = 2
 texture = ExtResource("2_2yeh7")
+
+[node name="ValueLabel" type="Label3D" parent="Visual" unique_id=995114807]
+transform = Transform3D(0.9999992, 0, 0, 0, 0.99999946, -7.105425e-15, 0, -1.7763568e-14, 0.99999964, 0.004309952, 0.33544004, 0.0657818)
+billboard = 1
+modulate = Color(0.2601054, 0.22138625, 0.54379064, 1)
 
 [node name="Area3D" type="Area3D" parent="Visual" unique_id=94328010 groups=["CameraInteractable"]]
 monitoring = false

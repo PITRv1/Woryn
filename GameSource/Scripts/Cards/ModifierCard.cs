@@ -59,4 +59,5 @@ public interface ModifierCard
 	public void ActivateEffect();
 	public int Calculate(int value);
 	public byte PacketValue();
+	public void RandomizeProperties();
 }

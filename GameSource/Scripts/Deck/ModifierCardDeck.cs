@@ -1,5 +1,7 @@
 using Godot;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class ModifierCardDeck
 {
@@ -13,19 +15,43 @@ public partial class ModifierCardDeck
         modifierCards = new List<ModifierCard>();
     }
 
+    
     public void GenerateDeck()
     {
-        modifierCards.Clear();
+        // modifierCards.Clear();
 
         // for (int i = 0; i < Amount; i++)
         // {
         //     ModifierCardMultiplier modifierCard = new ModifierCardMultiplier();
         //     modifierCard.RandomizeProperties();
-
-        //     modifierCards.Add(modifierCard);
+        //     if(modifierCards.Count < 4)
+        //     {
+        //         modifierCards.Add(modifierCard);
+        //     }
         // }
-        modifierCards.Add(new ModifierCardMultiplier());
-        modifierCards.Add(new ModifierCardAddition());
+        modifierCards.Clear();
+
+        Random rng = new Random();
+
+        List<MODIFIER_TYPES> allTypes = Enum.GetValues(typeof(MODIFIER_TYPES))
+            .Cast<MODIFIER_TYPES>()
+            .Where(t => t != MODIFIER_TYPES.NONE)
+            .ToList();
+
+        for (int i = 0; i < Amount; i++)
+        {
+            MODIFIER_TYPES randomType = allTypes[rng.Next(allTypes.Count)];
+
+            ModifierCard modifierCard = ModifierCardTypeConverter.TypeToClass(randomType);
+
+            modifierCard.RandomizeProperties();
+
+            modifierCards.Add(modifierCard);
+        }
+
+        // modifierCards.Add(new ModifierCardMultiplier());
+        // modifierCards.Add(new ModifierCardAddition());
+
         // modifierCards.Add(new ModifierCardSkip());
         // modifierCards.Add(new ModifierCardReversePlay());
         // modifierCards.Add(new ModifierCardNextPlayer());
