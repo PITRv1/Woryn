@@ -104,7 +104,7 @@ public partial class UiCommunicator : Node
         selectedModifierCard3Ds.Clear();
     }
 
-    public void StartShop()
+    public async void StartShop()
     {
         GD.Print("Shop started!");
         Random random = new();
@@ -115,16 +115,19 @@ public partial class UiCommunicator : Node
             modifierCard3DInstance.isShopCard = true;
             modifierCard3DInstance.ModifierCard = ModifierCardTypeConverter.TypeToClass((MODIFIER_TYPES)random.Next(1,7));
             shopCards.AddCard(modifierCard3DInstance);
+            await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
         }
 
         playerVisualController.moveCamera(1);
     }
 
-    public void CloseShop()
+    public async void CloseShop()
     {
         foreach (Node3D modifCard in shopCards.GetChildren())
         {
             shopCards.RemoveCard(modifCard);
+            await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+
         }
 
         playerVisualController.moveCamera(0);
