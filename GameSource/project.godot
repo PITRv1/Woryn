@@ -29,6 +29,7 @@ AudioManager="*res://Systems/AudioManager/AudioManager.tscn"
 TimerHost="*res://Scripts/Managers/TimerHost.cs"
 TurnManager="*res://Scripts/Managers/TurnManager.cs"
 ShopManager="*uid://dkx707ehadjjb"
+ToolTipMenu="*uid://bv6yi73mqnr5i"
 
 [display]
 
@@ -41,7 +42,7 @@ project/assembly_name="Woryn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/func_godot/plugin.cfg")
+enabled=PackedStringArray()
 
 [file_customization]
 
