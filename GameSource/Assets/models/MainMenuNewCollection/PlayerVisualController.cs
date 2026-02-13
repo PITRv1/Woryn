@@ -10,6 +10,10 @@ public partial class PlayerVisualController : Node3D
     [Export] private Godot.Collections.Array<Material> materials;
     [Export] private Godot.Collections.Array<MeshInstance3D> bodyparts;
 
+    private const string BlendPath = "parameters/BlendSpace1d/blend_position";
+
+    float target = 1.0f;
+
     public override void _Ready()
     {
         var material = materials[PlayerIndex];
@@ -24,4 +28,19 @@ public partial class PlayerVisualController : Node3D
     {
         animationTree.Set("parameters/OneShot/request", (int)AnimationNodeOneShot.OneShotRequest.Fire);
     }
+
+    public void moveCamera(int to)
+    {
+        target = Mathf.Clamp(to, 0.0f, 1.0f);
+    }
+
+    public override void _Process(double delta)
+    {
+        animationTree.Set(BlendPath, Mathf.Lerp(
+            (float)animationTree.Get(BlendPath),
+            target,
+            delta * 5f
+        ));
+    }
+
 }

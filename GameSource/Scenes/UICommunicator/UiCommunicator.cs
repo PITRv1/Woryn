@@ -9,6 +9,8 @@ public partial class UiCommunicator : Node
     [Export] CardPlacementHandler shopCards;
     [Export] MultiplayerPlayerClass multiplayerPlayer;
     [Export] PackedScene modifierCard3D;
+    [Export] PlayerVisualController playerVisualController;
+
 
     public PointCard3d selectedPointCard3D {private set; get;}
     public List<ModifierCard3d> selectedModifierCard3Ds {private set; get;} = new();
@@ -114,6 +116,8 @@ public partial class UiCommunicator : Node
             modifierCard3DInstance.ModifierCard = ModifierCardTypeConverter.TypeToClass((MODIFIER_TYPES)random.Next(1,7));
             shopCards.AddCard(modifierCard3DInstance);
         }
+
+        playerVisualController.moveCamera(1);
     }
 
     public void CloseShop()
@@ -122,6 +126,9 @@ public partial class UiCommunicator : Node
         {
             shopCards.RemoveCard(modifCard);
         }
+
+        playerVisualController.moveCamera(0);
+
     }
 
     public void AddShopModifierCardToPlayerCards(ModifierCard modifierCard)
