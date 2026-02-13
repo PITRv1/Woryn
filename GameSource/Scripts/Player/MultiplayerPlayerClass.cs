@@ -59,6 +59,8 @@ public partial class MultiplayerPlayerClass : Node
 			{ 2, 1 },
 			{ 3, 2 }
 		};
+		
+		GD.Print("Player count from setup: " + packet.PlayerCount);
 
 		for (var playerIndex = 0; playerIndex < packet.PlayerCount; playerIndex++)
 		{
