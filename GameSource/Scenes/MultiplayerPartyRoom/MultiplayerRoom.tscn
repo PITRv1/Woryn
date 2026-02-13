@@ -1075,7 +1075,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78381586, 4.1443086, 6.123
 [node name="curtain" parent="3DWorld/EnvironmentDetails/Models" unique_id=152688818 instance=ExtResource("39_0tc0y")]
 transform = Transform3D(-0.10385153, 0, 0.9945928, 0, 1, 0, -0.9945928, 0, -0.10385153, -7.01008, 0.106413364, 0.33820117)
 
-[node name="Plane" parent="3DWorld/EnvironmentDetails/Models/curtain" index="0" unique_id=1639387656]
+[node name="Plane" parent="3DWorld/EnvironmentDetails/Models/curtain" index="0" unique_id=1403861649]
 transform = Transform3D(1.730112, 0, 0, 0, 0, -1.730113, 0, 1.730112, 0, -1.5716673, 2.4554563, -0.16410732)
 material_override = SubResource("StandardMaterial3D_3h8vp")
 
@@ -1209,8 +1209,8 @@ font_size = 53
 [node name="PlayerVisuals" parent="3DWorld" unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.9010963, -0.9423759, -1.7291548e-07)
 
-[node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1119998455) index="26" unique_id=396461942]
-transform = Transform3D(-0.5674063, -0.7733022, 0.28293866, 0.1713739, 0.22518386, 0.95912606, -0.8054073, 0.5927025, 0.004753098, 0.28515315, 1.3491759, 0.35867253)
+[node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 607341800) index="26" unique_id=396461942]
+transform = Transform3D(-0.56740606, -0.75091493, 0.3379017, 0.17137367, 0.29368132, 0.94041574, -0.8054075, 0.59150505, -0.037949547, 0.28518963, 1.3626271, 0.3587721)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)
@@ -1261,7 +1261,7 @@ deck3D = NodePath("../Deck3D")
 _playerVisualController = NodePath("../3DWorld/PlayerVisuals")
 
 [node name="DiegeticUI" parent="." unique_id=1519881658 node_paths=PackedStringArray("meshInstance", "subViewport") instance=ExtResource("44_xffdd")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.496946, 2.0746963, 6.1630335)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.496946, 2.0746963, 6.863937)
 meshInstance = NodePath("GoldUIMesh")
 subViewport = NodePath("SubViewport")
 
