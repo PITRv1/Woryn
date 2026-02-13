@@ -38,13 +38,13 @@ public partial class CameraProjection : Camera3D
 
     public override void _PhysicsProcess(double delta)
     {
-        var packet = new LookAtPacket()
-        {
-            PlayerId = Global.multiplayerPlayerClass.Id,
-            TargetPosition = _targetMarker.Position
-        };
-        
-        Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
+        // var packet = new LookAtPacket()
+        // {
+        //     PlayerId = Global.multiplayerPlayerClass.Id,
+        //     TargetPosition = _targetMarker.Position
+        // };
+        //
+        // Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
         if (Input.IsActionJustPressed("mouse_left")) CastRayCast("UseObject");
         if (Input.IsActionJustPressed("mouse_right")) CastRayCast("ShowMenu");
     }
