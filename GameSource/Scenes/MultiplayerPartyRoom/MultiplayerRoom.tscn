@@ -1070,14 +1070,13 @@ material_override = SubResource("StandardMaterial3D_krtbm")
 mesh = SubResource("ArrayMesh_ktcpd")
 skeleton = NodePath("")
 
-[node name="Bell" type="Node3D" parent="3DWorld/EnvironmentDetails/Models" unique_id=970012675 node_paths=PackedStringArray("multiplayerPlayerClass", "_area3D", "playerVisualController", "ringAnimPlayer", "toolTipInfo")]
+[node name="Bell" type="Node3D" parent="3DWorld/EnvironmentDetails/Models" unique_id=970012675 node_paths=PackedStringArray("multiplayerPlayerClass", "_area3D", "playerVisualController", "ringAnimPlayer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6630696, 2.1280937, 0)
 script = ExtResource("42_krtbm")
 multiplayerPlayerClass = NodePath("../../../../MultiplayerPlayer")
 _area3D = NodePath("PlaceholderParent/BellArea")
 playerVisualController = NodePath("../../../PlayerVisuals")
 ringAnimPlayer = NodePath("../../../PlayerVisuals/ring bell/RingBellAnimationPlayer")
-toolTipInfo = NodePath("ToolTipInfo")
 
 [node name="ToolTipInfo" parent="3DWorld/EnvironmentDetails/Models/Bell" unique_id=1032654321 instance=ExtResource("34_v7sr5")]
 objectName = "Bell"
@@ -1195,7 +1194,6 @@ font_size = 53
 [node name="PlayerVisuals" parent="3DWorld" unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.9010963, -0.9423759, -1.7291548e-07)
 
-
 [node name="Neck" parent="3DWorld/PlayerVisuals" index="0" unique_id=702888186]
 transform = Transform3D(1, 0, 0, 0, 0.98018485, -0.19808501, 0, 0.19808502, 0.9801848, 0, 4.128, 0)
 
@@ -1203,8 +1201,7 @@ transform = Transform3D(1, 0, 0, 0, 0.98018485, -0.19808501, 0, 0.19808502, 0.98
 process_mode = 0
 
 [node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 607341800) index="26" unique_id=396461942]
-transform = Transform3D(-0.56740636, -0.7467522, 0.34700364, 0.17137352, 0.3050897, 0.9367768, -0.8054073, 0.5910003, -0.045136295, 0.28518194, 1.359749, 0.35875073)
-
+transform = Transform3D(-0.56740606, -0.7750924, 0.27799737, 0.17137402, 0.21905766, 0.9605439, -0.8054075, 0.5926597, 0.008536011, 0.2851438, 1.3457457, 0.3586472)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)
@@ -1214,12 +1211,9 @@ transform = Transform3D(0.22696249, 0.06854959, 0.32216308, 0.31262726, 0.078335
 curveCards = true
 _uiCommunicator = NodePath("../../../../../../../../UICommunicator")
 
-[node name="RingBellAnimationPlayer" type="AnimationPlayer" parent="3DWorld/PlayerVisuals/ring bell" parent_id_path=PackedInt32Array(241039124, 2018728083) index="2" unique_id=1411014788]
+[node name="RingBellAnimationPlayer" type="AnimationPlayer" parent="3DWorld/PlayerVisuals/ring bell" parent_id_path=PackedInt32Array(241039124, 2018728083) index="2" unique_id=520320050]
 libraries/ = SubResource("AnimationLibrary_krtbm")
 speed_scale = 3.0
-
-[node name="AnimationTree" parent="3DWorld/PlayerVisuals" index="7" unique_id=92736569]
-parameters/Add2/add_amount = 0.0
 
 [node name="ModifierCards" parent="." unique_id=731615950 node_paths=PackedStringArray("_uiCommunicator") instance=ExtResource("31_k5rf2")]
 transform = Transform3D(-4.3711385e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 0, 1.555774, 2.139, -0.27729005)
