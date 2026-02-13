@@ -4,4 +4,6 @@ using System;
 public interface InteractableObjectInterface
 {
     public void UseObject();
+
+    public void ShowMenu();
 }

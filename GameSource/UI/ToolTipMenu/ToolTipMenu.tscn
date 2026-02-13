@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_83qw4"]
 [ext_resource type="Script" uid="uid://egpg7con1hbu" path="res://UI/ToolTipMenu/ToolTipMenu.cs" id="2_6ocpn"]
 
-[node name="ToolTipMenu" type="Control" unique_id=1439534742 node_paths=PackedStringArray("timer", "colorRect", "titleLabel", "descriptionLabel")]
+[node name="ToolTipMenu" type="Control" unique_id=1439534742 node_paths=PackedStringArray("colorRect", "titleLabel", "descriptionLabel")]
 texture_filter = 1
 layout_mode = 3
 anchor_right = 0.224
@@ -14,7 +14,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_83qw4")
 script = ExtResource("2_6ocpn")
-timer = NodePath("Timer")
 colorRect = NodePath("Menu/TitleBar/ColorRect")
 titleLabel = NodePath("Menu/TitleBar/ColorRect/MarginContainer/Label")
 descriptionLabel = NodePath("Menu/Description/ColorRect/MarginContainer/RichTextLabel")
@@ -77,11 +76,5 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
-text = "Description"
+text = "This is a test."
 fit_content = true
-
-[node name="Timer" type="Timer" parent="." unique_id=912903400]
-wait_time = 6.0
-one_shot = true
-
-[connection signal="timeout" from="Timer" to="." method="ShowMenuOnScreen"]

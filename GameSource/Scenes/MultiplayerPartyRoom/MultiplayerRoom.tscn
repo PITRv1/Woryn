@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://c4mfb80u3jme5" path="res://Assets/models/MainMenuNewCollection/playerVisuals.tscn" id="31_1ab4g"]
 [ext_resource type="PackedScene" uid="uid://bs7f2puxk38eq" path="res://Systems/CardPlacementHandler/CardPlacementHandler.tscn" id="31_k5rf2"]
 [ext_resource type="Script" uid="uid://cxkdctenlyi7c" path="res://Systems/CardPlacementHandler/CardPlacementHandler.cs" id="32_1ab4g"]
+[ext_resource type="PackedScene" uid="uid://chykv5bcqt0n0" path="res://UI/ToolTipMenu/ToolTipInfo.tscn" id="34_v7sr5"]
 [ext_resource type="PackedScene" uid="uid://b5ab613qv1tho" path="res://Assets/models/MainMenuNewCollection/curtain.glb" id="39_0tc0y"]
 [ext_resource type="Script" uid="uid://cjjhll14h1e55" path="res://Scripts/RingBell.cs" id="42_krtbm"]
 [ext_resource type="PackedScene" uid="uid://2cmeqjx7gsos" path="res://UI/PlayerHUD/player_hud.tscn" id="43_v7sr5"]
@@ -1069,13 +1070,19 @@ material_override = SubResource("StandardMaterial3D_krtbm")
 mesh = SubResource("ArrayMesh_ktcpd")
 skeleton = NodePath("")
 
-[node name="Bell" type="Node3D" parent="3DWorld/EnvironmentDetails/Models" unique_id=970012675 node_paths=PackedStringArray("multiplayerPlayerClass", "_area3D", "playerVisualController", "ringAnimPlayer")]
+[node name="Bell" type="Node3D" parent="3DWorld/EnvironmentDetails/Models" unique_id=970012675 node_paths=PackedStringArray("multiplayerPlayerClass", "_area3D", "playerVisualController", "ringAnimPlayer", "toolTipInfo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6630696, 2.1280937, 0)
 script = ExtResource("42_krtbm")
 multiplayerPlayerClass = NodePath("../../../../MultiplayerPlayer")
 _area3D = NodePath("PlaceholderParent/BellArea")
 playerVisualController = NodePath("../../../PlayerVisuals")
 ringAnimPlayer = NodePath("../../../PlayerVisuals/ring bell/RingBellAnimationPlayer")
+toolTipInfo = NodePath("ToolTipInfo")
+
+[node name="ToolTipInfo" parent="3DWorld/EnvironmentDetails/Models/Bell" unique_id=1032654321 instance=ExtResource("34_v7sr5")]
+objectName = "Bell"
+titleColor = Color(0.8235294, 0.8509804, 0, 1)
+objectDescription = "To skip your turn, [color=red]hit[/color] the [color=gold]bell[/color]!"
 
 [node name="PlaceholderParent" type="Node3D" parent="3DWorld/EnvironmentDetails/Models/Bell" unique_id=709527833]
 
@@ -1183,8 +1190,8 @@ font_size = 53
 [node name="PlayerVisuals" parent="3DWorld" unique_id=241039124 instance=ExtResource("31_1ab4g")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.9010963, -0.9423759, -1.7291548e-07)
 
-[node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1119998455) index="26" unique_id=396461942]
-transform = Transform3D(-0.56740606, -0.74735826, 0.34569687, 0.17137346, 0.3034507, 0.93730915, -0.8054076, 0.5910782, -0.044102505, 0.28519404, 1.3642517, 0.35878414)
+[node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1198783362) index="26" unique_id=396461942]
+transform = Transform3D(-0.5674063, -0.77934825, 0.2658321, 0.17137355, 0.20399748, 0.9638547, -0.8054074, 0.5924538, 0.017810196, 0.28514084, 1.3446503, 0.35863894)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)
@@ -1199,7 +1206,6 @@ libraries/ = SubResource("AnimationLibrary_krtbm")
 speed_scale = 3.0
 
 [node name="AnimationTree" parent="3DWorld/PlayerVisuals" index="7" unique_id=92736569]
-parameters/BlendSpace1D/blend_position = 0.0
 parameters/Add2/add_amount = 0.0
 
 [node name="ModifierCards" parent="." unique_id=731615950 node_paths=PackedStringArray("_uiCommunicator") instance=ExtResource("31_k5rf2")]

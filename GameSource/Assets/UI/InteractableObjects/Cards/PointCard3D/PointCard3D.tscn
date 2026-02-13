@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://c2v6ks7c7q5ef" path="res://Assets/UI/Fonts/FantaisieArtistique.ttf" id="1_3mlda"]
 [ext_resource type="Script" uid="uid://dch8wccnu36em" path="res://Assets/UI/InteractableObjects/Cards/PointCard3D/PointCard3d.cs" id="1_5plsr"]
+[ext_resource type="PackedScene" uid="uid://chykv5bcqt0n0" path="res://UI/ToolTipMenu/ToolTipInfo.tscn" id="2_bv0c0"]
 [ext_resource type="ArrayMesh" uid="uid://dm6f1qws7y5q7" path="res://Assets/models/MainMenuNewCollection/cardMesh.tres" id="2_shad3"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_xbnts"]
@@ -51,14 +52,20 @@ _data = {
 &"RESET": SubResource("Animation_pqcdk")
 }
 
-[node name="PointCard3D" type="Node3D" unique_id=1527816531 node_paths=PackedStringArray("label", "outlineMesh", "animationPlayer", "area3D")]
+[node name="PointCard3D" type="Node3D" unique_id=1527816531 node_paths=PackedStringArray("label", "outlineMesh", "animationPlayer", "area3D", "toolTipInfo")]
 script = ExtResource("1_5plsr")
 label = NodePath("Visual/Label3D")
 outlineMesh = NodePath("Visual/Outline")
 animationPlayer = NodePath("AnimationPlayer")
 area3D = NodePath("Visual/Area3D")
+toolTipInfo = NodePath("Visual/ToolTipInfo")
 
 [node name="Visual" type="Node3D" parent="." unique_id=2024103178]
+
+[node name="ToolTipInfo" parent="Visual" unique_id=1032654321 instance=ExtResource("2_bv0c0")]
+objectName = "PointCard"
+titleColor = Color(0.45490196, 0.7019608, 0.627451, 1)
+objectDescription = "This is a [color=74b3a0]pointcard[/color], place it down with or without [color=ff80ff]modifier card(s)[/color] to progress in the [color=yellow]turn[/color]."
 
 [node name="Background" type="MeshInstance3D" parent="Visual" unique_id=1148260791]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.1, 0, 0)

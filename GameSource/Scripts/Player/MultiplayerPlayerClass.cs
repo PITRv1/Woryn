@@ -14,7 +14,7 @@ public partial class MultiplayerPlayerClass : Node
 	[Export] private PackedScene _modifierCardUi;
 	[Export] private Node3D _playerSeatsHolder;
 	[Export] private PackedScene _buddy;
-	[Export] private PlayerHud _playerHud;
+	[Export] public PlayerHud _playerHud {private set; get;}
 	[Export] private UiCommunicator uiCommunicator;
 	[Export] private Deck3d deck3D;
 
@@ -138,6 +138,7 @@ public partial class MultiplayerPlayerClass : Node
 		};
 
 		Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
+		_playerHud.StopCountdownTimer();
 	}
 
 	private void PickUpCards()

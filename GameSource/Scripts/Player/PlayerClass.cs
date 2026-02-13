@@ -125,6 +125,8 @@ public class PlayerClass
                 GD.Print(card.PointValue + " ");
             foreach (ModifierCard card in ModifierCardList)
                 GD.Print(card.ModifierType + " ");
+            
+            Parent._playerHud.StartCountdownTimer();
         }
 
         if (Parent.Id != packet.LastPlayer)

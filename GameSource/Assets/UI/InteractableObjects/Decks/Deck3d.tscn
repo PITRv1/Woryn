@@ -8,9 +8,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_2r3fm"]
 size = Vector3(0.5175781, 0.32629395, 0.50561523)
 
-[node name="Deck3D" type="Node3D" unique_id=75278921 node_paths=PackedStringArray("area3D", "currentValue", "totalValue", "toolTipInfo")]
+[node name="Deck3D" type="Node3D" unique_id=75278921 node_paths=PackedStringArray("currentValue", "totalValue", "toolTipInfo")]
 script = ExtResource("1_wcj5k")
-area3D = NodePath("Visual/Area3D")
 currentValue = NodePath("CurrentValue")
 totalValue = NodePath("TotalValue")
 toolTipInfo = NodePath("Visual/Area3D/ToolTipInfo")
