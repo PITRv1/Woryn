@@ -94,7 +94,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
             UiCommunicatorInstance.RemoveModifierCard(this);
             UpdateMeshColor();
         }
-        else if (UiCommunicatorInstance.selectedPointCard3D != null) {
+        else if (UiCommunicatorInstance.selectedPointCard3D != null && UiCommunicatorInstance.selectedModifierCard3Ds.Count < (int)UiCommunicatorInstance.selectedPointCard3D.PointCard.CardRarity) {
             UiCommunicatorInstance.AddModifierCard(this);
             UpdateMeshColor(Colors.Yellow);
         }
