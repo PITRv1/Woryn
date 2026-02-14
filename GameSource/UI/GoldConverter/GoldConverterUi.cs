@@ -23,7 +23,7 @@ public partial class GoldConverterUi : Control
     {
         spinBox.MaxValue = Global.multiplayerPlayerClass.PlayerClass.Points;
         timerLabel.Text = $"{(int)timerObject.TimeLeft}";
-		goldConversionLabel.Text = $"{(int)Math.Round(spinBox.Value * Global.multiplayerPlayerClass.PlayerClass.PlayerStats.PointsToGoldRatio)}";
+		goldConversionLabel.Text = $"Total: {(int)Math.Round(spinBox.Value * Global.multiplayerPlayerClass.PlayerClass.PlayerStats.PointsToGoldRatio)}";
     }
 
     public void HandleGoldTimerTimeout()
