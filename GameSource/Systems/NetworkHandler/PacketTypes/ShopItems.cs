@@ -6,6 +6,8 @@ public class ShopItems : PacketInfo
 {
 	public ItemType[] ItemTypes;
 	public MODIFIER_TYPES[] ModifierTypes;
+	public List<int> itemPrices;
+	public List<int> modifierPrices;
 	
 	public ShopItems()
 	{
@@ -20,16 +22,18 @@ public class ShopItems : PacketInfo
 
 		data.Add((byte)ItemTypes.Length);
 
-		foreach (var item in ItemTypes)
+		for (var i = 0; i < ItemTypes.Length; i++)
 		{
-			data.AddRange(BitConverter.GetBytes((int)item));
+			data.AddRange(BitConverter.GetBytes((int)ItemTypes[i]));
+			data.AddRange(BitConverter.GetBytes(itemPrices[i]));
 		}
 
 		data.Add((byte)ModifierTypes.Length);
 		
-		foreach (var modifier in ModifierTypes)
+		for (var i = 0; i < ModifierTypes.Length; i++)
 		{
-			data.AddRange(BitConverter.GetBytes((int)modifier));
+			data.AddRange(BitConverter.GetBytes((int)ModifierTypes[i]));
+			data.AddRange(BitConverter.GetBytes(modifierPrices[i]));
 		}
 
 		return data.ToArray();
@@ -44,9 +48,12 @@ public class ShopItems : PacketInfo
 		index += 1;
 
 		packet.ItemTypes = new ItemType[itemTypesLength];
+		packet.itemPrices = new List<int>();
 		for (var i = 0; i < itemTypesLength; i++)
 		{
 			packet.ItemTypes[i] = (ItemType)BitConverter.ToInt32(data, index);
+			index += 4;
+			packet.itemPrices.Add(BitConverter.ToInt32(data, index));
 			index += 4;
 		}
 
@@ -54,9 +61,12 @@ public class ShopItems : PacketInfo
 		index += 1;
 
 		packet.ModifierTypes = new MODIFIER_TYPES[modifierLength];
+		packet.modifierPrices = new List<int>();
 		for (var i = 0; i < modifierLength; i++)
 		{
 			packet.ModifierTypes[i] = (MODIFIER_TYPES)BitConverter.ToInt32(data, index);
+			index += 4;
+			packet.modifierPrices.Add(BitConverter.ToInt32(data, index));
 			index += 4;
 		}
 

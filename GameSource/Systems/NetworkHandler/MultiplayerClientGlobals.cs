@@ -38,6 +38,8 @@ public partial class MultiplayerClientGlobals : Node
     public delegate void HandleLookAtEventHandler(byte[] data);
     [Signal]
     public delegate void HandleGoldUpdateEventHandler(byte[] data);
+    [Signal]
+    public delegate void HandleShopBuyEventHandler(byte[] data);
 
     public int Id = -1;
     public List<int> RemoteIds = new();
@@ -91,6 +93,9 @@ public partial class MultiplayerClientGlobals : Node
                 break;
             case PACKET_TYPES.GOLD_CONVERT:
                 EmitSignal(SignalName.HandleGoldUpdate, data);
+                break;
+            case PACKET_TYPES.SHOP_ITEM_BUY:
+                EmitSignal(SignalName.HandleShopBuy, data);
                 break;
             default:
                 GD.PushError($"Packet type with index {(int)packetType} unhandled!");

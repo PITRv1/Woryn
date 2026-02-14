@@ -64,6 +64,8 @@ public partial class TurnManager : Node
 		BroadCast(turnInfoPacket);
 	}
 
+	
+
 	public void AddToShopReady(byte[] data)
 	{
 		_shopReady++;
@@ -71,9 +73,9 @@ public partial class TurnManager : Node
 		if (_shopReady == _playerCount)
 		{
 			Global.shopManagerInstance.GeneratePublicShop();
-			_shopReady = 0;	
+			_shopReady = 0;
 		}
-		
+
 	}
 
 	private void AddToMultiplayerList(int id)
@@ -324,6 +326,11 @@ public partial class TurnManager : Node
 		var plOne = Players[playerOne].PlayerClass;
 		var tempPointCards = plOne.PointCardList;
 		var tempModifierCards = plOne.ModifierCardList;
+
+		if (_playerCount == 1)
+		{
+			return;
+		}
 
 		if (playerTwo == -1)
 		{

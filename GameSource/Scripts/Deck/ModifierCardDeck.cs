@@ -5,7 +5,7 @@ using System.Linq;
 
 public partial class ModifierCardDeck
 {
-    List<ModifierCard> modifierCards;
+    public List<ModifierCard> modifierCards;
 
     [Export]
     public int Amount { get; set; } = 28;

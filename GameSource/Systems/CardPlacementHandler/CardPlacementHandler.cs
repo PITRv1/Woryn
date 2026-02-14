@@ -4,7 +4,7 @@ using System;
 public partial class CardPlacementHandler : Node3D
 {
 	[Export] public float gapAmount = -0.25f;
-	[Export] public Vector3 cardDisplayDirection = new Vector3(0,0,1);
+	[Export] public Vector3 cardDisplayDirection = new Vector3(0,1,1);
 	[Export] public bool curveCards = false;
 	[Export] public float rotationStart = 10.0f;
 	[Export] public float rotationAmount = -5.0f;
@@ -41,6 +41,7 @@ public partial class CardPlacementHandler : Node3D
 
 		var nextPos = 0f;
 		var nextRot = 0f;
+		var amount = 0;
 
 		foreach (var node in CardArray)
 		{
@@ -56,10 +57,15 @@ public partial class CardPlacementHandler : Node3D
 
 			} else
 			{
-				var calculatedPosition = GlobalPosition + new Vector3(nextPos, nextPos, nextPos) * cardDisplayDirection;
+				var calculatedPosition = GlobalPosition + new Vector3(nextPos, amount > 3 ? 20f : 0f, nextPos) * cardDisplayDirection;
 				node.GlobalPosition = calculatedPosition;
 
 				nextPos += gapAmount;
+				if (amount == 3)
+				{
+					nextPos = 0f;
+				}
+				amount++;
 			}
 		}
 	}

@@ -8,7 +8,7 @@ public partial class UiCommunicator : Node
 {
     [Export] public CardPlacementHandler pointCards {private set; get;}
     [Export] public CardPlacementHandler modifierCards {private set; get;}
-    [Export] CardPlacementHandler shopCards;
+    [Export] public CardPlacementHandler shopCards;
     [Export] MultiplayerPlayerClass multiplayerPlayer;
     [Export] PackedScene modifierCard3D;
     [Export] PlayerVisualController playerVisualController;
@@ -37,13 +37,17 @@ public partial class UiCommunicator : Node
         _currentPublicCards = packet.ItemTypes.ToList();
         _currentPrivateCards = packet.ModifierTypes.Select(ModifierCardTypeConverter.TypeToClass).ToList();
 
+        var index = 0;
         foreach (var modifierCard in _currentPrivateCards)
         {
             GD.Print("Modifier CARD: " + modifierCard);
             var modifierCard3DInstance = modifierCard3D.Instantiate<ModifierCard3d>();
             modifierCard3DInstance.isShopCard = true;
             modifierCard3DInstance.ModifierCard = modifierCard;
+            modifierCard3DInstance.modifCardPriceLabel.Text = packet.modifierPrices[index].ToString();
+            index++;
             shopCards.AddCard(modifierCard3DInstance);
+            
             await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
         }
     }

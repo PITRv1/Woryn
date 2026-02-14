@@ -78,9 +78,15 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
     {
         if (isShopCard)
         {
-            UiCommunicatorInstance.AddShopModifierCardToPlayerCards(ModifierCard);
-            UiCommunicatorInstance.modifierCards.RemoveCard(this);
-            // UiCommunicatorInstance.CloseShop();
+            var packet = new ShopItemBuy
+            {
+                SenderId = Global.multiplayerPlayerClass.Id,
+                CardIndex = GetParent().GetChildren().IndexOf(this),
+                IsPublicShop = 0
+            };
+
+		    Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
+
             return;
         }
 

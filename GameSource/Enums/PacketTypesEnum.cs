@@ -20,4 +20,5 @@ public enum PACKET_TYPES
     LOOK_AT_PACKET = 17,
     GOLD_CONVERT = 18,
     SHOP_READY = 19,
+    SHOP_ITEM_BUY = 20,
 }
