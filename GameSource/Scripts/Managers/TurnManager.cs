@@ -141,7 +141,14 @@ public partial class TurnManager : Node
 
 	private void FoldTurn()
 	{
-		Players[_lastPlayer].PlayerClass.Points += _throwDeckValue;
+		if (true) //nincsenek az itemeknek összekötve a playerrel, lk rohadtul nincsenek az itemekben semmi amivel valtoztatni lehetne
+		{
+			Players[_lastPlayer].PlayerClass.Points += _throwDeckValue;
+		}
+		else{
+			Players[_lastPlayer].PlayerClass.Points += _throwDeckValue;
+		}
+		
 		_throwDeckValue = 0;
 		_currentMaxValue = 0;
 
