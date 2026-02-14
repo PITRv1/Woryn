@@ -22,13 +22,16 @@ public partial class CardPlacementHandler : Node3D
 		ReorganizeCards();
 	}
 
-	public void RemoveCard(Node3D card)
+	public void RemoveCard(Node3D card, bool reorginize = true)
 	{
 		CardArray.Remove(card);
 		RemoveChild(card);
 		card.QueueFree();
 
-		ReorganizeCards();
+		if (reorginize)
+		{
+			ReorganizeCards();
+		}
 	}
 
 	private void ReorganizeCards()
@@ -57,7 +60,8 @@ public partial class CardPlacementHandler : Node3D
 
 			} else
 			{
-				var calculatedPosition = GlobalPosition + new Vector3(nextPos, amount > 3 ? 20f : 0f, nextPos) * cardDisplayDirection;
+				var calculatedPosition = GlobalPosition + new Vector3(nextPos, amount > 3 ? -0.15f : 0.65f, nextPos) * cardDisplayDirection;
+				// var calculatedPosition = GlobalPosition + new Vector3(nextPos, -0.5f, nextPos) * cardDisplayDirection;
 				node.GlobalPosition = calculatedPosition;
 
 				nextPos += gapAmount;

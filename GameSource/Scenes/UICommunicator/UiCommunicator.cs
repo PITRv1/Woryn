@@ -40,18 +40,29 @@ public partial class UiCommunicator : Node
 
         var index = 0;
         multiplayerPlayer._playerHud.StartCountdownTimer(10);
-        foreach (var modifierCard in _currentPrivateCards)
+        foreach (var item in _currentPublicCards)
         {
-            GD.Print("Modifier CARD: " + modifierCard);
-            var modifierCard3DInstance = modifierCard3D.Instantiate<ModifierCard3d>();
-            modifierCard3DInstance.isShopCard = true;
-            modifierCard3DInstance.ModifierCard = modifierCard;
-            modifierCard3DInstance.modifCardPriceLabel.Text = packet.modifierPrices[index].ToString();
+            var itemCard3D = modifierCard3D.Instantiate<ModifierCard3dShopVersion>();
+            itemCard3D.isShopCard = true;
+            itemCard3D.ItemType = item;
+            itemCard3D.PriceLabel.Text = packet.itemPrices[index].ToString();
             index++;
-            shopCards.AddCard(modifierCard3DInstance);
+            shopCards.AddCard(itemCard3D);
 
             await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
         }
+        // foreach (var modifierCard in _currentPrivateCards)
+        // {
+        //     GD.Print("Modifier CARD: " + modifierCard);
+        //     var modifierCard3DInstance = modifierCard3D.Instantiate<ModifierCard3d>();
+        //     modifierCard3DInstance.isShopCard = true;
+        //     modifierCard3DInstance.ModifierCard = modifierCard;
+        //     modifierCard3DInstance.modifCardPriceLabel.Text = packet.modifierPrices[index].ToString();
+        //     index++;
+        //     shopCards.AddCard(modifierCard3DInstance);
+
+        //     await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
+        // }
     }
 
     private void SendShopReadyPacket()
@@ -153,6 +164,7 @@ public partial class UiCommunicator : Node
         Random random = new();
         goldConverterController.OpenGoldConverter();
         goldConverterController.goldConverterUi.timerObject.Start();
+        multiplayerPlayer._playerHud.StopCountdownTimer();
 
         playerVisualController.moveCamera(1);
     }

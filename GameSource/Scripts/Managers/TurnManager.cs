@@ -58,7 +58,8 @@ public partial class TurnManager : Node
 
 		var turnInfoPacket = new SetupPacket
 		{
-			PlayerCount = _playerCount
+			PlayerCount = _playerCount,
+			StarterPlayer = _currentPlayer
 		};
 
 		BroadCast(turnInfoPacket);
@@ -94,7 +95,7 @@ public partial class TurnManager : Node
 	private void GetRandomPlayer()
 	{
 		var rng = new RandomNumberGenerator();
-		rng.RandiRange(0, _playerCount);
+		_currentPlayer = rng.RandiRange(0, _playerCount - 1);
 	}
 
 	private static int CalculateCardValue(int value, ModifierCard[] cards)
@@ -425,6 +426,15 @@ public partial class TurnManager : Node
 		
 		GD.Print("Server player cards count: " + currPlayer.PointCardList.Count);
 		GD.Print("Card index: " + packet.PointCardIndex);
+
+		if (packet.PointCardIndex > currPlayer.PointCardList.Count - 1)
+		{
+			GD.Print("Server player cards");
+			foreach (var card in Players[_currentPlayer].PlayerClass.PointCardList)
+				GD.Print(card.PointValue + " ");
+			foreach (var card in Players[_currentPlayer].PlayerClass.ModifierCardList)
+				GD.Print(card.ModifierType + " ");
+		}
 
 		if (currPlayer.PointCardList[packet.PointCardIndex].PointValue != pointCard.PointValue)
 		{

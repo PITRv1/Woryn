@@ -1210,13 +1210,14 @@ font_size = 53
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.9010963, -0.9423759, -1.7291548e-07)
 
 [node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 1777072742) index="26" unique_id=396461942]
-transform = Transform3D(-0.56740624, -0.7402278, 0.3607125, 0.17137364, 0.3223091, 0.9309928, -0.8054075, 0.5900676, -0.05602476, 0.2851943, 1.3643541, 0.35878485)
+transform = Transform3D(-0.56740606, -0.7543092, 0.33025524, 0.1713736, 0.28411186, 0.94335115, -0.8054076, 0.59185994, -0.031938195, 0.2851851, 1.3609186, 0.35875952)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)
 
 [node name="PointCards" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod/PositioningNode" unique_id=2052042597 node_paths=PackedStringArray("_uiCommunicator") instance=ExtResource("31_k5rf2")]
 transform = Transform3D(0.22696249, 0.06854959, 0.32216308, 0.31262726, 0.07833583, -0.23691285, -0.10369283, 0.38621822, -0.009127969, 0, 0, 0)
+cardDisplayDirection = Vector3(0, 0, 1)
 curveCards = true
 _uiCommunicator = NodePath("../../../../../../../../UICommunicator")
 

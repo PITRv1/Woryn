@@ -13,6 +13,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
     [Export] public Label3D modifCardPriceLabel;
 
     public bool isShopCard;
+    public bool ClickAble = true;
 
 	public bool isSelected = false;
     public UiCommunicator UiCommunicatorInstance { get; set; }
@@ -76,6 +77,10 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
 
     public void UseObject()
     {
+        if (!ClickAble)
+        {
+            return;
+        }
         if (isShopCard)
         {
             var packet = new ShopItemBuy

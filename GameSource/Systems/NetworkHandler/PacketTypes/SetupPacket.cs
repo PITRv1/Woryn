@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public partial class SetupPacket : PacketInfo
 {
 	public int PlayerCount;
+	public int StarterPlayer;
 	public SetupPacket()
 	{
 		PacketType = PACKET_TYPES.SETUP_PLACE;
@@ -18,6 +19,8 @@ public partial class SetupPacket : PacketInfo
 
 		data.AddRange(BitConverter.GetBytes(PlayerCount));
 
+		data.AddRange(BitConverter.GetBytes(StarterPlayer));
+
 		return data.ToArray();
     }
 
@@ -28,6 +31,9 @@ public partial class SetupPacket : PacketInfo
 		int index = 1;
 
 		packet.PlayerCount = BitConverter.ToInt32(data, index);
+		index += 4;
+
+		packet.StarterPlayer = BitConverter.ToInt32(data, index);
 
 		return packet;
 	}

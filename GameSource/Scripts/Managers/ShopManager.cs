@@ -40,6 +40,7 @@ public partial class ShopManager : Node
 		_shopTimer.Timeout += StopShop;
 		AddChild(_shopTimer);
 		Global.shopManagerInstance = this;
+		_shopTimer.Stop();
 	}
 
 	private void StopShop()
@@ -69,6 +70,7 @@ public partial class ShopManager : Node
 
 	public void GeneratePublicShop()
 	{
+		GD.Print("Generate shop called!!");
 		var rng = new RandomNumberGenerator();
 		var publicItems = new List<ItemType>();
 		var publicPrices = new List<int>();
@@ -127,12 +129,16 @@ public partial class ShopManager : Node
 		var card = ModifierCardTypeConverter.TypeToClass(_currentPrivateShopItemsPerPlayer[packet.SenderId][packet.CardIndex]);
 		var price = _currentPrivatePrices[packet.SenderId][packet.CardIndex];
 
+		GD.Print("Card index shop manger: " + packet.CardIndex);
+
 		if (player.Gold < price)
 		{
 			return;
 		}
 
 		player.ModifierCardDeck.modifierCards.Add(card);
+		_currentPrivateShopItemsPerPlayer[packet.SenderId].RemoveAt(packet.CardIndex);
+		_currentPrivatePrices[packet.SenderId].RemoveAt(packet.CardIndex);
 		player.Gold -= price;
 
 		Global.networkHandler.ClientPeers.TryGetValue(packet.SenderId, out var peer);

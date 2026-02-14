@@ -1,39 +1,45 @@
  using System;
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
 
 public partial class ModifierCard3dShopVersion : Node3D, ICard3D
 {
     [Export] Sprite3D sprite3D;
-    [Export] Godot.Collections.Array<CompressedTexture2D> modifierIcons;
+    [Export] Godot.Collections.Array<CompressedTexture2D> _icons;
     [Export] MeshInstance3D outlineMesh;
     [Export] AnimationPlayer animationPlayer;
     [Export] Area3D area3D;
     [Export] ToolTipInfo toolTipInfo;
-    [Export] Label3D modifCardValueLabel;
+    [Export] public Label3D PriceLabel;
 
     public bool isShopCard;
 
 	public bool isSelected = false;
     public UiCommunicator UiCommunicatorInstance { get; set; }
 
-    private ModifierCard _modifierCard;
-    public ModifierCard ModifierCard
+    private ItemType _itemType;
+    public ItemType ItemType
     {
-        get => _modifierCard;
+        get => _itemType;
         set
         {
-            _modifierCard = value;
+            _itemType = value;
 			if (sprite3D == null) return;
 
             SetIcon();
         }
     }
+    private static readonly List<ItemType> _items = Enum.GetValues(typeof(ItemType))
+		.Cast<ItemType>()
+		.Where(e => e.ToString().EndsWith("_PASSIVE"))
+		.ToList();
 
     StandardMaterial3D defaultMaterial;
 
     public override void _Ready()
     {
-        if(_modifierCard.IsCardModifier) modifCardValueLabel.Text = _modifierCard.Amount.ToString();
+        // if(_modifierCard.IsCardModifier) modifCardValueLabel.Text = _modifierCard.Amount.ToString();
 
         defaultMaterial = (StandardMaterial3D)outlineMesh.GetSurfaceOverrideMaterial(0).DuplicateDeep();
 
@@ -47,8 +53,8 @@ public partial class ModifierCard3dShopVersion : Node3D, ICard3D
 
 	public void SetIcon()
 	{
-        if (ModifierCard == null) return;
-		sprite3D.Texture = modifierIcons[(int)_modifierCard.ModifierType-1];
+        // if (ItemType == null) return;
+		sprite3D.Texture = _icons[(int)_items.IndexOf(_itemType)];
 	}
 
 	private void UpdateMeshColor(Color color)

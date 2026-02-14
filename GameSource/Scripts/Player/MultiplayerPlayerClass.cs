@@ -45,7 +45,7 @@ public partial class MultiplayerPlayerClass : Node
 	private void ShopBuy(byte[] data)
 	{
 		var packet = ShopItemBuy.CreateFromData(data);
-		uiCommunicator.shopCards.RemoveCard(uiCommunicator.shopCards.GetChild(packet.CardIndex) as Node3D);
+		uiCommunicator.shopCards.RemoveCard(uiCommunicator.shopCards.GetChild(packet.CardIndex) as Node3D, false);
 		PlayerClass.Gold = packet.GoldAmount;
 		_playerHud.UpdateGoldAmount(PlayerClass.Gold);
 	}
@@ -111,14 +111,9 @@ public partial class MultiplayerPlayerClass : Node
 			{ 3, 2 }
 		};
 		
-		GD.Print("Player count from setup: " + packet.PlayerCount);
-		// _playerVisualController.PlayerIndex = 3;
-		// _playerVisualController.SetColor();
-
 		for (var playerIndex = 0; playerIndex < packet.PlayerCount; playerIndex++)
 		{
 			if (playerIndex == Id) continue; // Skip myself
-			
 
 			var index = playerIndex - Id;
 			if (index < 0)
@@ -126,12 +121,8 @@ public partial class MultiplayerPlayerClass : Node
 				index = packet.PlayerCount + index;
 			}
 
-			GD.Print("My Id: " + Id + " other offset: " + index);
-			
 			var playerSeat = playerToSeat[index];
 			
-			GD.Print("My Id: " + Id + " other seat: " + playerSeat);
-        
 			var bud = _buddy.Instantiate() as PlayerVisualController;
 			bud.PlayerIndex = 2;
 			bud.SetColor();
@@ -146,6 +137,10 @@ public partial class MultiplayerPlayerClass : Node
 			var tableCenter = new Vector3(0, bud.GlobalPosition.Y, 0);
 			bud.LookAt(tableCenter, Vector3.Up);
 			bud.RotateY(Mathf.Pi);
+		}
+		if (packet.StarterPlayer == Id)
+		{
+			_playerHud.StartCountdownTimer();
 		}
 	}
 
