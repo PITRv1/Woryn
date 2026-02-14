@@ -141,13 +141,20 @@ public partial class TurnManager : Node
 
 	private void FoldTurn()
 	{
-		if (true) //nincsenek az itemeknek összekötve a playerrel, lk rohadtul nincsenek az itemekben semmi amivel valtoztatni lehetne
+		foreach(var player in Players.Keys)
 		{
-			Players[_lastPlayer].PlayerClass.Points += _throwDeckValue;
+			Players[player].PlayerClass.Points+= (int)Math.Round(_throwDeckValue*Players[player].PlayerClass.PlayerStats.PoliticanPassive);
+			_throwDeckValue -= (int)Math.Round(_throwDeckValue*Players[player].PlayerClass.PlayerStats.PoliticanPassive);
+		}
+		Random random = new Random();
+		if (random.NextDouble()*-1+1<=Players[_lastPlayer].PlayerClass.PlayerStats.GamblerPassive) 
+		{
+			Players[_lastPlayer].PlayerClass.Points += _throwDeckValue*2;
 		}
 		else{
-			Players[_lastPlayer].PlayerClass.Points += _throwDeckValue;
+		 	Players[_lastPlayer].PlayerClass.Points += _throwDeckValue;
 		}
+		
 		
 		_throwDeckValue = 0;
 		_currentMaxValue = 0;
