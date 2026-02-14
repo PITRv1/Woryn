@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dmhgsfd4md7ia" path="res://Assets/UI/InteractableObjects/Cards/ModifierCard3D/ModifierCard3dShopVersion.cs" id="1_f6jy7"]
 [ext_resource type="Texture2D" uid="uid://bi240hb61iche" path="res://Assets/ClassImages/BeerImage.png" id="2_x1yq5"]
 [ext_resource type="Texture2D" uid="uid://28f3fk700sgy" path="res://Assets/ClassImages/Dice.jpg" id="3_tyxfn"]
-[ext_resource type="Texture2D" uid="uid://dbipuqc6medaw" path="res://Assets/ClassImages/MonokliImage.png" id="4_4271l"]
+[ext_resource type="Texture2D" uid="uid://ces7k3iig6qon" path="res://Assets/ClassImages/monocle-desktop-wallpaper-clothing-accessories-vin-diesel.jpg" id="4_x1yq5"]
 [ext_resource type="Texture2D" uid="uid://bs0lqlv0hxrpe" path="res://Assets/ClassImages/Potion.png" id="5_y70wb"]
 [ext_resource type="PackedScene" uid="uid://chykv5bcqt0n0" path="res://UI/ToolTipMenu/ToolTipInfo.tscn" id="9_vbfk5"]
 
@@ -92,7 +92,7 @@ _data = {
 [node name="ModifierCard3D" type="Node3D" unique_id=1327020224 node_paths=PackedStringArray("sprite3D", "outlineMesh", "animationPlayer", "area3D", "toolTipInfo", "modifCardValueLabel")]
 script = ExtResource("1_f6jy7")
 sprite3D = NodePath("Visual/Sprite3D")
-modifierIcons = Array[CompressedTexture2D]([ExtResource("2_x1yq5"), ExtResource("3_tyxfn"), ExtResource("4_4271l"), ExtResource("5_y70wb")])
+modifierIcons = Array[CompressedTexture2D]([ExtResource("2_x1yq5"), ExtResource("3_tyxfn"), ExtResource("4_x1yq5"), ExtResource("5_y70wb")])
 outlineMesh = NodePath("Visual/Outline")
 animationPlayer = NodePath("AnimationPlayer")
 area3D = NodePath("Visual/Area3D")
