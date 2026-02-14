@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://otbcnctij7hd"]
+[gd_scene format=3 uid="uid://otbcnctij7hd"]
 
 [ext_resource type="PackedScene" uid="uid://bpnx6pgxf74lh" path="res://Assets/models/MainMenuNewCollection/mugModel.glb" id="1_ffm6l"]
 [ext_resource type="Material" uid="uid://cm8k4xqvydxap" path="res://Assets/Shaders/materials/glassMaterial.tres" id="2_7dm3b"]
@@ -25,21 +25,22 @@ height = 0.03
 radial_segments = 8
 rings = 2
 
-[node name="MugOfBeer" type="Node3D"]
+[node name="MugOfBeer" type="Node3D" unique_id=2102181847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.265, 0)
 
-[node name="mugModel" parent="." instance=ExtResource("1_ffm6l")]
+[node name="mugModel" parent="." unique_id=79099970 instance=ExtResource("1_ffm6l")]
 
-[node name="Cylinder" parent="mugModel" index="0"]
+[node name="Cylinder" parent="mugModel" index="0" unique_id=499217370]
 material_override = ExtResource("2_7dm3b")
 
-[node name="Cylinder_001" parent="mugModel" index="1"]
+[node name="Cylinder_001" parent="mugModel" index="1" unique_id=910979287]
 material_override = ExtResource("2_7dm3b")
 
-[node name="Beeer" type="MeshInstance3D" parent="."]
+[node name="Beeer" type="MeshInstance3D" parent="." unique_id=1237966787]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.121883035, 0)
 mesh = SubResource("CylinderMesh_7dm3b")
 
-[node name="Beeer2" type="MeshInstance3D" parent="."]
+[node name="Beeer2" type="MeshInstance3D" parent="." unique_id=681576272]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22642851, 0)
 mesh = SubResource("CylinderMesh_6no8l")
 
