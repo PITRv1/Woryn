@@ -8,9 +8,9 @@ public partial class PlayerHud : Control
 	[Export] RichTextLabel goldLabel;
 	[Export] RichTextLabel pointLabel;
 
-	public void StartCountdownTimer()
+	public void StartCountdownTimer(double time = 30)
 	{
-		timer.Start();
+		timer.Start(time);
 	}
 
 	public void StopCountdownTimer()

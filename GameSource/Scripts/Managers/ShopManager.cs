@@ -16,6 +16,8 @@ public partial class ShopManager : Node
 	private Dictionary<int, List<MODIFIER_TYPES>> _currentPrivateShopItemsPerPlayer;
 	private List<int> _currentPublicPrices;
 	private Dictionary<int, List<int>> _currentPrivatePrices;
+	private Timer _shopTimer;
+
 
 	private static readonly List<ItemType> WeakActives = Enum.GetValues(typeof(ItemType))
 		.Cast<ItemType>()
@@ -29,7 +31,24 @@ public partial class ShopManager : Node
 
 	public override void _Ready()
 	{
+		_shopTimer = new Timer
+		{
+			WaitTime = 10,
+			OneShot = true
+		};
+
+		_shopTimer.Timeout += StopShop;
+		AddChild(_shopTimer);
 		Global.shopManagerInstance = this;
+	}
+
+	private void StopShop()
+	{
+		var packet = new ClientReady();
+
+		Global.turnManagerInstance.BroadCast(packet);
+
+		Global.turnManagerInstance.Reset();
 	}
 
 	private static ItemType GetRandomWeakActive()
@@ -96,6 +115,8 @@ public partial class ShopManager : Node
 				packet.Send(peer);
 			}
 		}
+
+		_shopTimer.Start();
 	}
 
 	public void HandleShopItemBuy(byte[] data)
@@ -117,7 +138,9 @@ public partial class ShopManager : Node
 		Global.networkHandler.ClientPeers.TryGetValue(packet.SenderId, out var peer);
 		var returnPacket = new ShopItemBuy
 		{
-			CardIndex = packet.CardIndex
+			CardIndex = packet.CardIndex,
+			GoldAmount = player.Gold
+
 		};
 		if (peer != null)
 		{

@@ -46,6 +46,8 @@ public partial class MultiplayerPlayerClass : Node
 	{
 		var packet = ShopItemBuy.CreateFromData(data);
 		uiCommunicator.shopCards.RemoveCard(uiCommunicator.shopCards.GetChild(packet.CardIndex) as Node3D);
+		PlayerClass.Gold = packet.GoldAmount;
+		_playerHud.UpdateGoldAmount(PlayerClass.Gold);
 	}
 
 	private void SetGoldAmount(byte[] data)

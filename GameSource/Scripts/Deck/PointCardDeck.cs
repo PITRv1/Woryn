@@ -7,7 +7,7 @@ public partial class PointCardDeck
     public List<PointCard> pointCards;
 
     // private int MaxNumber = 9; For later use
-    private int NumberOfCards = 4;
+    private int NumberOfCards = 36;
     // private int NumberOfCards = 10;
     
     public PointCardDeck()

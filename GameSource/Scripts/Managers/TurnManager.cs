@@ -251,9 +251,27 @@ public partial class TurnManager : Node
 				packet.Send(peer);
 			}
 		}
+
+		_foldTimer.Stop();
 		
 		GoToShopScene();
 		return true;
+	}
+
+	public void Reset()
+	{
+		_pointCardDeck.GenerateDeck();
+		foreach (var player in Players.Keys)
+			DealCards(player);
+
+		var turnInfoPacket = new SetupPacket
+		{
+			PlayerCount = _playerCount
+		};
+
+		BroadCast(turnInfoPacket);
+
+		_foldTimer.Start();
 	}
 
 	private void SwitchToNextPlayer()
@@ -270,7 +288,7 @@ public partial class TurnManager : Node
 			if (_currentPlayer < 0)
 				_currentPlayer = _playerCount - 1;
 
-		} while(Players[_currentPlayer].PlayerClass.PointCardList.Count == 0);
+		} while (Players[_currentPlayer].PlayerClass.PointCardList.Count == 0);
 	}
 
 	private void StartNewTurn(List<ModifierCard> usedCards, int value)
@@ -519,7 +537,7 @@ public partial class TurnManager : Node
 		}
 	}
 
-	private void BroadCast(PacketInfo packet)
+	public void BroadCast(PacketInfo packet)
 	{
 		foreach (var player in Players.Keys)
 		{

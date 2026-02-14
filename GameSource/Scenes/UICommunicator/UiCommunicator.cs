@@ -26,18 +26,20 @@ public partial class UiCommunicator : Node
         Global.multiplayerClientGlobals.HandleRoundSuccess += HandleRoundSuccess;
         goldConverterController.goldConverterUi.timerObject.Timeout += SendShopReadyPacket;
         Global.multiplayerClientGlobals.ShopItems += HandleShopItems;
+        Global.multiplayerClientGlobals.StopShop += CloseShop;
     }
 
     private async void HandleShopItems(byte[] data)
     {
         var packet = ShopItems.CreateFromData(data);
-        
+
         GD.Print("ModifierCards: " + packet.ModifierTypes.Length);
 
         _currentPublicCards = packet.ItemTypes.ToList();
         _currentPrivateCards = packet.ModifierTypes.Select(ModifierCardTypeConverter.TypeToClass).ToList();
 
         var index = 0;
+        multiplayerPlayer._playerHud.StartCountdownTimer(10);
         foreach (var modifierCard in _currentPrivateCards)
         {
             GD.Print("Modifier CARD: " + modifierCard);
@@ -47,8 +49,8 @@ public partial class UiCommunicator : Node
             modifierCard3DInstance.modifCardPriceLabel.Text = packet.modifierPrices[index].ToString();
             index++;
             shopCards.AddCard(modifierCard3DInstance);
-            
-            await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+
+            await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
         }
     }
 
@@ -145,21 +147,12 @@ public partial class UiCommunicator : Node
         selectedModifierCard3Ds.Clear();
     }
 
-    public async void StartShop()
+    public void StartShop()
     {
         GD.Print("Shop started!");
         Random random = new();
         goldConverterController.OpenGoldConverter();
         goldConverterController.goldConverterUi.timerObject.Start();
-
-        // for (int i = 0; i < 4; i++)
-        // {
-        //     ModifierCard3d modifierCard3DInstance = modifierCard3D.Instantiate<ModifierCard3d>();
-        //     modifierCard3DInstance.isShopCard = true;
-        //     modifierCard3DInstance.ModifierCard = ModifierCardTypeConverter.TypeToClass((MODIFIER_TYPES)random.Next(1,7));
-        //     shopCards.AddCard(modifierCard3DInstance);
-        //     await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
-        // }
 
         playerVisualController.moveCamera(1);
     }
