@@ -1,7 +1,10 @@
 [gd_scene format=4 uid="uid://detq1008c6k8j"]
 
 [ext_resource type="Script" uid="uid://dmhgsfd4md7ia" path="res://Assets/UI/InteractableObjects/Cards/ModifierCard3D/ModifierCard3dShopVersion.cs" id="1_f6jy7"]
-[ext_resource type="Texture2D" uid="uid://th4u2inc60sp" path="res://UI/ClassSelection/wizard.png" id="8_5s4du"]
+[ext_resource type="Texture2D" uid="uid://bi240hb61iche" path="res://Assets/ClassImages/BeerImage.png" id="2_x1yq5"]
+[ext_resource type="Texture2D" uid="uid://28f3fk700sgy" path="res://Assets/ClassImages/Dice.jpg" id="3_tyxfn"]
+[ext_resource type="Texture2D" uid="uid://ces7k3iig6qon" path="res://Assets/ClassImages/monocle-desktop-wallpaper-clothing-accessories-vin-diesel.jpg" id="4_x1yq5"]
+[ext_resource type="Texture2D" uid="uid://bs0lqlv0hxrpe" path="res://Assets/ClassImages/Potion.png" id="5_y70wb"]
 [ext_resource type="PackedScene" uid="uid://chykv5bcqt0n0" path="res://UI/ToolTipMenu/ToolTipInfo.tscn" id="9_vbfk5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfkyt"]
@@ -86,8 +89,15 @@ _data = {
 &"RESET": SubResource("Animation_1rcg8")
 }
 
-[node name="ModifierCard3D" type="Node3D" unique_id=1327020224]
+[node name="ModifierCard3D" type="Node3D" unique_id=1327020224 node_paths=PackedStringArray("sprite3D", "outlineMesh", "animationPlayer", "area3D", "toolTipInfo", "modifCardValueLabel")]
 script = ExtResource("1_f6jy7")
+sprite3D = NodePath("Visual/Sprite3D")
+modifierIcons = Array[CompressedTexture2D]([ExtResource("2_x1yq5"), ExtResource("3_tyxfn"), ExtResource("4_x1yq5"), ExtResource("5_y70wb")])
+outlineMesh = NodePath("Visual/Outline")
+animationPlayer = NodePath("AnimationPlayer")
+area3D = NodePath("Visual/Area3D")
+toolTipInfo = NodePath("Visual/ToolTipInfo")
+modifCardValueLabel = NodePath("Visual/ValueLabel")
 
 [node name="Visual" type="Node3D" parent="." unique_id=1149214977]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.14, 0)
@@ -113,7 +123,7 @@ transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 0, 0.001)
 shaded = true
 double_sided = false
 texture_filter = 2
-texture = ExtResource("8_5s4du")
+texture = ExtResource("2_x1yq5")
 
 [node name="ValueLabel" type="Label3D" parent="Visual" unique_id=995114807]
 transform = Transform3D(0.9999992, 0, 0, 0, 0.99999946, -7.105425e-15, 0, -1.7763568e-14, 0.99999964, 0.004309952, 0.33544004, 0.0657818)

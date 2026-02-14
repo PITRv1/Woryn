@@ -75,7 +75,7 @@ public partial class PointCard3d : Node3D, InteractableObjectInterface, ICard3D
 			UiCommunicatorInstance.DeselectPointCard();
 			UpdateMeshColor();
 		}
-		else {
+		else if(UiCommunicatorInstance.selectedPointCard3D == null){
 			UiCommunicatorInstance.SelectPointCard(this);
 			UpdateMeshColor(Colors.Purple);
 		}
