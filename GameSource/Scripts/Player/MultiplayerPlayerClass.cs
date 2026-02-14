@@ -239,6 +239,8 @@ public partial class MultiplayerPlayerClass : Node
 
 	public void ResetContainers()
 	{
+		uiCommunicator.selectedPointCard3D = null;
+		uiCommunicator.selectedModifierCard3Ds.Clear();
 		var count = _modifierCards.GetChildCount();
 		for (var i = 0; i < count; i++)
 		{

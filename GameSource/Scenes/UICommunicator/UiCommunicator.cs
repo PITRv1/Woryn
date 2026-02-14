@@ -17,7 +17,7 @@ public partial class UiCommunicator : Node
     private List<ModifierCard> _currentPrivateCards = new List<ModifierCard>();
     private List<ItemType> _currentPublicCards = new List<ItemType>();
 
-    public PointCard3d selectedPointCard3D {private set; get;}
+    public PointCard3d selectedPointCard3D { set; get; }
     public List<ModifierCard3d> selectedModifierCard3Ds {private set; get;} = new();
     public bool PlayerSelectionMode = false;
 

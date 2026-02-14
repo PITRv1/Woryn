@@ -38,6 +38,9 @@ public class PlayerClass
         SetPointCardDeck(packet.PointCards);
         SetModifierCards(packet.ModifierCards);
         Parent.ResetContainers();
+
+        ChosenPointCard = null;
+        ChosenModifierCards.Clear();
         
         GD.Print(Parent.Id + " currentCards: ");
         foreach (var card in packet.PointCards)
