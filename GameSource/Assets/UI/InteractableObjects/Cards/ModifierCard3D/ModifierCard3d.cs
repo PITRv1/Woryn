@@ -10,6 +10,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
     [Export] Area3D area3D;
     [Export] ToolTipInfo toolTipInfo;
     [Export] Label3D modifCardValueLabel;
+    [Export] public Label3D modifCardPriceLabel;
 
     public bool isShopCard;
 
@@ -34,6 +35,15 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
     public override void _Ready()
     {
         if(_modifierCard.IsCardModifier) modifCardValueLabel.Text = _modifierCard.Amount.ToString();
+        if(isShopCard)
+        {
+            modifCardPriceLabel.Show();
+        }
+        else
+        {
+            modifCardPriceLabel.Hide();
+        }
+            
 
         defaultMaterial = (StandardMaterial3D)outlineMesh.GetSurfaceOverrideMaterial(0).DuplicateDeep();
 
