@@ -31,31 +31,31 @@ public partial class ModifierCardDeck
         // }
         modifierCards.Clear();
         //
-        // Random rng = new Random();
-        //
-        // List<MODIFIER_TYPES> allTypes = Enum.GetValues(typeof(MODIFIER_TYPES))
-        //     .Cast<MODIFIER_TYPES>()
-        //     .Where(t => t != MODIFIER_TYPES.NONE)
-        //     .ToList();
-        //
-        // for (int i = 0; i < Amount; i++)
-        // {
-        //     MODIFIER_TYPES randomType = allTypes[rng.Next(allTypes.Count)];
-        //
-        //     ModifierCard modifierCard = ModifierCardTypeConverter.TypeToClass(randomType);
-        //
-        //     modifierCard.RandomizeProperties();
-        //
-        //     modifierCards.Add(modifierCard);
-        // }
+        Random rng = new Random();
+        
+        List<MODIFIER_TYPES> allTypes = Enum.GetValues(typeof(MODIFIER_TYPES))
+            .Cast<MODIFIER_TYPES>()
+            .Where(t => t != MODIFIER_TYPES.NONE)
+            .ToList();
+        
+        for (int i = 0; i < Amount; i++)
+        {
+            MODIFIER_TYPES randomType = allTypes[rng.Next(allTypes.Count)];
+        
+            ModifierCard modifierCard = ModifierCardTypeConverter.TypeToClass(randomType);
+        
+            modifierCard.RandomizeProperties();
+        
+            modifierCards.Add(modifierCard);
+        }
 
         // modifierCards.Add(new ModifierCardMultiplier());
         // modifierCards.Add(new ModifierCardAddition());
 
-        modifierCards.Add(new ModifierCardSkip());
-        modifierCards.Add(new ModifierCardReversePlay());
-        modifierCards.Add(new ModifierCardNextPlayer());
-        modifierCards.Add(new ModifierCardChangeDeck());
+        // modifierCards.Add(new ModifierCardSkip());
+        // modifierCards.Add(new ModifierCardReversePlay());
+        // modifierCards.Add(new ModifierCardNextPlayer());
+        // modifierCards.Add(new ModifierCardChangeDeck());
     }
 
     public ModifierCard[] PullCards(int count)
