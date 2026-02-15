@@ -5,11 +5,6 @@ using System.Linq;
 
 public partial class ShopManager : Node
 {
-	// generate modif card
-	// generate fortnite battlepass balls (passive spells)
-	// remove from ui (both modif and spells)
-	// add card to turn peterventory
-
 	private int _amountOfPublicItems = 4;
 	private int _amountOfPrivateItems = 8;
 	private List<ItemType> _currentPublicShopItems;
@@ -121,10 +116,8 @@ public partial class ShopManager : Node
 		_shopTimer.Start();
 	}
 
-	public void HandleShopItemBuy(byte[] data)
+	private void PrivateShopItem(ShopItemBuy packet)
 	{
-		var packet = ShopItemBuy.CreateFromData(data);
-
 		var player = Global.turnManagerInstance.Players[packet.SenderId].PlayerClass;
 		var card = ModifierCardTypeConverter.TypeToClass(_currentPrivateShopItemsPerPlayer[packet.SenderId][packet.CardIndex]);
 		var price = _currentPrivatePrices[packet.SenderId][packet.CardIndex];
@@ -146,13 +139,52 @@ public partial class ShopManager : Node
 		{
 			CardIndex = packet.CardIndex,
 			GoldAmount = player.Gold
-
 		};
 		if (peer != null)
 		{
 			returnPacket.Send(peer);
 		}
+	}
 
+	private void PublicShopItem(ShopItemBuy packet)
+	{
+		var player = Global.turnManagerInstance.Players[packet.SenderId].PlayerClass;
+		var item = _currentPublicShopItems[packet.CardIndex];
+		var price = _currentPublicPrices[packet.CardIndex];
+		
+		if (player.Gold < price)
+		{
+			return;
+		}
+		
+		player.UpgradeStats(item);
+		_currentPublicShopItems.RemoveAt(packet.CardIndex);
+		_currentPublicPrices.RemoveAt(packet.CardIndex);
+		player.Gold -= price;
+		
+		Global.networkHandler.ClientPeers.TryGetValue(packet.SenderId, out var peer);
+		var returnPacket = new ShopItemBuy
+		{
+			CardIndex = packet.CardIndex,
+			GoldAmount = player.Gold
+		};
+		if (peer != null)
+		{
+			returnPacket.Send(peer);
+		}
+	}
+
+	public void HandleShopItemBuy(byte[] data)
+	{
+		var packet = ShopItemBuy.CreateFromData(data);
+
+		if (packet.IsPublicShop == 0)
+		{
+			PrivateShopItem(packet);
+			return;
+		}
+
+		PublicShopItem(packet);
 	}
 	
 }

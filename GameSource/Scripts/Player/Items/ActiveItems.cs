@@ -24,7 +24,7 @@ public static class ItemTypeConverter
 		{
 			ItemType.ALCHEMIST_WEAK_ACTIVE => new AlchemistWeakActive(),
 			ItemType.GAMBLER_WEAK_ACTIVE => new AlchemistWeakActive(),
-			ItemType.MAIDEN_WEAK_ACTIVE => new AlchemistWeakActive(),
+			// ItemType.MAIDEN_WEAK_ACTIVE => new AlchemistWeakActive(),
 			ItemType.POLITICIAN_WEAK_ACTIVE => new AlchemistWeakActive(),
 	
 			_ => null
@@ -55,12 +55,15 @@ public enum ItemType
 	ALCHEMIST_ACTIVE,
 	ALCHEMIST_WEAK_ACTIVE,
 	ALCHEMIST_PASSIVE,
+	// DRUNKARD_ACTIVE,
+	// DRUNKARD_WEAK_ACTIVE,
+	// DRUNKARD_PASSIVE,
 	MAIDEN_ACTIVE,
 	MAIDEN_WEAK_ACTIVE,
 	MAIDEN_PASSIVE,
-	CLAIRVOYANT_ACTIVE,
-	CLAIRVOYANT_WEAK_ACTIVE,
-	CLAIRVOYANT_PASSIVE,
+	// CLAIRVOYANT_ACTIVE,
+	// CLAIRVOYANT_WEAK_ACTIVE,
+	// CLAIRVOYANT_PASSIVE,
 }
 
 public interface IActiveItem

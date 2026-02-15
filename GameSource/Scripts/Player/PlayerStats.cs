@@ -80,5 +80,11 @@ public class PlayerStats
 			_clairvoyantLevel++;
 		}
 	}
+	
+	// Drunkard
+	public void UpgradeDrunkardLevel()
+	{
+		
+	}
 
 }

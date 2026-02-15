@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ces7k3iig6qon"
-path="res://.godot/imported/monocle-desktop-wallpaper-clothing-accessories-vin-diesel.jpg-2d0d454764a2b975ae855ea5b76cff09.ctex"
+uid="uid://bn76myci140xj"
+path="res://.godot/imported/noble.jpg-20b8b1648ba3df345d493e20f92f631e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ClassImages/monocle-desktop-wallpaper-clothing-accessories-vin-diesel.jpg"
-dest_files=["res://.godot/imported/monocle-desktop-wallpaper-clothing-accessories-vin-diesel.jpg-2d0d454764a2b975ae855ea5b76cff09.ctex"]
+source_file="res://Assets/ClassImages/noble.jpg"
+dest_files=["res://.godot/imported/noble.jpg-20b8b1648ba3df345d493e20f92f631e.ctex"]
 
 [params]
 

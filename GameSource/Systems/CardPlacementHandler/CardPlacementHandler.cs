@@ -10,6 +10,7 @@ public partial class CardPlacementHandler : Node3D
 	[Export] public float rotationAmount = -5.0f;
 	[Export] public float angularRange = 180.0f;
 	[Export] public float gapDecreasion = .75f;
+	[Export] private bool _isShopHolder = false;
 
 	public Godot.Collections.Array<Node3D> CardArray { get; private set; } = new();
 	[Export] private UiCommunicator _uiCommunicator;
@@ -60,8 +61,12 @@ public partial class CardPlacementHandler : Node3D
 
 			} else
 			{
-				var calculatedPosition = GlobalPosition + new Vector3(nextPos, amount > 3 ? -0.15f : 0.65f, nextPos) * cardDisplayDirection;
-				// var calculatedPosition = GlobalPosition + new Vector3(nextPos, -0.5f, nextPos) * cardDisplayDirection;
+				var yValue = 0f;
+				if (_isShopHolder)
+				{
+					yValue = amount > 3 ? -0.15f : 0.65f;
+				}
+				var calculatedPosition = GlobalPosition + new Vector3(nextPos, yValue, nextPos) * cardDisplayDirection;
 				node.GlobalPosition = calculatedPosition;
 
 				nextPos += gapAmount;

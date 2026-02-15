@@ -54,7 +54,8 @@ public partial class ModifierCard3dShopVersion : Node3D, ICard3D
 	public void SetIcon()
 	{
         // if (ItemType == null) return;
-		sprite3D.Texture = _icons[(int)_items.IndexOf(_itemType)];
+        GD.Print("Sprite Index: " + _items.IndexOf(_itemType));
+		sprite3D.Texture = _icons[_items.IndexOf(_itemType)];
 	}
 
 	private void UpdateMeshColor(Color color)
@@ -67,6 +68,20 @@ public partial class ModifierCard3dShopVersion : Node3D, ICard3D
     private void UpdateMeshColor()
 	{
 		outlineMesh.SetSurfaceOverrideMaterial(0, defaultMaterial);
+	}
+
+	public void UseObject()
+	{
+		var packet = new ShopItemBuy
+		{
+			SenderId = Global.multiplayerPlayerClass.Id,
+			CardIndex = GetParent().GetChildren().IndexOf(this),
+			IsPublicShop = 1
+		};
+
+		Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
+
+		return;
 	}
 
 

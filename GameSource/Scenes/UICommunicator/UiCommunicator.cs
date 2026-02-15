@@ -11,6 +11,7 @@ public partial class UiCommunicator : Node
     [Export] public CardPlacementHandler shopCards;
     [Export] MultiplayerPlayerClass multiplayerPlayer;
     [Export] PackedScene modifierCard3D;
+    [Export] private PackedScene _itemCard;
     [Export] PlayerVisualController playerVisualController;
     [Export] GoldConverterController goldConverterController;
 
@@ -42,7 +43,7 @@ public partial class UiCommunicator : Node
         multiplayerPlayer._playerHud.StartCountdownTimer(10);
         foreach (var item in _currentPublicCards)
         {
-            var itemCard3D = modifierCard3D.Instantiate<ModifierCard3dShopVersion>();
+            var itemCard3D = _itemCard.Instantiate<ModifierCard3dShopVersion>();
             itemCard3D.isShopCard = true;
             itemCard3D.ItemType = item;
             itemCard3D.PriceLabel.Text = packet.itemPrices[index].ToString();

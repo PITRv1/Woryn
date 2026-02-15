@@ -30,6 +30,28 @@ public class PlayerClass
         PlayerStats = new PlayerStats();
     }
 
+    public void UpgradeStats(ItemType item)
+    {
+        switch (item)
+        {
+            case ItemType.POLITICIAN_PASSIVE:
+                PlayerStats.UpgradePoliticanLevel();
+                break;
+            case ItemType.GAMBLER_PASSIVE:
+                PlayerStats.UpgradeGamblerLevel();
+                break;
+            case ItemType.ALCHEMIST_PASSIVE:
+                PlayerStats.UpgradeAlchemistLevel();
+                break;
+            case ItemType.MAIDEN_PASSIVE:
+                PlayerStats.UpgradeMaidenLevel();
+                break;
+            // case ItemType.DRUNKARD_PASSIVE:
+            //     PlayerStats.UpgradeDrunkardLevel();
+            //     break;
+        }
+    }
+
     public void HandleDeckSwap(byte[] data)
     {
         GD.Print("Jello HALLO");
