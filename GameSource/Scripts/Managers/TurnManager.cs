@@ -142,9 +142,10 @@ public partial class TurnManager : Node
 
 	private void FoldTurn()
 	{
+		int ogValue = _throwDeckValue;
 		foreach(var player in Players.Keys)
 		{
-			Players[player].PlayerClass.Points+= (int)Math.Round(_throwDeckValue*Players[player].PlayerClass.PlayerStats.PoliticanPassive);
+			Players[player].PlayerClass.Points+= (int)Math.Round(ogValue*Players[player].PlayerClass.PlayerStats.PoliticanPassive);
 			_throwDeckValue -= (int)Math.Round(_throwDeckValue*Players[player].PlayerClass.PlayerStats.PoliticanPassive);
 		}
 		Random random = new Random();
