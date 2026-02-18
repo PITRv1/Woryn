@@ -131,6 +131,7 @@ effect_callback_type = 4
 needs_motion_vectors = false
 needs_normal_roughness = false
 script = ExtResource("3_ef0mh")
+down_scaling = 2.0
 metadata/_custom_type_script = "uid://ca0pr2up27plw"
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_ef0mh"]
@@ -3333,7 +3334,7 @@ mesh = SubResource("QuadMesh_1h20l")
 [node name="curtain" parent="EnvironmentDetails/Models/BarDetails" unique_id=152688818 instance=ExtResource("42_4dtra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.04108, 1.0017983, -51.2725)
 
-[node name="Plane" parent="EnvironmentDetails/Models/BarDetails/curtain" index="0" unique_id=1639387656]
+[node name="Plane" parent="EnvironmentDetails/Models/BarDetails/curtain" index="0" unique_id=1238605715]
 transform = Transform3D(1.5577803, 0, 0, 0, 0, -2.370239, 0, 1.730112, 0, -1.391571, 2.4554563, -0.16410828)
 material_override = SubResource("StandardMaterial3D_tcx4x")
 
