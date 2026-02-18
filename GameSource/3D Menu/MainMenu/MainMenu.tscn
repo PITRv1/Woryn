@@ -3379,10 +3379,10 @@ omni_attenuation = 1.971
 [node name="Sketchfab_Scene4" parent="EnvironmentDetails/Models/BarLights" unique_id=1853098258 instance=ExtResource("41_674dm")]
 transform = Transform3D(0.006735303, 0, 0, 0, 0.006735303, 0, 0, 0, 0.006735303, 140.2793, 5.5856137, -49.69245)
 
-[node name="light_base_0" parent="EnvironmentDetails/Models/BarLights/Sketchfab_Scene4/Sketchfab_model/lamp_fbx/RootNode/light" index="0"]
+[node name="light_base_0" parent="EnvironmentDetails/Models/BarLights/Sketchfab_Scene4/Sketchfab_model/lamp_fbx/RootNode/light" parent_id_path=PackedInt32Array(1853098258, 2131846275) index="0" unique_id=752346035]
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="EnvironmentDetails/Models/BarLights/Sketchfab_Scene4/Sketchfab_model/lamp_fbx/RootNode/light" index="1" unique_id=17521764]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EnvironmentDetails/Models/BarLights/Sketchfab_Scene4/Sketchfab_model/lamp_fbx/RootNode/light" parent_id_path=PackedInt32Array(1853098258, 2131846275) index="1" unique_id=17521764]
 transform = Transform3D(1.0000005, 0, 0, 0, -4.3711466e-08, 1.0000005, 0, -1.0000005, -4.3711466e-08, 0, 0, 0.37521267)
 mesh = SubResource("CylinderMesh_iukcp")
 
@@ -5427,11 +5427,10 @@ shape = SubResource("ConvexPolygonShape3D_0hrf3")
 
 [node name="Cameras" type="Node3D" parent="MovingElements" unique_id=84097108]
 
-[node name="CameraController" type="Node" parent="MovingElements/Cameras" unique_id=89374239 node_paths=PackedStringArray("animatedCamera", "mainMenuUi", "focusPoints")]
+[node name="CameraController" type="Node" parent="MovingElements/Cameras" unique_id=89374239 node_paths=PackedStringArray("animatedCamera", "mainMenuUi")]
 script = ExtResource("34_pkg1t")
 animatedCamera = NodePath("MainMenuCam")
 mainMenuUi = NodePath("../../../MainUI")
-focusPoints = [NodePath("CameraFocusPoints/MainPoint"), NodePath("CameraFocusPoints/SettingsPoint"), NodePath("CameraFocusPoints/QuitPoint"), NodePath("CameraFocusPoints/SinglePoint"), NodePath("CameraFocusPoints/CreditsPoint"), NodePath("CameraFocusPoints/MultiPoint")]
 
 [node name="MainMenuCam" type="Camera3D" parent="MovingElements/Cameras/CameraController" unique_id=52640180]
 transform = Transform3D(1, 0, 0, 0, 0.98388505, -0.17880222, 0, 0.17880222, 0.98388505, 140.26405, 2.3798974, -34.304573)
@@ -5580,8 +5579,8 @@ gui_embed_subwindows = true
 size = Vector2i(960, 512)
 
 [node name="Multiplayer" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI/CreditsMeshInstance3D/SubViewport" unique_id=180983133 node_paths=PackedStringArray("mainUI") instance=ExtResource("50_u4fps")]
-mainUI = NodePath("../../../../../../../../../MainUI")
 optionGroup = SubResource("ButtonGroup_tcx4x")
+mainUI = NodePath("../../../../../../../../../MainUI")
 
 [node name="IntroCam" type="Camera3D" parent="MovingElements/Cameras" unique_id=705683571]
 transform = Transform3D(-1, -2.4683073e-08, -8.386589e-08, 0, 0.959314, -0.28234145, 8.742278e-08, -0.28234145, -0.959314, -0.315, 1.1, -18.965)
