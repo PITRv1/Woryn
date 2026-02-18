@@ -6,7 +6,7 @@ public partial class ShopItemBuy : PacketInfo
 {
     public int SenderId;
     public int CardIndex;
-    public int GoldAmount;
+    public float GoldAmount;
     public byte IsPublicShop;
     public ItemType Item;
     
@@ -45,7 +45,7 @@ public partial class ShopItemBuy : PacketInfo
         packet.CardIndex = BitConverter.ToInt32(data, index);
         index += 4;
 
-        packet.GoldAmount = BitConverter.ToInt32(data, index);
+        packet.GoldAmount = BitConverter.ToSingle(data, index);
         index += 4;
         
         packet.IsPublicShop = data[index++];
