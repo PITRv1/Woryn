@@ -10,10 +10,13 @@ public class PlayerClass
     public List<ModifierCard> ModifierCardList { get; set; }
     public PlayerStats PlayerStats { get; set; }
     private readonly List<IActiveItem> _currentItems = new List<IActiveItem>();
+    public CharacterClass Class;
+    public IActiveItem Active;
     public ModifierCardDeck ModifierCardDeck { get; }
     public MultiplayerPlayerClass Parent;
     public int Points { get; set; } = 0;
     public float Gold { get; set; } = 0f;
+    public int PrisonTime = 0;
     
 
     public PointCard ChosenPointCard { get; set; }
@@ -51,6 +54,51 @@ public class PlayerClass
                 break;
         }
     }
+
+    public void SelectClass(CharacterClass cClass)
+    {
+        Class = cClass;
+
+        switch (cClass)
+        {
+            case CharacterClass.POLITICAN:
+                Active = new PoliticanActive();
+                PlayerStats.MaxPoliticanLevel();
+                break;
+            case CharacterClass.GAMBLER:
+                Active = new GamblerActive();
+                PlayerStats.MaxGamblerLevel();
+                break;
+            case CharacterClass.ALCHEMIST:
+                Active = new AlchemistActive();
+                PlayerStats.MaxAlchemistLevel();
+                break;
+            case CharacterClass.MAIDEN:
+                Active = new MaidenActive();
+                PlayerStats.MaxMaidenLevel();
+                break;
+            case CharacterClass.DRUNKARD:
+                Active = new DrunkardActive();
+                PlayerStats.UpgradeDrunkardLevel();
+                break;
+        }
+    }
+
+    public void ResetMaidenPassive()
+    {
+        PlayerStats.MadienCurrRoundPassive = PlayerStats.MaidenPassive;
+    }
+
+    public bool CanMaidenBeImmune()
+	{
+		if (PlayerStats.MadienCurrRoundPassive > 0)
+		{
+			PlayerStats.MadienCurrRoundPassive -= 1;
+			return true;
+		}
+
+		return false;
+	}
 
     public void HandleDeckSwap(byte[] data)
     {

@@ -63,6 +63,11 @@ public partial class TurnManager : Node
 			StarterPlayer = _currentPlayer
 		};
 
+		foreach (var player in Players.Keys)
+		{
+			Players[player].PlayerClass.ResetMaidenPassive();
+		}
+
 		BroadCast(turnInfoPacket);
 	}
 
@@ -140,24 +145,36 @@ public partial class TurnManager : Node
 
 	private void FoldTurn()
 	{
-		int ogValue = _throwDeckValue;
-		foreach(var player in Players.Keys)
+		var originalValue = _throwDeckValue;
+		if (Players[_lastPlayer].PlayerClass.CanMaidenBeImmune())
 		{
-			Players[player].PlayerClass.Points+= (int)Math.Round(ogValue*Players[player].PlayerClass.PlayerStats.PoliticanPassive);
-			_throwDeckValue -= (int)Math.Round(_throwDeckValue*Players[player].PlayerClass.PlayerStats.PoliticanPassive);
+			foreach(var player in Players.Keys)
+			{
+				Players[player].PlayerClass.Points += (int)Math.Round(originalValue * Players[player].PlayerClass.PlayerStats.PoliticanPassive);
+				_throwDeckValue -= (int)Math.Round(_throwDeckValue * Players[player].PlayerClass.PlayerStats.PoliticanPassive);
+			}
 		}
 		Random random = new Random();
-		if (random.NextDouble()*-1+1<=Players[_lastPlayer].PlayerClass.PlayerStats.GamblerPassive) 
+		var chance = random.NextDouble()*-1+1;
+		if (chance <= Players[_lastPlayer].PlayerClass.PlayerStats.GamblerPassive) 
 		{
+			GD.Print("Gambler passive hit");
 			Players[_lastPlayer].PlayerClass.Points += _throwDeckValue*2;
 		}
-		else{
+		else
+		{
+			GD.Print("Gambler didn't passive hit");
 		 	Players[_lastPlayer].PlayerClass.Points += _throwDeckValue;
 		}
 		
 		
 		_throwDeckValue = 0;
 		_currentMaxValue = 0;
+
+		if (Players[_currentPlayer].PlayerClass.PlayerStats.DrunkardLevel >= 1)
+		{
+			SwitchToNextPlayer();
+		}
 
 		foreach (var player in Players.Keys)
 		{
@@ -298,7 +315,15 @@ public partial class TurnManager : Node
 	{
 		do
 		{
-			_currentPlayer += _roundDirection + (_roundDirection * _skipAmount);
+			_currentPlayer += _roundDirection;
+			for (int i = 0; i < _skipAmount; i++)
+			{
+				if (Players[_currentPlayer].PlayerClass.CanMaidenBeImmune())
+				{
+					break;
+				}
+				_currentPlayer += _roundDirection;
+			}
 
 			_skipAmount = 0;
 

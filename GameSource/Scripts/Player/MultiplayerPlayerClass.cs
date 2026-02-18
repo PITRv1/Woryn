@@ -211,7 +211,7 @@ public partial class MultiplayerPlayerClass : Node
 
 	private void PlayAbilityRequest()
 	{
-		
+		PlayerClass.Active.PlayAbility();
 	}
 
 	public void SendFoldRequest()

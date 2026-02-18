@@ -16,9 +16,10 @@ public partial class ShopManager : Node
 	private Timer _shopTimer;
 
 
-	private static readonly List<ItemType> WeakActives = Enum.GetValues(typeof(ItemType))
+	private static readonly List<ItemType> Items = Enum.GetValues(typeof(ItemType))
 		.Cast<ItemType>()
 		.Where(e => e.ToString().EndsWith("_PASSIVE"))
+		.Where(e => e.ToString() != "DRUNKARD_PASSIVE")
 		.ToList();
 
 	private static readonly List<MODIFIER_TYPES> Modifiers = Enum.GetValues(typeof(MODIFIER_TYPES))
@@ -67,7 +68,7 @@ public partial class ShopManager : Node
 		var rng = new RandomNumberGenerator();
 		rng.Randomize();
 
-		return WeakActives[rng.RandiRange(0, WeakActives.Count - 1)];
+		return Items[rng.RandiRange(0, Items.Count - 1)];
 	}
 
 	private static MODIFIER_TYPES GetRandomModifier()

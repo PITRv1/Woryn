@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class ClairvoyantActive : IActiveItem
+public partial class DrunkardActive : IActiveItem
 {
 	public bool MultiUse { get; set; }
 	public int Amount { get; set; }

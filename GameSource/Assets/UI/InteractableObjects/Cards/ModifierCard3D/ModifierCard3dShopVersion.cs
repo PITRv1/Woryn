@@ -35,6 +35,7 @@ public partial class ModifierCard3dShopVersion : Node3D, ICard3D
     private static readonly List<ItemType> _items = Enum.GetValues(typeof(ItemType))
 		.Cast<ItemType>()
 		.Where(e => e.ToString().EndsWith("_PASSIVE"))
+		.Where(e => e.ToString() != "DRUNKARD_PASSIVE")
 		.ToList();
 
     StandardMaterial3D defaultMaterial;

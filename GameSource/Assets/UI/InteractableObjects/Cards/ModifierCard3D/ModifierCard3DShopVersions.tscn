@@ -146,7 +146,7 @@ _data = {
 [node name="ModifierCard3D" type="Node3D" unique_id=1327020224 node_paths=PackedStringArray("sprite3D", "outlineMesh", "animationPlayer", "area3D", "toolTipInfo", "PriceLabel", "expEffect")]
 script = ExtResource("1_f6jy7")
 sprite3D = NodePath("Visual/Sprite3D")
-_icons = Array[CompressedTexture2D]([ExtResource("2_tyxfn"), ExtResource("3_tyxfn"), ExtResource("5_y70wb"), ExtResource("2_x1yq5"), ExtResource("6_tyxfn")])
+_icons = Array[CompressedTexture2D]([ExtResource("2_tyxfn"), ExtResource("3_tyxfn"), ExtResource("5_y70wb"), ExtResource("6_tyxfn"), ExtResource("2_x1yq5")])
 outlineMesh = NodePath("Visual/Outline")
 animationPlayer = NodePath("AnimationPlayer")
 area3D = NodePath("Visual/Area3D")
