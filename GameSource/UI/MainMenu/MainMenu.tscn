@@ -57,45 +57,13 @@ vertical_alignment = 1
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/Buttons" unique_id=551062747]
-custom_minimum_size = Vector2(1000, 300)
-layout_mode = 2
-
-[node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control" unique_id=841585021]
-custom_minimum_size = Vector2(200, 300)
-layout_mode = 0
-offset_left = 132.00002
-offset_top = 77.999985
-offset_right = 332.00006
-offset_bottom = 378.0
-rotation = -0.34906584
-theme = ExtResource("2_xnnuh")
-
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Quit" unique_id=552771309]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Quit/CenterContainer" unique_id=1959260555]
-custom_minimum_size = Vector2(150, 150)
-layout_mode = 2
-texture = ExtResource("3_8x0bb")
-
-[node name="Singleplayer" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control" unique_id=1946065905]
+[node name="Singleplayer" type="Button" parent="HBoxContainer/VBoxContainer/Buttons" unique_id=1946065905]
 visible = false
 custom_minimum_size = Vector2(200, 300)
-layout_mode = 0
-offset_left = 212.0
-offset_top = 32.0
-offset_right = 412.0
-offset_bottom = 332.0
-rotation = -0.17453292
+layout_mode = 2
 theme = ExtResource("4_bhcae")
 
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Singleplayer" unique_id=1976120213]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Singleplayer" unique_id=1976120213]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,42 +71,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Singleplayer/CenterContainer" unique_id=2010938956]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Singleplayer/CenterContainer" unique_id=2010938956]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 texture = ExtResource("3_a712v")
 
-[node name="Credits" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control" unique_id=163840605]
-custom_minimum_size = Vector2(200, 300)
-layout_mode = 0
-offset_left = 697.0
-offset_top = 1.9999924
-offset_right = 897.0
-offset_bottom = 302.0
-rotation = 0.34906584
-theme = ExtResource("4_djmc4")
-
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Credits" unique_id=42010494]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Credits/CenterContainer" unique_id=361440143]
-custom_minimum_size = Vector2(150, 150)
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/Buttons" unique_id=551062747]
+custom_minimum_size = Vector2(1000, 300)
 layout_mode = 2
-texture = ExtResource("6_32jca")
 
 [node name="Settings" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control" unique_id=798731753]
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 0
-offset_left = 517.00006
-offset_top = -29.000023
-offset_right = 717.00006
-offset_bottom = 270.99997
-rotation = 0.17453292
+offset_left = 201.99997
+offset_top = 51.0
+offset_right = 401.99997
+offset_bottom = 351.0
+rotation = -0.2617994
 theme = ExtResource("4_djmc4")
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Settings" unique_id=1817274610]
@@ -154,14 +103,39 @@ custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 texture = ExtResource("5_jhcbk")
 
-[node name="Multiplayer" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control" unique_id=1228705434]
+[node name="Credits" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control" unique_id=163840605]
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 0
-offset_left = 316.00003
-offset_top = 8.0
-offset_right = 516.0
-offset_bottom = 308.0
-rotation = -0.17453292
+offset_left = 608.00006
+offset_right = 808.00006
+offset_bottom = 300.0
+rotation = 0.17453292
+theme = ExtResource("4_djmc4")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Credits" unique_id=42010494]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Credits/CenterContainer" unique_id=361440143]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("6_32jca")
+
+[node name="Multiplayer" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control" unique_id=1228705434]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("4_bhcae")
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Multiplayer" unique_id=890758211]
@@ -177,8 +151,35 @@ custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 texture = ExtResource("4_1dhmk")
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/Control/Quit" to="." method="MenuSelected" binds= ["quit"]]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/Control/Singleplayer" to="." method="MenuSelected" binds= ["single"]]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/Control/Credits" to="." method="MenuSelected" binds= ["credits"]]
+[node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control" unique_id=841585021]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.5
+offset_top = 50.0
+offset_right = 72.5
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_xnnuh")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Quit" unique_id=514981734]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Quit/CenterContainer" unique_id=454239388]
+layout_mode = 2
+texture = ExtResource("3_8x0bb")
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/Singleplayer" to="." method="MenuSelected" binds= ["single"]]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/Control/Settings" to="." method="MenuSelected" binds= ["settings"]]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/Control/Credits" to="." method="MenuSelected" binds= ["credits"]]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/Control/Multiplayer" to="." method="MenuSelected" binds= ["multi"]]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/Control/Quit" to="." method="MenuSelected" binds= ["quit"]]

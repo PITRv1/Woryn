@@ -26,7 +26,8 @@ texture_margin_right = 17.0
 texture_margin_bottom = 17.0
 
 [resource]
-Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/constants/outline_size = 12
 Button/fonts/font = ExtResource("2_v6s6e")
 Button/styles/hover = SubResource("StyleBoxTexture_pecf1")
 Button/styles/normal = SubResource("StyleBoxTexture_htkgl")
