@@ -49,6 +49,7 @@ public partial class UiCommunicator : Node
             itemCard3D.PriceLabel.Text = packet.itemPrices[index].ToString();
             index++;
             shopCards.AddCard(itemCard3D);
+            itemCard3D.EmitEffect();
 
             await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
         }
