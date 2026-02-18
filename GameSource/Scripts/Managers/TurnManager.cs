@@ -18,6 +18,7 @@ public partial class TurnManager : Node
 	private bool _throwDeckPulled;
 	private Timer _foldTimer;
 	private int _shopReady = 0;
+	private int _roundsToEnd = 3;
 
 	public override void _Ready()
 	{
@@ -234,7 +235,7 @@ public partial class TurnManager : Node
 		Global.shopManagerInstance ??= new ShopManager();
 
 		var packet = new ShopSceneChange();
-		
+		_currentRound++;		
 		BroadCast(packet);
 	}
 
@@ -269,8 +270,14 @@ public partial class TurnManager : Node
 		}
 
 		_foldTimer.Stop();
-		
-		GoToShopScene();
+		if (_currentRound < _roundsToEnd)
+		{
+			GoToShopScene();
+		}
+		else
+		{
+			GD.Print("It's over da");
+		}
 		return true;
 	}
 
@@ -503,7 +510,7 @@ public partial class TurnManager : Node
 		}
 
 		var rawGoldAmount = packet.PointAmount * player.PlayerStats.PointsToGoldRatio;
-		var gold = (int)Math.Ceiling(rawGoldAmount);
+		var gold = rawGoldAmount;
 		
 		player.Gold += gold;
 		player.Points -= packet.PointAmount;

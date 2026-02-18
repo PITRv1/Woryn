@@ -6,7 +6,7 @@ public class GoldPacket : PacketInfo
 {
 	public int SenderId;
 	public int PointAmount;
-	public int GoldAmount = 0;
+	public float GoldAmount = 0f;
 
 	public GoldPacket()
 	{
@@ -39,7 +39,7 @@ public class GoldPacket : PacketInfo
 		packet.PointAmount = BitConverter.ToInt32(data, index);
 		index += 4;
 		
-		packet.GoldAmount = BitConverter.ToInt32(data, index);
+		packet.GoldAmount = BitConverter.ToSingle(data, index);
 
 		return packet;
 	}
