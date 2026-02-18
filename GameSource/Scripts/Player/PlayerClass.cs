@@ -13,7 +13,7 @@ public class PlayerClass
     public ModifierCardDeck ModifierCardDeck { get; }
     public MultiplayerPlayerClass Parent;
     public int Points { get; set; } = 0;
-    public int Gold { get; set; } = 0;
+    public float Gold { get; set; } = 0f;
     
 
     public PointCard ChosenPointCard { get; set; }

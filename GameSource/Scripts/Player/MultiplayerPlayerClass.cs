@@ -55,7 +55,7 @@ public partial class MultiplayerPlayerClass : Node
 		}
 		uiCommunicator.shopCards.RemoveCard(uiCommunicator.shopCards.GetChild(packet.CardIndex) as Node3D, false);
 		PlayerClass.Gold = packet.GoldAmount;
-		_playerHud.UpdateGoldAmount(PlayerClass.Gold);
+		_playerHud.UpdateGoldAmount((int)PlayerClass.Gold);
 	}
 
 	private void SetGoldAmount(byte[] data)
@@ -64,7 +64,7 @@ public partial class MultiplayerPlayerClass : Node
 		PlayerClass.Gold += packet.GoldAmount;
 		PlayerClass.Points -= packet.PointAmount;
 		_playerHud.UpdatePointsAmount(PlayerClass.Points);
-		_playerHud.UpdateGoldAmount(PlayerClass.Gold);
+		_playerHud.UpdateGoldAmount((int)PlayerClass.Gold);
 	}
 
 	private void SetTargetPosition(byte[] data)
