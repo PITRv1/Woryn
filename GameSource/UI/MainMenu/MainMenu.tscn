@@ -1,15 +1,263 @@
 [gd_scene format=3 uid="uid://cegma4u4cusqc"]
 
 [ext_resource type="Script" uid="uid://cq2t244ktorto" path="res://UI/MainMenu/MainMenu.cs" id="1_jhcbk"]
-[ext_resource type="Theme" uid="uid://bt07x5jrqiv30" path="res://Assets/UI/Themes/CardButton/CardButtonRed.tres" id="2_xnnuh"]
 [ext_resource type="Texture2D" uid="uid://d28lkhbn4fuv5" path="res://Assets/UI/Images/Icons/Quit.png" id="3_8x0bb"]
 [ext_resource type="Texture2D" uid="uid://5abyhfdohxmw" path="res://Assets/UI/Images/Icons/SinglePlayer.png" id="3_a712v"]
-[ext_resource type="Texture2D" uid="uid://dw16x8qpwq13f" path="res://Assets/UI/Images/Icons/Multiplayer.png" id="4_1dhmk"]
 [ext_resource type="Theme" uid="uid://dvdmwt6fgnxqg" path="res://Assets/UI/Themes/CardButton/CardButtonGreen.tres" id="4_bhcae"]
-[ext_resource type="Theme" uid="uid://dmklwetq8ngsw" path="res://Assets/UI/Themes/CardButton/CardButtonBlue.tres" id="4_djmc4"]
-[ext_resource type="Texture2D" uid="uid://b8tf2366a3h44" path="res://Assets/UI/Images/Icons/Settings.png" id="5_jhcbk"]
+[ext_resource type="Theme" uid="uid://bcxy1oqhov4h6" path="res://Assets/UI/Themes/Main/MedievalCardTheme.tres" id="5_srm2j"]
 [ext_resource type="Texture2D" uid="uid://b2k7b065cbe3p" path="res://Assets/UI/Images/Icons/Credits.png" id="6_32jca"]
+[ext_resource type="Texture2D" uid="uid://cg72bp5d3qckw" path="res://Assets/UI/Images/Icons/IconRecolors/Settings.png" id="6_srm2j"]
+[ext_resource type="Shader" uid="uid://bnbhs7lumlf3r" path="res://Assets/Shaders/materials/canvasOutline.gdshader" id="8_32jca"]
+[ext_resource type="Texture2D" uid="uid://dbjpr1jwh37mc" path="res://Assets/UI/Images/Icons/IconRecolors/Multiplayer.png" id="9_srm2j"]
 [ext_resource type="Theme" uid="uid://i7vf1nfeexfk" path="res://Assets/UI/Themes/Main/UIThemeRed.tres" id="10_eoxer"]
+
+[sub_resource type="Shader" id="Shader_eoxer"]
+code = "shader_type canvas_item;
+
+// Outline color.
+uniform vec4 color: source_color = vec4(1.0);
+// Outline thickness.
+uniform float thickness: hint_range(0.0, 100.0) = 1.0;
+// Used to compensate for alpha values.
+uniform float tolerance: hint_range(0.0, 0.999) = 0.0;
+// If on will draw at diagonals. Off is mainly for pixel art but you do you.
+uniform bool diagonals = true;
+// If diagonals are checked will check for half pixels so it rounds the outline a bit more.
+uniform bool rounded = true;
+
+// Compensate UV for outline.
+void vertex() {
+	VERTEX = vec2(VERTEX.x * (1.0 + TEXTURE_PIXEL_SIZE.x * thickness * 2.0), VERTEX.y * (1.0 + TEXTURE_PIXEL_SIZE.y * thickness * 2.0));
+}
+
+// Checks a fragment for the edge of an uv.
+bool border(vec2 uv) {
+	vec2 uvBorder = abs(uv - vec2(0.5));
+	return max(step(0.5, uvBorder.x), step(0.5, uvBorder.y)) > 0.0;
+}
+
+// Gets alpha of given fragment if not near the edge.
+float get_alpha(sampler2D tex, vec2 uv){
+	float res = 0.0;
+	if (!border(uv)) {
+		res = texture(tex, uv).a;
+	}
+	return res;
+}
+
+// Checks for neighboring pixels.
+float in_range(vec2 size, sampler2D tex, vec2 uv) {
+	float res = 0.0;
+	for (float i = -1.0; i < 2.0; i += 2.0) {
+		res += get_alpha(tex, uv + vec2(i * size.x, 0.0));
+		res += get_alpha(tex, uv + vec2(0.0, i * size.y));
+		if (diagonals) {
+			for (float j = -1.0; j < 2.0; j += 2.0) {
+				res += get_alpha(tex, uv + vec2(i * size.x, j * size.y));
+				if (rounded) {
+					res += get_alpha(tex, uv + vec2(i * size.x, j * size.y * 0.5));
+				}
+			}
+		}
+	}
+	return res;
+}
+
+void fragment() {
+	if (thickness > 0.0) {
+		// Correct image size to for outline in frame.
+		vec2 uv = UV;
+		uv -= vec2(0.5);
+		float edge = TEXTURE_PIXEL_SIZE.x * thickness * 2.0;
+		uv = uv + uv * edge;
+		uv += vec2(0.5);
+		
+		// Apply outline.
+		vec4 newColor = texture(TEXTURE, uv);
+		if (newColor.a == 0.0 || border(uv)) {
+			float outline = in_range(TEXTURE_PIXEL_SIZE * thickness, TEXTURE, uv);
+			vec4 finalColor = step(1.0 - tolerance, outline) * color;
+			newColor = finalColor;
+		}	
+		COLOR = newColor;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdl18"]
+shader = SubResource("Shader_eoxer")
+shader_parameter/color = Color(0.21176471, 0.09411765, 0.050980393, 1)
+shader_parameter/thickness = 0.670000031825
+shader_parameter/tolerance = 0.0
+shader_parameter/diagonals = true
+shader_parameter/rounded = true
+
+[sub_resource type="Shader" id="Shader_wdl18"]
+code = "shader_type canvas_item;
+
+// Outline color.
+uniform vec4 color: source_color = vec4(1.0);
+// Outline thickness.
+uniform float thickness: hint_range(0.0, 100.0) = 1.0;
+// Used to compensate for alpha values.
+uniform float tolerance: hint_range(0.0, 0.999) = 0.0;
+// If on will draw at diagonals. Off is mainly for pixel art but you do you.
+uniform bool diagonals = true;
+// If diagonals are checked will check for half pixels so it rounds the outline a bit more.
+uniform bool rounded = true;
+
+// Compensate UV for outline.
+void vertex() {
+	VERTEX = vec2(VERTEX.x * (1.0 + TEXTURE_PIXEL_SIZE.x * thickness * 2.0), VERTEX.y * (1.0 + TEXTURE_PIXEL_SIZE.y * thickness * 2.0));
+}
+
+// Checks a fragment for the edge of an uv.
+bool border(vec2 uv) {
+	vec2 uvBorder = abs(uv - vec2(0.5));
+	return max(step(0.5, uvBorder.x), step(0.5, uvBorder.y)) > 0.0;
+}
+
+// Gets alpha of given fragment if not near the edge.
+float get_alpha(sampler2D tex, vec2 uv){
+	float res = 0.0;
+	if (!border(uv)) {
+		res = texture(tex, uv).a;
+	}
+	return res;
+}
+
+// Checks for neighboring pixels.
+float in_range(vec2 size, sampler2D tex, vec2 uv) {
+	float res = 0.0;
+	for (float i = -1.0; i < 2.0; i += 2.0) {
+		res += get_alpha(tex, uv + vec2(i * size.x, 0.0));
+		res += get_alpha(tex, uv + vec2(0.0, i * size.y));
+		if (diagonals) {
+			for (float j = -1.0; j < 2.0; j += 2.0) {
+				res += get_alpha(tex, uv + vec2(i * size.x, j * size.y));
+				if (rounded) {
+					res += get_alpha(tex, uv + vec2(i * size.x, j * size.y * 0.5));
+				}
+			}
+		}
+	}
+	return res;
+}
+
+void fragment() {
+	if (thickness > 0.0) {
+		// Correct image size to for outline in frame.
+		vec2 uv = UV;
+		uv -= vec2(0.5);
+		float edge = TEXTURE_PIXEL_SIZE.x * thickness * 2.0;
+		uv = uv + uv * edge;
+		uv += vec2(0.5);
+		
+		// Apply outline.
+		vec4 newColor = texture(TEXTURE, uv);
+		if (newColor.a == 0.0 || border(uv)) {
+			float outline = in_range(TEXTURE_PIXEL_SIZE * thickness, TEXTURE, uv);
+			vec4 finalColor = step(1.0 - tolerance, outline) * color;
+			newColor = finalColor;
+		}	
+		COLOR = newColor;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_migmm"]
+shader = SubResource("Shader_wdl18")
+shader_parameter/color = Color(0.21176471, 0.09411765, 0.050980393, 1)
+shader_parameter/thickness = 1.0
+shader_parameter/tolerance = 0.0
+shader_parameter/diagonals = true
+shader_parameter/rounded = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jt3i8"]
+shader = ExtResource("8_32jca")
+shader_parameter/color = Color(0.21176471, 0.09411765, 0.050980393, 1)
+shader_parameter/thickness = 0.670000031825
+shader_parameter/tolerance = 0.0
+shader_parameter/diagonals = true
+shader_parameter/rounded = true
+
+[sub_resource type="Shader" id="Shader_q33u5"]
+code = "shader_type canvas_item;
+
+// Outline color.
+uniform vec4 color: source_color = vec4(1.0);
+// Outline thickness.
+uniform float thickness: hint_range(0.0, 100.0) = 1.0;
+// Used to compensate for alpha values.
+uniform float tolerance: hint_range(0.0, 0.999) = 0.0;
+// If on will draw at diagonals. Off is mainly for pixel art but you do you.
+uniform bool diagonals = true;
+// If diagonals are checked will check for half pixels so it rounds the outline a bit more.
+uniform bool rounded = true;
+
+// Compensate UV for outline.
+void vertex() {
+	VERTEX = vec2(VERTEX.x * (1.0 + TEXTURE_PIXEL_SIZE.x * thickness * 2.0), VERTEX.y * (1.0 + TEXTURE_PIXEL_SIZE.y * thickness * 2.0));
+}
+
+// Checks a fragment for the edge of an uv.
+bool border(vec2 uv) {
+	vec2 uvBorder = abs(uv - vec2(0.5));
+	return max(step(0.5, uvBorder.x), step(0.5, uvBorder.y)) > 0.0;
+}
+
+// Gets alpha of given fragment if not near the edge.
+float get_alpha(sampler2D tex, vec2 uv){
+	float res = 0.0;
+	if (!border(uv)) {
+		res = texture(tex, uv).a;
+	}
+	return res;
+}
+
+// Checks for neighboring pixels.
+float in_range(vec2 size, sampler2D tex, vec2 uv) {
+	float res = 0.0;
+	for (float i = -1.0; i < 2.0; i += 2.0) {
+		res += get_alpha(tex, uv + vec2(i * size.x, 0.0));
+		res += get_alpha(tex, uv + vec2(0.0, i * size.y));
+		if (diagonals) {
+			for (float j = -1.0; j < 2.0; j += 2.0) {
+				res += get_alpha(tex, uv + vec2(i * size.x, j * size.y));
+				if (rounded) {
+					res += get_alpha(tex, uv + vec2(i * size.x, j * size.y * 0.5));
+				}
+			}
+		}
+	}
+	return res;
+}
+
+void fragment() {
+	if (thickness > 0.0) {
+		// Correct image size to for outline in frame.
+		vec2 uv = UV;
+		uv -= vec2(0.5);
+		float edge = TEXTURE_PIXEL_SIZE.x * thickness * 2.0;
+		uv = uv + uv * edge;
+		uv += vec2(0.5);
+		
+		// Apply outline.
+		vec4 newColor = texture(TEXTURE, uv);
+		if (newColor.a == 0.0 || border(uv)) {
+			float outline = in_range(TEXTURE_PIXEL_SIZE * thickness, TEXTURE, uv);
+			vec4 finalColor = step(1.0 - tolerance, outline) * color;
+			newColor = finalColor;
+		}	
+		COLOR = newColor;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hvgpy"]
+shader = SubResource("Shader_q33u5")
+shader_parameter/color = Color(0.21176471, 0.09411765, 0.050980393, 1)
+shader_parameter/thickness = 1.806000085785
+shader_parameter/tolerance = 0.0
+shader_parameter/diagonals = true
+shader_parameter/rounded = true
 
 [node name="MainMenu" type="Control" unique_id=518604661]
 texture_filter = 1
@@ -88,7 +336,7 @@ offset_top = 51.0
 offset_right = 401.99997
 offset_bottom = 351.0
 rotation = -0.2617994
-theme = ExtResource("4_djmc4")
+theme = ExtResource("5_srm2j")
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Settings" unique_id=1817274610]
 layout_mode = 1
@@ -99,9 +347,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Settings/CenterContainer" unique_id=1649649222]
+material = SubResource("ShaderMaterial_wdl18")
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-texture = ExtResource("5_jhcbk")
+texture = ExtResource("6_srm2j")
 
 [node name="Credits" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control" unique_id=163840605]
 custom_minimum_size = Vector2(200, 300)
@@ -110,7 +359,7 @@ offset_left = 608.00006
 offset_right = 808.00006
 offset_bottom = 300.0
 rotation = 0.17453292
-theme = ExtResource("4_djmc4")
+theme = ExtResource("5_srm2j")
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Credits" unique_id=42010494]
 layout_mode = 1
@@ -121,6 +370,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Credits/CenterContainer" unique_id=361440143]
+material = SubResource("ShaderMaterial_migmm")
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 texture = ExtResource("6_32jca")
@@ -132,11 +382,11 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_right = 100.0
+offset_left = -115.0
+offset_right = 115.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_bhcae")
+theme = ExtResource("5_srm2j")
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Multiplayer" unique_id=890758211]
 layout_mode = 1
@@ -147,9 +397,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Multiplayer/CenterContainer" unique_id=229238415]
+material = SubResource("ShaderMaterial_jt3i8")
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-texture = ExtResource("4_1dhmk")
+texture = ExtResource("9_srm2j")
 
 [node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/Control" unique_id=841585021]
 layout_mode = 1
@@ -164,7 +415,7 @@ offset_right = 72.5
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("2_xnnuh")
+theme = ExtResource("5_srm2j")
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/Buttons/Control/Quit" unique_id=514981734]
 layout_mode = 1
@@ -175,6 +426,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Buttons/Control/Quit/CenterContainer" unique_id=454239388]
+material = SubResource("ShaderMaterial_hvgpy")
 layout_mode = 2
 texture = ExtResource("3_8x0bb")
 

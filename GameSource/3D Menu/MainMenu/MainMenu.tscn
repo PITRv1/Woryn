@@ -2829,7 +2829,6 @@ viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoi
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bv4a5"]
 resource_local_to_scene = true
 transparency = 1
-shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_fxvwu")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ym0o4"]
@@ -5768,7 +5767,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.26405, 2.6648974, -30.045
 transform = Transform3D(1, 0, 0, 0, 0.98388505, -0.17880222, 0, 0.17880222, 0.98388505, 0, -0.2850001, -4.2586)
 
 [node name="MainMenu3DUI" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint" unique_id=1556553460 node_paths=PackedStringArray("meshInstance", "subViewport") instance=ExtResource("43_xspun")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16645813, -0.36199975, -1.9940033)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166, -0.221, -1.041)
 meshInstance = NodePath("MainMeshInstance3D")
 subViewport = NodePath("MainMeshInstance3D/SubViewport")
 
@@ -5788,6 +5787,12 @@ size_2d_override = Vector2i(951, 440)
 
 [node name="MainMenu" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI/MainMeshInstance3D/SubViewport" unique_id=1260616562 node_paths=PackedStringArray("mainUI") instance=ExtResource("44_u6m4i")]
 mainUI = NodePath("../../../../../../../../../MainUI")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MainPoint/MainMenu3DUI" unique_id=203434836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15835571, 0.061803102, 0.8629303)
+light_color = Color(1, 0.77033335, 0.74, 1)
+spot_range = 1.13767
+spot_angle = 43.964737
 
 [node name="SettingsPoint" type="Marker3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints" unique_id=181983306]
 transform = Transform3D(-4.371139e-08, -0.8890412, 0.4578274, 0, 0.4578274, 0.8890412, -1, 3.886122e-08, -2.001227e-08, -4.3485565, 0.22076988, -10.136965)
