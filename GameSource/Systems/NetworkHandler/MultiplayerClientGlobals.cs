@@ -41,6 +41,8 @@ public partial class MultiplayerClientGlobals : Node
     [Signal]
     public delegate void HandleShopBuyEventHandler(byte[] data);
     [Signal]
+    public delegate void GoToPrivateShopEventHandler();
+    [Signal]
     public delegate void ShowPrivateShopEventHandler();
     [Signal]
     public delegate void StopShopEventHandler();
@@ -105,7 +107,7 @@ public partial class MultiplayerClientGlobals : Node
                 var packet = ProgressShopPhasePacket.CreateFromData(data);
                 if (packet.ShopPhase == 0)
                 {
-                    EmitSignal(SignalName.ShopItems);
+                    EmitSignal(SignalName.GoToPrivateShop);
                 }
                 else
                 {

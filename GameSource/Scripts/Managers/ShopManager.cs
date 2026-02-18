@@ -1,3 +1,4 @@
+
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -45,9 +46,20 @@ public partial class ShopManager : Node
 			ShopPhase = _shopPhase
 		};
 
-		Global.turnManagerInstance.BroadCast(packet);
+		_shopPhase++;
 
-		Global.turnManagerInstance.Reset();
+		if (_shopPhase == 1)
+		{
+			_shopTimer.Start(10);
+		}
+
+		if (_shopPhase >= 2)
+		{
+			_shopPhase = 0;
+			Global.turnManagerInstance.Reset();
+		}
+
+		Global.turnManagerInstance.BroadCast(packet);
 	}
 
 	private static ItemType GetRandomWeakActive()

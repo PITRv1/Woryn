@@ -16,6 +16,7 @@ public partial class UiCommunicator : Node
     [Export] GoldConverterController goldConverterController;
 
     private List<ModifierCard> _currentPrivateCards = new List<ModifierCard>();
+    private List<int> _currentPrivatePrices = new List<int>();
     private List<ItemType> _currentPublicCards = new List<ItemType>();
 
     public PointCard3d selectedPointCard3D { set; get; }
@@ -27,6 +28,7 @@ public partial class UiCommunicator : Node
         Global.multiplayerClientGlobals.HandleRoundSuccess += HandleRoundSuccess;
         goldConverterController.goldConverterUi.timerObject.Timeout += SendShopReadyPacket;
         Global.multiplayerClientGlobals.ShopItems += HandleShopItems;
+        Global.multiplayerClientGlobals.GoToPrivateShop += ShowPrivateShop;
         Global.multiplayerClientGlobals.StopShop += CloseShop;
     }
 
@@ -38,6 +40,7 @@ public partial class UiCommunicator : Node
 
         _currentPublicCards = packet.ItemTypes.ToList();
         _currentPrivateCards = packet.ModifierTypes.Select(ModifierCardTypeConverter.TypeToClass).ToList();
+        _currentPrivatePrices = packet.modifierPrices;
 
         var index = 0;
         multiplayerPlayer._playerHud.StartCountdownTimer(10);
@@ -52,18 +55,29 @@ public partial class UiCommunicator : Node
 
             await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
         }
-        // foreach (var modifierCard in _currentPrivateCards)
-        // {
-        //     GD.Print("Modifier CARD: " + modifierCard);
-        //     var modifierCard3DInstance = modifierCard3D.Instantiate<ModifierCard3d>();
-        //     modifierCard3DInstance.isShopCard = true;
-        //     modifierCard3DInstance.ModifierCard = modifierCard;
-        //     modifierCard3DInstance.modifCardPriceLabel.Text = packet.modifierPrices[index].ToString();
-        //     index++;
-        //     shopCards.AddCard(modifierCard3DInstance);
+        
+    }
 
-        //     await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
-        // }
+    private async void ShowPrivateShop()
+    {
+        foreach (Node3D n in shopCards.GetChildren())
+        {
+            shopCards.RemoveCard(n);
+        }
+        var index = 0;
+        multiplayerPlayer._playerHud.StartCountdownTimer(10);
+        foreach (var modifierCard in _currentPrivateCards)
+        {
+            GD.Print("Modifier CARD: " + modifierCard);
+            var modifierCard3DInstance = modifierCard3D.Instantiate<ModifierCard3d>();
+            modifierCard3DInstance.isShopCard = true;
+            modifierCard3DInstance.ModifierCard = modifierCard;
+            modifierCard3DInstance.modifCardPriceLabel.Text = _currentPrivatePrices[index].ToString();
+            index++;
+            shopCards.AddCard(modifierCard3DInstance);
+
+            await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
+        }
     }
 
     private void SendShopReadyPacket()
@@ -175,7 +189,7 @@ public partial class UiCommunicator : Node
         foreach (Node3D modifCard in shopCards.GetChildren())
         {
             shopCards.RemoveCard(modifCard);
-            await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+            await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
         }
 
         playerVisualController.moveCamera(0);
