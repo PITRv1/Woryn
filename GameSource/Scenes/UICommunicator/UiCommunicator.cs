@@ -52,6 +52,7 @@ public partial class UiCommunicator : Node
             itemCard3D.PriceLabel.Text = packet.itemPrices[index].ToString();
             index++;
             shopCards.AddCard(itemCard3D);
+            itemCard3D.EmitEffect();
 
             await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
         }
@@ -63,6 +64,9 @@ public partial class UiCommunicator : Node
         foreach (Node3D n in shopCards.GetChildren())
         {
             shopCards.RemoveCard(n);
+
+            var card = n as ModifierCard3dShopVersion;
+            card.EmitEffect();
         }
         var index = 0;
         multiplayerPlayer._playerHud.StartCountdownTimer(10);
@@ -75,6 +79,8 @@ public partial class UiCommunicator : Node
             modifierCard3DInstance.modifCardPriceLabel.Text = _currentPrivatePrices[index].ToString();
             index++;
             shopCards.AddCard(modifierCard3DInstance);
+            modifierCard3DInstance.EmitEffect();
+
 
             await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
         }
@@ -189,6 +195,9 @@ public partial class UiCommunicator : Node
         foreach (Node3D modifCard in shopCards.GetChildren())
         {
             shopCards.RemoveCard(modifCard);
+            
+
+
             await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
         }
 

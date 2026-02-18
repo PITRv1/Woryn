@@ -11,6 +11,7 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
     [Export] ToolTipInfo toolTipInfo;
     [Export] Label3D modifCardValueLabel;
     [Export] public Label3D modifCardPriceLabel;
+    [Export] public GpuParticles3D expEffect;
 
     public bool isShopCard;
     public bool ClickAble = true;
@@ -61,6 +62,12 @@ public partial class ModifierCard3d : Node3D, InteractableObjectInterface, ICard
         if (ModifierCard == null) return;
 		sprite3D.Texture = modifierIcons[(int)_modifierCard.ModifierType-1];
 	}
+    
+    public void EmitEffect()
+    {
+        expEffect.Emitting = true;
+    }
+
 
 	private void UpdateMeshColor(Color color)
 	{

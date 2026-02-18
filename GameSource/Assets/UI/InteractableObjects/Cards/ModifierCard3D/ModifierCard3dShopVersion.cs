@@ -12,6 +12,8 @@ public partial class ModifierCard3dShopVersion : Node3D, ICard3D
     [Export] Area3D area3D;
     [Export] ToolTipInfo toolTipInfo;
     [Export] public Label3D PriceLabel;
+    [Export] public GpuParticles3D expEffect;
+
 
     public bool isShopCard;
 
@@ -56,6 +58,11 @@ public partial class ModifierCard3dShopVersion : Node3D, ICard3D
         // if (ItemType == null) return;
 		sprite3D.Texture = _icons[_items.IndexOf(_itemType)];
 	}
+
+    public void EmitEffect()
+    {
+        expEffect.Emitting = true;
+    }
 
 	private void UpdateMeshColor(Color color)
 	{

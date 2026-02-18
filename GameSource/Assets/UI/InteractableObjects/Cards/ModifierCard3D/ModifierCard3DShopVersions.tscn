@@ -53,6 +53,59 @@ albedo_color = Color(1, 0.5019608, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3mlda"]
 size = Vector3(0.2, 0.3, 0.01171875)
 
+[sub_resource type="Curve" id="Curve_tyxfn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.43695012, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4271l"]
+curve = SubResource("Curve_tyxfn")
+
+[sub_resource type="Curve" id="Curve_y70wb"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tno3q"]
+curve = SubResource("Curve_y70wb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kn8gd"]
+direction = Vector3(0, 1, 0)
+spread = 107.12
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, -9.81, 0)
+damping_min = 5.346
+damping_max = 7.8620005
+alpha_curve = SubResource("CurveTexture_4271l")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.99999994
+hue_variation_curve = SubResource("CurveTexture_tno3q")
+
+[sub_resource type="Gradient" id="Gradient_xj4u6"]
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.5415335, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.32, 0.32, 0.32, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pn3vx"]
+gradient = SubResource("Gradient_xj4u6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljx46"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.83137256, 0.2901961, 0.6666667, 0.45490196)
+albedo_texture = SubResource("GradientTexture2D_pn3vx")
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_eevx7"]
+material = SubResource("StandardMaterial3D_ljx46")
+size = Vector2(0.2, 0.2)
+
 [sub_resource type="Animation" id="Animation_uspdd"]
 resource_name = "Move"
 loop_mode = 1
@@ -90,7 +143,7 @@ _data = {
 &"RESET": SubResource("Animation_1rcg8")
 }
 
-[node name="ModifierCard3D" type="Node3D" unique_id=1327020224 node_paths=PackedStringArray("sprite3D", "outlineMesh", "animationPlayer", "area3D", "toolTipInfo", "PriceLabel")]
+[node name="ModifierCard3D" type="Node3D" unique_id=1327020224 node_paths=PackedStringArray("sprite3D", "outlineMesh", "animationPlayer", "area3D", "toolTipInfo", "PriceLabel", "expEffect")]
 script = ExtResource("1_f6jy7")
 sprite3D = NodePath("Visual/Sprite3D")
 _icons = Array[CompressedTexture2D]([ExtResource("2_tyxfn"), ExtResource("3_tyxfn"), ExtResource("5_y70wb"), ExtResource("2_x1yq5"), ExtResource("6_tyxfn")])
@@ -99,6 +152,7 @@ animationPlayer = NodePath("AnimationPlayer")
 area3D = NodePath("Visual/Area3D")
 toolTipInfo = NodePath("Visual/ToolTipInfo")
 PriceLabel = NodePath("Visual/PriceValue")
+expEffect = NodePath("Visual/GPUParticles3D")
 
 [node name="Visual" type="Node3D" parent="." unique_id=1149214977]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.14, 0)
@@ -144,6 +198,14 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Visual/Area3D" unique_id=2073223200]
 shape = SubResource("BoxShape3D_3mlda")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Visual" unique_id=556892277]
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_kn8gd")
+draw_pass_1 = SubResource("QuadMesh_eevx7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1460968182]
 libraries/ = SubResource("AnimationLibrary_1rcg8")
