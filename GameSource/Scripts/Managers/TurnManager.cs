@@ -71,12 +71,9 @@ public partial class TurnManager : Node
 	{
 		_shopReady++;
 
-		if (_shopReady == _playerCount)
-		{
-			Global.shopManagerInstance.GeneratePublicShop();
-			_shopReady = 0;
-		}
-
+		if (_shopReady != _playerCount) return;
+		Global.shopManagerInstance.GeneratePublicShop();
+		_shopReady = 0;
 	}
 
 	private void AddToMultiplayerList(int id)
@@ -95,7 +92,7 @@ public partial class TurnManager : Node
 	private void GetRandomPlayer()
 	{
 		var rng = new RandomNumberGenerator();
-		_currentPlayer = rng.RandiRange(0, _playerCount - 1);
+		// _currentPlayer = rng.RandiRange(0, _playerCount - 1);
 	}
 
 	private static int CalculateCardValue(int value, ModifierCard[] cards)

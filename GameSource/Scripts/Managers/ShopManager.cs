@@ -5,8 +5,9 @@ using System.Linq;
 
 public partial class ShopManager : Node
 {
-	private int _amountOfPublicItems = 4;
+	private int _amountOfPublicItems = 8;
 	private int _amountOfPrivateItems = 8;
+	private int _shopPhase = 0;
 	private List<ItemType> _currentPublicShopItems;
 	private Dictionary<int, List<MODIFIER_TYPES>> _currentPrivateShopItemsPerPlayer;
 	private List<int> _currentPublicPrices;
@@ -32,15 +33,17 @@ public partial class ShopManager : Node
 			OneShot = true
 		};
 
-		_shopTimer.Timeout += StopShop;
+		_shopTimer.Timeout += ProgressShopPhase;
 		AddChild(_shopTimer);
 		Global.shopManagerInstance = this;
-		_shopTimer.Stop();
 	}
 
-	private void StopShop()
+	private void ProgressShopPhase()
 	{
-		var packet = new ClientReady();
+		var packet = new ProgressShopPhasePacket
+		{
+			ShopPhase = _shopPhase
+		};
 
 		Global.turnManagerInstance.BroadCast(packet);
 
@@ -122,8 +125,6 @@ public partial class ShopManager : Node
 		var card = ModifierCardTypeConverter.TypeToClass(_currentPrivateShopItemsPerPlayer[packet.SenderId][packet.CardIndex]);
 		var price = _currentPrivatePrices[packet.SenderId][packet.CardIndex];
 
-		GD.Print("Card index shop manger: " + packet.CardIndex);
-
 		if (player.Gold < price)
 		{
 			return;
@@ -166,11 +167,28 @@ public partial class ShopManager : Node
 		var returnPacket = new ShopItemBuy
 		{
 			CardIndex = packet.CardIndex,
-			GoldAmount = player.Gold
+			GoldAmount = player.Gold,
+			IsPublicShop = packet.IsPublicShop
 		};
 		if (peer != null)
 		{
 			returnPacket.Send(peer);
+		}
+		
+		var otherPlayers = Global.turnManagerInstance.Players.Keys.Where(x => x != packet.SenderId).ToArray();
+
+		foreach (var otherPlayer in otherPlayers)
+		{
+			Global.networkHandler.ClientPeers.TryGetValue(otherPlayer, out peer);
+			var boughtPacket = new ShopItemBuy
+			{
+				SenderId = packet.SenderId,
+				CardIndex = packet.CardIndex,
+			};
+			if (peer != null)
+			{
+				boughtPacket.Send(peer);
+			}
 		}
 	}
 

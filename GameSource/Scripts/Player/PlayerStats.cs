@@ -12,8 +12,9 @@ public class PlayerStats
 	private const float PoliticianBaseValue = 0.04f;
 	private const float PoliticianAddition = 0.02f;
 
-	public void UpgradePoliticanLevel()
+	public void UpgradePoliticianLevel()
 	{
+		GD.Print("Upgrade PoliticianLevel");
 		PoliticanPassive = PoliticianBaseValue + PoliticianAddition * _politicianLevel;
 		if (_politicianLevel < MaxLevel || !MaxLevelCap)
 		{
@@ -29,6 +30,7 @@ public class PlayerStats
 	
 	public void UpgradeGamblerLevel()
 	{
+		GD.Print("Upgrade UpgradeGamblerLevel");
 		GamblerPassive = GamblerBaseValue + GamblerAddition * _gamblerLevel;
 		if (_gamblerLevel < MaxLevel || !MaxLevelCap)
 		{
@@ -44,6 +46,7 @@ public class PlayerStats
 
 	public void UpgradeAlchemistLevel()
 	{
+		GD.Print("Upgrade UpgradeAlchemistLevel");
 		PointsToGoldRatio = AlchemistBaseValue + AlchemistAddition * _alchemistLevel;
 		if (_alchemistLevel < MaxLevel || !MaxLevelCap)
 		{
@@ -59,6 +62,7 @@ public class PlayerStats
 
 	public void UpgradeMaidenLevel()
 	{
+		GD.Print("Upgrade UpgradeMaidenLevel");
 		MaidenPassive = _maidenLevel + MaidenAddition * _maidenLevel;
 		if (_maidenLevel < MaxLevel || !MaxLevelCap)
 		{
@@ -74,6 +78,7 @@ public class PlayerStats
 
 	public void UpgradeClairvoyantLevel()
 	{
+		GD.Print("Upgrade UpgradeClairvoyantLevel");
 		ClairvoyantPassive = ClairvoyantBaseValue + ClairvoyantAddition * _clairvoyantLevel;
 		if (_clairvoyantLevel < MaxLevel || !MaxLevelCap)
 		{
@@ -82,9 +87,18 @@ public class PlayerStats
 	}
 	
 	// Drunkard
+	public int DrunkardPassive = 0;
+	private int _drunkardLevel = 0;
+	private const int DrunkardAddition = 1;
+	private const int DrunkardBaseValue = 1;
 	public void UpgradeDrunkardLevel()
 	{
-		
+		GD.Print("Upgrade UpgradeDrunkardLevel");
+		DrunkardPassive = DrunkardBaseValue + DrunkardAddition * _drunkardLevel;
+		if (_drunkardLevel < MaxLevel || !MaxLevelCap)
+		{
+			_drunkardLevel++;
+		}
 	}
 
 }

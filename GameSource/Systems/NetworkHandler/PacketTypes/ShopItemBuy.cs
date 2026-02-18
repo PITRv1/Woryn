@@ -8,6 +8,7 @@ public partial class ShopItemBuy : PacketInfo
     public int CardIndex;
     public int GoldAmount;
     public byte IsPublicShop;
+    public ItemType Item;
     
 	public ShopItemBuy()
     {
@@ -28,6 +29,8 @@ public partial class ShopItemBuy : PacketInfo
 
         data.Add(IsPublicShop);
 
+        data.AddRange(BitConverter.GetBytes((int)Item));
+        
 		return data.ToArray();
 	}
 	
@@ -43,6 +46,12 @@ public partial class ShopItemBuy : PacketInfo
         index += 4;
 
         packet.GoldAmount = BitConverter.ToInt32(data, index);
+        index += 4;
+        
+        packet.IsPublicShop = data[index++];
+        
+        packet.Item = (ItemType)BitConverter.ToInt32(data, index);
+        
 		return packet;
 	}
 }

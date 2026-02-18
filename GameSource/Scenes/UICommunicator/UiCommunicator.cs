@@ -19,7 +19,7 @@ public partial class UiCommunicator : Node
     private List<ItemType> _currentPublicCards = new List<ItemType>();
 
     public PointCard3d selectedPointCard3D { set; get; }
-    public List<ModifierCard3d> selectedModifierCard3Ds {private set; get;} = new();
+    public List<ModifierCard3d> selectedModifierCard3Ds { private set; get; } = new();
     public bool PlayerSelectionMode = false;
 
     public override void _Ready()

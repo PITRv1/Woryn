@@ -35,7 +35,7 @@ public class PlayerClass
         switch (item)
         {
             case ItemType.POLITICIAN_PASSIVE:
-                PlayerStats.UpgradePoliticanLevel();
+                PlayerStats.UpgradePoliticianLevel();
                 break;
             case ItemType.GAMBLER_PASSIVE:
                 PlayerStats.UpgradeGamblerLevel();
@@ -46,9 +46,9 @@ public class PlayerClass
             case ItemType.MAIDEN_PASSIVE:
                 PlayerStats.UpgradeMaidenLevel();
                 break;
-            // case ItemType.DRUNKARD_PASSIVE:
-            //     PlayerStats.UpgradeDrunkardLevel();
-            //     break;
+            case ItemType.DRUNKARD_PASSIVE:
+                PlayerStats.UpgradeDrunkardLevel();
+                break;
         }
     }
 

@@ -46,7 +46,6 @@ public partial class PlayerVisualController : Node3D
     public void moveCamera(int to)
     {
         target = to;
-        GD.Print("SHOULD BE L:EEEEEEEEEEEEEEEEEERPING YEAH");
     }
 
     public override void _Process(double delta)

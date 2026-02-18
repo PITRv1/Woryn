@@ -21,4 +21,5 @@ public enum PACKET_TYPES
     GOLD_CONVERT = 18,
     SHOP_READY = 19,
     SHOP_ITEM_BUY = 20,
+    PROGRESS_SHOP_PHASE = 21,
 }

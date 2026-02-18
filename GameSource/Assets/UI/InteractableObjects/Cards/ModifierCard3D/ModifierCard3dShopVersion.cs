@@ -54,7 +54,6 @@ public partial class ModifierCard3dShopVersion : Node3D, ICard3D
 	public void SetIcon()
 	{
         // if (ItemType == null) return;
-        GD.Print("Sprite Index: " + _items.IndexOf(_itemType));
 		sprite3D.Texture = _icons[_items.IndexOf(_itemType)];
 	}
 
@@ -76,9 +75,10 @@ public partial class ModifierCard3dShopVersion : Node3D, ICard3D
 		{
 			SenderId = Global.multiplayerPlayerClass.Id,
 			CardIndex = GetParent().GetChildren().IndexOf(this),
-			IsPublicShop = 1
+			IsPublicShop = 1,
+			Item = ItemType,
 		};
-
+		
 		Global.networkHandler.ServerPeer?.Send(0, packet.Encode(), (int)ENetPacketPeer.FlagReliable);
 
 		return;

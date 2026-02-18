@@ -34,17 +34,25 @@ public partial class MultiplayerPlayerClass : Node
 		Global.multiplayerClientGlobals.HandleLookAt += SetTargetPosition;
 		Global.multiplayerClientGlobals.HandleGoldUpdate += SetGoldAmount;
 		Global.multiplayerClientGlobals.HandleShopBuy += ShopBuy;
-		// Global.turnManagerInstance.GoToShopScene();
-		GD.Print("Dani: Shop will start with the first round for testing purposes. \nComment out line 36 in MultiplayerPlayerClass.cs");
-
+		
 		Global.multiplayerPlayerClass = this;
-		// _playerVisualController.SetColor();
 		ClientReady();
 	}
 
 	private void ShopBuy(byte[] data)
 	{
 		var packet = ShopItemBuy.CreateFromData(data);
+		if (packet.SenderId != Id)
+		{
+			uiCommunicator.shopCards.RemoveCard(uiCommunicator.shopCards.GetChild(packet.CardIndex) as Node3D, false);
+			return;
+		}
+		GD.Print("Shop buy start: " + packet.IsPublicShop);
+		if (packet.IsPublicShop == 1)
+		{
+			GD.Print("Na mi van");
+			PlayerClass.UpgradeStats(packet.Item);
+		}
 		uiCommunicator.shopCards.RemoveCard(uiCommunicator.shopCards.GetChild(packet.CardIndex) as Node3D, false);
 		PlayerClass.Gold = packet.GoldAmount;
 		_playerHud.UpdateGoldAmount(PlayerClass.Gold);

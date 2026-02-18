@@ -98,7 +98,7 @@ outlineMesh = NodePath("Visual/Outline")
 animationPlayer = NodePath("AnimationPlayer")
 area3D = NodePath("Visual/Area3D")
 toolTipInfo = NodePath("Visual/ToolTipInfo")
-PriceLabel = NodePath("Visual/ValueLabel")
+PriceLabel = NodePath("Visual/PriceValue")
 
 [node name="Visual" type="Node3D" parent="." unique_id=1149214977]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.14, 0)
@@ -128,8 +128,15 @@ texture = ExtResource("2_x1yq5")
 
 [node name="ValueLabel" type="Label3D" parent="Visual" unique_id=995114807]
 transform = Transform3D(0.9999992, 0, 0, 0, 0.99999946, -7.105425e-15, 0, -1.7763568e-14, 0.99999964, 0.004309952, 0.33544004, 0.0657818)
+visible = false
 billboard = 1
 modulate = Color(0.2601054, 0.22138625, 0.54379064, 1)
+
+[node name="PriceValue" type="Label3D" parent="Visual" unique_id=401147095]
+transform = Transform3D(0.99999917, 0, 0, 0, 0.9999994, -7.1054244e-15, 0, -1.7763568e-14, 0.99999964, 0.0043099513, -0.24132575, 0.0657818)
+billboard = 1
+modulate = Color(0.7894095, 0.5421536, 0.20919314, 1)
+text = "13	"
 
 [node name="Area3D" type="Area3D" parent="Visual" unique_id=94328010 groups=["CameraInteractable"]]
 monitoring = false

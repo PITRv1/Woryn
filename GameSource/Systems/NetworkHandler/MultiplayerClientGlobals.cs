@@ -41,6 +41,8 @@ public partial class MultiplayerClientGlobals : Node
     [Signal]
     public delegate void HandleShopBuyEventHandler(byte[] data);
     [Signal]
+    public delegate void ShowPrivateShopEventHandler();
+    [Signal]
     public delegate void StopShopEventHandler();
 
     public int Id = -1;
@@ -99,8 +101,16 @@ public partial class MultiplayerClientGlobals : Node
             case PACKET_TYPES.SHOP_ITEM_BUY:
                 EmitSignal(SignalName.HandleShopBuy, data);
                 break;
-            case PACKET_TYPES.CLIENT_READY:
-                EmitSignal(SignalName.StopShop);
+            case PACKET_TYPES.PROGRESS_SHOP_PHASE:
+                var packet = ProgressShopPhasePacket.CreateFromData(data);
+                if (packet.ShopPhase == 0)
+                {
+                    EmitSignal(SignalName.ShopItems);
+                }
+                else
+                {
+                    EmitSignal(SignalName.StopShop);
+                }
                 break;
             default:
                 GD.PushError($"Packet type with index {(int)packetType} unhandled!");
