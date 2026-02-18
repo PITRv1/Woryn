@@ -1,0 +1,16 @@
+[gd_resource type="Theme" format=3 uid="uid://bcxy1oqhov4h6"]
+
+[ext_resource type="Texture2D" uid="uid://d1tdl2opru7js" path="res://Assets/textures/images/mainMenuCardBG.png" id="1_70hye"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l6308"]
+texture = ExtResource("1_70hye")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_70hye"]
+load_path = "res://.godot/imported/mainMenuCardBG.png-e96adae32ef5c9d9448e579d37436c26.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4sbkp"]
+texture = SubResource("CompressedTexture2D_70hye")
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxTexture_l6308")
+Button/styles/normal = SubResource("StyleBoxTexture_4sbkp")
