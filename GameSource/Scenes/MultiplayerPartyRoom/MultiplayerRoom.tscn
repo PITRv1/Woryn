@@ -700,7 +700,6 @@ viewport_path = NodePath("DiegeticUI/SubViewport")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y68aj"]
 resource_local_to_scene = true
 transparency = 1
-shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_y68aj")
 
 [node name="Test" type="Node3D" unique_id=566470753]
@@ -1212,7 +1211,7 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.90
 bodyparts = []
 
 [node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 607341800) index="26" unique_id=396461942]
-transform = Transform3D(-0.5674061, -0.74190366, 0.35725313, 0.17137402, 0.31795955, 0.9324871, -0.8054075, 0.59032285, -0.0532692, 0.28519928, 1.3661851, 0.35879844)
+transform = Transform3D(-0.5674062, -0.77398163, 0.28107476, 0.17137372, 0.22287238, 0.9596658, -0.80540735, 0.59268916, 0.006180927, 0.28514528, 1.3463154, 0.35865134)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)

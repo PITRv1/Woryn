@@ -2843,7 +2843,6 @@ viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoi
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxvwu"]
 resource_local_to_scene = true
 transparency = 1
-shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_ef0mh")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv4a5"]
@@ -2873,7 +2872,6 @@ viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoi
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h20l"]
 resource_local_to_scene = true
 transparency = 1
-shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_3caok")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_yhysv"]
@@ -2882,10 +2880,9 @@ viewport_path = NodePath("MovingElements/Cameras/CameraController/CameraFocusPoi
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dtra"]
 resource_local_to_scene = true
 transparency = 1
-shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_yhysv")
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_aehye"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_xi614"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctpc2"]
 transparency = 1
@@ -3537,7 +3534,7 @@ mesh = SubResource("QuadMesh_1h20l")
 [node name="curtain" parent="EnvironmentDetails/Models/BarDetails" unique_id=152688818 instance=ExtResource("42_4dtra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.04108, 1.0017983, -51.2725)
 
-[node name="Plane" parent="EnvironmentDetails/Models/BarDetails/curtain" index="0" unique_id=1162435543]
+[node name="Plane" parent="EnvironmentDetails/Models/BarDetails/curtain" index="0" unique_id=1403861649]
 transform = Transform3D(1.5577803, 0, 0, 0, 0, -2.370239, 0, 1.730112, 0, -1.391571, 2.4554563, -0.16410828)
 material_override = SubResource("StandardMaterial3D_tcx4x")
 
@@ -3640,7 +3637,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.1583, 1.626787, -44.43900
 [node name="Woryn_Label" parent="EnvironmentDetails/Models/BarDetails" unique_id=451814816 instance=ExtResource("12_aehye")]
 transform = Transform3D(2.47, 0, 0, 0, 2.47, 0, 0, 0, 2.47, 140.261, 5.421, -43.56)
 
-[node name="Text" parent="EnvironmentDetails/Models/BarDetails/Woryn_Label" index="0" unique_id=1054514119]
+[node name="Text" parent="EnvironmentDetails/Models/BarDetails/Woryn_Label" index="0"]
 material_overlay = SubResource("StandardMaterial3D_6kchk")
 mesh = SubResource("ArrayMesh_7blnt")
 
@@ -5819,6 +5816,12 @@ size_2d_override = Vector2i(951, 440)
 [node name="Settings" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint/DiegeticUI/SettingsMeshInstance3D/SubViewport" unique_id=895228263 node_paths=PackedStringArray("mainUI") instance=ExtResource("46_ym0o4")]
 mainUI = NodePath("../../../../../../../../../MainUI")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/SettingsPoint/DiegeticUI" unique_id=1435140346]
+transform = Transform3D(-1, 3.3275796e-08, -8.011014e-09, -2.8420121e-08, -0.6768633, 0.7361091, 1.907227e-08, 0.7361091, 0.6768633, 0.019424438, 0.46783447, 0.38341627)
+light_color = Color(1, 0.77033335, 0.74, 1)
+spot_range = 0.80435824
+spot_angle = 43.964737
+
 [node name="QuitPoint" type="Marker3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints" unique_id=1597715580]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -1.6479931)
 
@@ -5886,6 +5889,12 @@ size = Vector2i(960, 512)
 [node name="Credits" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/CreditsPoint/DiegeticUI/CreditsMeshInstance3D/SubViewport" unique_id=726890353 node_paths=PackedStringArray("mainUI") instance=ExtResource("49_bv4a5")]
 mainUI = NodePath("../../../../../../../../../MainUI")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/CreditsPoint/DiegeticUI" unique_id=945420300]
+transform = Transform3D(-1, -2.4248015e-08, 8.399271e-08, 0, 0.96076465, 0.27736497, -8.742278e-08, 0.27736497, -0.96076465, -0.056350634, 0.4142184, -0.87776434)
+light_color = Color(1, 0.77033335, 0.74, 1)
+spot_range = 1.2855728
+spot_angle = 43.964737
+
 [node name="MultiPoint" type="Marker3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints" unique_id=108967279]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.618872)
 
@@ -5906,7 +5915,13 @@ size = Vector2i(960, 512)
 
 [node name="Multiplayer" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI/CreditsMeshInstance3D/SubViewport" unique_id=180983133 node_paths=PackedStringArray("mainUI") instance=ExtResource("50_u4fps")]
 mainUI = NodePath("../../../../../../../../../MainUI")
-optionGroup = SubResource("ButtonGroup_aehye")
+optionGroup = SubResource("ButtonGroup_xi614")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI" unique_id=1040673525]
+transform = Transform3D(-1, -7.312969e-08, 4.7903967e-08, 0, 0.54795754, 0.8365062, -8.742277e-08, 0.8365062, -0.54795754, -0.027770996, 0.7634883, -0.7714462)
+light_color = Color(1, 0.77033335, 0.74, 1)
+spot_range = 1.4975884
+spot_angle = 43.964737
 
 [node name="IntroCam" type="Camera3D" parent="MovingElements/Cameras" unique_id=705683571]
 transform = Transform3D(-1, -2.4683073e-08, -8.386589e-08, 0, 0.959314, -0.28234145, 8.742278e-08, -0.28234145, -0.959314, -0.315, 1.1, -18.965)
