@@ -1211,7 +1211,7 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.90
 bodyparts = []
 
 [node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 607341800) index="26" unique_id=396461942]
-transform = Transform3D(-0.5674062, -0.77398163, 0.28107476, 0.17137372, 0.22287238, 0.9596658, -0.80540735, 0.59268916, 0.006180927, 0.28514528, 1.3463154, 0.35865134)
+transform = Transform3D(-0.5674062, -0.7531743, 0.33283502, 0.1713736, 0.2873389, 0.94237316, -0.8054075, 0.5917474, -0.033963725, 0.28518662, 1.3615048, 0.35876372)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)
@@ -1238,6 +1238,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.48
 script = ExtResource("32_1ab4g")
 gapAmount = -0.5
 cardDisplayDirection = Vector3(1, 1, 0)
+_isShopHolder = true
 _uiCommunicator = NodePath("../UICommunicator")
 
 [node name="UICommunicator" parent="." unique_id=1649124515 node_paths=PackedStringArray("pointCards", "modifierCards", "shopCards", "multiplayerPlayer", "playerVisualController", "goldConverterController") groups=["UICommunicator"] instance=ExtResource("28_boekd")]
