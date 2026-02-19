@@ -1076,7 +1076,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78381586, 4.1443086, 6.123
 [node name="curtain" parent="3DWorld/EnvironmentDetails/Models" unique_id=152688818 instance=ExtResource("39_0tc0y")]
 transform = Transform3D(-0.10385153, 0, 0.9945928, 0, 1, 0, -0.9945928, 0, -0.10385153, -7.01008, 0.106413364, 0.33820117)
 
-[node name="Plane" parent="3DWorld/EnvironmentDetails/Models/curtain" index="0" unique_id=397132520]
+[node name="Plane" parent="3DWorld/EnvironmentDetails/Models/curtain" index="0" unique_id=1403861649]
 transform = Transform3D(1.730112, 0, 0, 0, 0, -1.730113, 0, 1.730112, 0, -1.5716673, 2.4554563, -0.16410732)
 material_override = SubResource("StandardMaterial3D_3h8vp")
 
@@ -1211,8 +1211,8 @@ font_size = 53
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.9010963, -0.9423759, -1.7291548e-07)
 bodyparts = []
 
-[node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 107777266) index="26" unique_id=396461942]
-transform = Transform3D(-0.567406, -0.77082765, 0.28961244, 0.17137343, 0.23346652, 0.9571437, -0.80540746, 0.5927211, -0.0003710389, 0.2851496, 1.3479068, 0.35866308)
+[node name="LeftHandAttachmentMod" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D" parent_id_path=PackedInt32Array(241039124, 1520022567, 607341800) index="26" unique_id=396461942]
+transform = Transform3D(-0.5674061, -0.74190366, 0.35725313, 0.17137402, 0.31795955, 0.9324871, -0.8054075, 0.59032285, -0.0532692, 0.28519928, 1.3661851, 0.35879844)
 
 [node name="PositioningNode" type="Node3D" parent="3DWorld/PlayerVisuals/templatePlayerRig/metarig/Skeleton3D/LeftHandAttachmentMod" index="0" unique_id=943116096]
 transform = Transform3D(0.94872266, -0.30047265, -0.09819082, 0.29630694, 0.7370867, 0.6073758, -0.11012468, -0.6053258, 0.788323, 0.018, 0.003, 0.1)
@@ -1239,7 +1239,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.48
 script = ExtResource("32_1ab4g")
 gapAmount = -0.5
 cardDisplayDirection = Vector3(1, 1, 0)
-_isShopHolder = true
 _uiCommunicator = NodePath("../UICommunicator")
 
 [node name="UICommunicator" parent="." unique_id=1649124515 node_paths=PackedStringArray("pointCards", "modifierCards", "shopCards", "multiplayerPlayer", "playerVisualController", "goldConverterController") groups=["UICommunicator"] instance=ExtResource("28_boekd")]
@@ -1279,7 +1278,8 @@ transparent_bg = true
 gui_embed_subwindows = true
 size = Vector2i(886, 512)
 
-[node name="GoldConverterUi" parent="DiegeticUI/SubViewport" unique_id=432262640 instance=ExtResource("45_y68aj")]
+[node name="GoldConverterUi" parent="DiegeticUI/SubViewport" unique_id=432262640 node_paths=PackedStringArray("playerHud") instance=ExtResource("45_y68aj")]
+playerHud = NodePath("../../../PlayerHUD")
 
 [node name="GoldConverterController" type="Node" parent="." unique_id=961480252 node_paths=PackedStringArray("goldConverterUi", "gold3DUi")]
 script = ExtResource("46_ubhqo")
