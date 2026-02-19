@@ -261,7 +261,7 @@ public partial class TurnManager : Node
 		}
 		
 		_throwDeckValue += value;
-		Players[_lastPlayer].PlayerClass.Points += _throwDeckValue + 3000;
+		Players[_lastPlayer].PlayerClass.Points += _throwDeckValue;
 		_throwDeckValue = 0;
 		_currentMaxValue = 0;
 		foreach (var player in Players.Keys)
