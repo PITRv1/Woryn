@@ -1,22 +1,23 @@
 [gd_scene format=3 uid="uid://bdeg6vwo3wgd4"]
 
-[ext_resource type="Theme" uid="uid://bv775inajfj5p" path="res://Assets/UI/Themes/Main/UIThemeBlue.tres" id="1_cnn6j"]
-[ext_resource type="Texture2D" uid="uid://cdofbdbwlfext" path="res://Assets/UI/Images/NineRect/backround_blue.png" id="2_51u3q"]
+[ext_resource type="Theme" uid="uid://bcxy1oqhov4h6" path="res://Assets/UI/Themes/Main/MedievalCardTheme.tres" id="1_acay3"]
 [ext_resource type="Script" uid="uid://bv7p7rep40vmq" path="res://UI/Credits/Credits.cs" id="2_acay3"]
 [ext_resource type="Texture2D" uid="uid://dpou8vcjhecqa" path="res://Assets/UI/Images/Team/undefined.png" id="2_f65ie"]
-[ext_resource type="Theme" uid="uid://bdetdcpnnocd8" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsBlue.tres" id="4_7m04g"]
+[ext_resource type="Texture2D" uid="uid://d1tdl2opru7js" path="res://Assets/textures/images/mainMenuCardBG.png" id="3_acay3"]
+[ext_resource type="Theme" uid="uid://b5pknxbb3rpmp" path="res://Assets/UI/Themes/Main/MedievalButtonTheme.tres" id="5_62eg8"]
 
-[node name="Credits" type="Control"]
+[node name="Credits" type="Control" unique_id=781675962]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_cnn6j")
+theme = ExtResource("1_acay3")
 script = ExtResource("2_acay3")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=213568671]
 visible = false
 layout_mode = 1
 anchors_preset = 10
@@ -28,7 +29,7 @@ text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer2" type="CenterContainer" parent="."]
+[node name="CenterContainer2" type="CenterContainer" parent="." unique_id=1198841583]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,16 +37,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer2"]
-custom_minimum_size = Vector2(600, 400)
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2" unique_id=801035842]
+custom_minimum_size = Vector2(700, 500)
 layout_mode = 2
-texture = ExtResource("2_51u3q")
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 17
+texture = ExtResource("3_acay3")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=941296806]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,37 +50,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1445112691]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer" unique_id=1011869970]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 texture = ExtResource("2_f65ie")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=631153270]
 layout_mode = 2
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1237563237]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1244088095]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 34
 text = "Developers:"
 horizontal_alignment = 1
 
-[node name="Line" type="ColorRect" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Line" type="ColorRect" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=217260152]
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Line"]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Line" unique_id=23800191]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 1
 anchors_preset = 14
@@ -92,11 +89,10 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.7137255, 0.96862745, 1)
+color = Color(0.21176471, 0.09411765, 0.050980393, 1)
 
-[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1675481843]
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
 text = "Tóth Péter Sándor
 Kovács Dániel Benedek
 Wágner Ábel
@@ -104,12 +100,12 @@ Borók Máté
 Medve Donát"
 horizontal_alignment = 1
 
-[node name="Line2" type="ColorRect" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Line2" type="ColorRect" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1390524025]
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Line2"]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Line2" unique_id=978980170]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 1
 anchors_preset = 14
@@ -118,16 +114,17 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.7137255, 0.96862745, 1)
+color = Color(0.21176471, 0.09411765, 0.050980393, 1)
 
-[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=651216147]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "Made with Godot C# 4.5.1 "
+text = "Made with Godot C# "
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=291985688]
 layout_mode = 2
-theme = ExtResource("4_7m04g")
+theme = ExtResource("5_62eg8")
 text = "Main Menu"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button" to="." method="Back"]

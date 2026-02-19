@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ccrlb1xrwrm1f"]
 
-[ext_resource type="Theme" uid="uid://i7vf1nfeexfk" path="res://Assets/UI/Themes/Main/UIThemeRed.tres" id="1_2qbu5"]
-[ext_resource type="Texture2D" uid="uid://1lruscat13du" path="res://Assets/UI/Images/NineRect/Background_red.png" id="2_3y4na"]
+[ext_resource type="Theme" uid="uid://bcxy1oqhov4h6" path="res://Assets/UI/Themes/Main/MedievalCardTheme.tres" id="1_3y4na"]
 [ext_resource type="Script" uid="uid://efm4ybff5fir" path="res://UI/Quit/QuitMenu.cs" id="2_fc2hk"]
-[ext_resource type="Theme" uid="uid://bba3xicfwj1tj" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsRed.tres" id="3_fc2hk"]
+[ext_resource type="Texture2D" uid="uid://co2h0ilvbywhv" path="res://Assets/textures/images/mainMenuCardHorizBG.png" id="3_3y4na"]
+[ext_resource type="Theme" uid="uid://b5pknxbb3rpmp" path="res://Assets/UI/Themes/Main/MedievalButtonTheme.tres" id="4_fc2hk"]
 
 [node name="QuitWindow" type="Control" unique_id=2076558440]
 texture_filter = 1
@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_2qbu5")
+theme = ExtResource("1_3y4na")
 script = ExtResource("2_fc2hk")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=563267683]
@@ -27,16 +27,11 @@ grow_vertical = 2
 [node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer" unique_id=1030971998]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/VBoxContainer2" unique_id=858709567]
-show_behind_parent = true
-custom_minimum_size = Vector2(300, 120)
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer2" unique_id=1000431580]
+modulate = Color(0.45452422, 0.45452428, 0.45452422, 1)
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("2_3y4na")
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 17
+texture = ExtResource("3_3y4na")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1703121541]
 layout_mode = 2
@@ -44,19 +39,22 @@ theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=559832806]
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 31
 text = "Do you really want to quit?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=2125002727]
 layout_mode = 2
-theme = ExtResource("3_fc2hk")
+theme = ExtResource("4_fc2hk")
 alignment = 1
 
 [node name="YesButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=190577494]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9999961, 0.09047548, 0.06410787, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.5137531, 8.3025543e-07, 1.4439226e-07, 1)
 text = "Yes"
 
 [node name="NoButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1294355110]

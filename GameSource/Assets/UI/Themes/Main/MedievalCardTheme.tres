@@ -1,9 +1,11 @@
 [gd_resource type="Theme" format=3 uid="uid://bcxy1oqhov4h6"]
 
 [ext_resource type="Texture2D" uid="uid://d1tdl2opru7js" path="res://Assets/textures/images/mainMenuCardBG.png" id="1_70hye"]
+[ext_resource type="FontFile" uid="uid://c2v6ks7c7q5ef" path="res://Assets/UI/Fonts/FantaisieArtistique.ttf" id="1_l6308"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l6308"]
 texture = ExtResource("1_70hye")
+modulate_color = Color(1, 1, 1, 0.8666667)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_70hye"]
 load_path = "res://.godot/imported/mainMenuCardBG.png-e96adae32ef5c9d9448e579d37436c26.ctex"
@@ -11,6 +13,44 @@ load_path = "res://.godot/imported/mainMenuCardBG.png-e96adae32ef5c9d9448e579d37
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4sbkp"]
 texture = SubResource("CompressedTexture2D_70hye")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4sbkp"]
+load_path = "res://.godot/imported/mainMenuCardBG.png-e96adae32ef5c9d9448e579d37436c26.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n3k2h"]
+texture = SubResource("CompressedTexture2D_4sbkp")
+modulate_color = Color(0.5211406, 0.5211406, 0.5211405, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l6308"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4sbkp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n3k2h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ma5lf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6308"]
+bg_color = Color(0.47843137, 0.30588236, 0.18039216, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [resource]
+Button/colors/font_outline_color = Color(0.43137255, 0.2509804, 0.11764706, 1)
+Button/constants/outline_size = 5
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("1_l6308")
 Button/styles/hover = SubResource("StyleBoxTexture_l6308")
 Button/styles/normal = SubResource("StyleBoxTexture_4sbkp")
+Button/styles/pressed = SubResource("StyleBoxTexture_n3k2h")
+CheckBox/styles/hover = SubResource("StyleBoxEmpty_l6308")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_4sbkp")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_n3k2h")
+CheckBox/styles/pressed = SubResource("StyleBoxEmpty_ma5lf")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_l6308")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 5
+Label/font_sizes/font_size = 26
+Label/fonts/font = ExtResource("1_l6308")
+RichTextLabel/fonts/normal_font = ExtResource("1_l6308")

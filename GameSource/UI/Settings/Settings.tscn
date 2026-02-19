@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://d10vs074rfp2w"]
 
-[ext_resource type="Theme" uid="uid://bv775inajfj5p" path="res://Assets/UI/Themes/Main/UIThemeBlue.tres" id="1_tgyht"]
-[ext_resource type="Texture2D" uid="uid://cdofbdbwlfext" path="res://Assets/UI/Images/NineRect/backround_blue.png" id="2_mvx1u"]
+[ext_resource type="Theme" uid="uid://bcxy1oqhov4h6" path="res://Assets/UI/Themes/Main/MedievalCardTheme.tres" id="1_n5ubh"]
 [ext_resource type="Script" uid="uid://cwlhwhnxceefk" path="res://UI/Settings/Settings.cs" id="2_n5ubh"]
-[ext_resource type="Theme" uid="uid://bdetdcpnnocd8" path="res://Assets/UI/Themes/ButtonChips/ButtonChipsBlue.tres" id="3_f2j7s"]
+[ext_resource type="Texture2D" uid="uid://d1tdl2opru7js" path="res://Assets/textures/images/mainMenuCardBG.png" id="3_n5ubh"]
+[ext_resource type="Theme" uid="uid://b5pknxbb3rpmp" path="res://Assets/UI/Themes/Main/MedievalButtonTheme.tres" id="4_n5ubh"]
 
-[node name="Settings" type="Control" node_paths=PackedStringArray("masterVolumeSlider", "musicVolumeSlider")]
+[node name="Settings" type="Control" unique_id=433371701 node_paths=PackedStringArray("masterVolumeSlider", "musicVolumeSlider")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_tgyht")
+theme = ExtResource("1_n5ubh")
 script = ExtResource("2_n5ubh")
 masterVolumeSlider = NodePath("HBoxContainer/container/Sound/Master/Master")
 musicVolumeSlider = NodePath("HBoxContainer/container/Sound/Music/Music")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=136921031]
 visible = false
 layout_mode = 1
 anchors_preset = 10
@@ -29,7 +29,7 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1729021517]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,16 +37,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer"]
-custom_minimum_size = Vector2(400, 400)
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=935940758]
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
-texture = ExtResource("2_mvx1u")
-patch_margin_left = 17
-patch_margin_top = 17
-patch_margin_right = 17
-patch_margin_bottom = 17
+texture = ExtResource("3_n5ubh")
+expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1572778135]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,24 +52,25 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="container" type="VBoxContainer" parent="HBoxContainer"]
+[node name="container" type="VBoxContainer" parent="HBoxContainer" unique_id=1495966517]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Screen" type="HBoxContainer" parent="HBoxContainer/container"]
+[node name="Screen" type="HBoxContainer" parent="HBoxContainer/container" unique_id=647281415]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Resolution" type="VBoxContainer" parent="HBoxContainer/container/Screen"]
+[node name="Resolution" type="VBoxContainer" parent="HBoxContainer/container/Screen" unique_id=1789979417]
+visible = false
 layout_mode = 2
 
-[node name="ResolutionLabel" type="Label" parent="HBoxContainer/container/Screen/Resolution"]
+[node name="ResolutionLabel" type="Label" parent="HBoxContainer/container/Screen/Resolution" unique_id=1531359035]
 layout_mode = 2
 text = "Resolution"
 
-[node name="Resolution" type="OptionButton" parent="HBoxContainer/container/Screen/Resolution"]
+[node name="Resolution" type="OptionButton" parent="HBoxContainer/container/Screen/Resolution" unique_id=810770722]
 layout_mode = 2
 selected = 2
 item_count = 5
@@ -87,14 +85,15 @@ popup/item_3/id = 1
 popup/item_4/text = "3480x2160"
 popup/item_4/id = 0
 
-[node name="Window Mode" type="VBoxContainer" parent="HBoxContainer/container/Screen"]
+[node name="Window Mode" type="VBoxContainer" parent="HBoxContainer/container/Screen" unique_id=960201295]
+visible = false
 layout_mode = 2
 
-[node name="WindowModeLabel" type="Label" parent="HBoxContainer/container/Screen/Window Mode"]
+[node name="WindowModeLabel" type="Label" parent="HBoxContainer/container/Screen/Window Mode" unique_id=301318463]
 layout_mode = 2
 text = "Window mode"
 
-[node name="WindowMode" type="OptionButton" parent="HBoxContainer/container/Screen/Window Mode"]
+[node name="WindowMode" type="OptionButton" parent="HBoxContainer/container/Screen/Window Mode" unique_id=1055595061]
 layout_mode = 2
 selected = 2
 item_count = 3
@@ -105,77 +104,78 @@ popup/item_1/id = 1
 popup/item_2/text = "Maximized"
 popup/item_2/id = 2
 
-[node name="Shaders" type="VBoxContainer" parent="HBoxContainer/container"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="Shader" type="HBoxContainer" parent="HBoxContainer/container/Shaders"]
-layout_mode = 2
-
-[node name="ShadersText" type="Label" parent="HBoxContainer/container/Shaders/Shader"]
-layout_mode = 2
-text = "Shaders: "
-
-[node name="Shaders" type="CheckBox" parent="HBoxContainer/container/Shaders/Shader"]
-layout_mode = 2
-
-[node name="Sound" type="VBoxContainer" parent="HBoxContainer/container"]
+[node name="Sound" type="VBoxContainer" parent="HBoxContainer/container" unique_id=69693748]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Master" type="VBoxContainer" parent="HBoxContainer/container/Sound"]
+[node name="Master" type="VBoxContainer" parent="HBoxContainer/container/Sound" unique_id=1529064877]
 layout_mode = 2
 
-[node name="MasterLabel" type="Label" parent="HBoxContainer/container/Sound/Master"]
+[node name="MasterLabel" type="Label" parent="HBoxContainer/container/Sound/Master" unique_id=179908016]
 layout_mode = 2
 text = "Main Volume"
 
-[node name="Master" type="HSlider" parent="HBoxContainer/container/Sound/Master"]
+[node name="Master" type="HSlider" parent="HBoxContainer/container/Sound/Master" unique_id=1854960973]
 layout_mode = 2
 min_value = -80.0
 max_value = 10.0
 
-[node name="MasterPercent" type="Label" parent="HBoxContainer/container/Sound/Master"]
+[node name="MasterPercent" type="Label" parent="HBoxContainer/container/Sound/Master" unique_id=2018851884]
 visible = false
 layout_mode = 2
 text = "100%"
 
-[node name="Music" type="VBoxContainer" parent="HBoxContainer/container/Sound"]
+[node name="Music" type="VBoxContainer" parent="HBoxContainer/container/Sound" unique_id=2004327078]
 layout_mode = 2
 
-[node name="MusicLabel" type="Label" parent="HBoxContainer/container/Sound/Music"]
+[node name="MusicLabel" type="Label" parent="HBoxContainer/container/Sound/Music" unique_id=1913036663]
 layout_mode = 2
 text = "Music"
 
-[node name="Music" type="HSlider" parent="HBoxContainer/container/Sound/Music"]
+[node name="Music" type="HSlider" parent="HBoxContainer/container/Sound/Music" unique_id=829830106]
 layout_mode = 2
 min_value = -80.0
 max_value = 10.0
 
-[node name="MusicPercent" type="Label" parent="HBoxContainer/container/Sound/Music"]
+[node name="MusicPercent" type="Label" parent="HBoxContainer/container/Sound/Music" unique_id=731805926]
 visible = false
 layout_mode = 2
 text = "100%"
 
-[node name="SFX" type="VBoxContainer" parent="HBoxContainer/container/Sound"]
+[node name="SFX" type="VBoxContainer" parent="HBoxContainer/container/Sound" unique_id=739892934]
 layout_mode = 2
 
-[node name="SFXLabel" type="Label" parent="HBoxContainer/container/Sound/SFX"]
+[node name="SFXLabel" type="Label" parent="HBoxContainer/container/Sound/SFX" unique_id=1401575527]
 layout_mode = 2
 text = "SFX"
 
-[node name="SFX" type="HSlider" parent="HBoxContainer/container/Sound/SFX"]
+[node name="SFX" type="HSlider" parent="HBoxContainer/container/Sound/SFX" unique_id=709403430]
 layout_mode = 2
 
-[node name="SFXPercent" type="Label" parent="HBoxContainer/container/Sound/SFX"]
+[node name="SFXPercent" type="Label" parent="HBoxContainer/container/Sound/SFX" unique_id=546265122]
 visible = false
 layout_mode = 2
 text = "100%"
 
-[node name="BackButton" type="Button" parent="HBoxContainer/container"]
+[node name="Shaders" type="VBoxContainer" parent="HBoxContainer/container" unique_id=1987236442]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme = ExtResource("3_f2j7s")
+
+[node name="Shader" type="HBoxContainer" parent="HBoxContainer/container/Shaders" unique_id=425429114]
+layout_mode = 2
+
+[node name="ShadersText" type="Label" parent="HBoxContainer/container/Shaders/Shader" unique_id=684149042]
+layout_mode = 2
+text = "Shaders: "
+
+[node name="Shaders" type="CheckBox" parent="HBoxContainer/container/Shaders/Shader" unique_id=1053162190]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="HBoxContainer/container" unique_id=114497436]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme = ExtResource("4_n5ubh")
 text = "Main Menu"
 
 [connection signal="item_selected" from="HBoxContainer/container/Screen/Resolution/Resolution" to="." method="SetViewportSize"]

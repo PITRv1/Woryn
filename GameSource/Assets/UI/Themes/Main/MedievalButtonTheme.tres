@@ -1,0 +1,29 @@
+[gd_resource type="Theme" format=3 uid="uid://b5pknxbb3rpmp"]
+
+[ext_resource type="FontFile" uid="uid://c2v6ks7c7q5ef" path="res://Assets/UI/Fonts/FantaisieArtistique.ttf" id="1_xbxmj"]
+[ext_resource type="Texture2D" uid="uid://co2h0ilvbywhv" path="res://Assets/textures/images/mainMenuCardHorizBG.png" id="2_xbxmj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l6308"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_xbxmj")
+modulate_color = Color(1, 1, 1, 0.8666667)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4sbkp"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_xbxmj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n3k2h"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_xbxmj")
+modulate_color = Color(0.5211406, 0.5211406, 0.5211405, 1)
+
+[resource]
+Button/fonts/font = ExtResource("1_xbxmj")
+Button/styles/hover = SubResource("StyleBoxTexture_l6308")
+Button/styles/normal = SubResource("StyleBoxTexture_4sbkp")
+Button/styles/pressed = SubResource("StyleBoxTexture_n3k2h")
+Label/fonts/font = ExtResource("1_xbxmj")
+RichTextLabel/fonts/normal_font = ExtResource("1_xbxmj")

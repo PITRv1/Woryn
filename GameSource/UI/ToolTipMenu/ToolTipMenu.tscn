@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bv6yi73mqnr5i"]
 
-[ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="1_83qw4"]
 [ext_resource type="Script" uid="uid://egpg7con1hbu" path="res://UI/ToolTipMenu/ToolTipMenu.cs" id="2_6ocpn"]
+[ext_resource type="Theme" uid="uid://bcxy1oqhov4h6" path="res://Assets/UI/Themes/Main/MedievalCardTheme.tres" id="3_6l0ja"]
 
 [node name="ToolTipMenu" type="Control" unique_id=1439534742 node_paths=PackedStringArray("colorRect", "titleLabel", "descriptionLabel")]
 texture_filter = 1
@@ -12,7 +12,7 @@ offset_right = -0.5040283
 offset_bottom = -0.22399902
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_83qw4")
+theme = ExtResource("3_6l0ja")
 script = ExtResource("2_6ocpn")
 colorRect = NodePath("Menu/TitleBar/ColorRect")
 titleLabel = NodePath("Menu/TitleBar/ColorRect/MarginContainer/Label")

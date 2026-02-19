@@ -52,7 +52,6 @@
 [ext_resource type="Texture2D" uid="uid://ckplquym6441h" path="res://Assets/textures/images/tree.png" id="34_pia1e"]
 [ext_resource type="Script" uid="uid://bym6fkta1he1n" path="res://3D Menu/MainMenu/CameraController.cs" id="34_pkg1t"]
 [ext_resource type="PackedScene" uid="uid://c0v5ty8ha4cpa" path="res://Assets/TEST_Assets/bookShelfHalf.glb" id="36_jn0tk"]
-[ext_resource type="Theme" uid="uid://bntwtfgxeqnya" path="res://Assets/UI/Themes/Main/UIThemeSimple.tres" id="37_fxvwu"]
 [ext_resource type="PackedScene" uid="uid://dovfimrngf8o4" path="res://Assets/models/MainMenuNewCollection/hangingLampAsset.tscn" id="40_g8nf3"]
 [ext_resource type="PackedScene" uid="uid://dncmddvl1lk2j" path="res://Assets/models/MainMenuNewCollection/lamp.glb" id="41_674dm"]
 [ext_resource type="PackedScene" uid="uid://b5ab613qv1tho" path="res://Assets/models/MainMenuNewCollection/curtain.glb" id="42_4dtra"]
@@ -67,6 +66,7 @@
 [ext_resource type="PackedScene" uid="uid://bdeg6vwo3wgd4" path="res://UI/Credits/Credits.tscn" id="49_bv4a5"]
 [ext_resource type="PackedScene" uid="uid://be6l3tabm2s5j" path="res://UI/Multiplayer/Multiplayer.tscn" id="50_u4fps"]
 [ext_resource type="LightmapGIData" uid="uid://k2iec0qcuhr1" path="res://3D Menu/MainMenu/MainMenu.lmbake" id="61_q24wk"]
+[ext_resource type="Theme" uid="uid://bcxy1oqhov4h6" path="res://Assets/UI/Themes/Main/MedievalCardTheme.tres" id="66_xi614"]
 
 [sub_resource type="Gradient" id="Gradient_pia1e"]
 interpolation_mode = 2
@@ -2885,7 +2885,7 @@ transparency = 1
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_yhysv")
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_xi614"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_aehye"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctpc2"]
 transparency = 1
@@ -3537,7 +3537,7 @@ mesh = SubResource("QuadMesh_1h20l")
 [node name="curtain" parent="EnvironmentDetails/Models/BarDetails" unique_id=152688818 instance=ExtResource("42_4dtra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.04108, 1.0017983, -51.2725)
 
-[node name="Plane" parent="EnvironmentDetails/Models/BarDetails/curtain" index="0" unique_id=1238605715]
+[node name="Plane" parent="EnvironmentDetails/Models/BarDetails/curtain" index="0" unique_id=1162435543]
 transform = Transform3D(1.5577803, 0, 0, 0, 0, -2.370239, 0, 1.730112, 0, -1.391571, 2.4554563, -0.16410828)
 material_override = SubResource("StandardMaterial3D_tcx4x")
 
@@ -3640,7 +3640,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.1583, 1.626787, -44.43900
 [node name="Woryn_Label" parent="EnvironmentDetails/Models/BarDetails" unique_id=451814816 instance=ExtResource("12_aehye")]
 transform = Transform3D(2.47, 0, 0, 0, 2.47, 0, 0, 0, 2.47, 140.261, 5.421, -43.56)
 
-[node name="Text" parent="EnvironmentDetails/Models/BarDetails/Woryn_Label" index="0" unique_id=702045799]
+[node name="Text" parent="EnvironmentDetails/Models/BarDetails/Woryn_Label" index="0" unique_id=1054514119]
 material_overlay = SubResource("StandardMaterial3D_6kchk")
 mesh = SubResource("ArrayMesh_7blnt")
 
@@ -5906,7 +5906,7 @@ size = Vector2i(960, 512)
 
 [node name="Multiplayer" parent="MovingElements/Cameras/CameraController/CameraFocusPoints/MultiPoint/DiegeticUI/CreditsMeshInstance3D/SubViewport" unique_id=180983133 node_paths=PackedStringArray("mainUI") instance=ExtResource("50_u4fps")]
 mainUI = NodePath("../../../../../../../../../MainUI")
-optionGroup = SubResource("ButtonGroup_xi614")
+optionGroup = SubResource("ButtonGroup_aehye")
 
 [node name="IntroCam" type="Camera3D" parent="MovingElements/Cameras" unique_id=705683571]
 transform = Transform3D(-1, -2.4683073e-08, -8.386589e-08, 0, 0.959314, -0.28234145, 8.742278e-08, -0.28234145, -0.959314, -0.315, 1.1, -18.965)
@@ -5937,7 +5937,7 @@ offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-theme = ExtResource("37_fxvwu")
+theme = ExtResource("66_xi614")
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/normal_font_size = 31
 bbcode_enabled = true
