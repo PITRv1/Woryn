@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://wfkec16ns440"]
-
-[ext_resource type="Texture2D" uid="uid://bhg382owmn7f3" path="res://Assets/Textures/world/wallBottomTile.png" id="1_q3yq7"]
-
-[resource]
-albedo_texture = ExtResource("1_q3yq7")
-metallic_specular = 0.0
-texture_filter = 2

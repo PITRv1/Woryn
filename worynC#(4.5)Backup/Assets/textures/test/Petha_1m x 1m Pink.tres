@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bur1epdus2js6"]
-
-[ext_resource type="Texture2D" uid="uid://50ndtlojfy3o" path="res://Assets/Textures/test/Petha_1m x 1m Pink.png" id="1_1ovbg"]
-
-[resource]
-albedo_texture = ExtResource("1_1ovbg")
-metallic_specular = 0.0
-texture_filter = 2

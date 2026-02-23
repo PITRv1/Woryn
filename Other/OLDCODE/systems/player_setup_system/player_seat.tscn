@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://k121hjb8dh2d"]
-
-[ext_resource type="Script" uid="uid://dxt2olighey8p" path="res://systems/player_setup_system/player_seat.gd" id="1_e26mt"]
-
-[node name="PlayerSeat" type="Marker3D"]
-script = ExtResource("1_e26mt")

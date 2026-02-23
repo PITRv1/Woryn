@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cvvqi3k1l2j8q"]
-
-[ext_resource type="Texture2D" uid="uid://dp4nwfxshxpcu" path="res://Assets/textures/paintings/painting4.jpg" id="1_upwiy"]
-
-[resource]
-albedo_texture = ExtResource("1_upwiy")
-metallic_specular = 0.0
-texture_filter = 2
